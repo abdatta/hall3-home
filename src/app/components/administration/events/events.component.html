@@ -1,0 +1,25 @@
+<div *ngIf="!loaded" style="vertical-align:middle; text-align:center">
+  <img src="../../../../images/loading.gif" style="width: 50%">
+</div>
+<div class="blog-details" [class.invisible]="!loaded">
+  <h1>Students’ Activity Committee</h1>
+  <div class="space-20"></div>
+  <p>The Students’ Activity Committee is a team of student volunteers who are responsible for the overall conductance of the intra and inter-hostel co-curricular events. These volunteers work hard to plan and execute each and every small action required for the students’ co-curricular events. It is because of volunteers like these that the prodigious culture of Hall-3 has been passed over the years.</p>
+  <div class="space-10"></div>
+  <h4>Members</h4>
+  <div class="space-10"></div>
+  <div>
+    <!--Single-team-->
+    <div *ngFor="let member of members; let i=index;" [class.row]="i%4 === 3">
+      <div class="col-xs-6 col-sm-3">
+        <div class="team-image relative ">
+          <div class="team-details"><strong>{{ member['name'] }}</strong>
+            <div class="space-2"></div>
+            <p>{{ member['post'] }}</p>
+          </div>
+        </div>
+        <div class="space-30"></div>
+      </div>
+    </div>
+    <!--Single-team/-->
+</div>

@@ -1,0 +1,26 @@
+<div *ngIf="!loaded" style="vertical-align:middle; text-align:center">
+  <img src="../../../../images/loading.gif" style="width: 50%">
+</div>
+<div class="blog-details" [class.invisible]="!loaded">
+  <h1>Maintenance Committee</h1>
+  <div class="space-20"></div>
+  <p>The Maintenance Committee is a team of student volunteers who are accountable for the overall maintenance of the hall. In case you find a certain issue with the maintenance of your room or a common room or with any other part of the Hall, in case the workers deny to clean your room without a valid reason or if you have a suggestion for the Hall maintenance or beautification, feel free to contact any member of this committee. Also, don’t forget to praise the committee when you find the Hall beautiful and well-maintained!</p>
+  <div class="space-10"></div>
+  <h4>Members</h4>
+  <div class="space-10"></div>
+  <div>
+    <!--Single-team-->
+    <div *ngFor="let member of members; let i=index;" [class.row]="i%4 === 3">
+      <div class="col-xs-6 col-sm-3">
+        <div class="team-image relative ">
+          <div class="team-details"><strong>{{ member['name'] }}</strong>
+            <div class="space-2"></div>
+            <p>{{ member['post'] }}</p>
+          </div>
+        </div>
+        <div class="space-30"></div>
+      </div>
+    </div>
+    <!--Single-team/-->
+  </div>
+</div>

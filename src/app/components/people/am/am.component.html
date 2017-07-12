@@ -1,0 +1,26 @@
+<div *ngIf="!loaded" style="vertical-align:middle; text-align:center">
+  <img src="../../../../images/loading.gif" style="width: 50%">
+</div>
+<div class="blog-details" [class.invisible]="!loaded">
+  <h1>Academic Mentors</h1>
+  <div class="space-20"></div>
+  <p>Academic Mentors are the academically brilliant students of the hall. They are the ones a student should go to for help in case of any academic difficulty.</p>
+  <div class="space-10"></div>
+  <h4>List of Academic Mentors</h4>
+  <div class="space-10"></div>
+  <div>
+    <!--Single-team-->
+    <div *ngFor="let am of ams; let i=index;" [class.row]="i%4 === 3">
+      <div class="col-xs-6 col-sm-3">
+        <div class="team-image relative ">
+          <div class="team-details"><strong>{{ am['name'] }}</strong>
+            <div class="space-2"></div>
+            <p>{{ am['subject'] }}</p>
+          </div>
+        </div>
+        <div class="space-30"></div>
+      </div>
+    </div>
+    <!--Single-team/-->
+  </div>
+</div>

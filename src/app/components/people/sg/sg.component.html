@@ -1,0 +1,25 @@
+<div *ngIf="!loaded" style="vertical-align:middle; text-align:center">
+  <img src="../../../../images/loading.gif" style="width: 50%">
+</div>
+<div class="blog-details" [class.invisible]="!loaded">
+  <h1>Student Guides</h1>
+  <div class="space-20"></div>
+  <p>Juniors are always closest to and rely the most on their Student Guides. Being the first person they get to know in the campus, Student Guides are always the first person of contact in case of any joy, sadness, problem, query or success of the juniors.</p>
+  <div class="space-10"></div>
+  <h4>List of Student Guides</h4>
+  <div class="space-10"></div>
+  <div>
+    <!--Single-team-->
+    <div *ngFor="let sg of sgs; let i=index;" [class.row]="i%4 === 3">
+      <div class="col-xs-6 col-sm-3">
+        <div class="team-image relative ">
+          <div class="team-details"><strong>{{ sg['name'] }}</strong>
+            <div class="space-2"></div>
+          </div>
+        </div>
+        <div class="space-30"></div>
+      </div>
+    </div>
+    <!--Single-team/-->
+  </div>
+</div>

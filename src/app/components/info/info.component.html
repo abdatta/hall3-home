@@ -1,0 +1,30 @@
+<!--Blog-Section-->
+<section>
+  <div class="container">
+    <div class="row img-full-width">
+      <div class="col-xs-12 col-md-9 pull-right">
+        <div class="space-100"></div>
+        <router-outlet></router-outlet>
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        <aside class="sidebar">
+          <div class="space-100"></div>
+          <div class="single-sidebar category">
+            <h3>{{ toTitleCase(title) }}</h3>
+            <hr>
+            <ul class="list-unstyled">
+              <li *ngFor="let item of list" class="tab" [class.activeTab]="tab === item['id']">
+                <a [routerLink]="link(item['linkId'])">{{ item['name'] }}</a>
+              </li>
+            </ul>
+          </div>
+          <div class="space-60"></div>
+
+        </aside>
+        <!--Sidebar/-->
+      </div>
+    </div>
+
+  </div>
+  <div class="space-80"></div>
+</section>

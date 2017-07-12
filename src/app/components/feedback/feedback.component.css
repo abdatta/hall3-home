@@ -1,0 +1,6 @@
+.form-control.ng-touched.ng-invalid:not(.invalid-email) {
+  border: 1px solid red;
+}
+.invalid-email {
+  border: 1px solid orange;
+}

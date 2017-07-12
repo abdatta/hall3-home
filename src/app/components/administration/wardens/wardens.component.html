@@ -1,0 +1,27 @@
+<div *ngIf="!loaded" style="vertical-align:middle; text-align:center">
+  <img src="../../../../images/loading.gif" style="width: 50%">
+</div>
+<div class="blog-details" [class.invisible]="!loaded">
+  <h1>Wardens</h1>
+  <div class="space-20"></div>
+  <div id="wardens">
+    <!--Single-team-->
+    <div *ngFor="let member of members; let i=index;"
+         class="col-xs-12 col-sm-3 col-centered"
+         [class.col-sm-push-3]="i === 0"
+         [class.col-sm-pull-4]="i === 1"
+         [class.col-sm-offset-1]="i !== 1">
+      <div class="team-image relative innerpad">
+        <div class="relative">
+          <img [src]="'http://127.0.0.1:1111/' + member['photo']" (load)="load()" alt="">
+        </div>
+        <div class="team-details"><strong>{{ member['name'] }}</strong>
+          <div class="space-2"></div>
+          <p>{{ member['post'] }}</p>
+        </div>
+      </div>
+      <div class="space-30"></div>
+    </div>
+    <!--Single-team/-->
+  </div>
+</div>

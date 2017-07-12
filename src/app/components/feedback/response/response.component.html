@@ -1,0 +1,34 @@
+<section id="service" class="fix">
+  <div class="space-100"></div>
+  <div class="container">
+    <div *ngIf="error" style="text-align: center">
+      <h1>Not Found</h1>
+      <p>The page you are requesting either does not exist or has expired.</p>
+      <div class="space-200"></div>
+    </div>
+    <div class="row" *ngIf="!error">
+      <div class="col-xs-12 col-sm-5 padding30">
+        <h3>Details</h3>
+        <div class="space-30"></div>
+        <p>Name: {{ queryInfo.name }}</p>
+        <p>To: {{ queryInfo.to }}</p>
+        <p>Subject: {{ queryInfo.subject }}</p>
+        <p>-----------------------------------------</p>
+        <p style="white-space:pre-wrap">{{ queryInfo.message }}</p>
+      </div>
+      <div class="col-xs-12 col-sm-7 padding30">
+        <div class="space-60"></div>
+        <textarea class="form-control"
+                  required
+                  autofocus
+                  placeholder="Response here..."
+                  rows="7"
+                  [(ngModel)]="response"
+        ></textarea>
+        <div class="space-20"></div>
+        <button class="bttn" (click)="respond()">Send Response</button>
+      </div>
+    </div>
+  </div>
+  <div class="space-100"></div>
+</section>

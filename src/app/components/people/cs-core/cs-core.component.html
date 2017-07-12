@@ -1,0 +1,70 @@
+<div *ngIf="!loaded" style="vertical-align:middle; text-align:center">
+  <img src="../../../../images/loading.gif" style="width: 50%">
+</div>
+<div class="blog-details" [class.invisible]="!loaded">
+  <h1>Counselling Service Core Team</h1>
+  <div class="space-20"></div>
+  <p></p>
+  <div class="space-10"></div>
+  <h4>Coordinators</h4>
+  <div class="space-10"></div>
+  <div>
+    <!--Single-team-->
+    <div *ngFor="let co of coordi; let i=index;" [class.row]="i%4 === 3">
+      <div class="col-xs-6 col-sm-3">
+        <div class="team-image relative ">
+          <div class="relative">
+            <img [src]="'http://127.0.0.1:1111/' + co['photo']" (load)="load()" alt="">
+          </div>
+          <div class="team-details"><strong>{{ co['name'] }}</strong>
+            <div class="space-2"></div>
+            <p>{{ co['email'] }}<br>{{ co['contact'] }}</p>
+          </div>
+        </div>
+        <div class="space-30"></div>
+      </div>
+    </div>
+    <!--Single-team/-->
+  </div>
+  <div class="space-10"></div>
+  <h4>Team Operations</h4>
+  <div class="space-10"></div>
+  <div>
+    <!--Single-team-->
+    <div *ngFor="let op of ops; let i=index;" [class.row]="i%4 === 3">
+      <div class="col-xs-6 col-sm-3">
+        <div class="team-image relative ">
+          <div class="relative">
+            <img [src]="'http://127.0.0.1:1111/' + op['photo']" (load)="load()" alt="">
+          </div>
+          <div class="team-details"><strong>{{ op['name'] }}</strong>
+            <div class="space-2"></div>
+            <p>{{ op['email'] }}<br>{{ op['contact'] }}</p>
+          </div>
+        </div>
+        <div class="space-30"></div>
+      </div>
+    </div>
+    <!--Single-team/-->
+  </div><div class="space-10"></div>
+  <h4>Team Academics</h4>
+  <div class="space-10"></div>
+  <div>
+    <!--Single-team-->
+    <div *ngFor="let acad of acads; let i=index;" [class.row]="i%4 === 3">
+      <div class="col-xs-6 col-sm-3">
+        <div class="team-image relative ">
+          <div class="relative">
+            <img [src]="'http://127.0.0.1:1111/' + acad['photo']" (load)="load()" alt="">
+          </div>
+          <div class="team-details"><strong>{{ acad['name'] }}</strong>
+            <div class="space-2"></div>
+            <p>{{ acad['email'] }}<br>{{ acad['contact'] }}</p>
+          </div>
+        </div>
+        <div class="space-30"></div>
+      </div>
+    </div>
+    <!--Single-team/-->
+  </div>
+</div>

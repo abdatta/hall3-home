@@ -1,0 +1,81 @@
+        /* Medium Layout: 1280px. */
+        
+        @media only screen and (min-width: 992px) and (max-width: 1200px) {
+            .header-bg img {
+                height: 100%;
+                max-width: inherit;
+                width: auto;
+            }
+        }
+        /* Tablet Layout: 768px. */
+        
+        @media only screen and (min-width: 768px) and (max-width: 991px) {
+            .header-bg img {
+                height: 100%;
+                max-width: inherit;
+                width: auto;
+            }
+        }
+        /* Mobile Layout: 320px. */
+        
+        @media only screen and (max-width: 767px) {
+            .header-bg-slider img {
+                max-width: inherit;
+            }
+            .xs-center,
+            .xs-center .text-right {
+                text-align: center;
+            }
+            #mainmenu_collapse {
+                background-color:  #7C77C9;
+            }
+            #mainmenu {
+                border-top: none;
+                text-align: center;
+            }
+            .navbar-header button.navbar-toggle {
+                margin: 15px;
+                padding: 2px 6px;
+                border-color: transparent;
+                border-radius: 2px;
+                color: #ffffff;
+                -webkit-transition: all 0.3s ease 0s;
+                transition: all 0.3s ease 0s;
+            }
+            .navbar-header button.navbar-toggle:hover {
+                border-color: #ffffff;
+                background-color: transparent;
+            }
+            .navbar-header button.navbar-toggle:focus {
+                background-color: transparent;
+            }
+            .navbar-header button.navbar-toggle .icon-bar,
+            .navbar-header button.navbar-toggle .icon-bar {
+                -webkit-transition: 0.3s;
+                transition: 0.3s;
+            }
+            .navbar-header button.navbar-toggle:hover .icon-bar,
+            .navbar-header button.navbar-toggle:focus .icon-bar {
+                background-color: #161624;
+            }
+            .work-content-grid {
+                min-height: 400px;
+                background-color: #fbf9fa;
+            }
+            .counter_icon {
+                border-radius: 0 0 50% 50%;
+                margin-top: 0px;
+            }
+            .header-bg img {
+                height: 100%;
+                max-width: inherit;
+                width: auto;
+            }
+        }
+        /* Wide Mobile Layout: 480px. */
+        
+        @media only screen and (min-width: 480px) and (max-width: 767px) {
+            .work-content-grid {
+                min-height: inherit;
+            }
+        }

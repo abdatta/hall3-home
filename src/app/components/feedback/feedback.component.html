@@ -1,0 +1,237 @@
+<section id="contact"><div class="space-50"></div></section>
+<!--Counter-area-->
+<section class="gray-bg relative text-white">
+  <div class="header-bg header-bg-color">
+    <div class="header-bg-image header-bg-image4"></div>
+  </div>
+  <div class="container">
+    <div class="row text-center">
+      <!--Single-counterup-->
+      <div class="col-xs-3">
+        <div class="counter_up">
+          <div id="ask" [class.active]="showForm('ask')" class="counter_icon" (click)="changeForm('ask')">
+            <span class="ti-help-alt"></span>
+          </div>
+          <div class="space-20"></div>
+          <h4 class="whennotxs">ASK THE HEC</h4>
+        </div>
+      </div>
+      <!--Single-counterup/-->
+      <!--Single-counterup-->
+      <div class="col-xs-3">
+        <div class="counter_up">
+          <div id="response" [class.active]="showForm('response')" class="counter_icon" (click)="changeForm('response')">
+            <span class="ti-info-alt"></span>
+          </div>
+          <div class="space-20"></div>
+          <h4 class="whennotxs">RESPONSES</h4>
+        </div>
+      </div>
+      <!--Single-counterup/-->
+      <!--Single-counterup-->
+      <div class="col-xs-3">
+        <div class="counter_up">
+          <div id="complaint" [class.active]="showForm('complaint')" class="counter_icon" (click)="changeForm('complaint')">
+            <span class="ti-pencil-alt"></span>
+          </div>
+          <div class="space-20"></div>
+          <h4 class="whennotxs">LODGE COMPLAINT</h4>
+        </div>
+      </div>
+      <!--Single-counterup/-->
+      <!--Single-counterup-->
+      <div class="col-xs-3">
+        <div class="counter_up">
+          <a href="https://pingala.iitk.ac.in" target="_blank">
+            <div class="counter_icon">
+              <span class="ti-layout-media-center-alt"></span>
+            </div>
+          </a>
+          <div class="space-20"></div>
+          <h4 class="whennotxs">COMPLAINT TO IWD</h4>
+        </div>
+      </div>
+      <!--Single-counterup/-->
+      <!--Single-counterup-->
+    </div>
+  </div>
+  <div class="space-30"></div>
+  <p style="color: red">{{ error }}</p>
+  <div class="container">
+    <!--Contact-form-->
+    <form *ngIf="showForm('ask')" #askform="ngForm" (ngSubmit)="askTheHEC(askForm)">
+      <div class="row">
+        <!--blog-page-title-->
+        <div class="col-xs-12 col-md-6 col-md-offset-3 text-center">
+          <h3 class="">ASK THE HEC</h3>
+        </div>
+        <!--blog-page-title/-->
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-4">
+          <div *ngIf="name.touched && name.errors && name.errors.required" style="font-size: 11px; color: red">*Required</div>
+          <div class="space-20" *ngIf="!(name.touched && name.errors)"></div>
+          <input type="text"
+                 class="form-control"
+                 name="name"
+                 placeholder="Your Name"
+                 required
+                 [(ngModel)]="query.name"
+                 #name="ngModel"
+                 >
+          <div class="space-5"></div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <div *ngIf="email.touched && email.errors && email.errors.required" style="font-size: 11px; color: red">*Required</div>
+          <div *ngIf="email.touched && email.errors && email.errors.pattern" style="font-size: 11px; color: orange">*Invalid email</div>
+          <div class="space-20" *ngIf="!(email.touched && email.errors)"></div>
+          <input  type="email"
+                  class="form-control"
+                  [class.invalid-email]="email.touched && email.errors && email.errors.pattern"
+                  name="email"
+                  placeholder="Email Address"
+                  [(ngModel)]="query.email"
+                  #email="ngModel"
+                  required
+                  pattern="^(([^<>()[\]\\.,;:\s@\&quot;]+(\.[^<>()[\]\\.,;:\s@\&quot;]+)*)|(\&quot;.+\&quot;))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$">
+          <div class="space-5"></div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <div *ngIf="hec.touched && hec.errors && hec.errors.required" style="font-size: 11px; color: red">*Required</div>
+          <div class="space-20" *ngIf="!(hec.touched && hec.errors)"></div>
+          <select class="form-control"
+                  name="hec"
+                  [(ngModel)]="query.to"
+                  #hec="ngModel"
+                  required>
+            <option value="" disabled selected>Choose the HEC member to ask</option>
+            <option value="all" >All HEC Members</option>
+            <option value="president">President</option>
+            <option value="finance">Finance Secretary</option>
+            <option value="maintenance">Maintenance Secretaries</option>
+            <option value="mess">Mess Secretaries</option>
+            <option value="cultural">Cultural Secretary</option>
+            <option value="snt">Science and Technology Secretary</option>
+            <option value="sports">Sports Secretary</option>
+            <option value="fms">Films and Media Secretary</option>
+            <option value="commonrooms">Common Rooms Secretary</option>
+            <option value="web">Web Incharge</option>
+          </select>
+          <div class="space-5"></div>
+        </div>
+        <div class="col-xs-12">
+          <div *ngIf="subject.touched && subject.errors && subject.errors.required" style="font-size: 11px; color: red">*Required</div>
+          <div class="space-20" *ngIf="!(subject.touched && subject.errors)"></div>
+          <input
+            type="text"
+            class="form-control"
+            name="subject"
+            placeholder="Subject"
+            [(ngModel)]="query.subject"
+            #subject="ngModel"
+            required>
+          <div class="space-5"></div>
+        </div>
+        <div class="col-xs-12">
+          <div *ngIf="message.touched && message.errors && message.errors.required" style="font-size: 11px; color: red">*Required</div>
+          <div class="space-20" *ngIf="!(message.touched && message.errors)"></div>
+          <textarea class="form-control"
+                    rows="6"
+                    name="message"
+                    placeholder="Message here..."
+                    [(ngModel)]="query.message"
+                    #message="ngModel"
+                    required>
+          </textarea>
+          <div class="space-25"></div>
+        </div>
+        <div class="col-xs-12">
+          <button type="submit" class="bttn" [disabled]="!askform.valid">Ask</button>
+        </div>
+      </div>
+    </form>
+
+    <div *ngIf="showForm('response')">
+      <div class="row">
+        <!--blog-page-title-->
+        <div class="col-xs-12 col-md-6 col-md-offset-3 text-center">
+          <h3 class="">RESPONSES</h3>
+        </div>
+        <!--blog-page-title/-->
+      </div>
+      <div class="space-20"></div>
+      <div class="row">
+        <div class="col-xs-4">
+          <input type="text" class="form-control" id="form-name" name="form-name" placeholder="Your Name" required disabled>
+          <div class="space-30"></div>
+        </div>
+        <div class="col-xs-4">
+          <input type="email" class="form-control" id="form-email" name="form-email" placeholder="Email Address" required disabled>
+          <div class="space-30"></div>
+        </div>
+        <div class="col-xs-4">
+          <input type="dwd" class="form-control" id="form-message" name="form-message" placeholder="Message here" required disabled>
+          <div class="space-30"></div>
+        </div>
+      </div>
+    </div>
+
+    <form *ngIf="showForm('complaint')">
+      <div class="row">
+        <!--blog-page-title-->
+        <div class="col-xs-12 col-md-6 col-md-offset-3 text-center">
+          <h3 class="">LODGE COMPLAINT</h3>
+        </div>
+        <!--blog-page-title/-->
+      </div>
+      <div class="space-20"></div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-4">
+          <input type="text" class="form-control" id="form-name" name="form-name" placeholder="Your Name" required>
+          <div class="space-20"></div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <input type="text" class="form-control" id="form-roll" name="form-roll" placeholder="Roll No." required>
+          <div class="space-20"></div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <input type="text" class="form-control" id="form-room" name="form-room" placeholder="Room No." required>
+          <div class="space-20"></div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <input type="email" class="form-control" id="form-email" name="form-email" placeholder="Email id" required>
+          <div class="space-20"></div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <input type="text" class="form-control" id="form-mobile" name="form-mobile" placeholder="Mobile No." required>
+          <div class="space-20"></div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <input type="text" class="form-control" id="form-category-others" name="form-category-others" placeholder="Please mention category" required hidden>
+          <select class="form-control" id="form-category" name="form-category" required>
+            <option value="" disabled selected>Complaint Category</option>
+            <option>LAN problem</option>
+            <option>Mess issues</option>
+            <option>Cleaniness of Common Areas</option>
+            <option>Sewage and Garbage disposal</option>
+            <option>Civil Maintenance</option>
+            <option>Electrical Maintenance</option>
+            <option>Room Maintenance</option>
+            <option value="others">Others : ___________________</option>
+          </select>
+          <div class="space-30"></div>
+        </div>
+        <div class="col-xs-12">
+          <textarea class="form-control" rows="5" id="form-message" name="form-message" placeholder="Message here..." required></textarea>
+          <div class="space-30"></div>
+        </div>
+        <div class="col-xs-12">
+          <button type="submit" class="bttn">Submit</button>
+        </div>
+      </div>
+    </form>
+    <!--Contact-form/-->
+  </div>
+  <div class="space-100"></div>
+
+</section>

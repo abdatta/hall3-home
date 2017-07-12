@@ -1,0 +1,30 @@
+<div *ngIf="!loaded" style="vertical-align:middle; text-align:center">
+  <img src="../../../../images/loading.gif" style="width: 50%">
+</div>
+<div class="blog-details" [class.invisible]="!loaded">
+  <h1>Hall Executive Committee</h1>
+  <div class="space-20"></div>
+  <p>The Hall Executive Committee is a team of elected students who look after the overall functioning and governance of the Hall, supervised directly by the Warden. Their functions include making policies, making rules for the residents, getting something new constructed/bought, maintaining hall property, deciding the mess menu and the mess/canteen tender, imposing fines on residents, and taking charge for almost every issue of the hall. For any Hall related affair or to know any procedure/rule, the residents should feel free to contact the concerned secretary or the President, HEC.</p>
+  <div class="space-10"></div>
+  <h4>Members</h4>
+  <div class="space-10"></div>
+  <div id="HEC" ><p>{{done}}</p>
+    <!--Single-team-->
+    <div *ngFor="let member of members; let i=index;" [class.row]="i%4 === 3">
+      <div class="col-xs-6 col-sm-3">
+      <div class="team-image relative ">
+        <div class="relative">
+          <img [src]="'http://127.0.0.1:1111/' + member['photo']" (load)="load()" alt="">
+        </div>
+        <div class="team-details"><strong>{{ member['name'] }}</strong>
+          <div class="space-2"></div>
+          <p>{{ member['post'] }}<br>{{ member['email'] }}<br>{{ member['contact'] }}</p>
+        </div>
+      </div>
+      <div class="space-30"></div>
+      </div>
+    </div>
+    <!--Single-team/-->
+  </div>
+
+</div>
