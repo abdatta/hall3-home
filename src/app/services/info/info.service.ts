@@ -28,7 +28,7 @@ export class InfoService {
   }
 
   getAdministration = (id = ''): Observable<object> => {
-    return this.http.get('http://127.0.0.1:1111/data/administration/' + id)
+    return this.http.get('/api/data/administration/' + id)
       .map((res: Response) => res.json() as object)
       .catch((error: any) => {
         if (error.status) {
@@ -42,7 +42,7 @@ export class InfoService {
   };
 
   getPeople = (id = ''): Observable<object> => {
-    return this.http.get('http://127.0.0.1:1111/data/people/' + id)
+    return this.http.get('/api/data/people/' + id)
       .map((res: Response) => res.json() as object)
       .catch((error: any) => {
         if (error.status) {
