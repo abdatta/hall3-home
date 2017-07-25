@@ -13,76 +13,25 @@
     </div>
     <div class="space-60"></div>
     <div class="row img-full-width row-centered">
-
-      <!--Single-team-->
-      <div class="col-xs-12 col-sm-3 col-centered col-sm-offset-1 col-sm-push-3 wow fadeIn" data-wow-delay="0.2s">
-        <div class="team-image relative innerpad">
-          <div class="relative">
-            <img src="images/team/warden.jpg" alt="">
-            <!--<ul class="list-unstyled team-sical">
-                <li><a href="#"><span class="ti-facebook"></span></a></li>
-                <li><a href="#"><span class="ti-twitter"></span></a></li>
-                <li><a href="#"><span class="ti-github"></span></a></li>
-                <li><a href="#"><span class="ti-linkedin"></span></a></li>
-                <li><a href="#"><span class="ti-instagram"></span></a></li>
-                <li><a href="#"><span class="ti-dribbble"></span></a></li>
-            </ul>-->
-          </div>
-          <div class="team-details"><strong>Ketan Rajawat</strong>
-            <div class="space-5"></div>
-            <p>Warden-in-Charge</p>
-          </div>
+        <!--Single-team-->
+        <div *ngFor="let warden of wardens; let i=index;"
+             class="col-xs-12 col-sm-3 col-centered wow fadeIn"
+             [class.col-sm-push-3]="i === 0"
+             [class.col-sm-pull-4]="i === 1"
+             [class.col-sm-offset-1]="i !== 1"
+             [attr.data-wow-delay]="((i === 0) ? 0.2 : 0.4) + 's'">
+            <div class="team-image relative innerpad">
+                <div class="relative">
+                    <img [src]="'/server/' + warden['photo']" [alt]="warden['name'] + '\'s photo'">
+                </div>
+                <div class="team-details"><strong>{{ warden['name'] }}</strong>
+                    <div class="space-2"></div>
+                    <p>{{ warden['post'] }}</p>
+                </div>
+            </div>
+            <div class="space-30"></div>
         </div>
-        <div class="space-30"></div>
-      </div>
-      <!--Single-team/-->
-      <!--Single-team-->
-      <div class="col-xs-12 col-sm-3 col-centered col-sm-pull-4 wow fadeIn" data-wow-delay="0.4s">
-        <div class="team-image relative innerpad">
-          <div class="relative">
-            <img src="images/team/warden2.jpg" alt="">
-            <!--<ul class="list-unstyled team-sical">
-                <li><a href="#"><span class="ti-facebook"></span></a></li>
-                <li><a href="#"><span class="ti-twitter"></span></a></li>
-                <li><a href="#"><span class="ti-github"></span></a></li>
-                <li><a href="#"><span class="ti-linkedin"></span></a></li>
-                <li><a href="#"><span class="ti-instagram"></span></a></li>
-                <li><a href="#"><span class="ti-dribbble"></span></a></li>
-            </ul>-->
-          </div>
-          <div class="team-details"><strong>Sandeep Anand</strong>
-            <div class="space-2"></div>
-            <p>Maintenance Warden</p>
-          </div>
-        </div>
-        <div class="space-30"></div>
-      </div>
-      <!--Single-team/-->
-
-
-      <!--Single-team-->
-      <div class="col-xs-12 col-sm-3 col-centered col-sm-offset-1 wow fadeIn" data-wow-delay="0.4s">
-        <div class="team-image relative innerpad">
-          <div class="relative">
-            <img src="images/team/warden3.jpg" alt="">
-            <!--<ul class="list-unstyled team-sical">
-                <li><a href="#"><span class="ti-facebook"></span></a></li>
-                <li><a href="#"><span class="ti-twitter"></span></a></li>
-                <li><a href="#"><span class="ti-github"></span></a></li>
-                <li><a href="#"><span class="ti-linkedin"></span></a></li>
-                <li><a href="#"><span class="ti-instagram"></span></a></li>
-                <li><a href="#"><span class="ti-dribbble"></span></a></li>
-            </ul>-->
-          </div>
-          <div class="team-details"><strong>Shobit Omar</strong>
-            <div class="space-5"></div>
-            <p>Mess Warden</p>
-          </div>
-        </div>
-        <div class="space-30"></div>
-      </div>
-      <!--Single-team/-->
-      <!--Single-team-->
+        <!--Single-team/-->
 
     </div>
   </div>
@@ -104,277 +53,26 @@
     <div class="space-60"></div>
     <div class="row img-full-width">
       <!--Single-team-->
-      <div class="col-xs-6 col-sm-3 wow fadeIn" data-wow-delay="0.2s">
-        <div class="team-image relative">
-          <div class="relative">
-            <img src="images/team/presi2.jpg" alt="">
-            <!--<ul class="list-unstyled team-sical">
-                <li><a href="#"><span class="ti-facebook"></span></a></li>
-                <li><a href="#"><span class="ti-twitter"></span></a></li>
-                <li><a href="#"><span class="ti-github"></span></a></li>
-                <li><a href="#"><span class="ti-linkedin"></span></a></li>
-                <li><a href="#"><span class="ti-instagram"></span></a></li>
-                <li><a href="#"><span class="ti-dribbble"></span></a></li>
-            </ul>-->
+      <div *ngFor="let member of hec; let i=index;" >
+        <div class="col-xs-6 col-sm-3 wow fadeIn" [attr.data-wow-delay]="((2 + i)/10.0) + 's'">
+          <div class="team-image relative ">
+            <div class="relative">
+              <img [src]="'/server/' + member['photo']" [alt]="member['name'] + '\'s photo'">
+            </div>
+            <div class="team-details"><strong>{{ member['name'] }}</strong>
+              <div class="space-2"></div>
+              <p>{{ member['post'] }}<br>{{ member['email'] }}<br>{{ member['contact'] }}</p>
+            </div>
           </div>
-          <div class="team-details"><strong>Anant Chopra</strong>
-            <div class="space-5"></div>
-            <p>President</p>
-          </div>
+          <div class="space-30"></div>
         </div>
-        <div class="space-30"></div>
-      </div>
-      <!--Single-team/-->
-      <!--Single-team-->
-      <div class="col-xs-6 col-sm-3 wow fadeIn"  data-wow-delay="0.3s">
-        <div class="team-image relative">
-          <div class="relative">
-            <img src="images/team/fin.jpg" alt="">
-            <!--<ul class="list-unstyled team-sical">
-                <li><a href="#"><span class="ti-facebook"></span></a></li>
-                <li><a href="#"><span class="ti-twitter"></span></a></li>
-                <li><a href="#"><span class="ti-github"></span></a></li>
-                <li><a href="#"><span class="ti-linkedin"></span></a></li>
-                <li><a href="#"><span class="ti-instagram"></span></a></li>
-                <li><a href="#"><span class="ti-dribbble"></span></a></li>
-            </ul>-->
-          </div>
-          <div class="team-details"><strong>Vaibhav Agarwal</strong>
-            <div class="space-5"></div>
-            <p>Finance Secretary</p>
-          </div>
-        </div>
-        <div class="space-30"></div>
-      </div>
-      <!--Single-team/-->
-
-      <!--Single-team-->
-      <div class="col-xs-6 col-sm-3 wow fadeIn"  data-wow-delay="0.4s">
-        <div class="team-image relative">
-          <div class="relative">
-            <img src="images/team/maint2.jpg" alt="">
-            <!--<ul class="list-unstyled team-sical">
-                <li><a href="#"><span class="ti-facebook"></span></a></li>
-                <li><a href="#"><span class="ti-twitter"></span></a></li>
-                <li><a href="#"><span class="ti-github"></span></a></li>
-                <li><a href="#"><span class="ti-linkedin"></span></a></li>
-                <li><a href="#"><span class="ti-instagram"></span></a></li>
-                <li><a href="#"><span class="ti-dribbble"></span></a></li>
-            </ul>-->
-          </div>
-          <div class="team-details"><strong>Shashwat Dwivedi</strong>
-            <div class="space-5"></div>
-            <p>Maintenance Secretary</p>
-          </div>
-        </div>
-        <div class="space-30"></div>
-      </div>
-      <!--Single-team-->
-      <!--Single-team-->
-      <div class="col-xs-6 col-sm-3 wow fadeIn"  data-wow-delay="0.5s">
-        <div class="team-image relative">
-          <div class="relative">
-            <img src="images/team/maint1.jpg" alt="">
-            <!--<ul class="list-unstyled team-sical">
-                <li><a href="#"><span class="ti-facebook"></span></a></li>
-                <li><a href="#"><span class="ti-twitter"></span></a></li>
-                <li><a href="#"><span class="ti-github"></span></a></li>
-                <li><a href="#"><span class="ti-linkedin"></span></a></li>
-                <li><a href="#"><span class="ti-instagram"></span></a></li>
-                <li><a href="#"><span class="ti-dribbble"></span></a></li>
-            </ul>-->
-          </div>
-          <div class="team-details"><strong>Chitranshu Chandel</strong>
-            <div class="space-5"></div>
-            <p>Maintenance Secretary</p>
-          </div>
-        </div>
-        <div class="space-30"></div>
-      </div>
-      <!--Single-team/-->
-      <!--Single-team-->
-      <div class="col-xs-6 col-sm-3 wow fadeIn"   data-wow-delay="0.2s">
-        <div class="team-image relative">
-          <div class="relative">
-            <img src="images/team/mess2.jpg" alt="">
-            <!--<ul class="list-unstyled team-sical">
-                <li><a href="#"><span class="ti-facebook"></span></a></li>
-                <li><a href="#"><span class="ti-twitter"></span></a></li>
-                <li><a href="#"><span class="ti-github"></span></a></li>
-                <li><a href="#"><span class="ti-linkedin"></span></a></li>
-                <li><a href="#"><span class="ti-instagram"></span></a></li>
-                <li><a href="#"><span class="ti-dribbble"></span></a></li>
-            </ul>-->
-          </div>
-          <div class="team-details"><strong>Divyansh Verma</strong>
-            <div class="space-5"></div>
-            <p>Mess Secretary</p>
-          </div>
-        </div>
-        <div class="space-30"></div>
-      </div>
-      <!--Single-team/-->
-      <!--Single-team-->
-      <div class="col-xs-6 col-sm-3 wow fadeIn"  data-wow-delay="0.3s">
-        <div class="team-image relative">
-          <div class="relative">
-            <img src="images/team/mess1.jpg" alt="">
-            <!--<ul class="list-unstyled team-sical">
-                <li><a href="#"><span class="ti-facebook"></span></a></li>
-                <li><a href="#"><span class="ti-twitter"></span></a></li>
-                <li><a href="#"><span class="ti-github"></span></a></li>
-                <li><a href="#"><span class="ti-linkedin"></span></a></li>
-                <li><a href="#"><span class="ti-instagram"></span></a></li>
-                <li><a href="#"><span class="ti-dribbble"></span></a></li>
-            </ul>-->
-          </div>
-          <div class="team-details"><strong>Siddharth Jindal</strong>
-            <div class="space-5"></div>
-            <p>Mess Secretary</p>
-          </div>
-        </div>
-        <div class="space-30"></div>
-      </div>
-      <!--Single-team/-->
-
-      <!--Single-team-->
-      <div class="col-xs-6 col-sm-3 wow fadeIn"  data-wow-delay="0.4s">
-        <div class="team-image relative ">
-          <div class="relative">
-            <img src="images/team/cult.jpg" alt="">
-            <!--<ul class="list-unstyled team-sical">
-                <li><a href="#"><span class="ti-facebook"></span></a></li>
-                <li><a href="#"><span class="ti-twitter"></span></a></li>
-                <li><a href="#"><span class="ti-github"></span></a></li>
-                <li><a href="#"><span class="ti-linkedin"></span></a></li>
-                <li><a href="#"><span class="ti-instagram"></span></a></li>
-                <li><a href="#"><span class="ti-dribbble"></span></a></li>
-            </ul>-->
-          </div>
-          <div class="team-details"><strong>Lakshya Kumar</strong>
-            <div class="space-5"></div>
-            <p>Cultural Secretary</p>
-          </div>
-        </div>
-        <div class="space-30"></div>
-      </div>
-      <!--Single-team/-->
-      <!--Single-team-->
-      <div class="col-xs-6 col-sm-3 wow fadeIn"  data-wow-delay="0.5s">
-        <div class="team-image relative">
-          <div class="relative">
-            <img src="images/team/snt1.jpg" alt="">
-            <!--<ul class="list-unstyled team-sical">
-                <li><a href="#"><span class="ti-facebook"></span></a></li>
-                <li><a href="#"><span class="ti-twitter"></span></a></li>
-                <li><a href="#"><span class="ti-github"></span></a></li>
-                <li><a href="#"><span class="ti-linkedin"></span></a></li>
-                <li><a href="#"><span class="ti-instagram"></span></a></li>
-                <li><a href="#"><span class="ti-dribbble"></span></a></li>
-            </ul>-->
-          </div>
-          <div class="team-details"><strong>Mahesh Madankar</strong>
-            <div class="space-5"></div>
-            <p>Science &amp; Tech Secretary</p>
-          </div>
-        </div>
-        <div class="space-30"></div>
-      </div>
-      <!--Single-team/-->
-      <!--Single-team-->
-      <div class="col-xs-6 col-sm-3 wow fadeIn"  data-wow-delay="0.2s">
-        <div class="team-image relative">
-          <div class="relative">
-            <img src="images/team/sport.jpg" alt="">
-            <!--<ul class="list-unstyled team-sical">
-                <li><a href="#"><span class="ti-facebook"></span></a></li>
-                <li><a href="#"><span class="ti-twitter"></span></a></li>
-                <li><a href="#"><span class="ti-github"></span></a></li>
-                <li><a href="#"><span class="ti-linkedin"></span></a></li>
-                <li><a href="#"><span class="ti-instagram"></span></a></li>
-                <li><a href="#"><span class="ti-dribbble"></span></a></li>
-            </ul>-->
-          </div>
-          <div class="team-details"><strong>Sarthak Gupta</strong>
-            <div class="space-5"></div>
-            <p>Sports Secretary</p>
-          </div>
-        </div>
-        <div class="space-30"></div>
-      </div>
-      <!--Single-team/-->
-      <!--Single-team-->
-      <div class="col-xs-6 col-sm-3 wow fadeIn"  data-wow-delay="0.3s">
-        <div class="team-image relative">
-          <div class="relative">
-            <img src="images/team/fms.jpg" alt="">
-            <!--<ul class="list-unstyled team-sical">
-                <li><a href="#"><span class="ti-facebook"></span></a></li>
-                <li><a href="#"><span class="ti-twitter"></span></a></li>
-                <li><a href="#"><span class="ti-github"></span></a></li>
-                <li><a href="#"><span class="ti-linkedin"></span></a></li>
-                <li><a href="#"><span class="ti-instagram"></span></a></li>
-                <li><a href="#"><span class="ti-dribbble"></span></a></li>
-            </ul>-->
-          </div>
-          <div class="team-details"><strong>Nikhil Mamnani</strong>
-            <div class="space-5"></div>
-            <p>Films &amp; Media Secretary</p>
-          </div>
-        </div>
-        <div class="space-30"></div>
-      </div>
-      <!--Single-team-->
-
-      <!--Single-team-->
-      <div class="col-xs-6 col-sm-3 wow fadeIn"  data-wow-delay="0.4s">
-        <div class="team-image relative">
-          <div class="relative">
-            <img src="images/team/commonrooms.jpg" alt="">
-            <!--<ul class="list-unstyled team-sical">
-                <li><a href="#"><span class="ti-facebook"></span></a></li>
-                <li><a href="#"><span class="ti-twitter"></span></a></li>
-                <li><a href="#"><span class="ti-github"></span></a></li>
-                <li><a href="#"><span class="ti-linkedin"></span></a></li>
-                <li><a href="#"><span class="ti-instagram"></span></a></li>
-                <li><a href="#"><span class="ti-dribbble"></span></a></li>
-            </ul>-->
-          </div>
-          <div class="team-details"><strong>Sikandar Waseem</strong>
-            <div class="space-5"></div>
-            <p>Common Rooms' Secretary</p>
-          </div>
-        </div>
-        <div class="space-30"></div>
-      </div>
-      <!--Single-team/-->
-      <!--Single-team-->
-      <div class="col-xs-6 col-sm-3 wow fadeIn"  data-wow-delay="0.4s">
-        <div class="team-image relative ">
-          <div class="relative">
-            <img src="images/team/web.jpg" alt="">
-            <!--<ul class="list-unstyled team-sical">
-                <li><a href="#"><span class="ti-facebook"></span></a></li>
-                <li><a href="#"><span class="ti-twitter"></span></a></li>
-                <li><a href="#"><span class="ti-github"></span></a></li>
-                <li><a href="#"><span class="ti-linkedin"></span></a></li>
-                <li><a href="#"><span class="ti-instagram"></span></a></li>
-                <li><a href="#"><span class="ti-dribbble"></span></a></li>
-            </ul>-->
-          </div>
-          <div class="team-details"><strong>Abhishek Datta</strong>
-            <div class="space-5"></div>
-            <p>Web Incharge</p>
-          </div>
-        </div>
-        <div class="space-30"></div>
       </div>
       <!--Single-team/-->
     </div>
     <div class="row">
       <div class="space-30"></div>
       <div class="col-xs-12 text-center">
-        <a href="blog.html" class="bttn">View Other Committees</a>
+        <a routerLink="/administration/mess" class="bttn">View Other Committees</a>
       </div>
       <div class="space-30"></div>
     </div>

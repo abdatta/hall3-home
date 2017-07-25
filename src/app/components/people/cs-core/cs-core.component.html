@@ -14,7 +14,7 @@
       <div class="col-xs-6 col-sm-3">
         <div class="team-image relative ">
           <div class="relative">
-            <img [src]="'http://127.0.0.1:1111/' + co['photo']" (load)="load()" alt="">
+            <img [src]="'/server/' + co['photo']" (load)="load()" alt="">
           </div>
           <div class="team-details"><strong>{{ co['name'] }}</strong>
             <div class="space-2"></div>
@@ -35,7 +35,7 @@
       <div class="col-xs-6 col-sm-3">
         <div class="team-image relative ">
           <div class="relative">
-            <img [src]="'http://127.0.0.1:1111/' + op['photo']" (load)="load()" alt="">
+            <img [src]="'/server/' + op['photo']" (load)="load()" alt="">
           </div>
           <div class="team-details"><strong>{{ op['name'] }}</strong>
             <div class="space-2"></div>
@@ -55,7 +55,7 @@
       <div class="col-xs-6 col-sm-3">
         <div class="team-image relative ">
           <div class="relative">
-            <img [src]="'http://127.0.0.1:1111/' + acad['photo']" (load)="load()" alt="">
+            <img [src]="'/server/' + acad['photo']" (load)="load()" alt="">
           </div>
           <div class="team-details"><strong>{{ acad['name'] }}</strong>
             <div class="space-2"></div>

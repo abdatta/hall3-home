@@ -8,10 +8,22 @@ import { InfoService } from '../../../services/info/info.service';
 })
 export class ReadingRoomComponent implements OnInit {
 
+  books: object[];
+  loaded = false;
+
   constructor(private infoService: InfoService) { }
 
   ngOnInit() {
     this.infoService.setTab('rr');
+    this.infoService.getBooks()
+        .subscribe((d: any) => {
+          if (d.hasOwnProperty('err')) {
+            this.books = [{}];
+          } else {
+            this.books = d;
+          }
+          this.loaded = true;
+        });
   }
 
 }

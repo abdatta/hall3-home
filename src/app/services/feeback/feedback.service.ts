@@ -18,7 +18,7 @@ export class FeedbackService {
   constructor( private http: Http ) {}
 
   askQuery = (query: Query): Observable<number> => {
-    return this.http.post('/api/askthehec/ask', {
+    return this.http.post('/server/askthehec/ask', {
       name: query.name,
       to: query.to,
       subject: query.subject,
@@ -34,7 +34,7 @@ export class FeedbackService {
       });
   };
   getQuery = (id: string): Observable<Query> => {
-    return this.http.get('/api/askthehec/asked/' + id)
+    return this.http.get('/server/askthehec/asked/' + id)
       .map((res: Response) => res.json() as Query)
       .catch((error: any) => {
         if (error.status) {
@@ -47,7 +47,7 @@ export class FeedbackService {
       });
   };
   respondQuery = (response: string, id: string): Observable<number> => {
-    return this.http.post('/api/askthehec/respond/' + id, {'response' : response })
+    return this.http.post('/server/askthehec/respond/' + id, {'response' : response })
       .map(res => res.status)
       .catch((error: any) => {
         if (error.status) {

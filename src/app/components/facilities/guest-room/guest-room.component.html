@@ -6,7 +6,27 @@
   <p>To book a Guest Room, one has to simply visit the Hall Office during office hours (8:00 a.m. till 5:00 p.m.), present his IITK ID Card and provide the necessary details of the guests to come. Only 2 guests shall be allowed per room and the rent charged shall be Rs. 180 per room per day. The Guest Rooms shall always be given on a first-come-first-serve basis.</p>
   <p>For any other details/queries, feel free to contact the Common Rooms’ Secretary or the President, HEC.</p>
   <h4>Pictures</h4>
-  <div class="soft-edge">
-    <img src="images/facilities/guest.jpg">
+  <div class="sm-padding">
+    <div id="facilityImages" class="carousel slide" data-ride="carousel">
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+        <div *ngFor="let image of images; let i = index"
+             class="item"
+             [class.active]="i === 0">
+          <img [src]="'images/facilities/' + image" [alt]="image">
+        </div>
+      </div>
+
+      <!-- Left and right controls -->
+      <a class="left carousel-control" href="#facilityImages" data-slide="prev">
+        <span class="ti-control-backward" style="position: absolute; top: 48%;left: 18%;font-size: 30px"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#facilityImages" data-slide="next">
+        <span class="ti-control-forward" style="position: absolute; top: 48%;right: 18%;font-size: 30px"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
   </div>
+
 </div>

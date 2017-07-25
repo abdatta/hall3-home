@@ -1,0 +1,9 @@
+.sm-padding {
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .md-padding{
+        padding: 0;
+    }
+}

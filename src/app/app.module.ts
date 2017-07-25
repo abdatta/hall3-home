@@ -41,6 +41,7 @@ import { ClubSecyComponent } from './components/people/club-secy/club-secy.compo
 import { ClubCoordiComponent } from './components/people/club-coordi/club-coordi.component';
 import { ResponseComponent } from './components/feedback/response/response.component';
 import { CsCoreComponent } from './components/people/cs-core/cs-core.component';
+import { TopnewsComponent } from './components/topnews/topnews.component'
 
 
 @NgModule({
@@ -74,7 +75,8 @@ import { CsCoreComponent } from './components/people/cs-core/cs-core.component';
     ClubSecyComponent,
     ClubCoordiComponent,
     ResponseComponent,
-    CsCoreComponent
+    CsCoreComponent,
+    TopnewsComponent
   ],
   imports: [
     BrowserModule,

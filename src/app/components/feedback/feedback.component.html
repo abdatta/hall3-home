@@ -1,12 +1,12 @@
-<section id="contact"><div class="space-50"></div></section>
 <!--Counter-area-->
 <section class="gray-bg relative text-white">
   <div class="header-bg header-bg-color">
     <div class="header-bg-image header-bg-image4"></div>
   </div>
-  <div class="container">
+  <div class="space-100"></div>
+  <!--div class="container">
     <div class="row text-center">
-      <!--Single-counterup-->
+      <!--Single-counterup->
       <div class="col-xs-3">
         <div class="counter_up">
           <div id="ask" [class.active]="showForm('ask')" class="counter_icon" (click)="changeForm('ask')">
@@ -17,7 +17,7 @@
         </div>
       </div>
       <!--Single-counterup/-->
-      <!--Single-counterup-->
+      <!--Single-counterup->
       <div class="col-xs-3">
         <div class="counter_up">
           <div id="response" [class.active]="showForm('response')" class="counter_icon" (click)="changeForm('response')">
@@ -28,7 +28,7 @@
         </div>
       </div>
       <!--Single-counterup/-->
-      <!--Single-counterup-->
+      <!--Single-counterup->
       <div class="col-xs-3">
         <div class="counter_up">
           <div id="complaint" [class.active]="showForm('complaint')" class="counter_icon" (click)="changeForm('complaint')">
@@ -39,7 +39,7 @@
         </div>
       </div>
       <!--Single-counterup/-->
-      <!--Single-counterup-->
+      <!--Single-counterup->
       <div class="col-xs-3">
         <div class="counter_up">
           <a href="https://pingala.iitk.ac.in" target="_blank">
@@ -53,10 +53,10 @@
       </div>
       <!--Single-counterup/-->
       <!--Single-counterup-->
-    </div>
+    <!--/div>
   </div>
   <div class="space-30"></div>
-  <p style="color: red">{{ error }}</p>
+  <p style="color: red">{{ error }}</p-->
   <div class="container">
     <!--Contact-form-->
     <form *ngIf="showForm('ask')" #askform="ngForm" (ngSubmit)="askTheHEC(askForm)">
@@ -105,17 +105,17 @@
                   #hec="ngModel"
                   required>
             <option value="" disabled selected>Choose the HEC member to ask</option>
-            <option value="all" >All HEC Members</option>
+            <!--option value="all" >All HEC Members</option-->
             <option value="president">President</option>
-            <option value="finance">Finance Secretary</option>
+            <!--option value="finance">Finance Secretary</option-->
             <option value="maintenance">Maintenance Secretaries</option>
             <option value="mess">Mess Secretaries</option>
             <option value="cultural">Cultural Secretary</option>
-            <option value="snt">Science and Technology Secretary</option>
+            <option value="snt">Science and Tech. Secretary</option>
             <option value="sports">Sports Secretary</option>
             <option value="fms">Films and Media Secretary</option>
             <option value="commonrooms">Common Rooms Secretary</option>
-            <option value="web">Web Incharge</option>
+            <option value="web">Web InCharge</option>
           </select>
           <div class="space-5"></div>
         </div>
@@ -146,7 +146,8 @@
           <div class="space-25"></div>
         </div>
         <div class="col-xs-12">
-          <button type="submit" class="bttn" [disabled]="!askform.valid">Ask</button>
+          <button type="submit" class="bttn" [disabled]="!askform.valid || sending">{{(sending)?'Sending...':'Send'}}</button>
+          <p *ngIf="sent">✔ Sent</p>
         </div>
       </div>
     </form>

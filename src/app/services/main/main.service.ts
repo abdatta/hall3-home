@@ -6,14 +6,14 @@ export class MainService {
     'home' : '',
     'about' : '/about',
     'facilities' : '/facilities',
-      'guest' : '/facilities/guest',
-      'mess' : '/facilities/mess',
-      'rr' : '/facilities/reading',
-      'tv' : '/facilities/tv',
-      'comp' : '/facilities/computer',
-      'sports' : '/facilities/sports',
-      'music' : '/facilities/music',
-      'canteen' : '/facilities/canteen',
+      'guest' : '/facility/guest',
+      'mess' : '/facility/mess',
+      'rr' : '/facility/reading',
+      'tv' : '/facility/tv',
+      'comp' : '/facility/computer',
+      'sports' : '/facility/sports',
+      'music' : '/facility/music',
+      'canteen' : '/facility/canteen',
     'adminis' : '/administration',
       'wardens' : '/administration/wardens',
       'hec' : '/administration/hec',
@@ -125,7 +125,7 @@ export class MainService {
           {
             'title' : 'Academic Mentors',
             'linkId' : 'am'
-          },
+          }/*,
           {
             'title' : 'Club Secretaries',
             'linkId' : 'clubsecy'
@@ -133,7 +133,7 @@ export class MainService {
           {
             'title' : 'Club Coordinators',
             'linkId' : 'clubcoordi'
-          }
+          }*/
         ]
     },
     {
@@ -306,7 +306,7 @@ export class MainService {
             'name' : 'Academic Mentors',
             'id' : 'am',
             'linkId' : 'am'
-          },
+          }/*,
           {
             'name' : 'Club Secretaries',
             'id' : 'secy',
@@ -316,7 +316,7 @@ export class MainService {
             'name' : 'Club Coordinators',
             'id' : 'coordi',
             'linkId' : 'clubcoordi'
-          }
+          }*/
         ],
       'bodies' :
         [

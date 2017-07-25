@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AboutComponent } from './components/about/about.component';
+import { FacilitiesComponent } from './components/facilities/facilities.component';
 import { GuestRoomComponent } from './components/facilities/guest-room/guest-room.component';
 import { MessComponent } from './components/facilities/mess/mess.component';
 import { ReadingRoomComponent } from './components/facilities/reading-room/reading-room.component';
@@ -28,7 +29,8 @@ import { ResponseComponent } from './components/feedback/response/response.compo
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'facilities', component: InfoComponent , data: { infoId: 'facilities' },
+  { path: 'facilities', component: FacilitiesComponent },
+  { path: 'facility', component: InfoComponent , data: { infoId: 'facilities' },
     children: [
       { path: '', redirectTo: 'guest', pathMatch: 'full'},
       { path: 'guest', component: GuestRoomComponent },

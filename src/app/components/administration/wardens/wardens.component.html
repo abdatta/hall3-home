@@ -13,7 +13,7 @@
          [class.col-sm-offset-1]="i !== 1">
       <div class="team-image relative innerpad">
         <div class="relative">
-          <img [src]="'http://127.0.0.1:1111/' + member['photo']" (load)="load()" alt="">
+          <img [src]="'/server/' + member['photo']" (load)="load()" [alt]="member['name'] + '\'s photo'">
         </div>
         <div class="team-details"><strong>{{ member['name'] }}</strong>
           <div class="space-2"></div>
@@ -24,4 +24,9 @@
     </div>
     <!--Single-team/-->
   </div>
+  <div class="space-30"></div>
+  <div class="col-xs-12 text-center">
+    <a href="https://goo.gl/w5tSpW" target="_blank" class="bttn">Constitution</a>
+  </div>
+  <div class="space-30"></div>
 </div>

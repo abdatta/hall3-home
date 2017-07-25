@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import  { InfoService } from '../../services/info/info.service';
+
 
 @Component({
   selector: 'app-administration',
@@ -7,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdministrationComponent implements OnInit {
 
-  constructor() { }
+    wardens: object[];
+    hec: object[];
 
-  ngOnInit() {
-  }
+    constructor(private infoService: InfoService) { }
+
+    ngOnInit() {
+        this.infoService.getAdministration('wardens')
+            .subscribe((d: object) => {
+                if (d.hasOwnProperty('err')) {
+                    this.wardens = [{}];
+                } else {
+                    this.wardens = d['members'];
+                }
+            });
+        this.infoService.getAdministration('hec')
+            .subscribe((d: object) => {
+                if (d.hasOwnProperty('err')) {
+                    this.hec = [{}];
+                } else {
+                    this.hec = d['members'];
+                }
+            });
+    }
 
 }

@@ -8,6 +8,13 @@ import { InfoService } from '../../../services/info/info.service';
 })
 export class SportsComponent implements OnInit {
 
+  images: string[] = [
+    'sports.jpg',
+    'sports2.jpg',
+    'sports3.jpg',
+    'sports4.jpg'
+  ];
+
   constructor(private infoService: InfoService) { }
 
   ngOnInit() {
