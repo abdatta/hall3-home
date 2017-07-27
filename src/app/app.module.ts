@@ -26,6 +26,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { InfoComponent } from './components/info/info.component';
 import { EventsComponent } from './components/administration/events/events.component';
+import { AdvisoryComponent } from './components/administration/advisory/advisory.component';
 import { GuestRoomComponent } from './components/facilities/guest-room/guest-room.component';
 import { MessComponent } from './components/facilities/mess/mess.component';
 import { ReadingRoomComponent } from './components/facilities/reading-room/reading-room.component';
@@ -41,8 +42,7 @@ import { ClubSecyComponent } from './components/people/club-secy/club-secy.compo
 import { ClubCoordiComponent } from './components/people/club-coordi/club-coordi.component';
 import { ResponseComponent } from './components/feedback/response/response.component';
 import { CsCoreComponent } from './components/people/cs-core/cs-core.component';
-import { TopnewsComponent } from './components/topnews/topnews.component'
-
+import { TopnewsComponent } from './components/topnews/topnews.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +76,8 @@ import { TopnewsComponent } from './components/topnews/topnews.component'
     ClubCoordiComponent,
     ResponseComponent,
     CsCoreComponent,
-    TopnewsComponent
+    TopnewsComponent,
+    AdvisoryComponent
   ],
   imports: [
     BrowserModule,

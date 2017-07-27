@@ -20,6 +20,7 @@ export class MainService {
       'messc' : '/administration/mess',
       'maintc' : '/administration/maintenance',
       'eventsc' : '/administration/activity',
+      'advisoryc' : '/administration/advisory',
     'people' : '/people',
       'cs-core': '/people/cscoreteam',
       'sg' : '/people/studentguides',
@@ -105,6 +106,10 @@ export class MainService {
           {
             'title' : 'Students’ Activity Committee',
             'linkId' : 'eventsc'
+          },
+          {
+              'title' : 'Advisory Committee',
+              'linkId' : 'advisoryc'
           }
         ]
     },
@@ -258,6 +263,11 @@ export class MainService {
             'name' : 'Students’ Activity Committee',
             'id' : 'events',
             'linkId' : 'eventsc'
+          },
+          {
+              'name' : 'Advisory Committee',
+              'id' : 'advisory',
+              'linkId' : 'advisoryc'
           }
         ],
       'bodies' :

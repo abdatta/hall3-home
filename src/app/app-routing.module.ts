@@ -16,6 +16,7 @@ import { HecComponent } from './components/administration/hec/hec.component';
 import { MessComponent as MessCommitteeComponent } from './components/administration/mess/mess.component';
 import { MaintenanceComponent } from './components/administration/maintenance/maintenance.component';
 import { EventsComponent } from './components/administration/events/events.component';
+import { AdvisoryComponent } from './components/administration/advisory/advisory.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { HomeComponent } from './components/home/home.component';
 import { InfoComponent } from './components/info/info.component';
@@ -50,7 +51,8 @@ const appRoutes: Routes = [
       { path: 'hec', component: HecComponent },
       { path: 'mess', component: MessCommitteeComponent },
       { path: 'maintenance', component: MaintenanceComponent },
-      { path: 'activity', component: EventsComponent }
+      { path: 'activity', component: EventsComponent },
+      { path: 'advisory', component: AdvisoryComponent }
     ]
   },
   { path: 'people', component: InfoComponent , data: { infoId: 'people' },
