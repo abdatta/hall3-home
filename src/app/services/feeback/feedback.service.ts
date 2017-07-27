@@ -57,4 +57,17 @@ export class FeedbackService {
         }
       });
   };
+  getResponses = (): Observable<Query[]> => {
+    return this.http.get('/server/askthehec/responses')
+        .map((res: Response) => res.json() as Query[])
+        .catch((error: any) => {
+            if (error.status) {
+                return Observable.of({
+                    'err': error.status
+                });
+            } else {
+                return Observable.throw(error.json().error || error.message || error);
+            }
+        });
+};
 }

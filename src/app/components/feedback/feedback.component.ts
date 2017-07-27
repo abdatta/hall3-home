@@ -21,9 +21,19 @@ export class FeedbackComponent implements OnInit {
   sending = false;
   sent = false;
 
+  responses = [{}];
+
   constructor(private feedbackService: FeedbackService) { }
 
   ngOnInit() {
+    this.feedbackService.getResponses()
+        .subscribe((q: object[]) => {
+          if (q.hasOwnProperty('err')) {
+            this.error = q['err'];
+          } else {
+            this.responses = q.slice().reverse();
+          }
+        });
   }
 
   changeForm(nextForm: string) {

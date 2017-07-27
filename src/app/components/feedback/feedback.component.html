@@ -1,13 +1,13 @@
+<div class="space-50"></div>
 <!--Counter-area-->
 <section class="gray-bg relative text-white">
   <div class="header-bg header-bg-color">
     <div class="header-bg-image header-bg-image4"></div>
   </div>
-  <div class="space-100"></div>
-  <!--div class="container">
+  <div class="container">
     <div class="row text-center">
-      <!--Single-counterup->
-      <div class="col-xs-3">
+      <!--Single-counterup-->
+      <div class="col-xs-4">
         <div class="counter_up">
           <div id="ask" [class.active]="showForm('ask')" class="counter_icon" (click)="changeForm('ask')">
             <span class="ti-help-alt"></span>
@@ -17,8 +17,8 @@
         </div>
       </div>
       <!--Single-counterup/-->
-      <!--Single-counterup->
-      <div class="col-xs-3">
+      <!--Single-counterup-->
+      <div class="col-xs-4">
         <div class="counter_up">
           <div id="response" [class.active]="showForm('response')" class="counter_icon" (click)="changeForm('response')">
             <span class="ti-info-alt"></span>
@@ -39,12 +39,12 @@
         </div>
       </div>
       <!--Single-counterup/-->
-      <!--Single-counterup->
-      <div class="col-xs-3">
+      <!--Single-counterup-->
+      <div class="col-xs-4">
         <div class="counter_up">
           <a href="https://pingala.iitk.ac.in" target="_blank">
             <div class="counter_icon">
-              <span class="ti-layout-media-center-alt"></span>
+              <span class="ti-pencil-alt"></span><!--ti-layout-media-center-alt"-->
             </div>
           </a>
           <div class="space-20"></div>
@@ -53,10 +53,10 @@
       </div>
       <!--Single-counterup/-->
       <!--Single-counterup-->
-    <!--/div>
+    </div>
   </div>
   <div class="space-30"></div>
-  <p style="color: red">{{ error }}</p-->
+  <p style="color: red">{{ error }}</p>
   <div class="container">
     <!--Contact-form-->
     <form *ngIf="showForm('ask')" #askform="ngForm" (ngSubmit)="askTheHEC(askForm)">
@@ -162,17 +162,24 @@
       </div>
       <div class="space-20"></div>
       <div class="row">
-        <div class="col-xs-4">
-          <input type="text" class="form-control" id="form-name" name="form-name" placeholder="Your Name" required disabled>
-          <div class="space-30"></div>
-        </div>
-        <div class="col-xs-4">
-          <input type="email" class="form-control" id="form-email" name="form-email" placeholder="Email Address" required disabled>
-          <div class="space-30"></div>
-        </div>
-        <div class="col-xs-4">
-          <input type="dwd" class="form-control" id="form-message" name="form-message" placeholder="Message here" required disabled>
-          <div class="space-30"></div>
+        <div class="col-xs-12" style="height:300px; overflow-y: auto">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:45%;">Query</th>
+                <th>To</th>
+                <th style="width:45%">Response</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let response of responses">
+              <div class="space-2"></div>
+              <tr>
+                <td style="white-space: pre-wrap;">{{ response.message }}</td>
+                <td>{{ response.to }}</td>
+                <td style="white-space: pre-wrap">{{ response.response }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

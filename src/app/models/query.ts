@@ -4,6 +4,7 @@ export class Query {
     public to: string,
     public subject: string,
     public message: string,
-    public email?: string
+    public email?: string,
+    public response?: string
   ) { }
 }

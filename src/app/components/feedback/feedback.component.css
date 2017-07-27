@@ -4,3 +4,23 @@
 .invalid-email {
   border: 1px solid orange;
 }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th{
+  border: 1px solid transparent;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #7b76c8;
+}
+
+td {
+  background-color: white;
+  color: black;
+}

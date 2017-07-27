@@ -3,6 +3,10 @@
     width: 100%;
     overflow: hidden
 }
+.space-2 {
+    height: 2px;
+}
+
 .space-5 {
     height: 5px;
 }
