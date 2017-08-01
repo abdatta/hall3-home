@@ -21,6 +21,7 @@ export class MainService {
       'maintc' : '/administration/maintenance',
       'eventsc' : '/administration/activity',
       'advisoryc' : '/administration/advisory',
+      'constitution': '/server/files/hall_3_constitution.pdf',
     'people' : '/people',
       'cs-core': '/people/cscoreteam',
       'sg' : '/people/studentguides',
@@ -110,6 +111,10 @@ export class MainService {
           {
               'title' : 'Advisory Committee',
               'linkId' : 'advisoryc'
+          },
+          {
+              'title' : 'Our Constitution',
+              'linkId' : 'constitution'
           }
         ]
     },

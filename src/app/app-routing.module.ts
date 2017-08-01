@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+/* importing components here */
 import { AboutComponent } from './components/about/about.component';
 import { FacilitiesComponent } from './components/facilities/facilities.component';
 import { GuestRoomComponent } from './components/facilities/guest-room/guest-room.component';
@@ -26,6 +27,11 @@ import { AMComponent } from './components/people/am/am.component';
 import { ClubSecyComponent } from './components/people/club-secy/club-secy.component';
 import { ClubCoordiComponent } from './components/people/club-coordi/club-coordi.component';
 import { ResponseComponent } from './components/feedback/response/response.component';
+import { AddNewsComponent } from './components/news/add-news/add-news.component';
+import { LoginComponent } from './components/login/login.component';
+
+/* importing guards here */
+import { UsersGuard, LogInGuard } from './auth.guard';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -65,6 +71,8 @@ const appRoutes: Routes = [
       { path: 'clubcoordinators', component: ClubCoordiComponent }
     ]
   },
+  { path: 'news/add', component: AddNewsComponent, canActivate: [ UsersGuard ] },
+  { path: 'news/login', component: LoginComponent, canActivate: [ LogInGuard ] },
   { path: 'feedback', component: FeedbackComponent  },
   { path: 'response/:id', component: ResponseComponent  }
 ];

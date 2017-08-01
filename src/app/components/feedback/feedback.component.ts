@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FeedbackService } from '../../services/feeback/feedback.service';
+import { FeedbackService } from '../../services/feedback/feedback.service';
 
 @Component({
   selector: 'app-feedback',
@@ -10,16 +10,10 @@ import { FeedbackService } from '../../services/feeback/feedback.service';
 export class FeedbackComponent implements OnInit {
 
   form = 'ask';
-  query = {
-    'name': '',
-    'to': '',
-    'subject': '',
-    'message': '',
-    'email': ''
-  };
   error: string = null;
   sending = false;
   sent = false;
+  anonymous = false;
 
   responses = [{}];
 
@@ -44,21 +38,20 @@ export class FeedbackComponent implements OnInit {
     return (this.form === thisForm);
   }
 
-  askTheHEC(form) {
+  askTheHEC(name: string, to: string, subject: string, message: string, email: string, form: any) {
     this.sending = true;
-    this.feedbackService.askQuery(this.query)
-      .subscribe((s: number) => {
+    this.feedbackService.askQuery({
+      'name': (this.anonymous)?'Anonymous':name,
+      'to': to,
+      'subject': subject,
+      'message': message,
+      'email': email
+    }).subscribe((s: number) => {
         if (s !== 200) {
           this.error = 'Error: ' + s;
         } else {
-          this.query = {
-            'name': '',
-            'to': '',
-            'subject': '',
-            'message': '',
-            'email': ''
-          };
           this.sent = true;
+          form.reset();
         }
         this.sending = false;
       });

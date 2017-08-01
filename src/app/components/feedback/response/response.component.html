@@ -26,7 +26,7 @@
                   [(ngModel)]="response"
         ></textarea>
         <div class="space-20"></div>
-        <button class="bttn" (click)="respond()">Send Response</button>
+        <button class="bttn" (click)="respond()" [disabled]="sending">{{ (sending)? 'Sending...' : 'Send Response' }}</button>
       </div>
     </div>
   </div>

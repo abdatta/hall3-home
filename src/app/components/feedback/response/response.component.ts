@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router'
 
-import { FeedbackService } from '../../../services/feeback/feedback.service';
+import { FeedbackService } from '../../../services/feedback/feedback.service';
 
 @Component({
   selector: 'app-response',
@@ -20,7 +20,7 @@ export class ResponseComponent implements OnInit {
   };
 
   response = '';
-
+  sending = false;
   error = false;
 
   constructor(private feedbackService: FeedbackService,
@@ -48,11 +48,13 @@ export class ResponseComponent implements OnInit {
   }
 
   respond() {
+    this.sending = true;
     this.feedbackService.respondQuery(this.response, this.queryInfo.id)
       .subscribe((s: number) => {
         if (s === 200) {
-          this.router.navigateByUrl('/feedback');
+          this.router.navigateByUrl('/');
         }
+        this.sending = false;
       });
   }
 

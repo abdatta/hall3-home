@@ -1,0 +1,34 @@
+<section id="service" class="fix">
+  <div class="space-100"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 padding30">
+        <div class="space-60"></div>
+        <h2 style="text-align: center">Login</h2>
+        <div class="space-15"></div>
+        <p style="color: red">{{ (submitted)? '' : error }}</p>
+        <form (ngSubmit)="onSubmit(username.value, password.value); loginform.reset();" #loginform>
+          <input
+                  type="text"
+                  class="form-control"
+                  name="subject"
+                  placeholder="Username"
+                  autofocus
+                  required
+                  #username>
+          <div class="space-15"></div>
+          <input
+                  type="password"
+                  class="form-control"
+                  name="subject"
+                  placeholder="Password"
+                  required
+                  #password>
+          <div class="space-20"></div>
+          <button class="bttn" type="submit" [disabled]="submitted">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="space-100"></div>
+</section>

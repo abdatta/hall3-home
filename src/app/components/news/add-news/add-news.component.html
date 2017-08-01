@@ -1,0 +1,47 @@
+<section id="service" class="fix">
+  <div class="space-100"></div>
+  <div class="container">
+    <div *ngIf="false" style="text-align: center">
+      <h1>Not Found</h1>
+      <p>The page you are requesting either does not exist or has expired.</p>
+      <div class="space-200"></div>
+    </div>
+    <div class="row" *ngIf="!false">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2 padding30">
+        <div class="space-60"></div>
+        <h5>Posting As: &emsp;<span>{{ user.name }}</span></h5>
+        <div class="space-15"></div>
+        <input
+                type="text"
+                class="form-control"
+                name="head"
+                placeholder="Heading"
+                autofocus
+                required
+                #head>
+        <div class="space-15"></div>
+        <input
+                type="text"
+                class="form-control"
+                name="link"
+                placeholder="Link"
+                autofocus
+                required
+                #link>
+        <div class="space-15"></div>
+        <label><input type="checkbox" (change)="add=!add">&emsp;Add a short description</label>
+        <textarea [class.invisible]="!add"
+                  class="form-control"
+                  required
+                  placeholder="Description here... (Max 80 characters)"
+                  rows="3"
+                  maxlength="80"
+                  #body
+        ></textarea>
+        <div class="space-20"></div>
+        <button class="bttn" (click)="addNews(head.value,link.value,body.value)" [disabled]="submitted">{{ (submitted)?'Adding...':'Add News' }}</button>
+      </div>
+    </div>
+  </div>
+  <div class="space-100"></div>
+</section>

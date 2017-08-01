@@ -1,77 +1,26 @@
-<div>
-  <div id="notice" class="owl-carousel container" style="position: absolute;bottom: 13%;width: 100%;z-index: 5;">
-    <div class="panel single-blog" style="margin-left: 5px;margin-right: 5px;">
-      <div class="padding-20">
-        <ul class="list-unstyled list-inline">
-          <li><span class="ti-user"></span> By: Admin</li>
-          <li><span class="ti-calendar"></span> Feb 01, 2017</li>
-        </ul>
-        <div class="space-10"></div>
-        <a href="blog-details-left-sidebar.html"><h3>Beautiful Place for your Great Journey</h3></a>
-        <p style="height: 1.5em; overflow: hidden;">Lorem dolor sit amet, consectetur floralm adipisicing elit, sed do eiusmod tem aincididunt elauta labore eta dolore magna aliqualy eminem faenimve...</p>
-      </div>
-    </div>
-    <div class="panel single-blog" style="margin-left: 5px;margin-right: 5px;">
-      <div class="padding-20">
-        <ul class="list-unstyled list-inline">
-          <li><span class="ti-user"></span> By: Admin</li>
-          <li><span class="ti-calendar"></span> Feb 01, 2017</li>
-        </ul>
-        <div class="space-10"></div>
-        <a href="blog-details-left-sidebar.html"><h3>Beautiful Place for your Great Journey</h3></a>
-        <p style="height: 1.5em; overflow: hidden;">Lorem dolor sit amet, consectetur floralm adipisicing elit, sed do eiusmod tem aincididunt elauta labore eta dolore magna aliqualy eminem faenimve...</p>
-      </div>
-    </div>
-    <div class="panel single-blog" style="margin-left: 5px;margin-right: 5px;">
-      <div class="padding-20">
-        <ul class="list-unstyled list-inline">
-          <li><span class="ti-user"></span> By: Admin</li>
-          <li><span class="ti-calendar"></span> Feb 01, 2017</li>
-        </ul>
-        <div class="space-10"></div>
-        <a href="blog-details-left-sidebar.html"><h3>Beautiful Place for your Great Journey</h3></a>
-        <p style="height: 1.5em; overflow: hidden;">Lorem dolor sit amet, consectetur floralm adipisicing elit, sed do eiusmod tem aincididunt elauta labore eta dolore magna aliqualy eminem faenimve...</p>
-      </div>
-    </div>
-    <div class="panel single-blog" style="margin-left: 5px;margin-right: 5px;">
-      <div class="padding-20">
-        <ul class="list-unstyled list-inline">
-          <li><span class="ti-user"></span> By: Admin</li>
-          <li><span class="ti-calendar"></span> Feb 01, 2017</li>
-        </ul>
-        <div class="space-10"></div>
-        <a href="blog-details-left-sidebar.html"><h3>Beautiful Place for your Great Journey</h3></a>
-        <p style="height: 1.5em; overflow: hidden;">Lorem dolor sit amet, consectetur floralm adipisicing elit, sed do eiusmod tem aincididunt elauta labore eta dolore magna aliqualy eminem faenimve...</p>
-      </div>
-    </div>
-    <div class="panel single-blog" style="margin-left: 5px;margin-right: 5px;">
-      <div class="padding-20">
-        <ul class="list-unstyled list-inline">
-          <li><span class="ti-user"></span> By: Admin</li>
-          <li><span class="ti-calendar"></span> Feb 01, 2017</li>
-        </ul>
-        <div class="space-10"></div>
-        <a href="blog-details-left-sidebar.html"><h3>Beautiful Place for your Great Journey</h3></a>
-        <p style="height: 1.5em; overflow: hidden;">Lorem dolor sit amet, consectetur floralm adipisicing elit, sed do eiusmod tem aincididunt elauta labore eta dolore magna aliqualy eminem faenimve...</p>
-      </div>
-    </div>
-    <div class="panel single-blog" style="margin-left: 5px;margin-right: 5px;">
-      <div class="padding-20">
-        <ul class="list-unstyled list-inline">
-          <li><span class="ti-user"></span> By: Admin</li>
-          <li><span class="ti-calendar"></span> Feb 01, 2017</li>
-        </ul>
-        <div class="space-10"></div>
-        <a href="blog-details-left-sidebar.html"><h3>Beautiful Place for your Great Journey</h3></a>
-        <p style="height: 1.5em; overflow: hidden;">Lorem dolor sit amet, consectetur floralm adipisicing elit, sed do eiusmod tem aincididunt elauta labore eta dolore magna aliqualy eminem faenimve...</p>
-      </div>
+<owl-carousel *ngIf="loaded"
+              [options]="carouselOptions"
+              [carouselClasses]="['owl-theme', 'container', 'sliding']"
+              style="position: absolute;bottom: 5%;width: 100%;z-index: 5;">
+  <div  *ngFor="let news of data"
+        class="item panel single-blog"
+        style="margin-left: 5px;margin-right: 5px;min-height: 176px; max-height: 50vh; overflow: hidden;"><!--background-color: #E4FDFD;-->>
+    <div class="padding-20">
+      <ul class="list-unstyled list-inline">
+        <li><span class="ti-user"></span>{{ ' By: ' + news['by'] }}</li>
+        <li><span class="ti-calendar"></span>{{ ' ' + getFormattedDate(news['date']) }}</li>
+      </ul>
+      <div class="space-10"></div>
+      <a *ngIf="isURL(news['link'])" [href]="news['link']" target="_blank"><h4><img *ngIf="isNew(news['date'])" src="/images/new.gif" style="height: 15px;width:29px;float: left">{{ news['head'] }}</h4></a>
+      <h4 *ngIf="!isURL(news['link'])"><img src="/images/new.gif" style="height: 15px;width:29px;float: left">{{ news['head'] }}</h4>
+      <p *ngIf="news['body'].length > 0">{{ news['body'] }}</p>  <!--style="height: 1.5em; overflow: hidden;"-->
     </div>
   </div>
+</owl-carousel>
 
-  <div class="nav-notice" style="position: absolute;bottom: 13%;z-index: 8;color: black; font-size: 30px;">
+  <!--div class="nav-notice" style="position: absolute;bottom: 13%;z-index: 8;color: black; font-size: 30px;">
     <span class="ti-angle-left left-notice" style="float: left;"></span>
   </div>
   <div class="nav-notice" style="position: absolute;bottom: 13%;right:0;z-index: 8;color: black; font-size: 30px;">
     <span class="ti-angle-right right-notice" style="float: right;"></span>
-  </div>
-</div>
+  </div-->

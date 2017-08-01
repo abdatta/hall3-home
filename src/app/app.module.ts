@@ -4,11 +4,15 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
+import { OwlModule } from 'angular-owl-carousel';
 
 /* importing services here */
 import { MainService } from './services/main/main.service';
 import { InfoService } from './services/info/info.service';
-import { FeedbackService } from './services/feeback/feedback.service';
+import { FeedbackService } from './services/feedback/feedback.service';
+import { NewsService } from './services/news/news.service';
+import { UsersService } from './services/users/users.service';
+import { LevelGuard, UsersGuard, LogInGuard, AdminGuard } from './auth.guard';
 
 /* importing components here */
 import { AppComponent } from './components/app/app.component';
@@ -43,6 +47,9 @@ import { ClubCoordiComponent } from './components/people/club-coordi/club-coordi
 import { ResponseComponent } from './components/feedback/response/response.component';
 import { CsCoreComponent } from './components/people/cs-core/cs-core.component';
 import { TopnewsComponent } from './components/topnews/topnews.component';
+import { NewsComponent } from './components/news/news.component';
+import { AddNewsComponent } from './components/news/add-news/add-news.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -77,18 +84,28 @@ import { TopnewsComponent } from './components/topnews/topnews.component';
     ResponseComponent,
     CsCoreComponent,
     TopnewsComponent,
-    AdvisoryComponent
+    AdvisoryComponent,
+    NewsComponent,
+    AddNewsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    OwlModule
   ],
   providers: [
     MainService,
     InfoService,
-    FeedbackService
+    FeedbackService,
+    NewsService,
+    UsersService,
+    LevelGuard,
+    UsersGuard,
+    LogInGuard,
+    AdminGuard
   ],
   bootstrap: [AppComponent]
 })

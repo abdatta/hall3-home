@@ -11,6 +11,16 @@
   <link rel="stylesheet" href="css/animate.css">
   <link rel="stylesheet" href="css/magnific-popup.css">
   <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#7B76C8">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#7B76C8">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="#7B76C8">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <meta name="mobile-web-app-capable" content="yes">
 
   <!-- Main-Stylesheets -->
   <link rel="stylesheet" href="css/normalize.css">
@@ -104,41 +114,15 @@
         }
     };
 
-      $("#notice").owlCarousel(
-        {
-          nav: false,
-          responsive:
-            {
-              0:{
-                items:1
-              },
-              468:{
-                items:2
-              },
-              768:{
-                items:3
-              },
-              1000:{
-                items:4
-              }
-            },
-          loop: false,
-          mouseDrag: true,
-          touchDrag: true,
-          autoplay:true,
-          autoplayTimeout:5000,
-          autoplayHoverPause:true
-        });
+    /*        $(".nav-notice > span").css('line-height', ($("#notice").height() + 'px'));
 
-      $(".nav-notice > span").css('line-height',($("#notice").height()+'px'));
-
-      $(".nav-notice > .right-notice").click(function() {
-        $("#notice").trigger('next.owl.carousel');
-      });
-      $(".nav-notice > .left-notice").click(function() {
-        $("#notice").trigger('prev.owl.carousel');
-      });
-
+            $(".nav-notice > .right-notice").click(function () {
+                $("#notice").trigger('next.owl.carousel');
+            });
+            $(".nav-notice > .left-notice").click(function () {
+                $("#notice").trigger('prev.owl.carousel');
+            });
+    */
 </script>
 
 </body>
