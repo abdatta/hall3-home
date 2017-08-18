@@ -18,6 +18,7 @@
                 placeholder="Heading"
                 autofocus
                 required
+                maxlength="60"
                 #head>
         <div class="space-15"></div>
         <input
@@ -33,9 +34,9 @@
         <textarea [class.invisible]="!add"
                   class="form-control"
                   required
-                  placeholder="Description here... (Max 80 characters)"
+                  placeholder="Description here... (Max 120 characters)"
                   rows="3"
-                  maxlength="80"
+                  maxlength="120"
                   #body
         ></textarea>
         <div class="space-20"></div>

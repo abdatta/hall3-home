@@ -12,7 +12,6 @@ import { ComputerRoomComponent } from './components/facilities/computer-room/com
 import { SportsComponent } from './components/facilities/sports/sports.component';
 import { MusicRoomComponent } from './components/facilities/music-room/music-room.component';
 import { CanteenComponent } from './components/facilities/canteen/canteen.component';
-import { WardensComponent } from './components/administration/wardens/wardens.component';
 import { HecComponent } from './components/administration/hec/hec.component';
 import { MessComponent as MessCommitteeComponent } from './components/administration/mess/mess.component';
 import { MaintenanceComponent } from './components/administration/maintenance/maintenance.component';
@@ -29,9 +28,13 @@ import { ClubCoordiComponent } from './components/people/club-coordi/club-coordi
 import { ResponseComponent } from './components/feedback/response/response.component';
 import { AddNewsComponent } from './components/news/add-news/add-news.component';
 import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { QuickLinksComponent } from './components/quick-links/quick-links.component';
+import { MapComponent } from './components/map/map.component';
 
 /* importing guards here */
-import { UsersGuard, LogInGuard } from './auth.guard';
+import {UsersGuard, LogInGuard, AdminGuard} from './auth.guard';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -52,13 +55,12 @@ const appRoutes: Routes = [
   },
   { path: 'administration', component: InfoComponent , data: { infoId: 'administration' },
     children: [
-      { path: '', redirectTo: 'wardens', pathMatch: 'full'},
-      { path: 'wardens', component: WardensComponent },
+      { path: '', redirectTo: 'hec', pathMatch: 'full'},
       { path: 'hec', component: HecComponent },
       { path: 'mess', component: MessCommitteeComponent },
       { path: 'maintenance', component: MaintenanceComponent },
       { path: 'activity', component: EventsComponent },
-      { path: 'advisory', component: AdvisoryComponent }
+      { path: 'cdc', component: AdvisoryComponent }
     ]
   },
   { path: 'people', component: InfoComponent , data: { infoId: 'people' },
@@ -73,8 +75,12 @@ const appRoutes: Routes = [
   },
   { path: 'news/add', component: AddNewsComponent, canActivate: [ UsersGuard ] },
   { path: 'news/login', component: LoginComponent, canActivate: [ LogInGuard ] },
+  { path: 'news/signup', component: SignupComponent, canActivate: [ AdminGuard ] },
+  { path: 'news/dashboard', component: DashboardComponent, canActivate: [ UsersGuard ] },
   { path: 'feedback', component: FeedbackComponent  },
-  { path: 'response/:id', component: ResponseComponent  }
+  { path: 'response/:id', component: ResponseComponent  },
+  { path: 'quicklinks', component: QuickLinksComponent  },
+  { path: 'map', component: MapComponent  }
 ];
 
 @NgModule({

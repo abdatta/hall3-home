@@ -22,6 +22,7 @@ export class ResponseComponent implements OnInit {
   response = '';
   sending = false;
   error = false;
+  loaded = false;
 
   constructor(private feedbackService: FeedbackService,
               private route: ActivatedRoute,
@@ -43,6 +44,7 @@ export class ResponseComponent implements OnInit {
               'email': q['email']
             };
           }
+          this.loaded = true;
         });
     });
   }

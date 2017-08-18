@@ -1,31 +1,17 @@
 <div *ngIf="!loaded" style="vertical-align:middle; text-align:center">
-  <img src="../../../../images/loading.gif" style="width: 50%">
+  <img src="../../../../images/loading.gif" style="width: 30%">
 </div>
 <div class="blog-details" [class.invisible]="!loaded">
-  <h1>Advisory Committee</h1>
+  <h1>Constitution Drafting Committee</h1>
   <div class="space-20"></div>
-  <p>The Advisory Committee advises other committees in their respective responsibilities.</p>
+  <p>The Constitution Drafting Committee drafts and builds the constitution of the Hall. This committee will also be the interim advisory committee.</p>
   <div class="space-10"></div>
   <h4>Members</h4>
   <div class="space-10"></div>
-  <div>
-    <!--Single-team-->
-    <div *ngFor="let member of members; let i=index;" [class.row]="i%4 === 3">
-      <div class="col-xs-6 col-sm-3">
-        <div class="team-image relative ">
-          <div class="team-details"><strong>{{ member['name'] }}</strong>
-            <div class="space-2"></div>
-            <p>{{ member['post'] }}</p>
-          </div>
-        </div>
-        <div class="space-30"></div>
-      </div>
-    </div>
-    <!--Single-team/-->
-  </div>
+  <app-tiles [tiles]="members"></app-tiles>
   <div class="space-30"></div>
-  <!--div class="col-xs-12 text-center">
-    <a href="https://goo.gl/eKUfJO" target="_blank" class="bttn">Minutes</a>
-  </div-->
+  <div class="col-xs-12 text-center">
+    <a href="https://goo.gl/w5tSpW" target="_blank" class="bttn">Constitution</a>
+  </div>
   <div class="space-30"></div>
 </div>

@@ -1,0 +1,20 @@
+<section class="fix">
+  <div class="space-100"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 padding30" style="text-align: center">
+        <div class="space-40"></div>
+        <h2>Your Dashboard</h2>
+        <div class="space-10"></div>
+        <h4>{{ 'Welcome ' + user.name }}</h4>
+        <div class="space-20"></div>
+        <button class="bttn" routerLink="/news/add">Add News</button>
+        <div *ngIf="user.levelsCurrent.indexOf('admin') !== -1" class="space-20"></div>
+        <button *ngIf="user.levelsCurrent.indexOf('admin') !== -1" class="bttn" routerLink="/news/signup">Sign Up a New User</button>
+        <div class="space-20"></div>
+        <button class="bttn" (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </div>
+  <div class="space-100"></div>
+</section>

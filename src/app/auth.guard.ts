@@ -31,7 +31,7 @@ export class LogInGuard implements CanActivate {
     return this.usersService.check()
       .then((result: boolean) => {
         if (result) {
-          this.router.navigateByUrl('/news/add');
+          this.router.navigateByUrl('/news/dashboard');
         }
         return !result;
       });

@@ -24,3 +24,17 @@ td {
   background-color: white;
   color: black;
 }
+
+.tabs {
+  background-color: #5550A2;
+  text-align: center;
+  font-weight: 700;
+  padding: 15px 0;
+  border-radius: 10px 10px 0 0;
+}
+.tabs[active="true"] {
+  background-color: #7b76c8;
+}
+.tabs[active="false"] {
+  cursor: pointer;
+}

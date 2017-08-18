@@ -12,7 +12,8 @@ export class SportsComponent implements OnInit {
     'sports.jpg',
     'sports2.jpg',
     'sports3.jpg',
-    'sports4.jpg'
+    'sports4.jpg',
+    'sports5.jpg'
   ];
 
   constructor(private infoService: InfoService) { }

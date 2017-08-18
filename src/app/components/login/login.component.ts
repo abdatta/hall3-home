@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     this.loginService.signIn(username, password)
         .subscribe((s: number) => {
       if (s === 200) {
-        this.router.navigateByUrl('/news/add');
+        this.router.navigateByUrl('/news/dashboard');
       } else {
         this.error ='Incorrect Username or Password';
         this.submitted = false;

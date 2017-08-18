@@ -1,0 +1,18 @@
+<div *ngFor="let row of _tiles" class="row">
+  <div *ngFor="let tile of row" class="col-xs-6 col-sm-3">
+    <div class="team-image relative ">
+      <div *ngIf="tile.hasOwnProperty('photo')" class="relative">
+        <img *ngIf="photos.hasOwnProperty(tile['photo'])" [src]="'../../../images/loading.gif'" alt="">
+        <img [class.invisible]="photos.hasOwnProperty(tile['photo'])" [src]="'/server/' + tile['photo']" (load)="load(tile['photo'])" alt="">
+      </div>
+      <div class="team-details" #details><strong>{{ tile['name'] }}</strong>
+        <div class="space-2"></div>
+        <span *ngFor="let data of tile['data']">
+          {{ data }}
+          <br>
+        </span>
+      </div>
+    </div>
+    <div class="space-30"></div>
+  </div>
+</div>

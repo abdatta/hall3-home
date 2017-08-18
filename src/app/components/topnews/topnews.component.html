@@ -1,26 +1,36 @@
-<owl-carousel *ngIf="loaded"
+<owl-carousel *ngIf="loaded" [style.opacity]="resizing"
               [options]="carouselOptions"
               [carouselClasses]="['owl-theme', 'container', 'sliding']"
-              style="position: absolute;bottom: 5%;width: 100%;z-index: 5;">
-  <div  *ngFor="let news of data"
+              style="position: absolute;bottom: 7%;width: 100%;z-index: 5;">
+  <!--News-Tile-Area-->
+  <div  *ngFor="let news of data; let i=index;"
+        [id]="'newstile' + i"
         class="item panel single-blog"
-        style="margin-left: 5px;margin-right: 5px;min-height: 176px; max-height: 50vh; overflow: hidden;"><!--background-color: #E4FDFD;-->>
-    <div class="padding-20">
+        style="margin-left: 5px;margin-right: 5px; overflow: hidden;">
+    <!--News-Content-Area-->
+    <div class="padding-20" [id]="'news' + i">
+      <!--By-and-Date-Area-->
       <ul class="list-unstyled list-inline">
         <li><span class="ti-user"></span>{{ ' By: ' + news['by'] }}</li>
         <li><span class="ti-calendar"></span>{{ ' ' + getFormattedDate(news['date']) }}</li>
       </ul>
+      <!--By-&-Date-Area/-->
       <div class="space-10"></div>
-      <a *ngIf="isURL(news['link'])" [href]="news['link']" target="_blank"><h4><img *ngIf="isNew(news['date'])" src="/images/new.gif" style="height: 15px;width:29px;float: left">{{ news['head'] }}</h4></a>
-      <h4 *ngIf="!isURL(news['link'])"><img src="/images/new.gif" style="height: 15px;width:29px;float: left">{{ news['head'] }}</h4>
-      <p *ngIf="news['body'].length > 0">{{ news['body'] }}</p>  <!--style="height: 1.5em; overflow: hidden;"-->
+      <!--Heading-Area-->
+        <!--In-case-of-a-link-->
+        <a *ngIf="isURL(news['link'])" [href]="news['link']" target="_blank">
+          <h4>
+            <img *ngIf="isNew(news['date'])" src="/images/new.gif" style="height: 15px;width:29px;float: left">{{ news['head'] }}
+          </h4>
+        </a>
+        <!--In-case-of-no-link-->
+        <h4 *ngIf="!isURL(news['link'])">
+          <img *ngIf="isNew(news['date'])" src="/images/new.gif" style="height: 15px;width:29px;float: left">{{ news['head'] }}
+        </h4>
+      <!--Heading-Area/-->
+      <p *ngIf="news['body'].length > 0">{{ news['body'] }}</p>
     </div>
+    <!--News-Content-Area/-->
   </div>
+  <!--News-Tile-Area/-->
 </owl-carousel>
-
-  <!--div class="nav-notice" style="position: absolute;bottom: 13%;z-index: 8;color: black; font-size: 30px;">
-    <span class="ti-angle-left left-notice" style="float: left;"></span>
-  </div>
-  <div class="nav-notice" style="position: absolute;bottom: 13%;right:0;z-index: 8;color: black; font-size: 30px;">
-    <span class="ti-angle-right right-notice" style="float: right;"></span>
-  </div-->

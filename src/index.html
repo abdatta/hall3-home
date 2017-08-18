@@ -12,11 +12,11 @@
   <link rel="stylesheet" href="css/magnific-popup.css">
   <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
   <!-- Chrome, Firefox OS and Opera -->
-  <meta name="theme-color" content="#7B76C8">
+  <meta name="theme-color" content="#9590E2">
   <!-- Windows Phone -->
-  <meta name="msapplication-navbutton-color" content="#7B76C8">
+  <meta name="msapplication-navbutton-color" content="#9590E2">
   <!-- iOS Safari -->
-  <meta name="apple-mobile-web-app-status-bar-style" content="#7B76C8">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#9590E2">
 
   <meta name="apple-mobile-web-app-capable" content="yes">
 
@@ -90,25 +90,29 @@
       }
     };*/
     var navtoggleAdded = false;
+    var navtoggle = function() {
+        if(!navtoggleAdded) addnavtoggle();
+    };
     var showMenu = false;
     function addnavtoggle() {
         if(!navtoggleAdded) {
-          var navtoggle = function () {
+          navtoggle = function () {
             $("#mainmenu_collapse").slideToggle(500);
 
             if (!showMenu) {
-              $("#nav-toggle").html("<span class=\"ti-angle-up\"></span>");
+              //$("#nav-toggle").html("<span class=\"ti-angle-up\"></span>");
               showMenu = true;
+
             }
             else {
-              $("#nav-toggle").html("<span class=\"ti-angle-down\"></span>");
+              //$("#nav-toggle").html("<span class=\"ti-angle-down\"></span>");
               showMenu = false;
             }
           };
 
-          $("#nav-toggle").on("click", navtoggle);
+          //$("#nav-toggle").on("click", navtoggle);
           $("#mainmenu li a").on("click", function () {
-            navtoggle();
+              $("#nav-toggle").trigger("click");
           });
           navtoggleAdded = true;
         }

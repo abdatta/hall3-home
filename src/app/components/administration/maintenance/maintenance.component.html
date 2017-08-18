@@ -1,5 +1,5 @@
 <div *ngIf="!loaded" style="vertical-align:middle; text-align:center">
-  <img src="../../../../images/loading.gif" style="width: 50%">
+  <img src="../../../../images/loading.gif" style="width: 30%">
 </div>
 <div class="blog-details" [class.invisible]="!loaded">
   <h1>Maintenance Committee</h1>
@@ -8,21 +8,7 @@
   <div class="space-10"></div>
   <h4>Members</h4>
   <div class="space-10"></div>
-  <div>
-    <!--Single-team-->
-    <div *ngFor="let member of members; let i=index;" [class.row]="i%4 === 3">
-      <div class="col-xs-6 col-sm-3">
-        <div class="team-image relative ">
-          <div class="team-details"><strong>{{ member['name'] }}</strong>
-            <div class="space-2"></div>
-            <p>{{ member['post'] }}</p>
-          </div>
-        </div>
-        <div class="space-30"></div>
-      </div>
-    </div>
-    <!--Single-team/-->
-  </div>
+  <app-tiles [tiles]="members"></app-tiles>
   <div class="space-30"></div>
   <div class="col-xs-12 text-center">
     <a href="https://goo.gl/OzAiUI" target="_blank" class="bttn">Minutes</a>

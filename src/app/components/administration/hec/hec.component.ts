@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import  { InfoService } from '../../../services/info/info.service';
 
 @Component({
@@ -7,10 +7,10 @@ import  { InfoService } from '../../../services/info/info.service';
   styleUrls: ['./hec.component.css']
 })
 export class HecComponent implements OnInit {
+  @Input() embed = false;
   loaded = false;
   title: string;
   members: object[];
-  images: string[] = [];
 
   constructor(private infoService: InfoService) { }
 
@@ -25,18 +25,8 @@ export class HecComponent implements OnInit {
         } else {
           this.title = d['title'];
           this.members = d['members'];
-          this.members.forEach((member) => {
-            this.images.push(member['photo']);
-          });
         }
-
+        this.loaded = true;
       });
   }
-  load() {
-    this.images.pop();
-    if (this.images.length === 0) {
-      this.loaded = true;
-    }
-  }
-
 }

@@ -15,20 +15,30 @@ export class MainService {
       'music' : '/facility/music',
       'canteen' : '/facility/canteen',
     'adminis' : '/administration',
-      'wardens' : '/administration/wardens',
       'hec' : '/administration/hec',
       'messc' : '/administration/mess',
       'maintc' : '/administration/maintenance',
       'eventsc' : '/administration/activity',
-      'advisoryc' : '/administration/advisory',
-      'constitution': '/server/files/hall_3_constitution.pdf',
+      'advisoryc' : '/administration/cdc',
+      'constitution': 'https://goo.gl/w5tSpW',
     'people' : '/people',
       'cs-core': '/people/cscoreteam',
       'sg' : '/people/studentguides',
       'am' : '/people/academicmentors',
       'clubsecy' : '/people/clubsecretaries',
       'clubcoordi' : '/people/clubcoordinators',
-    'feedback': '/feedback'
+    'quicks': '/quicklinks',
+      'faqs': '/server/files/faqs.pdf',
+      'lnf': '/',
+      'feedback': '/feedback',
+      'messportal': 'http://mess.hall3iitk.com',
+      'addnews': '/news/add',
+      'map': '/map',
+      'rules': '/server/files/rules.pdf',
+      'messfeedback': 'https://goo.gl/CAu4xv',
+    'profile': '/news/dashboard',
+      'login': '/news/login',
+      'dashboard': '/news/dashboard'
   };
   private mainmenu: Object[] = [
     {
@@ -89,10 +99,6 @@ export class MainService {
       'dropdown' :
         [
           {
-            'title' : 'Wardens',
-            'linkId' : 'wardens'
-          },
-          {
             'title' : 'Hall Executive Committee',
             'linkId' : 'hec'
           },
@@ -109,12 +115,8 @@ export class MainService {
             'linkId' : 'eventsc'
           },
           {
-              'title' : 'Advisory Committee',
+              'title' : 'Constitution Drafting Committee',
               'linkId' : 'advisoryc'
-          },
-          {
-              'title' : 'Our Constitution',
-              'linkId' : 'constitution'
           }
         ]
     },
@@ -146,11 +148,73 @@ export class MainService {
           }*/
         ]
     },
-    {
-      'title' : 'Feedback',
-      'class' : '',
-      'linkId' : 'feedback'
-    }
+
+      {
+          'title' : 'Quick Links',
+          'class' : 'dropdown',
+          'linkId' : 'quicks',
+          'dropdown' :
+              [
+                  {
+                      'title' : 'FAQs',
+                      'linkId' : 'faqs',
+                      'newtab': true
+                  },
+                  {
+                      'title' : 'Hall Rules',
+                      'linkId' : 'rules',
+                      'newtab': true
+                  },
+                  {
+                      'title' : 'Our Constitution',
+                      'linkId' : 'constitution',
+                      'newtab': true
+                  },
+                  {
+                      'title' : 'Ask The HEC',
+                      'linkId' : 'feedback'
+                  },
+                  {
+                      'title' : 'Hall Map',
+                      'linkId' : 'map'
+                  },
+                  {
+                      'title' : 'Mess Automation Portal',
+                      'linkId' : 'messportal',
+                      'newtab': true
+                  },
+                  {
+                      'title' : 'Daily Mess Feedback',
+                      'linkId' : 'messfeedback',
+                      'newtab': true
+                  },
+                  /*{
+                      'title' : 'Lost and Found',
+                      'linkId' : 'lnf'
+                  },*/
+                  {
+                      'title' : 'Add News',
+                      'linkId' : 'addnews'
+                  }
+              ]
+      }/*,
+      {
+          'title' : 'Profile',
+          'class' : 'dropdown',
+          'linkId' : 'profile',
+          'guard': true,
+          'dropdown' :
+              [
+                  {
+                      'title' : 'Your Dashboard',
+                      'linkId' : 'dashboard'
+                  },
+                  {
+                      'title' : 'Log Out',
+                      'linkId' : 'logout'
+                  }
+              ]
+      }*/
   ];
   private info = {
     'facilities' : {
@@ -245,11 +309,6 @@ export class MainService {
       'tabs' :
         [
           {
-            'name' : 'Wardens',
-            'id' : 'wardens',
-            'linkId' : 'wardens'
-          },
-          {
             'name' : 'Hall Executive Committee',
             'id' : 'hec',
             'linkId' : 'hec'
@@ -270,7 +329,7 @@ export class MainService {
             'linkId' : 'eventsc'
           },
           {
-              'name' : 'Advisory Committee',
+              'name' : 'Constitution Drafting Committee',
               'id' : 'advisory',
               'linkId' : 'advisoryc'
           }

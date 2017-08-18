@@ -307,6 +307,7 @@ input:-webkit-autofill:focus {
     position: absolute;
     top: 0;
     width: 100%;
+    overflow: hidden;
 }
 .header-bg img {
     opacity: 0.4;
@@ -318,26 +319,6 @@ input:-webkit-autofill:focus {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-}
-
-.header-bg-image1 {
-    background-image: url("images/cover.jpg");
-    opacity: 1;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
-}
-
-.header-bg-image2 {
-    background-image: url("images/slide/bg-4.png");
-    background-attachment: fixed;
-    opacity: 0.3;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
-}
-
-.header-bg-image3 {
-    background-image: url("images/slide/bg-3.jpg");
-    background-attachment: fixed;
-    opacity: 0.3;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
 }
 
 .header-bg-image4 {
@@ -803,9 +784,9 @@ input:-webkit-autofill:focus {
 }
 
 .team-image:hover img {
-    -webkit-filter: brightness(0.5);
-    filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="linear" slope="0.5" /><feFuncG type="linear" slope="0.5" /><feFuncB type="linear" slope="0.5" /></feComponentTransfer></filter></svg>#filter');
-    filter: brightness(0.5);
+    //-webkit-filter: brightness(0.5);
+    //filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="linear" slope="0.5" /><feFuncG type="linear" slope="0.5" /><feFuncB type="linear" slope="0.5" /></feComponentTransfer></filter></svg>#filter');
+    //filter: brightness(0.5);
 }
 
 .team-image {
@@ -1294,14 +1275,7 @@ Pagination
 .row-centered {
     text-align:center;
 }
-.col-centered {
-    display:inline-block;
-    float:none;
-    /* reset the text-align */
-    text-align:left;
-    /* inline-block space fix */
-    margin-right:-4px;
-}
+
 .whenxs
 {
     display: none;
@@ -1447,6 +1421,14 @@ Pagination
   {
     background-color: red;
   }
+    .col-centered {
+        display:inline-block;
+        float:none;
+        /* reset the text-align */
+        text-align:left;
+        /* inline-block space fix */
+        margin-right:-4px;
+    }
 }
 
 .soft-edge

@@ -2,8 +2,34 @@
   <h1>Mess</h1>
   <div class="space-20"></div>
   <p>Health is the greatest wealth! Following the same mantra, the hall mess serves one of the finest qualities of food with the lowest possible prices. Apart from the basic nutritional diet, one can always get an ‘extra’ made or grab a glass of juice on his/her way out. The cost effective ‘Baskin-Robins’ ice-cream is always a delicious treat too. The mess menu is updated regularly based on the season and the feedback received. Since learning from feedback is an essential part of growth, one can freely express his/her views in the ‘Feedback Register’ kept at the mess cash counter.</p>
-  <h4>Mess Menu</h4>
-  <div *ngIf="true" style="vertical-align:middle; text-align:center">
-    <img src="../../../../images/loading.gif" style="width: 50%">
+  <h4>Our Mess Automation System</h4>
+  <p>We have a unique mess automation system for our Hall. You can find the mess menu, book extras, check your mess bill and many more. Click the button below to go to the mess automation portal.</p>
+  <div class="space-15"></div>
+  <div style="text-align: center">
+    <a href="http://mess.hall3iitk.com" target="_blank" ><button class="bttn">Mess Automation Portal</button></a>
+  </div>
+  <div class="space-20"></div>
+  <h4>Pictures</h4>
+  <div class="sm-padding">
+    <div id="facilityImages" class="carousel slide" data-ride="carousel">
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+        <div *ngFor="let image of images; let i = index"
+             class="item"
+             [class.active]="i === 0">
+          <img [src]="'images/facilities/' + image" [alt]="image">
+        </div>
+      </div>
+
+      <!-- Left and right controls -->
+      <a class="left carousel-control" href="#facilityImages" data-slide="prev">
+        <span class="ti-control-backward" style="position: absolute; top: 48%;left: 18%;font-size: 30px"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#facilityImages" data-slide="next">
+        <span class="ti-control-forward" style="position: absolute; top: 48%;right: 18%;font-size: 30px"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
   </div>
 </div>

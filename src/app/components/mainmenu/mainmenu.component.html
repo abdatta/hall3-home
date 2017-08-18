@@ -1,4 +1,9 @@
-  <nav class="mainmenu-area navbar navbar-inverse navbar-fixed-top affix">
+<div *ngIf="dropped"
+     style="width:100%; height: 100%;  z-index: 100; opacity: 0; position: fixed;"
+     onclick="navtoggle()"
+     (click)="toggleDrop()">
+</div>
+<nav class="mainmenu-area navbar navbar-inverse navbar-fixed-top affix">
     <div class="container">
       <div class="navbar-header">
         <button type="button"
@@ -6,8 +11,10 @@
                 class="navbar-toggle"
                 data-toggle="collapse"
                 data-target="#mainmenu_collapse"
-                onclick="addnavtoggle()"
+                onclick="navtoggle()"
                 (click)="toggleDrop()"
+                value="1"
+                (change)="toggleDrop()"
         >
           <span [class.ti-angle-down]="!dropped"
                 [class.ti-angle-up]="dropped">
@@ -27,8 +34,8 @@
             </a>
             <ul *ngIf="hasDropDown(i)" class="dropdown-menu" style="background-color: #9691E3;text-align: center;" >
               <li *ngFor="let dropdownitem of item['dropdown']">
-                <a *ngIf="dropdownitem['linkId']!=='constitution'" [routerLink]="link(dropdownitem['linkId'])">{{ dropdownitem['title'] }}</a>
-                <a *ngIf="dropdownitem['linkId']==='constitution'" [href]="link(dropdownitem['linkId'])" target="_blank">{{ dropdownitem['title'] }}</a>
+                <a *ngIf="!dropdownitem.hasOwnProperty('newtab')" [routerLink]="link(dropdownitem['linkId'])">{{ dropdownitem['title'] }}</a>
+                <a *ngIf="dropdownitem.hasOwnProperty('newtab')" [href]="link(dropdownitem['linkId'])" target="_blank">{{ dropdownitem['title'] }}</a>
               </li>
             </ul>
           </li>

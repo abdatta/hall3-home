@@ -11,7 +11,7 @@
           <input
                   type="text"
                   class="form-control"
-                  name="subject"
+                  name="username"
                   placeholder="Username"
                   autofocus
                   required
@@ -20,12 +20,12 @@
           <input
                   type="password"
                   class="form-control"
-                  name="subject"
+                  name="password"
                   placeholder="Password"
                   required
                   #password>
           <div class="space-20"></div>
-          <button class="bttn" type="submit" [disabled]="submitted">Login</button>
+          <button class="bttn" type="submit" [disabled]="submitted">{{ (submitted)?'Logging in...':'Login' }}</button>
         </form>
       </div>
     </div>

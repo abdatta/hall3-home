@@ -5,28 +5,29 @@
       <!--Team-page-title-->
       <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
         <div class="text-center">
-          <h3 class="text-uppercase">Our Wardens</h3>
-          <p class="page-sub-title">These are the respected wardens of Hall 3.</p>
+          <h3 class="text-uppercase">Hall Executive Committee</h3>
+          <p>The main administrative body of the hall.</p>
         </div>
       </div>
       <!--Team-page-title-->
     </div>
-    <div class="space-60"></div>
+    <div class="space-80"></div>
     <div class="row img-full-width row-centered">
         <!--Single-team-->
         <div *ngFor="let warden of wardens; let i=index;"
-             class="col-xs-12 col-sm-3 col-centered wow fadeIn"
+             class="col-xs-6 col-sm-3 col-centered wow fadeIn"
              [class.col-sm-push-3]="i === 0"
              [class.col-sm-pull-4]="i === 1"
              [class.col-sm-offset-1]="i !== 1"
+             [class.col-xs-offset-3]="i === 0"
              [attr.data-wow-delay]="((i === 0) ? 0.2 : 0.4) + 's'">
-            <div class="team-image relative innerpad">
+            <div class="team-image relative">
                 <div class="relative">
                     <img [src]="'/server/' + warden['photo']" [alt]="warden['name'] + '\'s photo'">
                 </div>
                 <div class="team-details"><strong>{{ warden['name'] }}</strong><!-- style="background-color: #B4F4F4"-->
                     <div class="space-2"></div>
-                    <p>{{ warden['post'] }}</p>
+                    <p>{{ warden['post'] }}<br>{{ warden['contact'] }}<br>{{ warden['email'] }}</p>
                 </div>
             </div>
             <div class="space-30"></div>
@@ -35,22 +36,21 @@
 
     </div>
   </div>
-  <div class="space-80"></div>
 </div>
 <div id="HEC">
-  <div class="space-100"></div>
+  <div class="space-30"></div>
   <div class="container">
-    <div class="row">
-      <!--Team-page-title-->
+    <!--div class="row">
+      <!--Team-page-title->
       <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
         <div class="text-center">
           <h3 class="text-uppercase">Our HEC Members</h3>
           <p class="page-sub-title">We are the members of the Hall Executive Committee.</p>
         </div>
       </div>
-      <!--Team-page-title-->
+      <!--Team-page-title->
     </div>
-    <div class="space-60"></div>
+    <div class="space-60"></div-->
     <div class="row img-full-width">
       <!--Single-team-->
       <div *ngFor="let member of hec; let i=index;" >

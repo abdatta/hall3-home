@@ -21,7 +21,7 @@ export class AddNewsComponent implements OnInit {
               private router: Router) {}
 
   ngOnInit() {
-    this.loginService.currentUser
+    this.loginService.getUser()
         .then((user: User) => {
           this.user = user;
         });

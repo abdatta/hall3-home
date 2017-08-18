@@ -5,6 +5,8 @@ export class Query {
     public subject: string,
     public message: string,
     public email?: string,
-    public response?: string
+    public responded?: boolean,
+    public response?: string,
+    public date?: string
   ) { }
 }

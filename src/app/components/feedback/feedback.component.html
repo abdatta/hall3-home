@@ -166,22 +166,35 @@
         <!--blog-page-title/-->
       </div>
       <div class="space-20"></div>
-      <div class="row">
-        <div class="col-xs-12" style="height:300px; overflow-y: auto">
+      <div class="row" style="padding: 0 10px;">
+        <div class="col-xs-6 tabs" [attr.active]="responded" (click)="responded = true;">RESPONDED</div>
+        <div class="col-xs-6 tabs" [attr.active]="!responded" (click)="responded = false;">NOT RESPONDED</div>
+        <div class="col-xs-12" style="padding: 0; overflow-x: auto">
           <table>
             <thead>
               <tr>
-                <th style="width:45%;">Query</th>
-                <th>To</th>
-                <th style="width:45%">Response</th>
+                <th style="width: 10%;">Date</th>
+                <th style="width: 10%;">To</th>
+                <th style="width: 40%; min-width: 120px;">Query</th>
+                <th *ngIf="responded" style="width: 40%; min-width: 120px;">Response</th>
               </tr>
             </thead>
-            <tbody *ngFor="let response of responses">
+            <tbody *ngIf="loading">
+              <div class="space-2" ></div>
+              <tr>
+                <td></td>
+                <td></td>
+                <td><img src="../../../images/loading2.gif" style="width: 40px;"></td>
+                <td *ngIf="responded"><img src="../../../images/loading2.gif" style="width: 40px;"></td>
+              </tr>
+            </tbody>
+            <tbody *ngFor="let response of (responded?(responses.responded):(responses.notresponded))">
               <div class="space-2"></div>
               <tr>
-                <td style="white-space: pre-wrap;">{{ response.message }}</td>
+                <td>{{ response.date }}</td>
                 <td>{{ response.to }}</td>
-                <td style="white-space: pre-wrap">{{ response.response }}</td>
+                <td style="white-space: pre-wrap;">{{ response.message }}</td>
+                <td *ngIf="responded" style="white-space: pre-wrap;">{{ response.response }}</td>
               </tr>
             </tbody>
           </table>

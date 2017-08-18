@@ -28,13 +28,16 @@ export class TopnewsComponent implements OnInit {
     loop: false,
     mouseDrag: true,
     touchDrag: true,
-    autoplay: false,
+    autoplay: true,
     autoplayTimeout: 5000,
+    rewind: true,
+    autoplaySpeed: 800,
     autoplayHoverPause: true
   };
 
   data: object[];
   loaded = false;
+  resizing = 1;
 
   constructor(private newsService: NewsService) { }
 
@@ -46,8 +49,26 @@ export class TopnewsComponent implements OnInit {
           } else {
             this.data = d.slice().reverse();
             this.loaded = true;
+            this.resizing = 0;
+            setTimeout(() => {
+              this.resize();
+              window.addEventListener("resize", this.resize);
+            },100);
           }
         });
+  }
+
+  resize = () => {
+    if(!this.data) return;
+    let max = 0;
+    for(let i=0; i<this.data.length; i++) {
+      let height = document.getElementById("news" + i).offsetHeight;
+      if(height>max) max = height;
+    }
+    for(let i=0; i<this.data.length; i++) {
+      document.getElementById("newstile" + i).style.height = `${max}px`;
+    }
+    this.resizing = 1;
   }
 
   getFormattedDate(date: string) {
@@ -55,7 +76,7 @@ export class TopnewsComponent implements OnInit {
   }
 
   isNew(date: string) {
-    return moment(date).isAfter(moment().subtract(7, 'days').startOf('day'));
+    return moment(date).isAfter(moment().subtract(3, 'days').startOf('day'));
   }
 
   isURL(str: string): boolean {

@@ -1,0 +1,16 @@
+<section class="fix">
+  <div class="space-120"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 padding30" style="text-align: center">
+        <h2>Quick Links</h2>
+        <div class="space-10"></div>
+        <div *ngFor="let link of links">
+          <button *ngIf="!link.hasOwnProperty('newtab')" class="bttn" style="margin: 7px;" [routerLink]="getlink(link['linkId'])">{{ link['title'] }}</button>
+          <a *ngIf="link.hasOwnProperty('newtab')" class="bttn" style="margin: 7px;" [href]="getlink(link['linkId'])" target="_blank">{{ link['title'] }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="space-50"></div>
+</section>

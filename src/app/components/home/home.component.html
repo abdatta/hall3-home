@@ -1,13 +1,12 @@
 <!--Header-Area-->
 <header class="relative header-area" id="home">
   <div class="header-bg header-bg-color">
-    <div class="header-bg-image header-bg-image1 home-parallax"></div>
+    <div *ngFor="let i of [1,2,3,4,5,6];" class="header-bg-image home-parallax"></div>
   </div>
-  <app-topnews onload="addNews()"></app-topnews>
+  <app-topnews></app-topnews>
   <!--div class="header-scroll-btton smoth">
     <a href="#about"><span class="ti-arrow-down"></span></a>
   </div-->
-
 </header>
 <!--Header-Area/-->
 
@@ -38,3 +37,7 @@
 <!--Feedback-Area-->
 <app-feedback></app-feedback>
 <!--Feedback-Area-->
+
+<!--Map-Area-->
+<app-map></app-map>
+<!--Map-Area-->

@@ -50,6 +50,11 @@ import { TopnewsComponent } from './components/topnews/topnews.component';
 import { NewsComponent } from './components/news/news.component';
 import { AddNewsComponent } from './components/news/add-news/add-news.component';
 import { LoginComponent } from './components/login/login.component';
+import { TilesComponent } from './components/tiles/tiles.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { QuickLinksComponent } from './components/quick-links/quick-links.component';
+import { MapComponent } from './components/map/map.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +92,12 @@ import { LoginComponent } from './components/login/login.component';
     AdvisoryComponent,
     NewsComponent,
     AddNewsComponent,
-    LoginComponent
+    LoginComponent,
+    TilesComponent,
+    SignupComponent,
+    DashboardComponent,
+    QuickLinksComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,

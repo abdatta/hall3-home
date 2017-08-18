@@ -9,10 +9,9 @@ import { InfoService } from '../../../services/info/info.service';
 export class CsCoreComponent implements OnInit {
   loaded = false;
   title: string;
-  coordi: object[];
+  coordis: object[];
   ops: object[];
   acads: object[];
-  images: string[] = [];
 
   constructor(private infoService: InfoService) { }
 
@@ -22,31 +21,17 @@ export class CsCoreComponent implements OnInit {
       .subscribe((d: object) => {
         if (d.hasOwnProperty('err')) {
           this.title = d['err'];
-          this.coordi = [{}];
+          this.coordis = [{}];
           this.ops = [{}];
           this.acads = [{}];
           this.loaded = true;
         } else {
           this.title = d['title'];
-          this.coordi = d['coordi'];
+          this.coordis = d['coordi'];
           this.ops = d['ops'];
           this.acads = d['acads'];
-          this.coordi.forEach((member) => {
-            this.images.push(member['photo']);
-          });
-          this.ops.forEach((member) => {
-            this.images.push(member['photo']);
-          });
-          this.acads.forEach((member) => {
-            this.images.push(member['photo']);
-          });
         }
+        this.loaded = true;
       });
-  }
-  load() {
-    this.images.pop();
-    if (this.images.length === 0) {
-      this.loaded = true;
-    }
   }
 }

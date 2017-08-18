@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import * as moment from 'moment';
 
 import { FeedbackService } from '../../services/feedback/feedback.service';
+import { Query } from '../../models/query';
 
 @Component({
   selector: 'app-feedback',
@@ -14,24 +16,41 @@ export class FeedbackComponent implements OnInit {
   sending = false;
   sent = false;
   anonymous = false;
-
-  responses = [{}];
+  responded = true;
+  responses = {
+    responded: [],
+    notresponded: []
+  };
+  loading = true;
 
   constructor(private feedbackService: FeedbackService) { }
 
   ngOnInit() {
-    this.feedbackService.getResponses()
-        .subscribe((q: object[]) => {
-          if (q.hasOwnProperty('err')) {
-            this.error = q['err'];
-          } else {
-            this.responses = q.slice().reverse();
-          }
-        });
   }
 
   changeForm(nextForm: string) {
     this.form = nextForm;
+    if (nextForm === 'response') {
+      this.responded = true;
+      this.feedbackService.getResponses()
+          .subscribe((q: Query[]) => {
+            if (q.hasOwnProperty('err')) {
+              this.error = q['err'];
+            } else {
+              this.responses.responded = [];
+              this.responses.notresponded = [];
+              q.slice().reverse().forEach((response: Query) => {
+                response['date'] = moment(response['date']).format('DD\xa0MMM YY');
+                if(response['responded']) {
+                  this.responses.responded.push(response);
+                } else {
+                  this.responses.notresponded.push(response);
+                }
+              });
+            }
+            this.loading = false;
+          });
+    }
   }
 
   showForm(thisForm: string): boolean {
@@ -51,6 +70,7 @@ export class FeedbackComponent implements OnInit {
           this.error = 'Error: ' + s;
         } else {
           this.sent = true;
+          this.anonymous = false;
           form.reset();
         }
         this.sending = false;

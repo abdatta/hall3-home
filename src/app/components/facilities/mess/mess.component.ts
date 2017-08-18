@@ -8,6 +8,12 @@ import { InfoService } from '../../../services/info/info.service';
 })
 export class MessComponent implements OnInit {
 
+  images: string[] = [
+    'mess.jpg',
+    'mess2.jpg',
+    'mess3.jpg'
+  ];
+
   constructor(private infoService: InfoService) { }
 
   ngOnInit() {

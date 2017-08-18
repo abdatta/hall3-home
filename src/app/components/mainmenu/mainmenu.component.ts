@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { MainService } from '../../services/main/main.service';
+import { UsersService } from '../../services/users/users.service'
 
 @Component({
   selector: 'app-mainmenu',
@@ -9,8 +11,10 @@ import { MainService } from '../../services/main/main.service';
 export class MainmenuComponent implements OnInit {
   menu: Object[];
   dropped: boolean;
+  initialised = false;
 
-  constructor(private mainService: MainService) { }
+  constructor(private mainService: MainService,
+              private usersService: UsersService) { }
 
   ngOnInit() {
     this.menu = this.mainService.getMainmenu();
@@ -27,5 +31,19 @@ export class MainmenuComponent implements OnInit {
 
   toggleDrop(): void {
     this.dropped = !this.dropped;
+    if(!this.initialised)
+      this.initialised = true;
   }
+
+  show(title: string) {
+    if(title === 'Profile') {
+      this.usersService.check()
+          .then((result: boolean) => {
+             return result;
+          });
+    } else {
+      return true;
+    }
+  }
+
 }

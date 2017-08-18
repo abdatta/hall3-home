@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { InfoService } from '../../../services/info/info.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { InfoService } from '../../../services/info/info.service';
   styleUrls: ['./wardens.component.css']
 })
 export class WardensComponent implements OnInit {
+  @Input() embed = false;
   loaded = false;
   title: string;
   members: object[];
@@ -15,7 +16,6 @@ export class WardensComponent implements OnInit {
   constructor(private infoService: InfoService) { }
 
   ngOnInit() {
-    this.infoService.setTab('wardens');
     this.infoService.getAdministration('wardens')
       .subscribe((d: object) => {
         if (d.hasOwnProperty('err')) {
