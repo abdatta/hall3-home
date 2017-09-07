@@ -1,4 +1,4 @@
-<section id="service" class="fix">
+<section id="service" class="fix" *ngIf="data">
   <div class="space-100"></div>
   <div class="container">
     <div *ngIf="false" style="text-align: center">
@@ -19,7 +19,7 @@
                 placeholder="Heading"
                 autofocus
                 required
-                ngModel
+                [(ngModel)]="data['head']"
                 maxlength="60"
                 #head="ngModel">
         <div class="space-20"></div>
@@ -28,12 +28,13 @@
                 class="form-control"
                 name="link"
                 placeholder="Link"
+                [(ngModel)]="data['link']"
                 #link>
         <div *ngIf="cat.touched && cat.errors && cat.errors.required" style="font-size: 11px; color: red">*Required</div>
         <div class="space-20" *ngIf="!(cat.touched && cat.errors)"></div>
         <select class="form-control"
                 name="cat"
-                ngModel
+                [(ngModel)]="data['category']"
                 #cat="ngModel"
                 required>
           <option value="" disabled selected>Choose category</option>
@@ -44,36 +45,22 @@
           <option value="minutes">Other Minutes</option>
           <option value="other_documents">Other Documents</option>
         </select>
-        <div *ngIf="to.touched && to.errors && to.errors.required" style="font-size: 11px; color: red">*Required</div>
-        <div class="space-20" *ngIf="!(to.touched && to.errors)"></div>
-        <select class="form-control"
-                name="to"
-                ngModel
-                #to="ngModel"
-                required>
-          <option value="" disabled selected>Choose target audience</option>
-          <option value="y15 y16 y17">All</option>
-          <option value="y17">Y17 only</option>
-          <option value="y16">Y16 only</option>
-          <option value="y15">Y15 only</option>
-          <option value="y17 y16">Y17 and Y16</option>
-          <option value="y16 y15">Y16 and Y15</option>
-          <option value="y15 y17">Y15 and Y17</option>
-        </select>
         <div class="space-20"></div>
-        <label><input type="checkbox" (change)="add=!add">&emsp;Add a short description</label>
+        <label><input type="checkbox" (change)="add=!add" [checked]="add">&emsp;Add a short description</label>
         <textarea [class.invisible]="!add"
                   class="form-control"
                   placeholder="Description here... (Max 120 characters)"
                   rows="3"
+                  name="body"
+                  [(ngModel)]="data['body']"
                   maxlength="120"
                   #body
         ></textarea>
         <div class="space-20"></div>
         <button class="bttn"
-                (click)="addNews(head.value,link.value,cat.value,to.value,body.value)"
-                [disabled]="submitted || (cat.errors && cat.errors.required) || (head.errors && head.errors.required) || (to.errors && to.errors.required)"
-        >{{ (submitted)?'Adding...':'Add Notice' }}</button>
+                (click)="updateNews(head.value,link.value,cat.value,body.value)"
+                [disabled]="submitted || (cat.errors && cat.errors.required && head.errors && head.errors.required)"
+        >{{ (submitted)?'Updating...':'Update' }}</button>
         <button class="bttn" routerLink="/dashboard" style="float: right">Cancel</button>
       </div>
     </div>

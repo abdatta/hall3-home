@@ -1,7 +1,7 @@
 <owl-carousel *ngIf="loaded" [style.opacity]="resizing"
               [options]="carouselOptions"
               [carouselClasses]="['owl-theme', 'container', 'sliding']"
-              style="position: absolute;bottom: 7%;width: 100%;z-index: 5;">
+              style="position: absolute;bottom: 2%;width: 100%;z-index: 5;">
   <!--News-Tile-Area-->
   <div  *ngFor="let news of data; let i=index;"
         [id]="'newstile' + i"
@@ -29,6 +29,22 @@
         </h4>
       <!--Heading-Area/-->
       <p *ngIf="news['body'].length > 0">{{ news['body'] }}</p>
+    </div>
+    <!--News-Content-Area/-->
+  </div>
+  <!--News-Tile-Area/-->
+
+  <!--News-Tile-Area-->
+  <div  [id]="'newstile' + data.length"
+        class="item panel single-blog view-more"
+        style="margin-left: 5px;margin-right: 5px; overflow: hidden; text-align: center;"
+        routerLink="/notices/category/all">
+    <!--News-Content-Area-->
+    <div class="padding-20" [id]="'news' + data.length">
+      <div class="space-60"></div>
+      <!--Heading-Area-->
+      <h2> View More </h2>
+      <!--Heading-Area/-->
     </div>
     <!--News-Content-Area/-->
   </div>

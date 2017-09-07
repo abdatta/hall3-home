@@ -1,0 +1,103 @@
+<section class="fix">
+  <div class="space-100"></div>
+  <div class="container">
+    <div *ngIf="success === 3" style="text-align: center">
+      <div class="space-60"></div>
+      <h4>You have successfuly unsubscribed from the selected categories.</h4>
+      <p>You can subscribe again anytime from the notice pages.</p>
+      <div class="space-200"></div>
+    </div>
+    <div class="row" *ngIf="success < 3">
+      <div class="col-xs-10 col-xs-offset-2 col-sm-8 col-sm-offset-2 padding30">
+        <div class="space-40"></div>
+        <h4>Select the categories to unsubscribe from:</h4>
+        <div class="space-15"></div>
+        <label class="control control--checkbox">All
+          <input type="checkbox" [(ngModel)]="checks.all" (change)="onchange('all')"/>
+          <div class="control__indicator"></div>
+        </label>
+        <label class="control control--checkbox">Announcements
+          <input type="checkbox" [(ngModel)]="checks.announcements" (change)="onchange('announcements')"/>
+          <div class="control__indicator"></div>
+        </label>
+        <label class="control control--checkbox">Minutes
+          <input type="checkbox" [(ngModel)]="checks.minutes" (change)="onchange('minutes')"/>
+          <div class="control__indicator"></div>
+        </label>
+        <label class="control control--checkbox">Other Documents
+          <input type="checkbox" [(ngModel)]="checks.other_documents" (change)="onchange('other_documents')"/>
+          <div class="control__indicator"></div>
+        </label>
+        <div class="space-20"></div>
+        <!--button class="bttn"
+                (click)=""
+                [disabled]="submitted"
+        >{{ (submitted)?'Unsubscribing...':'Unsubscribe' }}</button-->
+        <button class="bttn"
+                [disabled]="!checks.announcements && !checks.minutes && !checks.other_documents"
+                (click)="unsubscribe()"
+                style="float: left">{{ (submitted && success < 3)?'Unsubscribing...':'Unsubscribe' }}</button>
+      </div>
+    </div>
+  </div>
+  <div class="space-100"></div>
+</section>
+
+<!--
+
+<h1>CSS3 Checkbox Styles</h1>
+
+<!-- Slide ONE ->
+<div class="slideOne">
+  <input type="checkbox" value="None" id="slideOne" name="check" />
+  <label for="slideOne"></label>
+</div>
+
+<!-- Slide TWO ->
+<div class="slideTwo">
+  <input type="checkbox" value="None" id="slideTwo" name="check" />
+  <label for="slideTwo"></label>
+</div>
+
+<!-- Slide THREE ->
+<div class="slideThree">
+  <input type="checkbox" value="None" id="slideThree" name="check" />
+  <label for="slideThree"></label>
+</div>
+
+<!-- Rounded ONE ->
+<div class="roundedOne">
+  <input type="checkbox" value="None" id="roundedOne" name="check" />
+  <label for="roundedOne"></label>
+</div>
+
+<!-- Rounded TWO ->
+<div class="roundedTwo">
+  <input type="checkbox" value="None" id="roundedTwo" name="check" />
+  <label for="roundedTwo"></label>
+</div>
+
+<!-- Squared ONE ->
+<div class="squaredOne">
+  <input type="checkbox" value="None" id="squaredOne" name="check" />
+  <label for="squaredOne"></label>
+</div>
+
+<!-- Squared TWO ->
+<div class="squaredTwo">
+  <input type="checkbox" value="None" id="squaredTwo" name="check" />
+  <label for="squaredTwo"></label>
+</div>
+
+<!-- Squared THREE ->
+<div class="squaredThree">
+  <input type="checkbox" value="None" id="squaredThree" name="check" />
+  <label for="squaredThree"></label>
+</div>
+
+<!-- Squared FOUR ->
+<div class="squaredFour">
+  <input type="checkbox" value="None" id="squaredFour" name="check" />
+  <label for="squaredFour"></label>
+</div>
+-->

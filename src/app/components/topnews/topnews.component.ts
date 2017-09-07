@@ -42,12 +42,12 @@ export class TopnewsComponent implements OnInit {
   constructor(private newsService: NewsService) { }
 
   ngOnInit() {
-    this.newsService.getNews()
+    this.newsService.getTopNews()
         .subscribe((d: object[]) => {
           if (d.hasOwnProperty('err')) {
             this.data = [{}];
           } else {
-            this.data = d.slice().reverse();
+            this.data = d;
             this.loaded = true;
             this.resizing = 0;
             setTimeout(() => {
@@ -61,11 +61,11 @@ export class TopnewsComponent implements OnInit {
   resize = () => {
     if(!this.data) return;
     let max = 0;
-    for(let i=0; i<this.data.length; i++) {
+    for(let i=0; i<=this.data.length; i++) {
       let height = document.getElementById("news" + i).offsetHeight;
       if(height>max) max = height;
     }
-    for(let i=0; i<this.data.length; i++) {
+    for(let i=0; i<=this.data.length; i++) {
       document.getElementById("newstile" + i).style.height = `${max}px`;
     }
     this.resizing = 1;

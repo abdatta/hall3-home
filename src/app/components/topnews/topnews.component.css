@@ -1,0 +1,11 @@
+.view-more {
+    cursor: pointer;
+}
+
+.view-more:hover {
+    background: #7C77C9;
+}
+
+.view-more:hover h2 {
+    color: white;
+}

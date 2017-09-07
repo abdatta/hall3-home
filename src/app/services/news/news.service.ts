@@ -32,6 +32,66 @@ export class NewsService {
         });
   };
 
+    getTopNews = (): Observable<object[]> => {
+        return this.http.get('/server/news/top')
+            .map((res: Response) => res.json() as object[])
+            .catch((error: any) => {
+                if (error.status) {
+                    return Observable.of({
+                        'err': error.status
+                    });
+                } else {
+                    return Observable.throw(error.json().error || error.message || error);
+                }
+            });
+    };
+
+    getCatNews = (cat: string): Observable<object[]> => {
+        return this.http.post('/server/news/query', {
+            'category': cat
+        })
+            .map((res: Response) => res.json() as object[])
+            .catch((error: any) => {
+                if (error.status) {
+                    return Observable.of({
+                        'err': error.status
+                    });
+                } else {
+                    return Observable.throw(error.json().error || error.message || error);
+                }
+            });
+    };
+
+    getUserNews = (name: string): Observable<object[]> => {
+        return this.http.post('/server/news/query', {
+            'by': name
+        })
+            .map((res: Response) => res.json() as object[])
+            .catch((error: any) => {
+                if (error.status) {
+                    return Observable.of({
+                        'err': error.status
+                    });
+                } else {
+                    return Observable.throw(error.json().error || error.message || error);
+                }
+            });
+    };
+
+    getOneNews = (id: string): Observable<object> => {
+        return this.http.get('/server/news/id/' + id)
+            .map((res: Response) => res.json() as object)
+            .catch((error: any) => {
+                if (error.status) {
+                    return Observable.of({
+                        'err': error.status
+                    });
+                } else {
+                    return Observable.throw(error.json().error || error.message || error);
+                }
+            });
+    };
+
   addNews = (news: object): Observable<number> => {
       return this.http.post('/server/news/add', news)
           .map(res => res.status)
@@ -43,4 +103,40 @@ export class NewsService {
               }
           });
   };
+
+    updateNews = (news: object, id: string): Observable<number> => {
+        return this.http.post('/server/news/update/' + id, news)
+            .map(res => res.status)
+            .catch((error: any) => {
+                if (error.status) {
+                    return Observable.of(error.status);
+                } else {
+                    return Observable.throw(error.message || error);
+                }
+            });
+    };
+
+    subscribe = (cat: string, id: string): Observable<number> => {
+        return this.http.get('/server/news/subscribe/' + cat + '?id=' + id)
+            .map(res => res.status)
+            .catch((error: any) => {
+                if (error.status) {
+                    return Observable.of(error.status);
+                } else {
+                    return Observable.throw(error.message || error);
+                }
+            });
+    }
+
+    unsubscribe = (cat: string, id: string): Observable<number> => {
+        return this.http.get('/server/news/unsubscribe/' + cat + '?id=' + id)
+            .map(res => res.status)
+            .catch((error: any) => {
+                if (error.status) {
+                    return Observable.of(error.status);
+                } else {
+                    return Observable.throw(error.message || error);
+                }
+            });
+    }
 }

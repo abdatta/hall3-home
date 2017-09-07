@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { MainService }  from '../../services/main/main.service';
+import { UsersService }  from '../../services/users/users.service';
 
 @Component({
   selector: 'app-quick-links',
@@ -10,8 +11,15 @@ import { MainService }  from '../../services/main/main.service';
 export class QuickLinksComponent implements OnInit {
 
   links: object[] = [{}];
+  logstat: boolean;
 
-  constructor(private mainService: MainService) { }
+  constructor(private mainService: MainService,
+              private usersService: UsersService) {
+    usersService.check().then(
+        stat => {
+          this.logstat = stat;
+        });
+  }
 
   ngOnInit() {
     this.links = this.mainService.getMainmenu().slice(-1)[0]['dropdown'];

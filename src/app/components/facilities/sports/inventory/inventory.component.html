@@ -1,0 +1,49 @@
+<h4>Sports Inventory</h4>
+<div class="space-15"></div>
+<div *ngIf="!loaded" style="vertical-align:middle; text-align:center">
+  <img src="../../../../images/loading.gif" style="width: 50%">
+</div>
+<div class="row" [class.invisible]="!loaded" style="display: flex;" *ngFor="let item of inventory; let i=index;">
+  <div class="inventory" style="flex-grow: 1;">
+    <div class="inside"><strong>{{ item.name }}</strong>
+      <div class="space-2"></div>
+    </div>
+  </div>
+  <div class="inventory available" [class.red]="!item.available" [class.green]="item.available" style="text-align: left;">
+    <div class="">
+      <!--label  class="control control--checkbox"
+              style="">{{ item.available?'Available':'Not Available' }}
+        <input type="checkbox" [(ngModel)]="item.available">
+        <div class="control__indicator"></div>
+      </label-->
+      <select class="form-control"
+              (change)="change($event, i)"
+              #status
+              required>
+        <option value="available" [selected]="item.available">Available</option>
+        <option value="issued" [selected]="!item.available">Issued</option>
+        <option value="up" [disabled]="i===0">Move Up</option>
+        <option value="down" [disabled]="i===inventory.length-1">Move Down</option>
+        <option value="delete">Delete</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="space-10"></div>
+<div style="display: flex;">
+  <input  type="text" style="flex-grow: 1;margin-right: 8px"
+          class="form-control"
+          name="new"
+          placeholder="Enter new item..."
+          [(ngModel)]="newitem"
+          #new="ngModel"
+          required>
+  <button class="bttn available"
+          (click)="add()"
+          [disabled]="new.errors && new.errors.required">Add</button>
+</div>
+<div class="space-20"></div>
+<div [class.invisible]="!loaded" style="text-align: center;">
+  <button class="bttn" (click)="save()" [disabled]="saving">{{ (saving)?'Saving':'Save' }}</button>
+</div>
+<div class="space-10"></div>

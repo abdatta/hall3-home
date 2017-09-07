@@ -2,17 +2,66 @@
   <div class="space-100"></div>
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-6 col-sm-offset-3 padding30" style="text-align: center">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 padding30" style="text-align: center" *ngIf="user">
         <div class="space-40"></div>
         <h2>Your Dashboard</h2>
         <div class="space-10"></div>
         <h4>{{ 'Welcome ' + user.name }}</h4>
         <div class="space-20"></div>
-        <button class="bttn" routerLink="/news/add">Add News</button>
-        <div *ngIf="user.levelsCurrent.indexOf('admin') !== -1" class="space-20"></div>
-        <button *ngIf="user.levelsCurrent.indexOf('admin') !== -1" class="bttn" routerLink="/news/signup">Sign Up a New User</button>
+        <button class="bttn" routerLink="/notices/add">Add Notice</button>
+        <div *ngIf="isLevel('admin')" class="space-20"></div>
+        <button *ngIf="isLevel('admin')" class="bttn" routerLink="/signup">Sign Up a New User</button>
+        <div *ngIf="isLevel('sports')" class="space-20"></div>
+        <button *ngIf="isLevel('sports')" class="bttn" routerLink="/facility/sports/inventory">Update Sports Inventory</button>
         <div class="space-20"></div>
         <button class="bttn" (click)="logout()">Logout</button>
+      </div>
+      <div class="col-xs-12 col-sm-10 col-sm-offset-1 padding30" style="text-align: center">
+        <div class="space-40"></div>
+        <h3>Your Notices</h3>
+        <div class="space-10"></div>
+        <p *ngIf="loaded && data.length == 0">You have posted no notices yet.</p>
+        <div *ngIf="!loaded" style="vertical-align:middle; text-align:center">
+          <img src="../../../../images/loading.gif" style="width: 30%">
+        </div>
+        <div *ngIf="loaded">
+          <div *ngFor="let news of data; let i=index;"
+               class="col-xs-12 col-sm-4 wow fadeInUp"
+               [attr.data-wow-delay]="(0.2*(i%2 + 1))+'s'"
+               style="margin-bottom: -250px;padding-bottom: 250px;">
+            <div class="panel single-blog">
+              <div class="padding-20" style="text-align: left;">
+                <ul class="list-unstyled list-inline">
+                  <li><span class="ti-calendar"></span>{{ ' ' + getFormattedDate(news['date']) }}</li>
+                  <!--li style="float: right;"><a [routerLink]="'/notices/edit/122345'"><span class="ti-close"></span></a></li-->
+                  <li style="float: right;">
+                    <a [routerLink]="'/notices/edit/' + news['_id']">
+                      <span class="ti-marker-alt"></span>&nbsp;Edit
+                    </a>
+                  </li>
+                </ul>
+                <div class="space-10"></div>
+                <!--Heading-Area-->
+                <!--In-case-of-a-link-->
+                <a *ngIf="isURL(news['link'])" [href]="news['link']" target="_blank">
+                  <h4>
+                    <img *ngIf="isNew(news['date'])" src="/images/new.gif" style="height: 15px;width:29px;float: left">{{ news['head'] }}
+                  </h4>
+                </a>
+                <!--In-case-of-no-link-->
+                <h4 *ngIf="!isURL(news['link'])">
+                  <img *ngIf="isNew(news['date'])" src="/images/new.gif" style="height: 15px;width:29px;float: left">{{ news['head'] }}
+                </h4>
+                <!--Heading-Area/-->
+                <p *ngIf="news['body'].length > 0">{{ news['body'] }}</p>
+                <ul class="list-unstyled list-inline">
+                  <li><b>Category:</b> {{ titlize(news['category'].join(' ')) }}</li>
+                </ul>
+              </div>
+            </div>
+            <div class="space-30"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

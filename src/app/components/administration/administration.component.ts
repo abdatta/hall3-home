@@ -11,6 +11,8 @@ export class AdministrationComponent implements OnInit {
 
     wardens: object[];
     hec: object[];
+    wardensloaded = false;
+    hecloaded = false;
 
     constructor(private infoService: InfoService) { }
 
@@ -22,6 +24,7 @@ export class AdministrationComponent implements OnInit {
                 } else {
                     this.wardens = d['members'];
                 }
+                this.wardensloaded = true;
             });
         this.infoService.getAdministration('hec')
             .subscribe((d: object) => {
@@ -30,6 +33,7 @@ export class AdministrationComponent implements OnInit {
                 } else {
                     this.hec = d['members'];
                 }
+                this.hecloaded  = true;
             });
     }
 

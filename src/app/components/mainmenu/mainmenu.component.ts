@@ -12,9 +12,15 @@ export class MainmenuComponent implements OnInit {
   menu: Object[];
   dropped: boolean;
   initialised = false;
+  logstat: boolean;
 
   constructor(private mainService: MainService,
-              private usersService: UsersService) { }
+              private usersService: UsersService) {
+    usersService.logStat$.subscribe(
+        stat => {
+          this.logstat = stat;
+        });
+  }
 
   ngOnInit() {
     this.menu = this.mainService.getMainmenu();

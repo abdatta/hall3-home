@@ -6,7 +6,8 @@
         <h2>Quick Links</h2>
         <div class="space-10"></div>
         <div *ngFor="let link of links">
-          <button *ngIf="!link.hasOwnProperty('newtab')" class="bttn" style="margin: 7px;" [routerLink]="getlink(link['linkId'])">{{ link['title'] }}</button>
+          <button *ngIf="!link.hasOwnProperty('newtab') && !link.hasOwnProperty('guard')" class="bttn" style="margin: 7px;" [routerLink]="getlink(link['linkId'])">{{ link['title'] }}</button>
+          <button *ngIf="!link.hasOwnProperty('newtab') && link.hasOwnProperty('guard')" class="bttn" style="margin: 7px;" [routerLink]="getlink(link['linkId'+(logstat?2:1)])">{{ link['title'+(logstat?2:1)] }}</button>
           <a *ngIf="link.hasOwnProperty('newtab')" class="bttn" style="margin: 7px;" [href]="getlink(link['linkId'])" target="_blank">{{ link['title'] }}</a>
         </div>
       </div>

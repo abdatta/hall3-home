@@ -7,3 +7,31 @@
         padding: 0;
     }
 }
+
+.inventory {
+    text-align: center;
+    border: 3px solid #7b7b7b;
+    margin: 8px;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    -moz-border-radius: 4px 4px 4px 4px;
+    border-radius: 4px 4px 4px 4px;
+}
+
+.inventory > .inside {
+    padding: 10px;
+}
+
+.red {
+    border: 3px solid red;
+    color: red;
+}
+
+.green {
+    border: 3px solid green;
+    color: green;
+}
+
+.available {
+    width: 25%;
+}
+

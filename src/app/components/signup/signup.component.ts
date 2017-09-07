@@ -24,7 +24,7 @@ export class SignupComponent implements OnInit {
     this.loginService.signUp(name, username, password)
         .subscribe((s: number) => {
           if (s === 200) {
-            this.router.navigateByUrl('/news/dashboard');
+            this.router.navigateByUrl('/dashboard');
           } else {
             this.error ='Incorrect Username or Password';
             this.submitted = false;

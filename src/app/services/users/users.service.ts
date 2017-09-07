@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/observable/of';
@@ -17,6 +18,19 @@ export class UsersService {
 
   private currentUser: Promise<User>;
 
+  // Observable string sources
+  private logSource = new Subject<boolean>();
+
+  // Observable string streams
+  logStat$ = this.logSource.asObservable();
+
+  // Service message commands
+  logStat() {
+    this.currentUser.then((user: User) => {
+      this.logSource.next(user != null);
+    });
+  }
+
   constructor( private http: Http ) {
     this.init();
   }
@@ -27,6 +41,7 @@ export class UsersService {
         .catch((err: any, caught) => {
           return Observable.of(null);
         }).toPromise();
+    this.logStat();
   }
 
   handleError = (error: any): Observable<any> => {
@@ -57,6 +72,7 @@ export class UsersService {
     return this.http.post('/server/accounts/signin', { username: user, password: pass})
         .map((response: Response) => {
           this.currentUser = Promise.resolve(response.json() as User);
+          this.logStat();
           return response.status;
         })
         .catch(this.handleError);
@@ -116,6 +132,7 @@ export class UsersService {
     // To execute observable, it is converted to a promise
     this.http.post('/server/accounts/logout', {})
         .toPromise();
+    this.logStat();
   }
 
   check = (): Promise<boolean> => {
@@ -126,9 +143,9 @@ export class UsersService {
 
   checkLevel = (level: string): Promise<boolean> => {
     return this.currentUser.then((user: User) => {
-      console.log('Request for ' + level);
-      console.log(user);
-      return user != null && user.levelsCurrent.indexOf(level) !== -1;
+      //console.log('Request for ' + level);
+      //console.log(user);
+      return user != null && (user.levelsCurrent.indexOf(level) !== -1 || user.levelsCurrent.indexOf('admin') !==-1);
     });
   }
 

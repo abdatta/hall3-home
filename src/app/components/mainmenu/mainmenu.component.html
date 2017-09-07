@@ -34,7 +34,8 @@
             </a>
             <ul *ngIf="hasDropDown(i)" class="dropdown-menu" style="background-color: #9691E3;text-align: center;" >
               <li *ngFor="let dropdownitem of item['dropdown']">
-                <a *ngIf="!dropdownitem.hasOwnProperty('newtab')" [routerLink]="link(dropdownitem['linkId'])">{{ dropdownitem['title'] }}</a>
+                <a *ngIf="!dropdownitem.hasOwnProperty('newtab') && !dropdownitem.hasOwnProperty('guard')" [routerLink]="link(dropdownitem['linkId'])">{{ dropdownitem['title'] }}</a>
+                <a *ngIf="!dropdownitem.hasOwnProperty('newtab') && dropdownitem.hasOwnProperty('guard')" [routerLink]="link(dropdownitem['linkId'+(logstat?2:1)])">{{ dropdownitem['title'+(logstat?2:1)] }}</a>
                 <a *ngIf="dropdownitem.hasOwnProperty('newtab')" [href]="link(dropdownitem['linkId'])" target="_blank">{{ dropdownitem['title'] }}</a>
               </li>
             </ul>

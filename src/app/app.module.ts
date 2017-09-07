@@ -49,12 +49,15 @@ import { CsCoreComponent } from './components/people/cs-core/cs-core.component';
 import { TopnewsComponent } from './components/topnews/topnews.component';
 import { NewsComponent } from './components/news/news.component';
 import { AddNewsComponent } from './components/news/add-news/add-news.component';
+import { EditNewsComponent } from './components/news/edit-news/edit-news.component';
 import { LoginComponent } from './components/login/login.component';
 import { TilesComponent } from './components/tiles/tiles.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { QuickLinksComponent } from './components/quick-links/quick-links.component';
 import { MapComponent } from './components/map/map.component';
+import { UnsubscribeComponent } from './components/news/unsubscribe/unsubscribe.component';
+import { InventoryComponent } from './components/facilities/sports/inventory/inventory.component';
 
 @NgModule({
   declarations: [
@@ -97,7 +100,10 @@ import { MapComponent } from './components/map/map.component';
     SignupComponent,
     DashboardComponent,
     QuickLinksComponent,
-    MapComponent
+    MapComponent,
+    EditNewsComponent,
+    UnsubscribeComponent,
+    InventoryComponent
   ],
   imports: [
     BrowserModule,

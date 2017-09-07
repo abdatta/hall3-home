@@ -13,7 +13,7 @@ export class UsersGuard implements CanActivate {
     return this.usersService.check()
       .then((result: boolean) => {
         if (!result) {
-          this.router.navigateByUrl('/news/login');
+          this.router.navigateByUrl('/login');
         }
         return result;
       });
@@ -31,7 +31,7 @@ export class LogInGuard implements CanActivate {
     return this.usersService.check()
       .then((result: boolean) => {
         if (result) {
-          this.router.navigateByUrl('/news/dashboard');
+          this.router.navigateByUrl('/dashboard');
         }
         return !result;
       });
@@ -49,7 +49,7 @@ export class AdminGuard implements CanActivate {
     return this.usersService.checkAdmin()
       .then((result: boolean) => {
         if (!result) {
-          this.router.navigateByUrl('/news/login');
+          this.router.navigateByUrl('/login');
         }
         return result;
       });
@@ -69,7 +69,7 @@ export class LevelGuard implements CanActivate {
                 return this.usersService.checkLevel(level)
                   .then((result: boolean) => {
                     if (!result) {
-                      this.router.navigateByUrl('/news/login');
+                      this.router.navigateByUrl('/login');
                     }
                     return result;
                   });

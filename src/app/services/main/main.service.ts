@@ -27,18 +27,20 @@ export class MainService {
       'am' : '/people/academicmentors',
       'clubsecy' : '/people/clubsecretaries',
       'clubcoordi' : '/people/clubcoordinators',
+    'allnotices': '/notices/category/all',
+      'announcements': '/notices/category/announcements',
+      'minutes': 'notices/category/minutes',
+      'otherdocuments': '/notices/category/other_documents',
     'quicks': '/quicklinks',
       'faqs': '/server/files/faqs.pdf',
       'lnf': '/',
       'feedback': '/feedback',
       'messportal': 'http://mess.hall3iitk.com',
-      'addnews': '/news/add',
+      'login': '/login',
+      'dash': '/dashboard',
       'map': '/map',
       'rules': '/server/files/rules.pdf',
-      'messfeedback': 'https://goo.gl/CAu4xv',
-    'profile': '/news/dashboard',
-      'login': '/news/login',
-      'dashboard': '/news/dashboard'
+      'messfeedback': 'https://goo.gl/CAu4xv'
   };
   private mainmenu: Object[] = [
     {
@@ -148,7 +150,30 @@ export class MainService {
           }*/
         ]
     },
-
+      {
+          'title' : 'Notices',
+          'class' : 'dropdown',
+          'linkId' : 'allnotices',
+          'dropdown' :
+              [
+                  {
+                      'title' : 'All',
+                      'linkId' : 'allnotices'
+                  },
+                  {
+                      'title' : 'Announcements',
+                      'linkId' : 'announcements'
+                  },
+                  {
+                      'title' : 'Minutes',
+                      'linkId' : 'minutes'
+                  },
+                  {
+                      'title' : 'Other Documents',
+                      'linkId' : 'otherdocuments'
+                  }
+              ]
+      },
       {
           'title' : 'Quick Links',
           'class' : 'dropdown',
@@ -193,28 +218,14 @@ export class MainService {
                       'linkId' : 'lnf'
                   },*/
                   {
-                      'title' : 'Add News',
-                      'linkId' : 'addnews'
+                      'title1' : 'HEC Login',
+                      'linkId1' : 'login',
+                      'title2' : 'Dashboard',
+                      'linkId2' : 'dash',
+                      'guard': true
                   }
               ]
-      }/*,
-      {
-          'title' : 'Profile',
-          'class' : 'dropdown',
-          'linkId' : 'profile',
-          'guard': true,
-          'dropdown' :
-              [
-                  {
-                      'title' : 'Your Dashboard',
-                      'linkId' : 'dashboard'
-                  },
-                  {
-                      'title' : 'Log Out',
-                      'linkId' : 'logout'
-                  }
-              ]
-      }*/
+      }
   ];
   private info = {
     'facilities' : {

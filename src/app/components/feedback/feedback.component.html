@@ -149,11 +149,14 @@
           </textarea>
           <div class="space-25"></div>
         </div>
-        <div class="col-xs-12">
-            <button type="submit" class="bttn" [disabled]="!askform.valid || sending">{{(sending)?'Sending...':'Send'}}</button>
-            <label><input type="checkbox" value="" (change)="anonymous=!anonymous">&emsp;Go Anonymous</label>
-            <p *ngIf="sent">✔ Sent</p>
-        </div>
+        <div class="col-xs-12" style="display : flex">
+          <button type="submit" class="bttn" [disabled]="!askform.valid || sending">{{(sending)?'Sending...':'Send'}}</button>
+          <label  class="control control--checkbox"
+                  style="margin-left: 25px; margin-top: 10px;">Go Anonymous
+            <input type="checkbox" value="" (change)="anonymous=!anonymous">
+            <div class="control__indicator"></div>
+          </label>
+        </div><!--p *ngIf="sent">✔ Sent</p-->
       </div>
     </form>
 

@@ -79,4 +79,32 @@ export class InfoService {
               }
           });
   }
+
+    getFacilityData = (name: string): Observable<object> => {
+        return this.http.get('/server/data/facilities/' + name)
+            .map((res: Response) => res.json() as object)
+            .catch((error: any) => {
+                if (error.status) {
+                    return Observable.of({
+                        'err': error.status
+                    });
+                } else {
+                    return Observable.throw(error.json().error || error.message || error);
+                }
+            });
+    }
+
+    updateFacilityData = (name: string, data: object[]): Observable<number> => {
+        return this.http.post('/server/data/facilities/' + name + '/update', {
+            'data': data
+        })  .map(res => res.status)
+            .catch((error: any) => {
+                if (error.status) {
+                    return Observable.of(error.status);
+                } else {
+                    return Observable.throw(error.message || error);
+                }
+            });
+    };
+
 }

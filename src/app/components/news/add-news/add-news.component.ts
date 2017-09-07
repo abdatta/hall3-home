@@ -27,12 +27,14 @@ export class AddNewsComponent implements OnInit {
         });
   }
 
-  addNews(head: string, link: string, body: string) {
+  addNews(head: string, link: string, cat: string, to: string, body: string) {
     this.submitted = true;
     this.newsService.addNews({
       'by': this.user.name,
+      'to': to,
       'head': head,
       'body': (this.add)?body:'',
+      'category': cat.split(' '),
       'link': link
     }).subscribe((s: number) => {
         if (s === 200) {
