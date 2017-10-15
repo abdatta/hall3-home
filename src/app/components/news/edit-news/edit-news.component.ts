@@ -14,6 +14,7 @@ export class EditNewsComponent implements OnInit {
 
   user: User;
   submitted = false;
+  add = false;
   data: object;
   olddata: object;
   loaded = false;
@@ -37,6 +38,7 @@ export class EditNewsComponent implements OnInit {
                     this.data = d;
                     this.olddata = d;
                     this.loaded = true;
+                    this.add = d['body'] !== '';
                     this.data['category'] = d['category'].join(' ');
                   }
                 });
@@ -49,7 +51,7 @@ export class EditNewsComponent implements OnInit {
     this.newsService.updateNews({
       'by': this.user.name,
       'head': head,
-      'body': body,
+      'body': (this.add)?body:'',
       'category': cat.split(' '),
       'link': link
     }, this.data['_id'])

@@ -30,14 +30,12 @@ import { ResponseComponent } from './components/feedback/response/response.compo
 import { NewsComponent } from './components/news/news.component';
 import { AddNewsComponent } from './components/news/add-news/add-news.component';
 import { EditNewsComponent } from './components/news/edit-news/edit-news.component';
-import { SingleNewsComponent } from './components/news/single-news/single-news.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { QuickLinksComponent } from './components/quick-links/quick-links.component';
 import { MapComponent } from './components/map/map.component';
 import { UnsubscribeComponent } from './components/news/unsubscribe/unsubscribe.component';
-import { ReportComponent } from './components/feedback/report/report.component';
 
 /* importing guards here */
 import {UsersGuard, LogInGuard, AdminGuard, LevelGuard} from './auth.guard';
@@ -86,7 +84,6 @@ const appRoutes: Routes = [
       { path: 'add', component: AddNewsComponent, canActivate: [ UsersGuard ] },
       { path: 'edit/:id', component: EditNewsComponent, canActivate: [ UsersGuard ] },
       { path: 'category/:cat', component: NewsComponent },
-      { path: 'single/:id', component: SingleNewsComponent },
       { path: 'unsubscribe', component: UnsubscribeComponent }
     ]
   },
@@ -95,7 +92,6 @@ const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [ UsersGuard ] },
   { path: 'feedback', component: FeedbackComponent  },
   { path: 'response/:id', component: ResponseComponent  },
-  { path: 'report/:id', component: ReportComponent  },
   { path: 'quicklinks', component: QuickLinksComponent  },
   { path: 'map', component: MapComponent  }
 ];

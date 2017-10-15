@@ -49,29 +49,26 @@ export class InventoryComponent implements OnInit {
     add() {
         this.inventory.push({
             'name': this.newitem,
-            'available': 1,
-            'total': 1
+            'available': true
         });
         this.newitem = '';
     }
 
     change($event, i: number) {
       let s = $event.target.value;
-      $event.target.value = "";
-      if(s === '+available')
-          this.inventory[i]['available']++;
-      else if(s === '-available')
-          this.inventory[i]['available']--;
-      else if(s === '+total')
-          this.inventory[i]['total']++;
-      else if(s === '-total')
-          this.inventory[i]['total']--;
-      else if(s === 'up')
+      if(s === 'available')
+          this.inventory[i]['available'] = true;
+      else if(s === 'issued')
+          this.inventory[i]['available'] = false;
+      else if(s === 'up') {
+          $event.target.value = this.inventory[i]['available']?'available':'issued';
           this.inventory.splice(i-1, 2, this.inventory[i], this.inventory[i-1]);
-      else if(s === 'down')
+      } else if(s === 'down') {
+          $event.target.value = this.inventory[i]['available']?'available':'issued';
           this.inventory.splice(i, 2, this.inventory[i+1], this.inventory[i]);
-      else if(s === 'delete')
+      } else if(s === 'delete') {
           this.inventory.splice(i, 1);
+      }
     }
 
 }
