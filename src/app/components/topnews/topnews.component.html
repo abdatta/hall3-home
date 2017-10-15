@@ -28,7 +28,10 @@
           <img *ngIf="isNew(news['date'])" src="/images/new.gif" style="height: 15px;width:29px;float: left">{{ news['head'] }}
         </h4>
       <!--Heading-Area/-->
-      <p *ngIf="news['body'].length > 0">{{ news['body'] }}</p>
+      <p>
+        {{ trim(news['body'], 110) }}
+        <a *ngIf="news['body'].length > 110" [routerLink]="'/notices/single/' + news['_id']" style="color: #7b76c8; text-decoration: underline"> more</a>
+      </p>
     </div>
     <!--News-Content-Area/-->
   </div>

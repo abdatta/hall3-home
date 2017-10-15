@@ -9,7 +9,7 @@
       <div class="space-2"></div>
     </div>
   </div>
-  <div class="inventory available" [class.red]="!item.available" [class.green]="item.available" style="text-align: left;">
+  <div class="inventory available" [class.red]="item.available <= 0" [class.green]="item.available > 0" style="text-align: left;">
     <div class="">
       <!--label  class="control control--checkbox"
               style="">{{ item.available?'Available':'Not Available' }}
@@ -20,11 +20,14 @@
               (change)="change($event, i)"
               #status
               required>
-        <option value="available" [selected]="item.available">Available</option>
-        <option value="issued" [selected]="!item.available">Issued</option>
+        <option value="" selected disabled>{{ item.available + ' / ' + item.total }}&nbsp;&nbsp;Available</option>
+        <option value="+available" [disabled]="item.available >= item.total">Increase Available</option>
+        <option value="-available" [disabled]="item.available <= 0">Decrease Available</option>
+        <option value="+total">Increase Total</option>
+        <option value="-total" [disabled]="item.total <= 1">Decrease Total</option>
         <option value="up" [disabled]="i===0">Move Up</option>
         <option value="down" [disabled]="i===inventory.length-1">Move Down</option>
-        <option value="delete">Delete</option>
+        <option value="delete">Delete Item</option>
       </select>
     </div>
   </div>

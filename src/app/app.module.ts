@@ -26,6 +26,8 @@ import { MessComponent as MessCommitteeComponent } from './components/administra
 import { MaintenanceComponent } from './components/administration/maintenance/maintenance.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
+import { ResponseComponent } from './components/feedback/response/response.component';
+import { ReportComponent } from './components/feedback/report/report.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { InfoComponent } from './components/info/info.component';
@@ -44,12 +46,12 @@ import { SGComponent } from './components/people/sg/sg.component';
 import { AMComponent } from './components/people/am/am.component';
 import { ClubSecyComponent } from './components/people/club-secy/club-secy.component';
 import { ClubCoordiComponent } from './components/people/club-coordi/club-coordi.component';
-import { ResponseComponent } from './components/feedback/response/response.component';
 import { CsCoreComponent } from './components/people/cs-core/cs-core.component';
 import { TopnewsComponent } from './components/topnews/topnews.component';
 import { NewsComponent } from './components/news/news.component';
 import { AddNewsComponent } from './components/news/add-news/add-news.component';
 import { EditNewsComponent } from './components/news/edit-news/edit-news.component';
+import { SingleNewsComponent } from './components/news/single-news/single-news.component';
 import { LoginComponent } from './components/login/login.component';
 import { TilesComponent } from './components/tiles/tiles.component';
 import { SignupComponent } from './components/signup/signup.component';
@@ -103,7 +105,9 @@ import { InventoryComponent } from './components/facilities/sports/inventory/inv
     MapComponent,
     EditNewsComponent,
     UnsubscribeComponent,
-    InventoryComponent
+    InventoryComponent,
+    SingleNewsComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,
