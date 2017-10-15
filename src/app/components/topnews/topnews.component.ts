@@ -29,7 +29,7 @@ export class TopnewsComponent implements OnInit {
     mouseDrag: true,
     touchDrag: true,
     autoplay: true,
-    autoplayTimeout: 5000,
+    autoplayTimeout: 7000,
     rewind: true,
     autoplaySpeed: 800,
     autoplayHoverPause: true
@@ -88,4 +88,14 @@ export class TopnewsComponent implements OnInit {
         '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
     return pattern.test(str);
   }
+
+  trim(s: string, l: number) {
+    if(s.length <= l)
+      return s;
+    else {
+      let t = s.slice(0,l+1);
+      return t.slice(0,t.lastIndexOf(' ')) + '...';
+    }
+  }
+  
 }

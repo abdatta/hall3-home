@@ -89,11 +89,10 @@
             </ul>
           </div>
           <!--Sidebar-tags-list/-->
-          <div class="space-10"></div>
         </aside>
         <!--Sidebar/-->
       </div>
-      <div class="col-xs-12 col-sm-9 pull-right" *ngIf="loaded">
+      <div class="col-xs-12 col-sm-9 pull-right">
         <div class="space-25"></div>
         <div class="col-xs-12" *ngIf="success === 3">
           <div class="space-20"></div>
@@ -119,9 +118,13 @@
           </div>
         </div>
         <div class="space-10"></div>
-        <div *ngFor="let pair of data" class="row">
-          <div *ngFor="let news of pair" class="col-xs-12 col-sm-6 wow fadeInUp" data-wow-delay="0.2s">
-            <div class="panel single-blog">
+        <div *ngIf="!loaded" style="vertical-align:middle; text-align:center">
+          <div class="space-30"></div>
+          <img src="../../../../images/loading.gif" style="width: 30%">
+        </div>
+        <div style="display: flex; flex-wrap: wrap;" *ngIf="loaded">
+          <div *ngFor="let news of data" style="margin-bottom: 10px;" class="col-xs-12 col-sm-6 wow fadeInUp" data-wow-delay="0.2s">
+            <div class="panel single-blog" style="margin-bottom: 0; height: 90%;">
               <div class="padding-20">
                 <ul class="list-unstyled list-inline">
                   <li><span class="ti-user"></span>{{ ' By: ' + news['by'] }}</li>
@@ -140,7 +143,10 @@
                   <img *ngIf="isNew(news['date'])" src="/images/new.gif" style="height: 15px;width:29px;float: left">{{ news['head'] }}
                 </h4>
                 <!--Heading-Area/-->
-                <p *ngIf="news['body'].length > 0">{{ news['body'] }}</p>
+                <p>
+                  {{ trim(news['body'],170) }}
+                  <a *ngIf="news['body'].length > 170" [routerLink]="'/notices/single/' + news['_id']" style="color: #7b76c8; text-decoration: underline"> more</a>
+                </p>
               </div>
             </div>
             <div class="space-30"></div>

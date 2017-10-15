@@ -8,7 +8,7 @@
     </div>
     <div class="row" *ngIf="!false">
       <div class="col-xs-12 col-sm-8 col-sm-offset-2 padding30">
-        <div class="space-60"></div>
+        <div class="space-30"></div>
         <h5>Posting As: &emsp;<span>{{ user.name }}</span></h5>
         <div *ngIf="head.touched && head.errors && head.errors.required" style="font-size: 11px; color: red">*Required</div>
         <div class="space-20" *ngIf="!(head.touched && head.errors)"></div>
@@ -60,19 +60,23 @@
           <option value="y16 y15">Y16 and Y15</option>
           <option value="y15 y17">Y15 and Y17</option>
         </select>
-        <div class="space-20"></div>
-        <label><input type="checkbox" (change)="add=!add">&emsp;Add a short description</label>
-        <textarea [class.invisible]="!add"
-                  class="form-control"
-                  placeholder="Description here... (Max 120 characters)"
+        <div *ngIf="body.touched && body.errors && body.errors.required" style="font-size: 11px; color: red">*Required</div>
+        <div class="space-20" *ngIf="!(body.touched && body.errors)"></div>
+        <textarea class="form-control"
+                  placeholder="Description here..."
                   rows="3"
-                  maxlength="120"
-                  #body
-        ></textarea>
+                  ngModel
+                  #body="ngModel"
+                  required>
+        </textarea>
         <div class="space-20"></div>
         <button class="bttn"
                 (click)="addNews(head.value,link.value,cat.value,to.value,body.value)"
-                [disabled]="submitted || (cat.errors && cat.errors.required) || (head.errors && head.errors.required) || (to.errors && to.errors.required)"
+                [disabled]="submitted ||
+                            (cat.errors && cat.errors.required) ||
+                            (head.errors && head.errors.required) ||
+                            (to.errors && to.errors.required) ||
+                            (body.errors && body.errors.required)"
         >{{ (submitted)?'Adding...':'Add Notice' }}</button>
         <button class="bttn" routerLink="/dashboard" style="float: right">Cancel</button>
       </div>

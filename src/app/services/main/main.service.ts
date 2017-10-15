@@ -20,7 +20,7 @@ export class MainService {
       'maintc' : '/administration/maintenance',
       'eventsc' : '/administration/activity',
       'advisoryc' : '/administration/cdc',
-      'constitution': 'https://goo.gl/w5tSpW',
+      'constitution': 'https://drive.google.com/file/d/0B0R9GQGvvy84ZnNDWnB4QWZhNUU/view',
     'people' : '/people',
       'cs-core': '/people/cscoreteam',
       'sg' : '/people/studentguides',
@@ -117,7 +117,7 @@ export class MainService {
             'linkId' : 'eventsc'
           },
           {
-              'title' : 'Constitution Drafting Committee',
+              'title' : 'Advisory Committee',
               'linkId' : 'advisoryc'
           }
         ]
@@ -340,7 +340,7 @@ export class MainService {
             'linkId' : 'eventsc'
           },
           {
-              'name' : 'Constitution Drafting Committee',
+              'name' : 'Advisory Committee',
               'id' : 'advisory',
               'linkId' : 'advisoryc'
           }
