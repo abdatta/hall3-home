@@ -24,12 +24,12 @@
         <div *ngIf="!loaded" style="vertical-align:middle; text-align:center">
           <img src="../../../../images/loading.gif" style="width: 30%">
         </div>
-        <div *ngIf="loaded">
+        <div *ngIf="loaded" style="display: flex; flex-wrap: wrap;">
           <div *ngFor="let news of data; let i=index;"
+               style="margin-bottom: 10px;"
                class="col-xs-12 col-sm-4 wow fadeInUp"
-               [attr.data-wow-delay]="(0.2*(i%2 + 1))+'s'"
-               style="margin-bottom: -250px;padding-bottom: 250px;">
-            <div class="panel single-blog">
+               attr.data-wow-delay="0.2">
+            <div class="panel single-blog" style="margin-bottom: 0; height: 90%;">
               <div class="padding-20" style="text-align: left;">
                 <ul class="list-unstyled list-inline">
                   <li><span class="ti-calendar"></span>{{ ' ' + getFormattedDate(news['date']) }}</li>
@@ -53,7 +53,10 @@
                   <img *ngIf="isNew(news['date'])" src="/images/new.gif" style="height: 15px;width:29px;float: left">{{ news['head'] }}
                 </h4>
                 <!--Heading-Area/-->
-                <p *ngIf="news['body'].length > 0">{{ news['body'] }}</p>
+                <p>
+                  {{ trim(news['body'],170) }}
+                  <a *ngIf="news['body'].length > 170" [routerLink]="'/notices/single/' + news['_id']" style="color: #7b76c8; text-decoration: underline"> more</a>
+                </p>
                 <ul class="list-unstyled list-inline">
                   <li><b>Category:</b> {{ titlize(news['category'].join(' ')) }}</li>
                 </ul>

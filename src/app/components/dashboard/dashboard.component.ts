@@ -74,4 +74,13 @@ export class DashboardComponent implements OnInit {
     this.router.navigateByUrl('/');
   }
 
+    trim(s: string, l: number) {
+        if(s.length <= l)
+            return s;
+        else {
+            let t = s.slice(0,l+1);
+            return t.slice(0,t.lastIndexOf(' ')) + '...';
+        }
+    }
+
 }

@@ -69,5 +69,16 @@ export class FeedbackService {
                 return Observable.throw(error.json().error || error.message || error);
             }
         });
-};
+    };
+    reportQuery = (id: string): Observable<number> => {
+        return this.http.get('/server/askthehec/report/' + id)
+            .map(res => res.status)
+            .catch((error: any) => {
+                if (error.status) {
+                    return Observable.of(error.status);
+                } else {
+                    return Observable.throw(error.message || error);
+                }
+            });
+    };
 }

@@ -1,0 +1,47 @@
+.tab {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    border: 1px solid white;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.tab h5, .tab small
+{
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    color: #7b7b7b;
+}
+
+.tab:hover, .activeTab
+{
+    background-color: #7c77c9;
+}
+.tab:hover h5, .tab:hover small, .activeTab h5, .activeTab small
+{
+    color: white;
+}
+
+.tag {
+    background-color: darkgray;
+    border-radius: 20px;
+    padding: 5px 10px;
+    color: white;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+.tag:hover{
+    background-color: gray;
+    cursor: pointer;
+}

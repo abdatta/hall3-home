@@ -16,11 +16,11 @@
         <div class="space-2"></div>
       </div>
     </div>
-    <div class="inventory available" [class.red]="!item.available" [class.green]="item.available" style="text-align: left;">
+    <div class="inventory available" [class.red]="item.available <= 0" [class.green]="item.available > 0" style="text-align: left;">
       <div class="inside" style="display: flex;" >
         <div style="flex-grow: 1;"></div>
         <label  class="control control--checkbox">
-          {{ item.available?'Available':'Issued' }}
+          {{ item.available + ' / ' + item.total }}&nbsp;&nbsp;Available
         </label>
         <div style="flex-grow: 1;"></div>
       </div>
