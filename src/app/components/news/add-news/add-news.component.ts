@@ -14,6 +14,7 @@ export class AddNewsComponent implements OnInit {
 
   user: User;
   submitted = false;
+  add = false;
 
   constructor(private newsService: NewsService,
               private loginService: UsersService,
@@ -32,7 +33,7 @@ export class AddNewsComponent implements OnInit {
       'by': this.user.name,
       'to': to,
       'head': head,
-      'body': body,
+      'body': (this.add)?body:'',
       'category': cat.split(' '),
       'link': link
     }).subscribe((s: number) => {
@@ -44,4 +45,5 @@ export class AddNewsComponent implements OnInit {
         }
       });
   }
+
 }

@@ -48,7 +48,7 @@ export class NewsComponent implements OnInit {
             if (d.hasOwnProperty('err')) {
               this.data = [{}];
             } else {
-              this.data = d;
+              this.data = this.pairData(d);
               this.loaded = true;
             }
           });
@@ -79,6 +79,17 @@ export class NewsComponent implements OnInit {
     });
   }
 
+  pairData(rawdata: object[]): object[] {
+      let paireddata: object[] = [];
+      for(let i=0; i<rawdata.length; i+=2) {
+          let pair: object[] = [];
+          pair.push(rawdata[i]);
+          if(i+1<rawdata.length) pair.push(rawdata[i+1]);
+          paireddata.push(pair);
+      }
+      return paireddata;
+  }
+
   subscribe(id: string) {
       this.submitted = true;
       for(let cat of this.categories) {
@@ -97,14 +108,5 @@ export class NewsComponent implements OnInit {
               });
       }
   }
-
-    trim(s: string, l: number) {
-        if(s.length <= l)
-            return s;
-        else {
-            let t = s.slice(0,l+1);
-            return t.slice(0,t.lastIndexOf(' ')) + '...';
-        }
-    }
 
 }

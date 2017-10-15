@@ -54,9 +54,10 @@
       <!--Team-page-title->
     </div>
     <div class="space-60"></div-->
-    <div class="img-full-width" style="display: flex; flex-wrap: wrap;">
+    <div class="row img-full-width">
       <!--Single-team-->
-        <div *ngFor="let member of hec; let i=index;" class="col-xs-6 col-sm-3 wow fadeIn" [attr.data-wow-delay]="((2 + i)/10.0) + 's'">
+      <div *ngFor="let member of hec; let i=index;" >
+        <div class="col-xs-6 col-sm-3 wow fadeIn" [attr.data-wow-delay]="((2 + i)/10.0) + 's'">
           <div class="team-image relative ">
             <div class="relative">
               <img [src]="'/server/' + member['photo']" [alt]="member['name'] + '\'s photo'">
@@ -68,6 +69,7 @@
           </div>
           <div class="space-30"></div>
         </div>
+      </div>
       <!--Single-team/-->
     </div>
     <div class="row">

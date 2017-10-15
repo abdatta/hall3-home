@@ -32,11 +32,6 @@
 }
 
 .available {
-    width: 28%;
+    width: 25%;
 }
 
-@media (max-width: 768px) {
-    .available {
-        width: 40%;
-    }
-}
