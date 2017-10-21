@@ -1,12 +1,10 @@
-<div *ngIf="!loaded" style="vertical-align:middle; text-align:center">
-  <img src="../../../../images/loading.gif" style="width: 30%">
-</div>
-<div class="blog-details" [class.invisible]="!loaded">
+<div class="blog-details">
   <h1>Student Guides</h1>
   <div class="space-20"></div>
   <p>Juniors are always closest to and rely the most on their Student Guides. Being the first person they get to know in the campus, Student Guides are always the first person of contact in case of any joy, sadness, problem, query or success of the juniors.</p>
   <div class="space-10"></div>
   <h4>List of Student Guides</h4>
   <div class="space-10"></div>
-  <app-tiles [tiles]="sgs"></app-tiles>
+  <app-loader [show]="!loaded"></app-loader>
+  <app-tiles [class.invisible]="!loaded" [tiles]="sgs"></app-tiles>
 </div>

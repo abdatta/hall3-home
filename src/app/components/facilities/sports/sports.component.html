@@ -16,7 +16,11 @@
         <div class="space-2"></div>
       </div>
     </div>
-    <div class="inventory available" [class.red]="item.available <= 0" [class.green]="item.available > 0" style="text-align: left;">
+    <div class="inventory available"
+         [class.red]="item.available <= 0"
+         [class.yellow]="item.available > 0 && item.available < item.total"
+         [class.green]="item.available >= item.total"
+         style="text-align: left;">
       <div class="inside" style="display: flex;" >
         <div style="flex-grow: 1;"></div>
         <label  class="control control--checkbox">

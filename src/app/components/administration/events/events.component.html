@@ -1,14 +1,12 @@
-<div *ngIf="!loaded" style="vertical-align:middle; text-align:center">
-  <img src="../../../../images/loading.gif" style="width: 30%">
-</div>
-<div class="blog-details" [class.invisible]="!loaded">
+<div class="blog-details">
   <h1>Students’ Activity Committee</h1>
   <div class="space-20"></div>
   <p>The Students’ Activity Committee is a team of student volunteers who are responsible for the overall conductance of the intra and inter-hostel co-curricular events. These volunteers work hard to plan and execute each and every small action required for the students’ co-curricular events. It is because of volunteers like these that the prodigious culture of Hall-3 has been passed over the years.</p>
   <div class="space-10"></div>
   <h4>Members</h4>
   <div class="space-10"></div>
-  <app-tiles [tiles]="members"></app-tiles>
+  <app-loader [show]="!loaded"></app-loader>
+  <app-tiles [class.invisible]="!loaded" [tiles]="members"></app-tiles>
   <div class="space-30"></div>
   <div class="col-xs-12 text-center">
     <a href="https://goo.gl/3ClCP6" target="_blank" class="bttn">Minutes</a>

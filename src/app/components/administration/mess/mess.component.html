@@ -1,14 +1,12 @@
-<div *ngIf="!loaded" style="vertical-align:middle; text-align:center">
-  <img src="../../../../images/loading.gif" style="width: 30%">
-</div>
-<div class="blog-details" [class.invisible]="!loaded">
+<div class="blog-details">
   <h1>Mess Committee</h1>
   <div class="space-20"></div>
   <p>The Mess Committee is a team of student volunteers who are responsible for the overall functioning of the mess. In case you find any maintenance issue in the mess, the food quality not up to the mark, any issue with your mess bill or if you have any suggestion for the mess menu, feel free to contact any member of this committee. Also, don’t forget to praise the committee if you like the food!</p>
   <div class="space-10"></div>
   <h4>Members</h4>
   <div class="space-10"></div>
-  <app-tiles [tiles]="members"></app-tiles>
+  <app-loader [show]="!loaded"></app-loader>
+  <app-tiles [class.invisible]="!loaded" [tiles]="members"></app-tiles>
   <div class="space-30"></div>
   <div class="col-xs-12 text-center">
     <a href="https://drive.google.com/drive/folders/0B-QuZE-QyeqWcGhSSFpJOW8wMFE" target="_blank" class="bttn">Minutes</a>

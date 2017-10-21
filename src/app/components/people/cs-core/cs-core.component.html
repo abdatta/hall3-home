@@ -1,20 +1,21 @@
-<div *ngIf="!loaded" style="vertical-align:middle; text-align:center">
-  <img src="../../../../images/loading.gif" style="width: 30%">
-</div>
-<div class="blog-details" [class.invisible]="!loaded">
+<div class="blog-details">
   <h1>Counselling Service Core Team</h1>
   <div class="space-20"></div>
   <p></p>
   <div class="space-10"></div>
   <h4>Coordinators</h4>
   <div class="space-10"></div>
-  <app-tiles [tiles]="coordis"></app-tiles>
+  <app-loader [show]="!loaded"></app-loader>
+  <app-tiles [class.invisible]="!loaded" [tiles]="coordis"></app-tiles>
   <div class="space-10"></div>
   <h4>Team Operations</h4>
   <div class="space-10"></div>
-  <app-tiles [tiles]="ops"></app-tiles>
+  <app-loader [show]="!loaded"></app-loader>
+  <app-tiles [class.invisible]="!loaded" [tiles]="ops"></app-tiles>
   <div class="space-10"></div>
   <h4>Team Academics</h4>
   <div class="space-10"></div>
-  <app-tiles [tiles]="acads"></app-tiles>
+  <app-loader [show]="!loaded"></app-loader>
+  <app-tiles [class.invisible]="!loaded" [tiles]="acads"></app-tiles>
 </div>
+

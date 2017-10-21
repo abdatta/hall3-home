@@ -1,14 +1,12 @@
-<div *ngIf="!loaded" style="vertical-align:middle; text-align:center">
-  <img src="../../../../images/loading.gif" style="width: 30%">
-</div>
-<div class="blog-details" [class.invisible]="!loaded">
+<div class="blog-details">
   <h1>Advisory Committee</h1>
   <div class="space-20"></div>
   <p>The advisory committee shall be the supreme advising and grievance remedial committee of the hall. The members of the advisory committee shall be those active residents of the hall who are well-acquainted with the constitution of the hall and will ensure that it is being followed by all at all times.</p>
   <div class="space-10"></div>
   <h4>Members</h4>
   <div class="space-10"></div>
-  <app-tiles [tiles]="members"></app-tiles>
+  <app-loader [show]="!loaded"></app-loader>
+  <app-tiles [class.invisible]="!loaded" [tiles]="members"></app-tiles>
   <div class="space-30"></div>
   <div class="col-xs-12 text-center">
     <a href="https://drive.google.com/file/d/0B0R9GQGvvy84ZnNDWnB4QWZhNUU/view" target="_blank" class="bttn">Constitution</a>

@@ -21,6 +21,11 @@
     color: green;
 }
 
+.yellow {
+    border: 3px solid orange;
+    color: orange;
+}
+
 .available {
     width: 25%;
 }

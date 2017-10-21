@@ -1,6 +1,3 @@
-<div *ngIf="!loaded" style="vertical-align:middle; text-align:center">
-  <img src="../../../../images/loading.gif" style="width: 30%">
-</div>
 <div class="blog-details" [class.invisible]="!loaded">
   <h1 *ngIf="!embed">Hall Executive Committee</h1>
   <div *ngIf="!embed" class="space-20"></div>
@@ -10,6 +7,9 @@
   <div *ngIf="!embed" class="space-10"></div>
   <h4 *ngIf="!embed">Student Members</h4>
   <div *ngIf="!embed" class="space-20"></div>
+  <div *ngIf="!loaded" style="vertical-align:middle; text-align:center">
+    <img src="../../../../images/loading.gif" style="width: 30%">
+  </div>
   <app-tiles [tiles]="members"></app-tiles>
   <div class="col-xs-12 text-center">
     <a href="/server/files/rules.pdf" target="_blank" class="bttn">Hall Rules</a>

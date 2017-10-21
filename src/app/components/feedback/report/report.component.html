@@ -3,7 +3,8 @@
   <h3 style="text-align: center;">
     <span *ngIf="status === 0">Reporting...</span>
     <span *ngIf="status === 200">Reported to Admin.</span>
-    <span *ngIf="status !== 200 && status !== 0">Oops! Some error occurred.</span>
+    <span *ngIf="status === 404">The Admin has already removed this query.</span>
+    <span *ngIf="status !== 200 && status !== 404 && status !== 0">Oops! Some error occurred.</span>
   </h3>
   <h5 style="text-align: center;">
     <span *ngIf="status === 200">Admin will verify and remove the query if found inappropriate.</span>

@@ -24,7 +24,6 @@ export class CsCoreComponent implements OnInit {
           this.coordis = [{}];
           this.ops = [{}];
           this.acads = [{}];
-          this.loaded = true;
         } else {
           this.title = d['title'];
           this.coordis = d['coordi'];
