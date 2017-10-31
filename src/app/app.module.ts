@@ -60,6 +60,9 @@ import { QuickLinksComponent } from './components/quick-links/quick-links.compon
 import { MapComponent } from './components/map/map.component';
 import { UnsubscribeComponent } from './components/news/unsubscribe/unsubscribe.component';
 import { InventoryComponent } from './components/facilities/sports/inventory/inventory.component';
+import { LoaderComponent } from './components/loader/loader.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { MinutesRevealerComponent } from './components/minutes-revealer/minutes-revealer.component';
 
 @NgModule({
   declarations: [
@@ -107,7 +110,10 @@ import { InventoryComponent } from './components/facilities/sports/inventory/inv
     UnsubscribeComponent,
     InventoryComponent,
     SingleNewsComponent,
-    ReportComponent
+    ReportComponent,
+    LoaderComponent,
+    NotFoundComponent,
+    MinutesRevealerComponent
   ],
   imports: [
     BrowserModule,

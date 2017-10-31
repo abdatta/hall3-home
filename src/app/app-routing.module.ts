@@ -38,6 +38,7 @@ import { QuickLinksComponent } from './components/quick-links/quick-links.compon
 import { MapComponent } from './components/map/map.component';
 import { UnsubscribeComponent } from './components/news/unsubscribe/unsubscribe.component';
 import { ReportComponent } from './components/feedback/report/report.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 /* importing guards here */
 import {UsersGuard, LogInGuard, AdminGuard, LevelGuard} from './auth.guard';
@@ -67,7 +68,7 @@ const appRoutes: Routes = [
       { path: 'mess', component: MessCommitteeComponent },
       { path: 'maintenance', component: MaintenanceComponent },
       { path: 'activity', component: EventsComponent },
-      { path: 'cdc', component: AdvisoryComponent }
+      { path: 'advisory', component: AdvisoryComponent }
     ]
   },
   { path: 'people', component: InfoComponent , data: { infoId: 'people' },
@@ -97,7 +98,8 @@ const appRoutes: Routes = [
   { path: 'response/:id', component: ResponseComponent  },
   { path: 'report/:id', component: ReportComponent  },
   { path: 'quicklinks', component: QuickLinksComponent  },
-  { path: 'map', component: MapComponent  }
+  { path: 'map', component: MapComponent  },
+  { path: '**' , component: NotFoundComponent }
 ];
 
 @NgModule({

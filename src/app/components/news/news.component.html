@@ -99,7 +99,7 @@
           <p style="text-align: center;">Thank you for subscribing.</p>
         </div>
         <div *ngIf="success < 3" class="col-xs-12">
-          <div *ngIf="email.touched && email.errors && email.errors.required" style="font-size: 11px; color: red">*Required</div>
+          <!--div *ngIf="email.touched && email.errors && email.errors.required" style="font-size: 11px; color: red">*Required</div-->
           <div *ngIf="email.touched && email.errors && email.errors.pattern" style="font-size: 11px; color: orange">*Invalid email</div>
           <div class="space-20" *ngIf="!(email.touched && email.errors)"></div>
           <div style="display: flex">

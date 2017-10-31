@@ -8,8 +8,5 @@
   <app-loader [show]="!loaded"></app-loader>
   <app-tiles [class.invisible]="!loaded" [tiles]="members"></app-tiles>
   <div class="space-30"></div>
-  <div class="col-xs-12 text-center">
-    <a href="https://goo.gl/OzAiUI" target="_blank" class="bttn">Minutes</a>
-  </div>
-  <div class="space-30"></div>
+  <app-minutes-revealer category="maintenance"></app-minutes-revealer>
 </div>

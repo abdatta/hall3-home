@@ -46,7 +46,7 @@ export class NewsService {
             });
     };
 
-    getCatNews = (cat: string): Observable<object[]> => {
+    getCatNews = (cat: string | string[]): Observable<object[]> => {
         return this.http.post('/server/news/query', {
             'category': cat
         })

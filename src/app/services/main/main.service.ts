@@ -19,7 +19,7 @@ export class MainService {
       'messc' : '/administration/mess',
       'maintc' : '/administration/maintenance',
       'eventsc' : '/administration/activity',
-      'advisoryc' : '/administration/cdc',
+      'advisoryc' : '/administration/advisory',
       'constitution': 'https://drive.google.com/file/d/0B0R9GQGvvy84ZnNDWnB4QWZhNUU/view',
     'people' : '/people',
       'cs-core': '/people/cscoreteam',

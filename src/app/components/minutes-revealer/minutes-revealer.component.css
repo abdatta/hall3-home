@@ -1,0 +1,5 @@
+.minutes {
+	transition: height .8s;
+	height: 0px;
+	overflow: hidden;
+}

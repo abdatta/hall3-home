@@ -1,0 +1,36 @@
+<div class="col-xs-12 text-center">
+  <button class="bttn" (click)="revealer()">{{ reveal?(loaded?'Hide':'Loading'):'Show' }} Minutes</button>
+</div>
+<div class="space-10"></div>
+<div id="board" [attr.show]="reveal" class="minutes">
+  <div style="display: flex; flex-wrap: wrap;" *ngIf="loaded">
+    <div *ngFor="let news of data" style="margin-bottom: 10px;" class="col-xs-12 col-sm-6">
+      <div class="panel single-blog" style="margin-bottom: 0; height: 90%;">
+        <div class="padding-20">
+          <ul class="list-unstyled list-inline">
+            <li><span class="ti-user"></span>{{ ' By: ' + news['by'] }}</li>
+            <li><span class="ti-calendar"></span>{{ ' ' + getFormattedDate(news['date']) }}</li>
+          </ul>
+          <div class="space-10"></div>
+          <!--Heading-Area-->
+          <!--In-case-of-a-link-->
+          <a *ngIf="isURL(news['link'])" [href]="news['link']" target="_blank">
+            <h4>
+              <img *ngIf="isNew(news['date'])" src="/images/new.gif" style="height: 15px;width:29px;float: left">{{ news['head'] }}
+            </h4>
+          </a>
+          <!--In-case-of-no-link-->
+          <h4 *ngIf="!isURL(news['link'])">
+            <img *ngIf="isNew(news['date'])" src="/images/new.gif" style="height: 15px;width:29px;float: left">{{ news['head'] }}
+          </h4>
+          <!--Heading-Area/-->
+          <p>
+            {{ trim(news['body'],170) }}
+            <a *ngIf="news['body'].length > 170" [routerLink]="'/notices/single/' + news['_id']" style="color: #7b76c8; text-decoration: underline"> more</a>
+          </p>
+        </div>
+      </div>
+      <div class="space-30"></div>
+    </div>
+  </div>
+</div>
