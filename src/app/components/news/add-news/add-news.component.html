@@ -19,25 +19,28 @@
                 placeholder="Heading"
                 autofocus
                 required
-                ngModel
+                [(ngModel)]="data['head']"
                 maxlength="60"
                 #head="ngModel">
-        <div class="space-20"></div>
-        <input
+        <div *ngIf="link.touched && link.errors && link.errors.pattern" style="font-size: 11px; color: orange">*Invalid link</div>
+          <div class="space-20" *ngIf="!(link.touched && link.errors)"></div>
+        <input  [(ngModel)]="data['link']"
                 type="text"
                 class="form-control"
                 name="link"
                 placeholder="Link"
+                pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)" 
                 #link>
         <div *ngIf="cat.touched && cat.errors && cat.errors.required" style="font-size: 11px; color: red">*Required</div>
         <div class="space-20" *ngIf="!(cat.touched && cat.errors)"></div>
         <select class="form-control"
                 name="cat"
-                ngModel
+                [(ngModel)]="data['cat']"
                 #cat="ngModel"
                 required>
           <option value="" disabled selected>Choose category</option>
           <option value="announcements">Announcements</option>
+          <option value="lnf">Lost & Found</option>
           <option value="mess minutes">Mess Committee Minutes</option>
           <option value="maintenance minutes">Maintenance Committee Minutes</option>
           <option value="sac minutes">Students' Activity Committee Minutes</option>
@@ -49,7 +52,7 @@
         <div class="space-20" *ngIf="!(to.touched && to.errors)"></div>
         <select class="form-control"
                 name="to"
-                ngModel
+                [(ngModel)]="data['to']"
                 #to="ngModel"
                 required>
           <option value="" disabled selected>Choose target audience</option>
@@ -65,8 +68,9 @@
         <div class="space-20" *ngIf="!(body.touched && body.errors)"></div>
         <textarea class="form-control"
                   placeholder="Description here..."
+                  autosize
                   rows="3"
-                  ngModel
+                  [(ngModel)]="data['body']"
                   #body="ngModel"
                   required>
         </textarea>
@@ -76,6 +80,7 @@
                 [disabled]="submitted ||
                             (cat.errors && cat.errors.required) ||
                             (head.errors && head.errors.required) ||
+                            (link.errors && link.errors.pattern) ||
                             (to.errors && to.errors.required) ||
                             (body.errors && body.errors.required)"
         >{{ (submitted)?'Adding...':'Add Notice' }}</button>

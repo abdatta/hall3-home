@@ -76,4 +76,25 @@ export class FeedbackComponent implements OnInit {
         this.sending = false;
       });
   }
+
+  lnfsend(what: string, when: string, where: string, des: string, link: string, contact: string, type: string, form: any) {
+    this.sending = true;
+    this.feedbackService.sendlnf({
+      what: what,
+      when: when,
+      where: where,
+      des: des,
+      link: link,
+      contact: contact,
+      type: (type === 'found')
+    }).subscribe((s: number) => {
+        if (s !== 200) {
+          this.error = 'Error: ' + s;
+        } else {
+          this.sent = true;
+          form.reset();
+        }
+        this.sending = false;
+      });
+  }
 }

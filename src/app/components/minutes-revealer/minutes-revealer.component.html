@@ -1,5 +1,5 @@
 <div class="col-xs-12 text-center">
-  <button class="bttn" (click)="revealer()">{{ reveal?(loaded?'Hide':'Loading'):'Show' }} Minutes</button>
+  <button class="bttn" (click)="revealer()" [disabled]="reveal && !loaded">{{ reveal?(loaded?'Hide':'Loading'):'Show' }} Minutes</button>
 </div>
 <div class="space-10"></div>
 <div id="board" [attr.show]="reveal" class="minutes">

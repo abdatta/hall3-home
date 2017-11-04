@@ -15,6 +15,7 @@ export class NewsComponent implements OnInit {
   categories: string[] = [
       'all',
       'announcements',
+      'lnf',
       'minutes',
       'other_documents'
   ];
@@ -74,6 +75,7 @@ export class NewsComponent implements OnInit {
   }
 
   titlize(str: string) {
+    if(str === 'lnf') return 'Lost & Found'
     return str.replace(new RegExp('_', "g"),' ').replace(/(\w)(\w*)/g, function (_, i, r) {
       return i.toUpperCase() + (r != null ? r : "");
     });

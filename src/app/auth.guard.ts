@@ -9,11 +9,11 @@ export class UsersGuard implements CanActivate {
     private usersService: UsersService,
     private router: Router) {}
 
-  canActivate(): Promise<boolean> {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
     return this.usersService.check()
       .then((result: boolean) => {
         if (!result) {
-          this.router.navigateByUrl('/login');
+          this.router.navigateByUrl('/login?next=' + encodeURIComponent(state.url));
         }
         return result;
       });

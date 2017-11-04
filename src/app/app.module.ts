@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { OwlModule } from 'angular-owl-carousel';
+import { Autosize } from 'ng-autosize';
 
 /* importing services here */
 import { MainService } from './services/main/main.service';
@@ -66,6 +67,7 @@ import { MinutesRevealerComponent } from './components/minutes-revealer/minutes-
 
 @NgModule({
   declarations: [
+    Autosize,
     AppComponent,
     MainmenuComponent,
     AboutComponent,

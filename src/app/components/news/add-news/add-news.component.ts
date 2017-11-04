@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 
 import { NewsService } from '../../../services/news/news.service';
 import { UsersService } from '../../../services/users/users.service';
@@ -14,9 +14,17 @@ export class AddNewsComponent implements OnInit {
 
   user: User;
   submitted = false;
+  data = {
+      'to': '',
+      'head': 'Lost Wallet',
+      'body': '',
+      'cat': '',
+      'link': ''
+    }
 
   constructor(private newsService: NewsService,
               private loginService: UsersService,
+              private route: ActivatedRoute,
               private router: Router) {}
 
   ngOnInit() {
@@ -24,6 +32,13 @@ export class AddNewsComponent implements OnInit {
         .then((user: User) => {
           this.user = user;
         });
+    this.route.queryParams.subscribe((params: Params) => {
+      if(params['head']) this.data['head'] = params['head'];
+      if(params['to']) this.data['to'] = params['to'];
+      if(params['cat']) this.data['cat'] = params['cat'];
+      if(params['link']) this.data['link'] = params['link'];
+      if(params['body']) this.data['body'] = params['body'];
+    });
   }
 
   addNews(head: string, link: string, cat: string, to: string, body: string) {

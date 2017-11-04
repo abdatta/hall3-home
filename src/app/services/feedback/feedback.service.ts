@@ -11,6 +11,7 @@ import 'rxjs/add/operator/toPromise';
 import { Http, Response, RequestOptions } from '@angular/http';
 
 import { Query } from '../../models/query';
+import { LnFData } from '../../models/lnfdata';
 
 @Injectable()
 export class FeedbackService {
@@ -81,4 +82,16 @@ export class FeedbackService {
                 }
             });
     };
+
+    sendlnf = (data: LnFData): Observable<number> => {
+      return this.http.post('/server/askthehec/lnf', data )
+        .map(res => res.status)
+        .catch((error: any) => {
+          if (error.status) {
+            return Observable.of(error.status);
+          } else {
+            return Observable.throw(error.message || error);
+          }
+        });
+    }
 }

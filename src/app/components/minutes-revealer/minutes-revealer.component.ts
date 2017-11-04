@@ -35,7 +35,6 @@ export class MinutesRevealerComponent implements OnInit {
           .getCatNews(cat.split(' '))
           .subscribe((d: object[]) => {
               if (d.hasOwnProperty('err')) {
-                this.data = [{}];
               } else {
                 this.data = d;              
               }

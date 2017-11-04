@@ -34,7 +34,7 @@
               <ul class="list-inline list-unstyled">
                 <li><strong>Category:</strong></li>
                 <li class="tag" [routerLink]="'/notices/category/' + getCategory()">
-                  {{ getCategory() }}
+                  {{ (getCategory() === 'lnf')?'lost & found':getCategory() }}
                 </li>
               </ul>
             </div>

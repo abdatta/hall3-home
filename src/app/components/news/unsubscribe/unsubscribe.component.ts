@@ -13,6 +13,7 @@ export class UnsubscribeComponent implements OnInit {
   checks = {
     'all': false,
     'announcements': false,
+    'lnf': false,
     'minutes': false,
     'other_documents': false
   }
@@ -31,6 +32,8 @@ export class UnsubscribeComponent implements OnInit {
       if(!params['id'])
         this.router.navigateByUrl('/');
       this.id = params['id'];
+      if(params['cat'])
+        this.checks[params['cat']] = true;
     });
   }
 

@@ -29,11 +29,11 @@ export class MainService {
       'clubcoordi' : '/people/clubcoordinators',
     'allnotices': '/notices/category/all',
       'announcements': '/notices/category/announcements',
+      'lnf': '/notices/category/lnf',
       'minutes': 'notices/category/minutes',
       'otherdocuments': '/notices/category/other_documents',
     'quicks': '/quicklinks',
       'faqs': '/server/files/faqs.pdf',
-      'lnf': '/',
       'feedback': '/feedback',
       'messportal': 'http://mess.hall3iitk.com',
       'login': '/login',
@@ -165,6 +165,10 @@ export class MainService {
                       'linkId' : 'announcements'
                   },
                   {
+                      'title' : 'Lost & Found',
+                      'linkId' : 'lnf'
+                  },
+                  {
                       'title' : 'Minutes',
                       'linkId' : 'minutes'
                   },
@@ -196,7 +200,7 @@ export class MainService {
                       'newtab': true
                   },
                   {
-                      'title' : 'Ask The HEC',
+                      'title' : 'Ask The HEC / Lost & Found',
                       'linkId' : 'feedback'
                   },
                   {
@@ -213,10 +217,6 @@ export class MainService {
                       'linkId' : 'messfeedback',
                       'newtab': true
                   },
-                  /*{
-                      'title' : 'Lost and Found',
-                      'linkId' : 'lnf'
-                  },*/
                   {
                       'title1' : 'HEC Login',
                       'linkId1' : 'login',
