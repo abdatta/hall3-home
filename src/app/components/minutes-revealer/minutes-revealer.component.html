@@ -1,8 +1,12 @@
 <div class="col-xs-12 text-center">
-  <button class="bttn" (click)="revealer()" [disabled]="reveal && !loaded">{{ reveal?(loaded?'Hide':'Loading'):'Show' }} Minutes</button>
+  <button class="bttn" 
+          (click)="revealer()" 
+          [disabled]="reveal && !loaded">
+    {{ reveal?(loaded?'Hide':'Loading'):'Show' }} Minutes
+  </button>
 </div>
 <div class="space-10"></div>
-<div id="board" [attr.show]="reveal" class="minutes">
+<div [style.max-height]="reveal?(280*(1 + data.length/width))+'px':'0'" class="minutes">
   <div style="display: flex; flex-wrap: wrap;" *ngIf="loaded">
     <div *ngFor="let news of data" style="margin-bottom: 10px;" class="col-xs-12 col-sm-6">
       <div class="panel single-blog" style="margin-bottom: 0; height: 90%;">

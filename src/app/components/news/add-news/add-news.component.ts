@@ -16,7 +16,7 @@ export class AddNewsComponent implements OnInit {
   submitted = false;
   data = {
       'to': '',
-      'head': 'Lost Wallet',
+      'head': '',
       'body': '',
       'cat': '',
       'link': ''

@@ -1,5 +1,7 @@
 .minutes {
-	transition: height .8s;
-	height: 0px;
+	-webkit-transition: max-height 1.2s ease-in-out;
+	transition: max-height 1.2s ease-in-out;
+	height: auto;
+	max-height: 0px;
 	overflow: hidden;
 }

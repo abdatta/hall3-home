@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { NewsService } from '../../services/news/news.service';
 import * as moment from 'moment';
 
@@ -12,7 +12,7 @@ export class MinutesRevealerComponent implements OnInit {
   @Input() category = '';
   loaded = false;
   reveal = false;
-  height = -1;
+  width = 1
   data: object[] = [];
 
   constructor(private service: NewsService) { }
@@ -20,43 +20,24 @@ export class MinutesRevealerComponent implements OnInit {
   ngOnInit() {
   }
 
+  @HostListener('window:resize', ['$event']) resize(event) {
+    this.width = (event.srcElement.innerWidth < 768) ? 1 : 2;
+  }
+
   revealer() {
     this.reveal = !this.reveal;
     if(this.reveal) {
-      document.getElementById('board').style.height = 'auto';
-      const autoheight = document.getElementById('board').offsetHeight;
-      document.getElementById('board').style.height = '0px';
-      setTimeout(()=>{
-        document.getElementById('board').style.height = `${autoheight}px`;
-      }, 10);
-      const l = this.data.length;
-      const cat = (this.category + ' minutes').trim();
       this.service
-          .getCatNews(cat.split(' '))
+          .getCatNews((this.category + ' minutes').trim().split(' '))
           .subscribe((d: object[]) => {
               if (d.hasOwnProperty('err')) {
               } else {
                 this.data = d;              
               }
               this.loaded = true;
-              if(d.length != l) {
-                setTimeout(()=>{
-                document.getElementById('board').style.height = 'auto';
-                const newheight = document.getElementById('board').offsetHeight;
-                document.getElementById('board').style.height = `${autoheight}px`;
-                setTimeout(()=>{
-                  document.getElementById('board').style.height = `${newheight}px`;
-                }, 40);
-              },80);
-            }
             }); 
       }
       else {
-        this.height = document.getElementById('board').offsetHeight;
-        document.getElementById('board').style.height = `${this.height}px`;
-        setTimeout(()=>{
-        document.getElementById('board').style.height = '0px';
-      }, 40);
       }
   }
 
