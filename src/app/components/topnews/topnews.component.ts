@@ -62,7 +62,7 @@ export class TopnewsComponent implements OnInit {
     if(!this.data) return;
     let max = 0;
     for(let i=0; i<=this.data.length; i++) {
-      let height = document.getElementById("news" + i).offsetHeight;
+      let height = document.getElementById("news" + i).offsetHeight; // TODO: Remove dependency over DOM
       if(height>max) max = height;
     }
     for(let i=0; i<=this.data.length; i++) {

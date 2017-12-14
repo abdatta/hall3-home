@@ -47,9 +47,7 @@ export class NewsService {
     };
 
     getCatNews = (cat: string | string[]): Observable<object[]> => {
-        return this.http.post('/server/news/query', {
-            'category': cat
-        })
+        return this.http.get('/server/news/query?category=' + cat)
             .map((res: Response) => res.json() as object[])
             .catch((error: any) => {
                 if (error.status) {
@@ -63,9 +61,7 @@ export class NewsService {
     };
 
     getUserNews = (name: string): Observable<object[]> => {
-        return this.http.post('/server/news/query', {
-            'by': name
-        })
+        return this.http.get('/server/news/query?by=' + name)
             .map((res: Response) => res.json() as object[])
             .catch((error: any) => {
                 if (error.status) {
@@ -117,7 +113,10 @@ export class NewsService {
     };
 
     subscribe = (cat: string, id: string): Observable<number> => {
-        return this.http.get('/server/news/subscribe/' + cat + '?id=' + id)
+        return this.http.post('/server/news/subscribe/', {
+            'cat': cat,
+            'id' : id
+            })
             .map(res => res.status)
             .catch((error: any) => {
                 if (error.status) {
@@ -129,7 +128,10 @@ export class NewsService {
     }
 
     unsubscribe = (cat: string, id: string): Observable<number> => {
-        return this.http.get('/server/news/unsubscribe/' + cat + '?id=' + id)
+        return this.http.post('/server/news/unsubscribe/', {
+         'cat': cat,
+         'id' : id
+     })
             .map(res => res.status)
             .catch((error: any) => {
                 if (error.status) {
