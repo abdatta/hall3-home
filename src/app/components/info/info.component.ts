@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, HostListener } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { MainService } from '../../services/main/main.service';
-import { InfoService } from '../../services/info/info.service';
 
 @Component({
   selector: 'app-info',
@@ -13,23 +12,22 @@ export class InfoComponent implements OnInit {
   title: string;
   tab: string;
   list: Object[];
+  toggle: boolean;
+  mobile: boolean;
 
   constructor(private route: ActivatedRoute,
-              private mainService: MainService,
-              private infoService: InfoService) {
-    infoService.tabSet$.subscribe(
-      tab => {
-        this.tab = tab;
-      });
-  }
+              public router: Router,
+              private mainService: MainService) {}
 
   ngOnInit() {
+    this.toggle = false;
     this.title = this.route.snapshot.data['infoId'];
     this.list = this.mainService.getInfoList(this.title);
+    this.mobile = (window.innerWidth < 992);
   }
 
-  link(id: string) {
-    return this.mainService.getLink(id);
+  @HostListener('window:resize', ['$event']) makeResponsive(event) {
+    this.mobile = (event.srcElement.innerWidth < 992);
   }
 
   toTitleCase(str: string): string {

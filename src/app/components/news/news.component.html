@@ -14,13 +14,22 @@
                 </button>
               </div>
             </div>
-          </form>
+          </form-->
           <!--Sidebar-Search-form/-->
           <div class="single-sidebar category">
-            <h3>Category</h3>
+            <div style="display: flex;" (click)="toggle = mobile?!toggle:toggle">
+              <div *ngIf="mobile" class="wrapper-menu"  [class.open]="toggle">
+                <div class="line-menu half start"></div>
+                <div class="line-menu"></div>
+                <div class="line-menu half end"></div>
+              </div>
+              <h3>Notices</h3>
+            </div>
             <hr>
-            <ul class="list-unstyled">
-              <li class="tab" *ngFor="let category of categories" [class.activeTab]="cat === category"><a [routerLink]="'/notices/category/' + category">{{ titlize(category) }}<!--q>10</q--></a></li>
+            <ul class="list-unstyled toggler" [style.height]="mobile?(toggle?(50*categories.length+'px'):'0'):'auto'">
+              <li class="tab" *ngFor="let category of categories" [class.activeTab]="cat === category">
+                <a [routerLink]="'/notices/category/' + category" (click)="toggle = mobile?!toggle:toggle">{{ titlize(category) }}<!--q>10</q--></a>
+              </li>
             </ul>
           </div>
           <!--Sidebar-popular-post->
@@ -93,7 +102,7 @@
         <!--Sidebar/-->
       </div>
       <div class="col-xs-12 col-sm-9 pull-right">
-        <div class="space-25"></div>
+        <div *ngIf="!mobile" class="space-25"></div>
         <div class="col-xs-12" *ngIf="success === 3">
           <div class="space-20"></div>
           <p style="text-align: center;">Thank you for subscribing.</p>

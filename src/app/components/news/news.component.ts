@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router'
 import * as moment from 'moment';
 
@@ -23,6 +23,8 @@ export class NewsComponent implements OnInit {
   loaded = false;
   submitted = false;
   success = 0;
+  toggle: boolean;
+  mobile: boolean;
 
   constructor(private newsService: NewsService,
               private route: ActivatedRoute,
@@ -33,6 +35,8 @@ export class NewsComponent implements OnInit {
         this.loaded = false;
         this.submitted = false;
         this.success = 0;
+        this.toggle = false;
+        this.mobile = (window.innerWidth < 768);
 
         if (this.categories.indexOf(params['cat']) === -1) {
             this.router.navigateByUrl('/notices');
@@ -54,6 +58,10 @@ export class NewsComponent implements OnInit {
             }
           });
     });
+  }
+
+  @HostListener('window:resize', ['$event']) makeResponsive(event) {
+    this.mobile = (event.srcElement.innerWidth < 768);
   }
 
   getFormattedDate(date: string) {

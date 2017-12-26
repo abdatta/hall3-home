@@ -41,10 +41,6 @@ export class MainmenuComponent implements OnInit {
     return this.menu[i].hasOwnProperty('dropdown');
   }
 
-  link(id: string): string {
-    return this.mainService.getLink(id);
-  }
-
   toggleDrop(i: number): void {
     if(this.mobile) {
       if(this.hasDropDown(i))

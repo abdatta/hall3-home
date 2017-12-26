@@ -47,398 +47,299 @@ export class MainService {
     {
       'title' : 'Home',
       'class' : '',
-      'linkId' : 'home'
+      'link' : this.getLink('home')
     },
     {
       'title' : 'About',
       'class' : '',
-      'linkId' : 'about'
+      'link' : this.getLink('about')
     },
     {
       'title' : 'Facilities',
       'class' : 'dropdown',
-      'linkId' : 'facilities',
+      'link' : this.getLink('facilities'),
       'dropdown' :
         [
 
           {
             'title' : 'Guest Room',
-            'linkId' : 'guest'
+            'link' : this.getLink('guest')
           },
           {
             'title' : 'Mess',
-            'linkId' : 'mess'
+            'link' : this.getLink('mess')
           },
           {
             'title' : 'Reading Room',
-            'linkId' : 'rr'
+            'link' : this.getLink('rr')
           },
           {
             'title' : 'TV Room',
-            'linkId' : 'tv'
+            'link' : this.getLink('tv')
           },
           {
             'title' : 'Computer Room',
-            'linkId' : 'comp'
+            'link' : this.getLink('comp')
           },
           {
             'title' : 'Sports Facilities',
-            'linkId' : 'sports'
+            'link' : this.getLink('sports')
           },
           {
             'title' : 'Music Room',
-            'linkId' : 'music'
+            'link' : this.getLink('music')
           },
           {
             'title' : 'Canteen',
-            'linkId' : 'canteen'
+            'link' : this.getLink('canteen')
           }
         ]
     },
     {
       'title' : 'Administration',
       'class' : 'dropdown',
-      'linkId' : 'adminis',
+      'link' : this.getLink('adminis'),
       'dropdown' :
         [
           {
             'title' : 'Hall Executive Committee',
-            'linkId' : 'hec'
+            'link' : this.getLink('hec')
           },
           {
             'title' : 'Mess Committee',
-            'linkId' : 'messc'
+            'link' : this.getLink('messc')
           },
           {
             'title' : 'Maintenance Committee',
-            'linkId' : 'maintc'
+            'link' : this.getLink('maintc')
           },
           {
             'title' : 'Students’ Activity Committee',
-            'linkId' : 'eventsc'
+            'link' : this.getLink('eventsc')
           },
           {
               'title' : 'Advisory Committee',
-              'linkId' : 'advisoryc'
+              'link' : this.getLink('advisoryc')
           }
         ]
     },
     {
       'title' : 'People',
       'class' : 'dropdown',
-      'linkId' : 'people',
+      'link' : this.getLink('people'),
       'dropdown' :
         [
           {
             'title' : 'Counselling Service Core Team',
-            'linkId' : 'cs-core'
+            'link' : this.getLink('cs-core')
           },
           {
             'title' : 'Student Guides',
-            'linkId' : 'sg'
+            'link' : this.getLink('sg')
           },
           {
             'title' : 'Academic Mentors',
-            'linkId' : 'am'
+            'link' : this.getLink('am')
           }/*,
           {
             'title' : 'Club Secretaries',
-            'linkId' : 'clubsecy'
+            'link' : this.getLink('clubsecy')
           },
           {
             'title' : 'Club Coordinators',
-            'linkId' : 'clubcoordi'
+            'link' : this.getLink('clubcoordi')
           }*/
         ]
     },
       {
           'title' : 'Notices',
           'class' : 'dropdown',
-          'linkId' : 'notices',
+          'link' : this.getLink('notices'),
           'dropdown' :
               [
                   {
                       'title' : 'All',
-                      'linkId' : 'allnotices'
+                      'link' : this.getLink('allnotices')
                   },
                   {
                       'title' : 'Announcements',
-                      'linkId' : 'announcements'
+                      'link' : this.getLink('announcements')
                   },
                   {
                       'title' : 'Lost & Found',
-                      'linkId' : 'lnf'
+                      'link' : this.getLink('lnf')
                   },
                   {
                       'title' : 'Minutes',
-                      'linkId' : 'minutes'
+                      'link' : this.getLink('minutes')
                   },
                   {
                       'title' : 'Other Documents',
-                      'linkId' : 'otherdocuments'
+                      'link' : this.getLink('otherdocuments')
                   }
               ]
       },
       {
           'title' : 'Quick Links',
           'class' : 'dropdown',
-          'linkId' : 'quicks',
+          'link' : this.getLink('quicks'),
           'dropdown' :
               [
                   {
                       'title' : 'FAQs',
-                      'linkId' : 'faqs',
+                      'link' : this.getLink('faqs'),
                       'newtab': true
                   },
                   {
                       'title' : 'Hall Rules',
-                      'linkId' : 'rules',
+                      'link' : this.getLink('rules'),
                       'newtab': true
                   },
                   {
                       'title' : 'Our Constitution',
-                      'linkId' : 'constitution',
+                      'link' : this.getLink('constitution'),
                       'newtab': true
                   },
                   {
                       'title' : 'Ask The HEC / Lost & Found',
-                      'linkId' : 'feedback'
+                      'link' : this.getLink('feedback')
                   },
                   {
                       'title' : 'Hall Map',
-                      'linkId' : 'map'
+                      'link' : this.getLink('map')
                   },
                   {
                       'title' : 'Mess Automation Portal',
-                      'linkId' : 'messportal',
+                      'link' : this.getLink('messportal'),
                       'newtab': true
                   },
                   {
                       'title' : 'Daily Mess Feedback',
-                      'linkId' : 'messfeedback',
+                      'link' : this.getLink('messfeedback'),
                       'newtab': true
                   },
                   {
                       'title1' : 'HEC Login',
-                      'linkId1' : 'login',
+                      'link1' : this.getLink('login'),
                       'title2' : 'Dashboard',
-                      'linkId2' : 'dash',
+                      'link2' : this.getLink('dash'),
                       'guard': true
                   }
               ]
       }
   ];
   private info = {
-    'facilities' : {
-      'tabs' :
+    'facilities' :
         [
           {
             'name' : 'Guest Room',
             'id' : 'guest',
-            'linkId' : 'guest'
+            'link' : this.getLink('guest')
           },
           {
             'name' : 'Mess',
             'id' : 'mess',
-            'linkId' : 'mess'
+            'link' : this.getLink('mess')
           },
           {
             'name' : 'Reading Room',
             'id' : 'rr',
-            'linkId' : 'rr'
+            'link' : this.getLink('rr')
           },
           {
             'name' : 'TV Room',
             'id' : 'tv',
-            'linkId' : 'tv'
+            'link' : this.getLink('tv')
           },
           {
             'name' : 'Computer Room',
             'id' : 'comp',
-            'linkId' : 'comp'
+            'link' : this.getLink('comp')
           },
           {
             'name' : 'Sports Facilities',
             'id' : 'sports',
-            'linkId' : 'sports'
+            'link' : this.getLink('sports')
           },
           {
             'name' : 'Music Room',
             'id' : 'music',
-            'linkId' : 'music'
+            'link' : this.getLink('music')
           },
           {
             'name' : 'Canteen',
             'id' : 'canteen',
-            'linkId' : 'canteen'
+            'link' : this.getLink('canteen')
           }
         ],
-      'bodies' :
-        [
-          {
-            'id' : 'guest',
-            'heading' : 'Guest Room',
-            'body' : 'mess'
-          },
-          {
-            'id' : 'mess',
-            'heading' : 'Mess',
-            'body' : 'mess'
-          },
-          {
-            'id' : 'rr',
-            'heading' : 'Reading Room',
-            'body' : 'mess'
-          },
-          {
-            'id' : 'tv',
-            'heading' : 'TV Room',
-            'body' : 'mess'
-          },
-          {
-            'id' : 'cc',
-            'heading' : 'Computer Room',
-            'body' : 'mess'
-          },
-          {
-            'id' : 'sports',
-            'heading' : 'Sports Facilities',
-            'body' : 'mess'
-          },
-          {
-            'id' : 'music',
-            'heading' : 'Music Room',
-            'body' : 'mess'
-          },
-          {
-            'id' : 'canteen',
-            'heading' : 'Canteen',
-            'body' : 'mess'
-          }
-        ]
-    },
-    'administration': {
-      'tabs' :
+    'administration':
         [
           {
             'name' : 'Hall Executive Committee',
             'id' : 'hec',
-            'linkId' : 'hec'
+            'link' : this.getLink('hec')
           },
           {
             'name' : 'Mess Committee',
             'id' : 'mess',
-            'linkId' : 'messc'
+            'link' : this.getLink('messc')
           },
           {
             'name' : 'Maintenance Committee',
             'id' : 'maint',
-            'linkId' : 'maintc'
+            'link' : this.getLink('maintc')
           },
           {
             'name' : 'Students’ Activity Committee',
             'id' : 'events',
-            'linkId' : 'eventsc'
+            'link' : this.getLink('eventsc')
           },
           {
               'name' : 'Advisory Committee',
               'id' : 'advisory',
-              'linkId' : 'advisoryc'
+              'link' : this.getLink('advisoryc')
           }
         ],
-      'bodies' :
-        [
-          {
-            'id' : 'wardens',
-            'heading' : 'Wardens',
-            'body' : 'wardens'
-          },
-          {
-            'id' : 'hec',
-            'heading' : 'Hall Executive Committee',
-            'body' : 'wardens'
-          },
-          {
-            'id' : 'mess',
-            'heading' : 'Mess Committee',
-            'body' : 'wardens'
-          },
-          {
-            'id' : 'maint',
-            'heading' : 'Maintenace Committee',
-            'body' : 'wardens'
-          },
-          {
-            'id' : 'events',
-            'heading' : 'Students’ Activity Committee',
-            'body' : 'wardens'
-          }
-        ]
-    },
-    'people': {
-      'tabs' :
+    'people':
         [
           {
             'name' : 'Counselling Service Core Team',
             'id' : 'cs-core',
-            'linkId' : 'cs-core'
+            'link' : this.getLink('cs-core')
           },
           {
             'name' : 'Student Guides',
             'id' : 'sg',
-            'linkId' : 'sg'
+            'link' : this.getLink('sg')
           },
           {
             'name' : 'Academic Mentors',
             'id' : 'am',
-            'linkId' : 'am'
+            'link' : this.getLink('am')
           }/*,
           {
             'name' : 'Club Secretaries',
             'id' : 'secy',
-            'linkId' : 'clubsecy'
+            'link' : this.getLink('clubsecy')
           },
           {
             'name' : 'Club Coordinators',
             'id' : 'coordi',
-            'linkId' : 'clubcoordi'
+            'link' : this.getLink('clubcoordi')
           }*/
-        ],
-      'bodies' :
-        [
-          {
-            'id' : 'sg',
-            'heading' : 'Students Guides',
-            'body' : 'sg'
-          },
-          {
-            'id' : 'am',
-            'heading' : 'Academic Mentors',
-            'body' : 'sg'
-          },
-          {
-            'id' : 'secy',
-            'heading' : 'Club Secretaries',
-            'body' : 'sg'
-          },
-          {
-            'id' : 'coordi',
-            'heading' : 'Club Coordinators',
-            'body' : 'sg'
-          }
         ]
-    }
   };
 
   constructor() { }
 
-  getLink(id: string): string {
-    return this.links[id];
+  private getLink(id: string): () => string {
+    return () => this.links[id];
   }
+
   getMainmenu(): Object[] {
     return this.mainmenu;
   }
   getInfoList(id: string): Object[] {
-    return this.info[id].tabs;
+    return this.info[id];
   }
 }

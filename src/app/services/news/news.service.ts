@@ -47,6 +47,8 @@ export class NewsService {
     };
 
     getCatNews = (cat: string | string[]): Observable<object[]> => {
+        if(typeof cat !== 'string')
+            cat = cat.join('&category=');
         return this.http.get('/server/news/query?category=' + cat)
             .map((res: Response) => res.json() as object[])
             .catch((error: any) => {

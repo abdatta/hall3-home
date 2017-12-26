@@ -26,8 +26,4 @@ export class QuickLinksComponent implements OnInit {
     console.log(this.links);
   }
 
-  getlink(id: string): string {
-    return this.mainService.getLink(id);
-  }
-
 }

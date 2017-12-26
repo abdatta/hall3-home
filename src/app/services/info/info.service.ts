@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/observable/of';
@@ -22,15 +21,9 @@ export class InfoService {
 
   constructor( private http: Http ) {}
 
-  // Observable string sources
-  private tabSource = new Subject<string>();
-
-  // Observable string streams
-  tabSet$ = this.tabSource.asObservable();
-
   // Service message commands
   setTab(tab: string) {
-    this.tabSource.next(tab);
+    // TODO: Remove all call to setTab() from all components
   }
 
   getAdministration = (id = ''): Observable<object> => {
