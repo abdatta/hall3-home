@@ -1,7 +1,7 @@
-<div *ngIf="!loaded" style="vertical-align:middle; text-align:center">
-  <div class="space-80"></div>
-  <img src="../../../../images/loading.gif" style="width: 25%">
-</div>
+<div *ngIf="!loaded" class="space-80"></div>
+<app-loader [show]="!loaded" width="25%"></app-loader>
+<div *ngIf="!loaded" class="space-50"></div>
+
 <section id="service" class="fix" [class.invisible]="!loaded">
   <div class="space-100"></div>
   <div class="container">
@@ -17,7 +17,7 @@
         <p>Name: {{ queryInfo.name }}</p>
         <p>To: {{ queryInfo.to }}</p>
         <p>Subject: {{ queryInfo.subject }}</p>
-        <p>-----------------------------------------</p>
+        <hr>
         <p style="white-space:pre-wrap">{{ queryInfo.message }}</p>
       </div>
       <div class="col-xs-12 col-sm-7 padding30">
@@ -25,6 +25,7 @@
         <textarea class="form-control"
                   required
                   autofocus
+                  autosize
                   placeholder="Response here..."
                   rows="7"
                   [(ngModel)]="response"

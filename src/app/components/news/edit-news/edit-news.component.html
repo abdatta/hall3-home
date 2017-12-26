@@ -1,3 +1,7 @@
+<div *ngIf="!data" class="space-100"></div>
+<app-loader [show]="!data"></app-loader>
+<div *ngIf="!data" class="space-50"></div>
+
 <section id="service" class="fix" *ngIf="data">
   <div class="space-100"></div>
   <div class="container">
@@ -49,6 +53,7 @@
         <div class="space-20" *ngIf="!(body.touched && body.errors)"></div>
         <textarea class="form-control"
                   placeholder="Description here..."
+                  autosize
                   rows="3"
                   name="body"
                   [(ngModel)]="data['body']"

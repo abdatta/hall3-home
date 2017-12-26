@@ -21,9 +21,7 @@
         <h3>Your Notices</h3>
         <div class="space-10"></div>
         <p *ngIf="loaded && data.length == 0">You have posted no notices yet.</p>
-        <div *ngIf="!loaded" style="vertical-align:middle; text-align:center">
-          <img src="../../../../images/loading.gif" style="width: 30%">
-        </div>
+        <app-loader [show]="!loaded"></app-loader>
         <div *ngIf="loaded" style="display: flex; flex-wrap: wrap;">
           <div *ngFor="let news of data; let i=index;"
                style="margin-bottom: 10px;"

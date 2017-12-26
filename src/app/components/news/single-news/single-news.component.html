@@ -4,10 +4,8 @@
   <div class="container">
     <div class="row img-full-width">
       <div class="col-xs-12 col-md-9 pull-right">
-        <div *ngIf="!loaded" style="vertical-align:middle; text-align:center">
-          <div class="space-70"></div>
-          <img src="../../../../images/loading.gif" style="width: 30%">
-        </div>
+        <div *ngIf="!loaded" class="space-70"></div>
+        <app-loader [show]="!loaded"></app-loader>
         <div class="blog-details" *ngIf="loaded">
           <div class="space-15"></div>
           <ul class="breadcrumb">

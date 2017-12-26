@@ -11,7 +11,7 @@
       </div>
       <!--Team-page-title-->
     </div>
-      <div class="row img-full-width row-centered" *ngIf="wardensloaded">
+      <div class="row img-full-width row-centered" [class.invisible]="!wardensloaded">
         <div class="space-80"></div>
         <!--Single-team-->
         <div *ngFor="let warden of wardens; let i=index;"
@@ -23,7 +23,9 @@
              [attr.data-wow-delay]="((i === 0) ? 0.2 : 0.4) + 's'">
             <div class="team-image relative">
                 <div class="relative">
-                    <img [src]="'/server/' + warden['photo']" [alt]="warden['name'] + '\'s photo'">
+                    <img [src]="'/server/' + warden['photo']"
+                         [alt]="warden['name'] + '\'s photo'"
+                         (load)="load()">
                 </div>
                 <div class="team-details"><strong>{{ warden['name'] }}</strong><!-- style="background-color: #B4F4F4"-->
                     <div class="space-2"></div>
@@ -37,9 +39,7 @@
     </div>
   </div>
 </div>
-<div *ngIf="!wardensloaded || !hecloaded" style="vertical-align:middle; text-align:center">
-    <img src="../../../../images/loading.gif" style="width: 25%">
-</div>
+<app-loader [show]="!wardensloaded || !hecloaded" width="20%"></app-loader>
 <div id="HEC" *ngIf="hecloaded">
   <div class="space-30"></div>
   <div class="container">

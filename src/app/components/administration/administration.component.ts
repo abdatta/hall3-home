@@ -13,6 +13,7 @@ export class AdministrationComponent implements OnInit {
     hec: object[];
     wardensloaded = false;
     hecloaded = false;
+    wardensimages: string[] = [];
 
     constructor(private infoService: InfoService) { }
 
@@ -23,8 +24,8 @@ export class AdministrationComponent implements OnInit {
                     this.wardens = [{}];
                 } else {
                     this.wardens = d['members'];
+                    this.wardensimages = this.wardens.map(warden => warden['photo']);
                 }
-                this.wardensloaded = true;
             });
         this.infoService.getAdministration('hec')
             .subscribe((d: object) => {
@@ -35,6 +36,13 @@ export class AdministrationComponent implements OnInit {
                 }
                 this.hecloaded  = true;
             });
+    }
+
+    load() {
+        this.wardensimages.pop();
+        if (this.wardensimages.length === 0) {
+          this.wardensloaded = true;
+        }
     }
 
 }

@@ -7,9 +7,7 @@
   <div class="space-5"></div>
   <p>This is the inventory of our sports equipments. You can check the current availability of each equipment and issue them accordingly. To issue an item, contact the Sports Secretary, HEC.</p>
   <div class="space-5"></div>
-  <div *ngIf="!loaded" style="vertical-align:middle; text-align:center">
-    <img src="../../../../images/loading.gif" style="width: 50%">
-  </div>
+  <app-loader [show]="!loaded" width="50%"></app-loader>
   <div class="row" [class.invisible]="!loaded" style="display: flex;" *ngFor="let item of inventory">
     <div class="inventory" style="flex-grow: 1;">
       <div class="inside"><strong>{{ item.name }}</strong>

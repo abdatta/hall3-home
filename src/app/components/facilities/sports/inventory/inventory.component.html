@@ -1,8 +1,6 @@
 <h4>Sports Inventory</h4>
 <div class="space-15"></div>
-<div *ngIf="!loaded" style="vertical-align:middle; text-align:center">
-  <img src="../../../../images/loading.gif" style="width: 50%">
-</div>
+<app-loader [show]="!loaded" width="50%"></app-loader>
 <div class="row" [class.invisible]="!loaded" style="display: flex;" *ngFor="let item of inventory; let i=index;">
   <div class="inventory" style="flex-grow: 1;">
     <div class="inside"><strong>{{ item.name }}</strong>

@@ -1,9 +1,7 @@
 <div class="blog-details">
   <h4 *ngIf="!embed">Wardens</h4>
   <div *ngIf="!embed" class="space-20"></div>
-  <div *ngIf="!loaded" style="vertical-align:middle; text-align:center">
-    <img src="../../../../images/loading.gif" style="width: 30%">
-  </div>
+  <app-loader [show]="!loaded"></app-loader>
   <div id="wardens" [class.invisible]="!loaded">
     <!--Single-team-->
     <div *ngFor="let member of members; let i=index;"
