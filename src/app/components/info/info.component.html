@@ -7,7 +7,7 @@
         <aside class="sidebar">
           <div class="space-100"></div>
           <div class="single-sidebar category">
-            <div style="display: flex;" (click)="toggle = mobile?!toggle:toggle">
+            <div class="tab-head" (click)="toggle = mobile?!toggle:toggle">
               <div *ngIf="mobile" class="wrapper-menu"  [class.open]="toggle">
                 <div class="line-menu half start"></div>
                 <div class="line-menu"></div>

@@ -7,12 +7,15 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TilesComponent implements OnInit {
 
+  @Input() justify = 'center';
+  @Input() fadeIn: (number) => number = i => null;
   _tiles: object[];
-  photos: object = {};
+  photos: string[] = [];
 
   @Input() set tiles(data: object[]) {
     if(data) {
-      this._tiles = this.rearrange(data);
+     this._tiles = data;
+     this.photos = this._tiles.map(tile => tile['photo']);
     }
   }
 
@@ -20,35 +23,16 @@ export class TilesComponent implements OnInit {
 
   ngOnInit() { }
 
-  private rearrange(tiles: object[]): object[] {
-    let newtiles: object[] = [];
-    for(let i=0; i<tiles.length; i++) {
-      let row: object[] = [];
-      for(let j=0; j<4 && i<tiles.length; j++,i++) {
-        let tile: object = {};
-        tile['name'] = tiles[i]['name'];
-        delete tiles[i]['name'];
-        if(tiles[i].hasOwnProperty('photo')) {
-          this.photos[tiles[i]['photo']] = true;
-          tile['photo'] = tiles[i]['photo'];
-          delete tiles[i]['photo'];
-        }
-        tile['data'] = [];
-        for(let key in tiles[i]) {
-          tile['data'].push(tiles[i][key]);
-        }
-
-        row.push(tile);
-      }
-      newtiles.push(row);
-      i--;
-    }
-    return newtiles;
+  moreData(obj: object) {
+    let keys = Object.keys(obj);
+    if(keys.indexOf('name') !== -1) keys.splice(keys.indexOf('name'), 1);
+    if(keys.indexOf('photo') !== -1) keys.splice(keys.indexOf('photo'), 1);
+    return keys.map(key => obj[key]);
   }
 
-  load(photo: string) {
-    this.photos[photo] = null;
-    delete this.photos[photo];
+  load(i: number) {
+    if(i !== -1)
+      this.photos.splice(i,1);
   }
 
 }

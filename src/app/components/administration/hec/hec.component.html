@@ -1,12 +1,12 @@
 <div class="blog-details">
-  <h1 *ngIf="!embed">Hall Executive Committee</h1>
-  <div *ngIf="!embed" class="space-20"></div>
-  <p *ngIf="!embed">The Hall Executive Committee is a team of elected students who look after the overall functioning and governance of the Hall, supervised directly by the Warden. Their functions include making policies, making rules for the residents, getting something new constructed/bought, maintaining hall property, deciding the mess menu and the mess/canteen tender, imposing fines on residents, and taking charge for almost every issue of the hall. For any Hall related affair or to know any procedure/rule, the residents should feel free to contact the concerned secretary or the President, HEC.</p>
-  <div *ngIf="!embed" class="space-10"></div>
-  <app-wardens [embed]="embed"></app-wardens>
-  <div *ngIf="!embed" class="space-10"></div>
-  <h4 *ngIf="!embed">Student Members</h4>
-  <div *ngIf="!embed" class="space-20"></div>
+  <h1>Hall Executive Committee</h1>
+  <div class="space-20"></div>
+  <p>The Hall Executive Committee is a team of elected students who look after the overall functioning and governance of the Hall, supervised directly by the Warden. Their functions include making policies, making rules for the residents, getting something new constructed/bought, maintaining hall property, deciding the mess menu and the mess/canteen tender, imposing fines on residents, and taking charge for almost every issue of the hall. For any Hall related affair or to know any procedure/rule, the residents should feel free to contact the concerned secretary or the President, HEC.</p>
+  <div class="space-10"></div>
+  <app-wardens></app-wardens>
+  <div class="space-10"></div>
+  <h4>Student Members</h4>
+  <div class="space-20"></div>
   <app-loader [show]="!loaded"></app-loader>
   <app-tiles [tiles]="members"></app-tiles>
   <div class="col-xs-12 text-center">

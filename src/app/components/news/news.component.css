@@ -3,6 +3,18 @@ h3 {
   margin-bottom: 0;
 }
 
+.tab-head {
+  display: flex; 
+  width: fit-content;
+  cursor: initial;
+}
+
+@media (max-width: 767px) {
+  .tab-head {
+    cursor: pointer;
+  }
+}
+
 .tab {
     padding-left: 10px;
     border: 1px solid white;

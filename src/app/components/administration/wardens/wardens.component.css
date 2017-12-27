@@ -3,3 +3,45 @@ a:visited { text-decoration: none;color: white }
 a:hover { text-decoration: none;color: white }
 a:focus { text-decoration: none;color: white }
 a:hover, a:active { text-decoration: none;color: white }
+
+.flexbox-container {
+	display: flex;
+	flex-wrap: wrap-reverse;
+	align-items: flex-start;
+	justify-content: center;
+	margin: 0 -15px;
+}
+
+.flexbox-container img {
+	width: 100%;
+}
+
+.flexbox-container div:nth-child(1) {
+	order: 3;
+}
+.flexbox-container div:nth-child(2) {
+	order: 2;
+}
+.flexbox-container div:nth-child(3) {
+	order: 1;
+}
+
+@media (min-width: 768px) {
+	.col-sm-3 {
+	    width: 28%;
+	}
+
+	.flexbox-container {
+		justify-content: space-between;
+	}
+
+	.flexbox-container div:nth-child(1) {
+		order: 2;
+	}
+	.flexbox-container div:nth-child(2) {
+		order: 1;
+	}
+	.flexbox-container div:nth-child(3) {
+		order: 3;
+	}
+}

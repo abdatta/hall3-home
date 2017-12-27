@@ -14,6 +14,7 @@ export class AdministrationComponent implements OnInit {
     wardensloaded = false;
     hecloaded = false;
     wardensimages: string[] = [];
+    fader = i => (2 + i)/10.0 ;
 
     constructor(private infoService: InfoService) { }
 

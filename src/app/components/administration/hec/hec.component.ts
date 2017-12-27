@@ -7,7 +7,6 @@ import  { InfoService } from '../../../services/info/info.service';
   styleUrls: ['./hec.component.css']
 })
 export class HecComponent implements OnInit {
-  @Input() embed = false;
   loaded = false;
   title: string;
   members: object[];

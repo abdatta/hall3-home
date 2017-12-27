@@ -17,7 +17,7 @@
           </form-->
           <!--Sidebar-Search-form/-->
           <div class="single-sidebar category">
-            <div style="display: flex;" (click)="toggle = mobile?!toggle:toggle">
+            <div class="tab-head" (click)="toggle = mobile?!toggle:toggle">
               <div *ngIf="mobile" class="wrapper-menu"  [class.open]="toggle">
                 <div class="line-menu half start"></div>
                 <div class="line-menu"></div>
@@ -102,12 +102,15 @@
         <!--Sidebar/-->
       </div>
       <div class="col-xs-12 col-sm-9 pull-right">
-        <div *ngIf="!mobile" class="space-25"></div>
+        <div *ngIf="!mobile" class="space-5"></div>
+        <h3 style="margin-left: 5px;">{{ titlize(cat) }}</h3>
+
         <div class="col-xs-12" *ngIf="success === 3">
           <div class="space-20"></div>
           <p style="text-align: center;">Thank you for subscribing.</p>
         </div>
-        <div *ngIf="success < 3" class="col-xs-12">
+
+        <div *ngIf="success < 3">
           <!--div *ngIf="email.touched && email.errors && email.errors.required" style="font-size: 11px; color: red">*Required</div-->
           <div *ngIf="email.touched && email.errors && email.errors.pattern" style="font-size: 11px; color: orange">*Invalid email</div>
           <div class="space-20" *ngIf="!(email.touched && email.errors)"></div>
@@ -125,10 +128,12 @@
                     [disabled]="submitted || (email.errors && (email.errors.required || email.errors.pattern))">{{ (submitted && success < 3)?'Subscribing...':'Subscribe' }}</button>
           </div>
         </div>
-        <div class="space-10"></div>
-        <div *ngIf="!loaded" class="space-30"></div>
+
+        <div class="space-30"></div>
+
         <app-loader [show]="!loaded"></app-loader>
-        <div style="display: flex; flex-wrap: wrap;" *ngIf="loaded">
+
+        <div style="display: flex; flex-wrap: wrap; margin: 0 -15px;" *ngIf="loaded">
           <div *ngFor="let news of data" style="margin-bottom: 10px;" class="col-xs-12 col-sm-6 wow fadeInUp" data-wow-delay="0.2s">
             <div class="panel single-blog" style="margin-bottom: 0; height: 90%;">
               <div class="padding-20">
@@ -158,6 +163,7 @@
             <div class="space-30"></div>
           </div>
         </div>
+        
       </div>
     </div>
   </div>

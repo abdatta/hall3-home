@@ -7,7 +7,6 @@ import { InfoService } from '../../../services/info/info.service';
   styleUrls: ['./wardens.component.css']
 })
 export class WardensComponent implements OnInit {
-  @Input() embed = false;
   loaded = false;
   title: string;
   members: object[];
@@ -30,6 +29,7 @@ export class WardensComponent implements OnInit {
         }
       });
   }
+
   load() {
     this.images.pop();
     if (this.images.length === 0) {
