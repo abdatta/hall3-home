@@ -143,8 +143,14 @@
                 </ul>
                 <div class="space-10"></div>
                 <!--Heading-Area-->
-                <!--In-case-of-a-link-->
-                <a *ngIf="isURL(news['link'])" [href]="news['link']" target="_blank">
+                <!--In-case-of-external-link-->
+                <a *ngIf="isURL(news['link']) && !isInternalURL(news['link'])" [href]="news['link']" target="_blank">
+                  <h4>
+                    <img *ngIf="isNew(news['date'])" src="/images/new.gif" style="height: 15px;width:29px;float: left">{{ news['head'] }}
+                  </h4>
+                </a>
+                <!--In-case-of-internal-link-->
+                <a *ngIf="isURL(news['link']) && isInternalURL(news['link'])" [routerLink]="getInternalRoute(news['link'])">
                   <h4>
                     <img *ngIf="isNew(news['date'])" src="/images/new.gif" style="height: 15px;width:29px;float: left">{{ news['head'] }}
                   </h4>

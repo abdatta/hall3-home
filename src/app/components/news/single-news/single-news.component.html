@@ -13,8 +13,14 @@
             <li><span class="ti-calendar"></span>{{ ' ' + getFormattedDate(news['date']) }}</li>
           </ul>
           <div class="space-10"></div>
-          <!--In-case-of-a-link-->
-          <a *ngIf="isURL(news['link'])" [href]="news['link']" target="_blank">
+          <!--In-case-of-external-link-->
+          <a *ngIf="isURL(news['link']) && !isInternalURL(news['link'])" [href]="news['link']" target="_blank">
+            <h2>
+              {{ news['head'] }}
+            </h2>
+          </a>
+          <!--In-case-of-internal-link-->
+          <a *ngIf="isURL(news['link']) && isInternalURL(news['link'])" [routerLink]="getInternalRoute(news['link'])">
             <h2>
               {{ news['head'] }}
             </h2>

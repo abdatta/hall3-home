@@ -55,6 +55,14 @@ export class DashboardComponent implements OnInit {
     return pattern.test(str);
   }
 
+  isInternalURL(str: string): boolean {
+    return str.startsWith('http://hall3iitk.com');
+  }
+
+  getInternalRoute(str: string): string {
+    return str.replace('http://hall3iitk.com','');
+  }
+
   isNew(date: string) {
     return moment(date).isAfter(moment().subtract(3, 'days').startOf('day'));
   }

@@ -89,6 +89,14 @@ export class TopnewsComponent implements OnInit {
     return pattern.test(str);
   }
 
+  isInternalURL(str: string): boolean {
+    return str.startsWith('http://hall3iitk.com');
+  }
+
+  getInternalRoute(str: string): string {
+    return str.replace('http://hall3iitk.com','');
+  }
+
   trim(s: string, l: number) {
     if(s.length <= l)
       return s;
