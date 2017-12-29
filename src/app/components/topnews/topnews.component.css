@@ -1,5 +1,27 @@
+:host >>> .owl-stage {
+	display: flex;
+}
+
+.single-blog {
+	margin-left: 5px;
+	margin-right: 5px;
+	padding: 20px;
+	padding-bottom: 0px;
+	overflow: hidden;
+	height: 100%;
+}
+
 .view-more {
     cursor: pointer;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 0 55px;
+    overflow: hidden;
+}
+
+.view-more h2 {
+    text-align: center;
+    line-height: 45px;
 }
 
 .view-more:hover {
@@ -8,4 +30,11 @@
 
 .view-more:hover h2 {
     color: white;
+}
+
+.flexbox-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%
 }

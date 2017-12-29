@@ -37,7 +37,6 @@ export class TopnewsComponent implements OnInit {
 
   data: object[];
   loaded = false;
-  resizing = 1;
 
   constructor(private newsService: NewsService) { }
 
@@ -49,26 +48,8 @@ export class TopnewsComponent implements OnInit {
           } else {
             this.data = d;
             this.loaded = true;
-            this.resizing = 0;
-            setTimeout(() => {
-              this.resize();
-              window.addEventListener("resize", this.resize);
-            },100);
           }
         });
-  }
-
-  resize = () => {
-    if(!this.data) return;
-    let max = 0;
-    for(let i=0; i<=this.data.length; i++) {
-      let height = document.getElementById("news" + i).offsetHeight; // TODO: Remove dependency over DOM
-      if(height>max) max = height;
-    }
-    for(let i=0; i<=this.data.length; i++) {
-      document.getElementById("newstile" + i).style.height = `${max}px`;
-    }
-    this.resizing = 1;
   }
 
   getFormattedDate(date: string) {

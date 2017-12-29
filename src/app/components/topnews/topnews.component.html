@@ -1,14 +1,12 @@
-<owl-carousel *ngIf="loaded" [style.opacity]="resizing"
+<owl-carousel *ngIf="loaded"
               [options]="carouselOptions"
               [carouselClasses]="['owl-theme', 'container', 'sliding']"
               style="position: absolute;bottom: 2%;width: 100%;z-index: 5;">
   <!--News-Tile-Area-->
-  <div  *ngFor="let news of data; let i=index;"
-        [id]="'newstile' + i"
-        class="item panel single-blog"
-        style="margin-left: 5px;margin-right: 5px; overflow: hidden;">
+  <div  *ngFor="let news of data"
+        class="item panel single-blog">
     <!--News-Content-Area-->
-    <div class="padding-20" [id]="'news' + i">
+    <div>
       <!--By-and-Date-Area-->
       <ul class="list-unstyled list-inline">
         <li><span class="ti-user"></span>{{ ' By: ' + news['by'] }}</li>
@@ -46,11 +44,9 @@
   <!--News-Tile-Area-->
   <div  [id]="'newstile' + data.length"
         class="item panel single-blog view-more"
-        style="margin-left: 5px;margin-right: 5px; overflow: hidden; text-align: center;"
         routerLink="/notices/category/all">
     <!--News-Content-Area-->
-    <div style="display: flex; justify-content: center; align-items: center; height: 100%" 
-         [id]="'news' + data.length">
+    <div class="flexbox-container">
       <!--Heading-Area-->
       <h2> View More </h2>
       <!--Heading-Area/-->
