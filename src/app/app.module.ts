@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { OwlModule } from 'angular-owl-carousel';
+import { Ng2Carousel3dModule } from 'ng2-carousel-3d';
 import { Autosize } from 'ng-autosize';
 
 /* importing services here */
@@ -122,7 +123,8 @@ import { MinutesRevealerComponent } from './components/minutes-revealer/minutes-
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    OwlModule
+    OwlModule,
+    Ng2Carousel3dModule
   ],
   providers: [
     MainService,

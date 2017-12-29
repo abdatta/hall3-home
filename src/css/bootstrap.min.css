@@ -1978,6 +1978,12 @@
         }
     }
     
+    @media (min-width:1464px) {
+        .container {
+            width: 1430px
+        }
+    }
+    
     .container-fluid {
         padding-right: 15px;
         padding-left: 15px;
