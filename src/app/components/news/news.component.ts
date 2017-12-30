@@ -36,7 +36,7 @@ export class NewsComponent implements OnInit {
         this.submitted = false;
         this.success = 0;
         this.toggle = false;
-        this.mobile = (window.innerWidth < 768);
+        this.mobile = (window.innerWidth < 992);
 
         if (this.categories.indexOf(params['cat']) === -1) {
             this.router.navigateByUrl('/notices');
@@ -61,40 +61,7 @@ export class NewsComponent implements OnInit {
   }
 
   @HostListener('window:resize', ['$event']) makeResponsive(event) {
-    this.mobile = (event.srcElement.innerWidth < 768);
-  }
-
-  getFormattedDate(date: string) {
-    return moment(date).format('MMM DD, YYYY');
-  }
-
-  isURL(str: string): boolean {
-    let pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
-        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|'+ // domain name
-        '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
-        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
-        '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
-        '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
-    return pattern.test(str);
-  }
-
-  isInternalURL(str: string): boolean {
-    return str.startsWith('http://hall3iitk.com');
-  }
-
-  getInternalRoute(str: string): string {
-    return str.replace('http://hall3iitk.com','');
-  }
-
-  isNew(date: string) {
-    return moment(date).isAfter(moment().subtract(3, 'days').startOf('day'));
-  }
-
-  titlize(str: string) {
-    if(str === 'lnf') return 'Lost & Found'
-    return str.replace(new RegExp('_', "g"),' ').replace(/(\w)(\w*)/g, function (_, i, r) {
-      return i.toUpperCase() + (r != null ? r : "");
-    });
+    this.mobile = (event.srcElement.innerWidth < 992);
   }
 
   subscribe(id: string) {
@@ -116,13 +83,12 @@ export class NewsComponent implements OnInit {
       }
   }
 
-    trim(s: string, l: number) {
-        if(s.length <= l)
-            return s;
-        else {
-            let t = s.slice(0,l+1);
-            return t.slice(0,t.lastIndexOf(' ')) + '...';
-        }
-    }
+  titlize(str: string) {
+    if(str === 'lnf')
+      return 'Lost & Found';
+    else
+      return str.replace(new RegExp('_', "g"),' ')
+              .replace(/(\w)(\w*)/g, (_, i, r) => i.toUpperCase() + (r != null ? r : ""));
+  }
 
 }

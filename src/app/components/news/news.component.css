@@ -9,7 +9,7 @@ h3 {
   cursor: initial;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .tab-head {
     cursor: pointer;
   }
