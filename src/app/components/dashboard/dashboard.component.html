@@ -2,71 +2,30 @@
   <div class="space-100"></div>
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-6 col-sm-offset-3 padding30" style="text-align: center" *ngIf="user">
+      <div *ngIf="user" class="flexbox-container">
         <div class="space-40"></div>
         <h2>Your Dashboard</h2>
         <div class="space-10"></div>
         <h4>{{ 'Welcome ' + user.name }}</h4>
-        <div class="space-20"></div>
-        <button class="bttn" routerLink="/notices/add">Add Notice</button>
-        <div *ngIf="isLevel('admin')" class="space-20"></div>
-        <button *ngIf="isLevel('admin')" class="bttn" routerLink="/signup">Sign Up a New User</button>
-        <div *ngIf="isLevel('sports')" class="space-20"></div>
-        <button *ngIf="isLevel('sports')" class="bttn" routerLink="/facility/sports/inventory">Update Sports Inventory</button>
+        <div *ngFor="let option of options">
+          <div class="space-20"></div>
+          <button class="bttn" [routerLink]="option.link">{{ option.text }}</button>
+        </div>
         <div class="space-20"></div>
         <button class="bttn" (click)="logout()">Logout</button>
-      </div>
-      <div class="col-xs-12 col-sm-10 col-sm-offset-1 padding30" style="text-align: center">
-        <div class="space-40"></div>
-        <h3>Your Notices</h3>
-        <div class="space-10"></div>
-        <p *ngIf="loaded && data.length == 0">You have posted no notices yet.</p>
-        <app-loader [show]="!loaded"></app-loader>
-        <div *ngIf="loaded" style="display: flex; flex-wrap: wrap;">
-          <div *ngFor="let news of data; let i=index;"
-               style="margin-bottom: 10px;"
-               class="col-xs-12 col-sm-4 wow fadeInUp"
-               attr.data-wow-delay="0.2">
-            <div class="panel single-blog" style="margin-bottom: 0; height: 90%;">
-              <div class="padding-20" style="text-align: left;">
-                <ul class="list-unstyled list-inline">
-                  <li><span class="ti-calendar"></span>{{ ' ' + getFormattedDate(news['date']) }}</li>
-                  <!--li style="float: right;"><a [routerLink]="'/notices/edit/122345'"><span class="ti-close"></span></a></li-->
-                  <li style="float: right;">
-                    <a [routerLink]="'/notices/edit/' + news['_id']">
-                      <span class="ti-marker-alt"></span>&nbsp;Edit
-                    </a>
-                  </li>
-                </ul>
-                <div class="space-10"></div>
-                <!--Heading-Area-->
-                <!--In-case-of-external-link-->
-                <a *ngIf="isURL(news['link']) && !isInternalURL(news['link'])" [href]="news['link']" target="_blank">
-                  <h4>
-                    <img *ngIf="isNew(news['date'])" src="/images/new.gif" style="height: 15px;width:29px;float: left">{{ news['head'] }}
-                  </h4>
-                </a>
-                <!--In-case-of-internal-link-->
-                <a *ngIf="isURL(news['link']) && isInternalURL(news['link'])" [routerLink]="getInternalRoute(news['link'])">
-                  <h4>
-                    <img *ngIf="isNew(news['date'])" src="/images/new.gif" style="height: 15px;width:29px;float: left">{{ news['head'] }}
-                  </h4>
-                </a>
-                <!--In-case-of-no-link-->
-                <h4 *ngIf="!isURL(news['link'])">
-                  <img *ngIf="isNew(news['date'])" src="/images/new.gif" style="height: 15px;width:29px;float: left">{{ news['head'] }}
-                </h4>
-                <!--Heading-Area/-->
-                <p>
-                  {{ trim(news['body'],170) }}
-                  <a *ngIf="news['body'].length > 170" [routerLink]="'/notices/single/' + news['_id']" style="color: #7b76c8; text-decoration: underline"> more</a>
-                </p>
-                <ul class="list-unstyled list-inline">
-                  <li><b>Category:</b> {{ titlize(news['category'].join(' ')) }}</li>
-                </ul>
-              </div>
-            </div>
-            <div class="space-30"></div>
+        <div>
+          <div class="space-40"></div>
+          <h3 style="text-align: center;">Your Notices</h3>
+          <div class="space-10"></div>
+          <p *ngIf="loaded && data.length == 0">You have posted no notices yet.</p>
+          <app-loader [show]="!loaded"></app-loader>
+          <div *ngIf="loaded" style="display: flex; flex-wrap: wrap;">
+            <app-news-tile *ngFor="let news of data"
+                           [news]="news" [edit]="true" [maxbody]="160"
+                           style="margin-bottom: 10px;"
+                           class="col-xs-12 col-sm-6 col-md-4 wow fadeInUp"
+                           attr.data-wow-delay="0.2">
+            </app-news-tile>
           </div>
         </div>
       </div>

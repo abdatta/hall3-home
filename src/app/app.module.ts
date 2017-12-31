@@ -65,6 +65,7 @@ import { InventoryComponent } from './components/facilities/sports/inventory/inv
 import { LoaderComponent } from './components/loader/loader.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MinutesRevealerComponent } from './components/minutes-revealer/minutes-revealer.component';
+import { NewsTileComponent } from './components/news/news-tile/news-tile.component';
 
 @NgModule({
   declarations: [
@@ -116,7 +117,8 @@ import { MinutesRevealerComponent } from './components/minutes-revealer/minutes-
     ReportComponent,
     LoaderComponent,
     NotFoundComponent,
-    MinutesRevealerComponent
+    MinutesRevealerComponent,
+    NewsTileComponent
   ],
   imports: [
     BrowserModule,

@@ -2,56 +2,15 @@
               [options]="carouselOptions"
               [carouselClasses]="['owl-theme', 'container', 'sliding']"
               style="position: absolute;bottom: 2%;width: 100%;z-index: 5;">
-  <!--News-Tile-Area-->
-  <div  *ngFor="let news of data"
-        class="item panel single-blog">
-    <!--News-Content-Area-->
-    <div>
-      <!--By-and-Date-Area-->
-      <ul class="list-unstyled list-inline">
-        <li><span class="ti-user"></span>{{ ' By: ' + news['by'] }}</li>
-        <li><span class="ti-calendar"></span>{{ ' ' + getFormattedDate(news['date']) }}</li>
-      </ul>
-      <!--By-&-Date-Area/-->
-      <div class="space-10"></div>
-      <!--Heading-Area-->
-        <!--In-case-of-external-link-->
-        <a *ngIf="isURL(news['link']) && !isInternalURL(news['link'])" [href]="news['link']" target="_blank">
-          <h4>
-            <img *ngIf="isNew(news['date'])" src="/images/new.gif" style="height: 15px;width:29px;float: left">{{ news['head'] }}
-          </h4>
-        </a>
-        <!--In-case-of-internal-link-->
-        <a *ngIf="isURL(news['link']) && isInternalURL(news['link'])" [routerLink]="getInternalRoute(news['link'])">
-          <h4>
-            <img *ngIf="isNew(news['date'])" src="/images/new.gif" style="height: 15px;width:29px;float: left">{{ news['head'] }}
-          </h4>
-        </a>
-        <!--In-case-of-no-link-->
-        <h4 *ngIf="!isURL(news['link'])">
-          <img *ngIf="isNew(news['date'])" src="/images/new.gif" style="height: 15px;width:29px;float: left">{{ news['head'] }}
-        </h4>
-      <!--Heading-Area/-->
-      <p>
-        {{ trim(news['body'], 110) }}
-        <a *ngIf="news['body'].length > 110" [routerLink]="'/notices/single/' + news['_id']" style="color: #7b76c8; text-decoration: underline"> more</a>
-      </p>
-    </div>
-    <!--News-Content-Area/-->
-  </div>
-  <!--News-Tile-Area/-->
 
-  <!--News-Tile-Area-->
+  <app-news-tile  *ngFor="let news of data" [news]="news"></app-news-tile>
+
   <div  [id]="'newstile' + data.length"
         class="item panel single-blog view-more"
         routerLink="/notices/category/all">
-    <!--News-Content-Area-->
     <div class="flexbox-container">
-      <!--Heading-Area-->
       <h2> View More </h2>
-      <!--Heading-Area/-->
     </div>
-    <!--News-Content-Area/-->
   </div>
-  <!--News-Tile-Area/-->
+
 </owl-carousel>

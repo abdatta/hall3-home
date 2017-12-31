@@ -15,13 +15,13 @@ export class TopnewsComponent implements OnInit {
       '0': {
         items: 1
       },
-      '468': {
+      '500': {
         items: 2
       },
-      '768': {
+      '900': {
         items: 3
       },
-      '1000': {
+      '1200': {
         items: 4
       }
     },
@@ -50,41 +50,6 @@ export class TopnewsComponent implements OnInit {
             this.loaded = true;
           }
         });
-  }
-
-  getFormattedDate(date: string) {
-    return moment(date).format('MMM DD, YYYY');
-  }
-
-  isNew(date: string) {
-    return moment(date).isAfter(moment().subtract(3, 'days').startOf('day'));
-  }
-
-  isURL(str: string): boolean {
-    let pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
-        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|'+ // domain name
-        '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
-        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
-        '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
-        '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
-    return pattern.test(str);
-  }
-
-  isInternalURL(str: string): boolean {
-    return str.startsWith('http://hall3iitk.com');
-  }
-
-  getInternalRoute(str: string): string {
-    return str.replace('http://hall3iitk.com','');
-  }
-
-  trim(s: string, l: number) {
-    if(s.length <= l)
-      return s;
-    else {
-      let t = s.slice(0,l+1);
-      return t.slice(0,t.lastIndexOf(' ')) + '...';
-    }
   }
   
 }
