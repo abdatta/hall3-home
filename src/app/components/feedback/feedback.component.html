@@ -39,20 +39,6 @@
         </div>
       </div>
       <!--Single-counterup/-->
-      <!--Single-counterup->
-      <div class="col-xs-4">
-        <div class="counter_up">
-          <a href="https://pingala.iitk.ac.in" target="_blank">
-            <div class="counter_icon">
-              <span class="ti-pencil-alt"></span><!--ti-layout-media-center-alt"->
-            </div>
-          </a>
-          <div class="space-20"></div>
-          <h4 class="whennotxs">COMPLAINT TO IWD</h4>
-        </div>
-      </div>
-      <!--Single-counterup/-->
-      <!--Single-counterup-->
     </div>
   </div>
   <div class="space-30"></div>
@@ -179,8 +165,8 @@
               <tr>
                 <th style="width: 10%;">Date</th>
                 <th style="width: 10%;">To</th>
-                <th style="width: 40%; min-width: 120px;">Query</th>
-                <th *ngIf="responded" style="width: 40%; min-width: 120px;">Response</th>
+                <th style="width: 40%;">Query</th>
+                <th *ngIf="responded" style="width: 40%;">Response</th>
               </tr>
             </thead>
             <tbody *ngIf="loading">
@@ -197,8 +183,8 @@
               <tr>
                 <td>{{ response.date }}</td>
                 <td>{{ response.to }}</td>
-                <td style="white-space: pre-wrap;">{{ response.message }}</td>
-                <td *ngIf="responded" style="white-space: pre-wrap;">{{ response.response }}</td>
+                <td class="resp" [innerHTML]="preProcess(response.message)"></td>
+                <td *ngIf="responded" class="resp" [innerHTML]="preProcess(response.response)"></td>
               </tr>
             </tbody>
           </table>

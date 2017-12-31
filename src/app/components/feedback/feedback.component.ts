@@ -77,6 +77,22 @@ export class FeedbackComponent implements OnInit {
       });
   }
 
+  preProcess(plainText: string): string {
+    //URLs starting with http://, https://, or ftp://
+    const  replacePattern1 = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
+    let replacedText = plainText.replace(replacePattern1, '<a href="$1" class="autolink" target="_blank">$1</a>');
+
+    //URLs starting with "www." (without // before it, or it'd re-link the ones done above).
+    const replacePattern2 = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
+    replacedText = replacedText.replace(replacePattern2, '$1<a href="http://$2" class="autolink" target="_blank">$2</a>');
+
+    //Change email addresses to mailto:: links.
+    const replacePattern3 = /(([a-zA-Z0-9\-\_\.])+@[a-zA-Z\_]+?(\.[a-zA-Z]{2,6})+)/gim;
+    replacedText = replacedText.replace(replacePattern3, '<a href="mailto:$1" class="autolink">$1</a>');
+
+    return replacedText;
+  }
+
   lnfsend(what: string, when: string, where: string, des: string, link: string, contact: string, type: string, form: any) {
     this.sending = true;
     this.feedbackService.sendlnf({

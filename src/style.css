@@ -1457,3 +1457,13 @@ Pagination
 .invisible{
   display: none;
 }
+
+a.autolink {
+  text-decoration: underline;
+  color: inherit;
+}
+
+a.autolink:focus, a.autolink:hover {
+    outline: 0 solid;
+    color: #7B76C8;
+}

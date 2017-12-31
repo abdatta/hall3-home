@@ -39,6 +39,10 @@ td {
   cursor: pointer;
 }
 
+.resp {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
 
 /*-------------Check Box------------*/
 
