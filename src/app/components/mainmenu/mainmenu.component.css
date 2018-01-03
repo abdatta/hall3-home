@@ -6,6 +6,10 @@ h1 {
     margin: 0 10px;
 }
 
+.mainmenu-area {
+  box-shadow: 0 3px 3px rgba(0,0,0,0.16), 0 3px 3px rgba(0,0,0,0.23);
+}
+
 .navbar-collapse {
 	-webkit-transition: height 0.8s ease-in-out;
 	transition: height 0.8s ease-in-out;

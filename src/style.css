@@ -106,6 +106,7 @@ input:-webkit-autofill:focus {
     background-size: 100% 200%;
     border: medium none;
     border-radius: 2px;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.16), 0 3px 3px rgba(0,0,0,0.23);
     color: #ffffff;
     display: inline-block;
     outline: medium none;

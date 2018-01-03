@@ -26,10 +26,11 @@
                [class.dropdown2-toggle]="dropped2['index'] == i && dropped2['dropped']"
                [routerLink]="item.link()"
                (click)="toggleDrop(i)">
-              {{ item['title'] }} <span [class.caret]="hasDropDown(i)"
-                                        [style.transform]=
-                                        "(dropped2['index'] == i && dropped2['dropped'])?'rotate(180deg)':'rotate(0deg)'">
-                                  </span>
+              {{ item['title'] }}
+              <span [class.caret]="hasDropDown(i)"
+                    [style.transform]=
+                    "(dropped2['index'] == i && dropped2['dropped'])?'rotate(180deg)':'rotate(0deg)'">
+              </span>
             </a>
 
             <!-- Sub Menu -->
