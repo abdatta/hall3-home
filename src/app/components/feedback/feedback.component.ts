@@ -21,6 +21,7 @@ export class FeedbackComponent implements OnInit {
     responded: [],
     notresponded: []
   };
+  page = 1;
   loading = true;
 
   constructor(private feedbackService: FeedbackService) { }
@@ -31,22 +32,18 @@ export class FeedbackComponent implements OnInit {
   changeForm(nextForm: string) {
     this.form = nextForm;
     if (nextForm === 'response') {
-      this.responded = true;
+      this.setResponseTab(true);
       this.feedbackService.getResponses()
           .subscribe((q: Query[]) => {
             if (q.hasOwnProperty('err')) {
               this.error = q['err'];
             } else {
-              this.responses.responded = [];
-              this.responses.notresponded = [];
-              q.slice().reverse().forEach((response: Query) => {
-                response['date'] = moment(response['date']).format('DD\xa0MMM YY');
-                if(response['responded']) {
-                  this.responses.responded.push(response);
-                } else {
-                  this.responses.notresponded.push(response);
-                }
+              q = q.slice().reverse().map(r => {
+                r.date = moment(r.date).format('DD\xa0MMM YY');
+                return r;
               });
+              this.responses.responded = q.filter(r => r.responded);
+              this.responses.notresponded = q.filter(r => !r.responded);
             }
             this.loading = false;
           });
@@ -75,6 +72,37 @@ export class FeedbackComponent implements OnInit {
         }
         this.sending = false;
       });
+  }
+
+  setResponseTab(responded: boolean) {
+    if(this.responded !== responded) {
+      this.responded = responded;
+      this.page = 1;
+    }
+  }
+
+  pagesList(): number[] {
+    return Array(this.getNoOfPages()).fill(0).map((v,i) => i+1);
+  }
+
+  getNoOfPages(): number {
+    return Math.ceil(this.responses[this.responded?'responded':'notresponded'].length/8);    
+  }
+
+  nextPage(el: any) {
+    if(this.page < this.getNoOfPages())
+      this.page++;
+    el.scrollIntoView();
+  }
+
+  prevPage(el: any) {
+    if(this.page > 1)
+      this.page--;
+    el.scrollIntoView();
+  }
+
+  responsesOnPage(p: number) {
+      return this.responses[this.responded?'responded':'notresponded'].slice(8*(p-1), 8*p);
   }
 
   preProcess(plainText: string): string {

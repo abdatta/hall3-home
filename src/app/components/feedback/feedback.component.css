@@ -48,6 +48,14 @@ td {
   word-break: break-word;
 }
 
+.paginator {
+  color: black;
+  padding: 10px;
+  background-color: #ffffff;
+  border: 3px solid #7C77C9;
+  border-radius: 2px;
+}
+
 /*-------------Check Box------------*/
 
 

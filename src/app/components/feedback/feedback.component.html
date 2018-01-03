@@ -147,7 +147,7 @@
       </div>
     </form>
 
-    <div *ngIf="showForm('response')">
+    <div *ngIf="showForm('response')" #top>
       <div class="row">
         <!--blog-page-title-->
         <div class="col-xs-12 col-md-6 col-md-offset-3 text-center">
@@ -157,8 +157,8 @@
       </div>
       <div class="space-20"></div>
       <div class="row" style="padding: 0 10px;">
-        <div class="col-xs-6 tabs" [attr.active]="responded" (click)="responded = true;">RESPONDED</div>
-        <div class="col-xs-6 tabs" [attr.active]="!responded" (click)="responded = false;">NOT RESPONDED</div>
+        <div class="col-xs-6 tabs" [attr.active]="responded" (click)="setResponseTab(true)">RESPONDED</div>
+        <div class="col-xs-6 tabs" [attr.active]="!responded" (click)="setResponseTab(false)">NOT RESPONDED</div>
         <div class="col-xs-12" style="padding: 0; overflow-x: auto">
           <table>
             <thead>
@@ -178,7 +178,7 @@
                 <td *ngIf="responded"><img src="../../../images/loading2.gif" style="width: 40px;"></td>
               </tr>
             </tbody>
-            <tbody *ngFor="let response of (responded?(responses.responded):(responses.notresponded))">
+            <tbody *ngFor="let response of responsesOnPage(page)">
               <div class="space-2"></div>
               <tr>
                 <td>{{ response.date }}</td>
@@ -188,6 +188,14 @@
               </tr>
             </tbody>
           </table>
+        </div>
+        <div class="space-10"></div>
+        <div class="col-xs-12" style="padding: 0; display: flex; justify-content: space-between;">
+          <button class="bttn" [disabled]="page <= 1" (click)="prevPage(top)">Prev</button>
+          <select class="paginator" (change)="top.scrollIntoView()" [(ngModel)]="page">
+            <option *ngFor="let page of pagesList()" [value]="page">{{ 'Page ' + page }}</option>
+          </select>
+          <button class="bttn" [disabled]="page >= getNoOfPages()" (click)="nextPage(top)">Next</button>
         </div>
       </div>
     </div>

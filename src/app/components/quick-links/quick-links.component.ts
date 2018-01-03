@@ -23,7 +23,6 @@ export class QuickLinksComponent implements OnInit {
 
   ngOnInit() {
     this.links = this.mainService.getMainmenu().slice(-1)[0]['dropdown'];
-    console.log(this.links);
   }
 
 }
