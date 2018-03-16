@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
     this.route.queryParams.subscribe((params: Params) => {
      const url = this.router.url;
       if(params['next']){
-        console.log(params['next']);
         this.next = params['next'];
       }
     });

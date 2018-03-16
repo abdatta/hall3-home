@@ -1,4 +1,4 @@
-<div class="space-20"></div>
+<div class="space-80"></div>
 <div class="text-center">
   <h3 class="text-uppercase">Facilities</h3>
   <p class="page-sub-title">Have a look at the facilities of Hall 3.</p>
@@ -8,8 +8,12 @@
 <div class="container">
   <ng2-carousel-3d [slides]="slides" [options]="options" class="col-12" #carousel>
       <ng2-carousel-3d-slide *ngFor="let slide of slides; let i = index" (click)="carousel.slideClicked(i)">
-          <img class="slide-img" [src]="slide.src" alt=""/>
-          <a [routerLink]="slide.link"><h4 class="slide-desc">{{ slide.cap }}</h4></a>
+          <img 	[title]="'Click to know more about our ' + slide.cap" 
+          		class="slide-img" [src]="slide.src" [alt]="slide.cap"
+          		[routerLink]="slide.link"/>
+          <h4 class="slide-desc">
+          	<a [routerLink]="slide.link">{{ slide.cap }}</a>
+          </h4>
       </ng2-carousel-3d-slide>
   </ng2-carousel-3d>
 </div>

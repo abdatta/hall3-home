@@ -8,6 +8,8 @@ import { InfoService } from '../../../services/info/info.service';
 })
 export class ReadingRoomComponent implements OnInit {
 
+  images: string[] = [''].map(r => `images/facilities/rr${r}.jpg`);
+
   books: object[];
   loaded = false;
 

@@ -8,13 +8,7 @@ import { InfoService } from '../../../services/info/info.service';
 })
 export class SportsComponent implements OnInit {
 
-  images: string[] = [
-    'sports.jpg',
-    'sports2.jpg',
-    'sports3.jpg',
-    'sports4.jpg',
-    'sports5.jpg'
-  ];
+  images: string[] = ['', '2', '3', '4', '5'].map(s => `images/facilities/sports${s}.jpg`);
 
   loaded = false;
 

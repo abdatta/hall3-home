@@ -35,13 +35,14 @@ export class MainService {
       'otherdocuments': '/notices/category/other_documents',
     'quicks': null,
       'faqs': '/server/files/faqs.pdf',
-      'feedback': '/feedback',
+      'athform': '/feedback/ath',
+      'lnfform': '/feedback/lnf',
       'messportal': 'http://mess.hall3iitk.com',
       'login': '/login',
       'dash': '/dashboard',
       'map': '/map',
       'rules': '/server/files/rules.pdf',
-      'messfeedback': 'https://goo.gl/CAu4xv'
+      //'messfeedback': 'https://goo.gl/CAu4xv'
   };
   private mainmenu: Object[] = [
     {
@@ -201,12 +202,12 @@ export class MainService {
                       'newtab': true
                   },
                   {
-                      'title' : 'Ask The HEC / Lost & Found',
-                      'link' : this.getLink('feedback')
+                      'title' : 'Ask The HEC',
+                      'link' : this.getLink('athform')
                   },
                   {
-                      'title' : 'Hall Map',
-                      'link' : this.getLink('map')
+                      'title' : 'Lost & Found',
+                      'link' : this.getLink('lnfform')
                   },
                   {
                       'title' : 'Mess Automation Portal',
@@ -214,9 +215,8 @@ export class MainService {
                       'newtab': true
                   },
                   {
-                      'title' : 'Daily Mess Feedback',
-                      'link' : this.getLink('messfeedback'),
-                      'newtab': true
+                      'title' : 'Hall Map',
+                      'link' : this.getLink('map')
                   },
                   {
                       'title1' : 'HEC Login',

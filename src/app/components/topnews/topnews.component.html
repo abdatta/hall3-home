@@ -3,7 +3,7 @@
               [carouselClasses]="['owl-theme', 'container', 'sliding']"
               style="position: absolute;bottom: 2%;width: 100%;z-index: 5;">
 
-  <app-news-tile  *ngFor="let news of data" [news]="news"></app-news-tile>
+  <app-news-tile *ngFor="let news of data" [news]="news" [maxbody]="maxchars"></app-news-tile>
 
   <div  [id]="'newstile' + data.length"
         class="item panel single-blog view-more"

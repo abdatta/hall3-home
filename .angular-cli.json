@@ -12,9 +12,10 @@
         "style.css",
         "css",
         "js",
+        "manifest.json",
+        "icons",
         "images",
-        "fonts",
-        "favicon.ico"
+        "fonts"
       ],
       "index": "index.html",
       "main": "main.ts",

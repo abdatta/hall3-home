@@ -14,14 +14,17 @@ export class MinutesRevealerComponent implements OnInit {
   reveal = false;
   width = 1
   data: object[] = [];
+  maxchars = 150;
 
   constructor(private service: NewsService) { }
 
   ngOnInit() {
+    this.maxchars = (window.innerWidth < 1464)?150:345;
   }
 
   @HostListener('window:resize', ['$event']) resize(event) {
     this.width = (event.srcElement.innerWidth < 768) ? 1 : 2;
+    this.maxchars = (event.srcElement.innerWidth < 1464)?150:345;
   }
 
   revealer() {
@@ -39,31 +42,6 @@ export class MinutesRevealerComponent implements OnInit {
       }
       else {
       }
-  }
-
-
-  getFormattedDate(date: string) {
-    return moment(date).format('MMM DD, YYYY');
-  }
-
-  isURL(str: string): boolean {
-    let pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
-        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|'+ // domain name
-        '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
-        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
-        '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
-        '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
-    return pattern.test(str);
-  }
-
-  isNew(date: string) {
-    return moment(date).isAfter(moment().subtract(3, 'days').startOf('day'));
-  }
-
-  titlize(str: string) {
-    return str.replace(new RegExp('_', "g"),' ').replace(/(\w)(\w*)/g, function (_, i, r) {
-      return i.toUpperCase() + (r != null ? r : "");
-    });
   }
 
   /*subscribe(id: string) {
@@ -84,14 +62,5 @@ export class MinutesRevealerComponent implements OnInit {
               });
       }
   }*/
-
-    trim(s: string, l: number) {
-        if(s.length <= l)
-            return s;
-        else {
-            let t = s.slice(0,l+1);
-            return t.slice(0,t.lastIndexOf(' ')) + '...';
-        }
-    }
 
 }

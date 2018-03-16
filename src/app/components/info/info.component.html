@@ -16,7 +16,7 @@
               <h3>{{ toTitleCase(title) }}</h3>
             </div>
             <hr>
-            <ul class="list-unstyled toggler" [style.height]="mobile?(toggle?(50*list.length+'px'):'0'):'auto'">
+            <ul class="list-unstyled toggler" [style.height]="mobile?(toggle?((45*list.length+25)+'px'):'0'):'auto'">
               <li *ngFor="let item of list" class="tab" [class.activeTab]="router.isActive(item.link())">
                 <a [routerLink]="item.link()" (click)="toggle = mobile?!toggle:toggle">{{ item['name'] }}</a>
               </li>

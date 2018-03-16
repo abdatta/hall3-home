@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { NewsService } from '../../services/news/news.service';
 import * as moment from 'moment';
 
@@ -34,6 +34,7 @@ export class TopnewsComponent implements OnInit {
     autoplaySpeed: 800,
     autoplayHoverPause: true
   };
+  maxchars = 120;
 
   data: object[];
   loaded = false;
@@ -41,6 +42,7 @@ export class TopnewsComponent implements OnInit {
   constructor(private newsService: NewsService) { }
 
   ngOnInit() {
+    this.maxchars = (window.innerWidth < 1464)?120:235;
     this.newsService.getTopNews()
         .subscribe((d: object[]) => {
           if (d.hasOwnProperty('err')) {
@@ -50,6 +52,11 @@ export class TopnewsComponent implements OnInit {
             this.loaded = true;
           }
         });
+  }
+
+  @HostListener('window:resize', ['$event']) makeResponsive(event) {
+      this.maxchars = (event.srcElement.innerWidth < 1464)?120:235;
+
   }
   
 }

@@ -9,7 +9,8 @@ export class UsersGuard implements CanActivate {
     private usersService: UsersService,
     private router: Router) {}
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
+  canActivate(route: ActivatedRouteSnapshot,
+              state: RouterStateSnapshot): Promise<boolean> {
     return this.usersService.check()
       .then((result: boolean) => {
         if (!result) {
@@ -45,7 +46,8 @@ export class AdminGuard implements CanActivate {
     private usersService: UsersService,
     private router: Router) {}
 
-  canActivate(): Promise<boolean> {
+  canActivate(route: ActivatedRouteSnapshot,
+              state: RouterStateSnapshot): Promise<boolean> {
     return this.usersService.checkAdmin()
       .then((result: boolean) => {
         if (!result) {

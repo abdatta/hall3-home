@@ -8,6 +8,8 @@ import { InfoService } from '../../../services/info/info.service';
 })
 export class CanteenComponent implements OnInit {
 
+  images: string[] = ['', '2'].map(c => `images/facilities/canteen${c}.jpg`);
+
   constructor(private infoService: InfoService) { }
 
   ngOnInit() {

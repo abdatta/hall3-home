@@ -3,13 +3,3 @@ a:visited { text-decoration: none;color: white }
 a:hover { text-decoration: none;color: white }
 a:focus { text-decoration: none;color: white }
 a:hover, a:active { text-decoration: none;color: white }
-
-.sm-padding {
-    padding: 20px;
-}
-
-@media (max-width: 768px) {
-    .md-padding{
-        padding: 0;
-    }
-}

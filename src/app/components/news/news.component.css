@@ -25,6 +25,12 @@ h3 {
     transition: all 0.5s;
 }
 
+.tab a {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .tab:hover, .activeTab
 {
     background-color: #7c77c9;
@@ -49,7 +55,7 @@ h3 {
 /* CSS for the Cool Hamburger */
 
 .wrapper-menu {
-  margin-top: 6px;
+  margin-top: 5px;
   width: 17px;
   height: 17px;
   display: flex;

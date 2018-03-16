@@ -9,7 +9,7 @@
       <!--Single-counterup-->
       <div class="col-xs-4">
         <div class="counter_up">
-          <div id="ask" [class.active]="showForm('ask')" class="counter_icon" (click)="changeForm('ask')">
+          <div id="ath" [class.active]="showForm('ath')" class="counter_icon" routerLink="/feedback/ath">
             <span class="ti-help-alt"></span>
           </div>
           <div class="space-20"></div>
@@ -20,7 +20,7 @@
       <!--Single-counterup-->
       <div class="col-xs-4">
         <div class="counter_up">
-          <div id="response" [class.active]="showForm('response')" class="counter_icon" (click)="changeForm('response')">
+          <div id="responses" [class.active]="showForm('responses')" class="counter_icon" routerLink="/feedback/responses">
             <span class="ti-info-alt"></span>
           </div>
           <div class="space-20"></div>
@@ -31,7 +31,7 @@
       <!--Single-counterup-->
       <div class="col-xs-4">
         <div class="counter_up">
-          <div id="lnf" [class.active]="showForm('lnf')" class="counter_icon" (click)="changeForm('lnf')">
+          <div id="lnf" [class.active]="showForm('lnf')" class="counter_icon" routerLink="/feedback/lnf">
             <span class="ti-alert"></span>
           </div>
           <div class="space-20"></div>
@@ -45,7 +45,7 @@
   <p style="color: red">{{ error }}</p>
   <div class="container">
     <!--Contact-form-->
-    <form *ngIf="showForm('ask')"
+    <form *ngIf="showForm('ath')"
           #askform="ngForm"
           (ngSubmit)="askTheHEC(name.value,hec.value,subject.value,message.value,email.value,askform) ">
 
@@ -137,7 +137,11 @@
           <div class="space-25"></div>
         </div>
         <div class="col-xs-12" style="display : flex">
-          <button type="submit" class="bttn" [disabled]="!askform.valid || sending">{{(sending)?'Sending...':'Send'}}</button>
+          <button type="submit" class="bttn"
+                  [title]="askform.valid?'':'Fill the required detail first'"
+                  [disabled]="!askform.valid || sending">
+            {{(sending)?'Sending...':'Send'}}
+          </button>
           <label  class="control control--checkbox"
                   style="margin-left: 25px; margin-top: 10px;">Go Anonymous
             <input type="checkbox" value="" (change)="anonymous=!anonymous">
@@ -147,7 +151,7 @@
       </div>
     </form>
 
-    <div *ngIf="showForm('response')" #top>
+    <div *ngIf="showForm('responses')" #top>
       <div class="row">
         <!--blog-page-title-->
         <div class="col-xs-12 col-md-6 col-md-offset-3 text-center">
@@ -190,7 +194,8 @@
           </table>
         </div>
         <div class="space-10"></div>
-        <div class="col-xs-12" style="padding: 0; display: flex; justify-content: space-between;">
+        <div *ngIf="getNoOfPages() > 1" class="col-xs-12" 
+              style="padding: 0; display: flex; justify-content: space-between;">
           <button class="bttn" [disabled]="page <= 1" (click)="prevPage(top)">Prev</button>
           <select class="paginator" (change)="top.scrollIntoView()" [(ngModel)]="page">
             <option *ngFor="let page of pagesList()" [value]="page">{{ 'Page ' + page }}</option>
@@ -202,16 +207,17 @@
 
     <form *ngIf="showForm('lnf')"
           #lnfform="ngForm"
-          (ngSubmit)="lnfsend(what.value,when.value,where.value,des.value,link.value,contact.value,LorF.value,lnfform)" >
+          (ngSubmit)="lnfsend(what.value,when.value,where.value,des.value,link.value,yname.value,phone.value,room.value,LorF.value,lnfform)" >
       <div class="row">
         <!--blog-page-title-->
-        <div class="col-xs-12 col-md-6 col-md-offset-3 text-center">
+        <div class="col-xs-12 col-md-6 col-md-offset-3 text-center lnf">
           <h3 class="">LOST & FOUND</h3>
+          <p><a routerLink="/notices/category/lnf">Checkout previous lost/found items.</a></p>
         </div>
         <!--blog-page-title/-->
       </div>
       <div class="row">
-        <div class="col-xs-12 col-sm-6">
+        <div class="col-xs-12 col-sm-4">
           <div *ngIf="what.touched && what.errors && what.errors.required" style="font-size: 11px; color: red">*Required</div>
           <div class="space-20" *ngIf="!(what.touched && what.errors)"></div>
           <input type="text"
@@ -223,7 +229,7 @@
                  #what="ngModel"
                  >
         </div>
-        <div class="col-xs-12 col-sm-6">
+        <div class="col-xs-12 col-sm-4">
           <div *ngIf="when.touched && when.errors && when.errors.required" style="font-size: 11px; color: red">*Required</div>
           <div class="space-20" *ngIf="!(when.touched && when.errors)"></div>
           <input type="text"
@@ -235,7 +241,7 @@
                  #when="ngModel"
                  >
         </div>
-        <div class="col-xs-12 col-sm-6">
+        <div class="col-xs-12 col-sm-4">
           <div *ngIf="where.touched && where.errors && where.errors.required" style="font-size: 11px; color: red">*Required</div>
           <div class="space-20" *ngIf="!(where.touched && where.errors)"></div>
           <input type="text"
@@ -245,6 +251,19 @@
                  required
                  ngModel
                  #where="ngModel"
+                 >
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <div *ngIf="link.touched && link.errors && link.errors.pattern" style="font-size: 11px; color: orange">*Invalid link</div>
+          <div class="space-20" *ngIf="!(link.touched && link.errors)"></div>
+          <input type="text"
+                 class="form-control"
+                 [class.invalid-email]="link.touched && link.errors && link.errors.pattern"
+                 name="link"
+                 placeholder="Link to photographs (if any)"
+                 ngModel
+                 pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)" 
+                 #link="ngModel"
                  >
         </div>
         <div class="col-xs-12 col-sm-6">
@@ -271,34 +290,47 @@
                     >
           </textarea>
         </div>
-        <div class="col-xs-12 col-sm-6">
-          <div *ngIf="link.touched && link.errors && link.errors.pattern" style="font-size: 11px; color: orange">*Invalid link</div>
-          <div class="space-20" *ngIf="!(link.touched && link.errors)"></div>
+        <div class="col-xs-12 col-sm-4">
+          <div *ngIf="yname.touched && yname.errors && yname.errors.required" style="font-size: 11px; color: red">*Required</div>
+          <div class="space-20" *ngIf="!(yname.touched && yname.errors)"></div>
           <input type="text"
                  class="form-control"
-                 [class.invalid-email]="link.touched && link.errors && link.errors.pattern"
-                 name="link"
-                 placeholder="Link to photographs (optional)"
-                 ngModel
-                 pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)" 
-                 #link="ngModel"
-                 >
-        </div>
-        <div class="col-xs-12 col-sm-6">
-          <div *ngIf="contact.touched && contact.errors && contact.errors.required" style="font-size: 11px; color: red">*Required</div>
-          <div class="space-20" *ngIf="!(contact.touched && contact.errors)"></div>
-          <input type="text"
-                 class="form-control"
-                 name="contact"
-                 placeholder="Contact"
+                 name="yname"
+                 placeholder="Your Name"
                  required
                  ngModel
-                 #contact="ngModel"
+                 #yname="ngModel"
+                 >
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <div class="space-20"></div>
+          <input type="text"
+                 class="form-control"
+                 name="phone"
+                 placeholder="Phone"
+                 ngModel
+                 #phone="ngModel"
+                 >
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <div *ngIf="room.touched && room.errors && room.errors.required" style="font-size: 11px; color: red">*Required</div>
+          <div class="space-20" *ngIf="!(room.touched && room.errors)"></div>
+          <input type="text"
+                 class="form-control"
+                 name="room"
+                 placeholder="Room No."
+                 required
+                 ngModel
+                 #room="ngModel"
                  >
           <div class="space-20"></div>
         </div>
         <div class="col-xs-12">
-          <button type="submit" class="bttn" [disabled]="!lnfform.valid || sending">{{(sending)?'Sending...':'Send'}}</button>
+          <button type="submit" class="bttn"
+                  [title]="lnfform.valid?'':'Fill the required detail first'"
+                  [disabled]="!lnfform.valid || sending">
+            {{(sending)?'Sending...':'Send'}}
+          </button>
         </div>
       </div>
     </form>

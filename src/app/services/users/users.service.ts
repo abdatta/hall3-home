@@ -9,7 +9,8 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
-import { Http, Response } from '@angular/http';
+import { Response } from '@angular/http';
+import { HttpClient } from '../http.client';
 
 import { User } from '../../models/user';
 
@@ -31,7 +32,7 @@ export class UsersService {
     });
   }
 
-  constructor( private http: Http ) {
+  constructor( private http: HttpClient ) {
     this.init();
   }
 

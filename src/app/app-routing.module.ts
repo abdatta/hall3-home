@@ -91,10 +91,17 @@ const appRoutes: Routes = [
       { path: 'unsubscribe', component: UnsubscribeComponent }
     ]
   },
+  { path: 'feedback',
+    children: [
+      { path: '', redirectTo: 'ath', pathMatch: 'full' },
+      { path: 'ath', component: FeedbackComponent, data: { form: 'ath' } },
+      { path: 'responses', component: FeedbackComponent, data: { form: 'responses' } },
+      { path: 'lnf', component: FeedbackComponent, data: { form: 'lnf' }  }
+    ]
+  },
   { path: 'login', component: LoginComponent, canActivate: [ LogInGuard ] },
   { path: 'signup', component: SignupComponent, canActivate: [ AdminGuard ] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [ UsersGuard ] },
-  { path: 'feedback', component: FeedbackComponent  },
   { path: 'response/:id', component: ResponseComponent  },
   { path: 'report/:id', component: ReportComponent  },
   { path: 'quicklinks', component: QuickLinksComponent  },

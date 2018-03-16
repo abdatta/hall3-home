@@ -8,11 +8,7 @@ import { InfoService } from '../../../services/info/info.service';
 })
 export class GuestRoomComponent implements OnInit {
 
-  images: string[] = [
-      'guest.jpg',
-      'guest2.jpg',
-      'guest3.jpg'
-  ];
+  images: string[] = ['', '2', '3'].map(g => `images/facilities/guest${g}.jpg`);
 
   constructor(private infoService: InfoService) { }
 

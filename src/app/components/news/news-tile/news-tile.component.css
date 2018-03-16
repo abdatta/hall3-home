@@ -4,6 +4,7 @@
 	padding: 20px;
 	padding-bottom: 0;
 	overflow: hidden;
+    word-break: break-word;
 	height: 100%;
 }
 

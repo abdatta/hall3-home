@@ -9,6 +9,7 @@ import { Ng2Carousel3dModule } from 'ng2-carousel-3d';
 import { Autosize } from 'ng-autosize';
 
 /* importing services here */
+import { HttpClient } from './services/http.client';
 import { MainService } from './services/main/main.service';
 import { InfoService } from './services/info/info.service';
 import { FeedbackService } from './services/feedback/feedback.service';
@@ -66,6 +67,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MinutesRevealerComponent } from './components/minutes-revealer/minutes-revealer.component';
 import { NewsTileComponent } from './components/news/news-tile/news-tile.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -118,7 +120,8 @@ import { NewsTileComponent } from './components/news/news-tile/news-tile.compone
     LoaderComponent,
     NotFoundComponent,
     MinutesRevealerComponent,
-    NewsTileComponent
+    NewsTileComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
@@ -129,6 +132,7 @@ import { NewsTileComponent } from './components/news/news-tile/news-tile.compone
     Ng2Carousel3dModule
   ],
   providers: [
+    HttpClient,
     MainService,
     InfoService,
     FeedbackService,

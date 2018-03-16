@@ -104,9 +104,14 @@ export class FacilitiesComponent implements OnInit {
         space = 290;
         this.options['visible'] = 5;
     }
-    else
+    else if(width < 1776)
     {
         space = 280;
+        this.options['visible'] = 7;
+    }
+    else
+    {
+        space = 320;
         this.options['visible'] = 7;
     }
 
@@ -121,6 +126,12 @@ export class FacilitiesComponent implements OnInit {
         this.options['perspective'] = 40;
         this.options['width'] = 3/4*width;
         this.options['height'] = 1/2*width + 50;
+        changed = true;
+    }
+    else if(width > 1775)
+    {
+        this.options['width'] = 600;
+        this.options['height'] = 450;
         changed = true;
     }
     else if(this.options['width'] !== 450)

@@ -1,5 +1,5 @@
 .counter_icon.active {
-    box-shadow: 0 3px 3px rgba(0,0,0,0.16), 0 3px 3px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
 }
 
 .form-control.ng-touched.ng-invalid:not(.invalid-email) {
@@ -54,6 +54,14 @@ td {
   background-color: #ffffff;
   border: 3px solid #7C77C9;
   border-radius: 2px;
+}
+
+.lnf p {
+  margin: 0;
+}
+
+.lnf a:focus, .lnf a:hover {
+  color: #7B76C8;
 }
 
 /*-------------Check Box------------*/

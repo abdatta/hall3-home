@@ -8,9 +8,15 @@
         <app-loader [show]="!loaded"></app-loader>
         <div class="blog-details" *ngIf="loaded">
           <div class="space-15"></div>
-          <ul class="breadcrumb">
-            <li><span class="ti-user"></span>{{ ' By: ' + news['by'] }}</li>
-            <li><span class="ti-calendar"></span>{{ ' ' + getFormattedDate(news['date']) }}</li>
+          <ul class="list-unstyled list-inline meta">
+            <li *ngIf="!edit">
+              <span class="ti-user"></span>
+              <span>{{ news['by'] }}</span>
+            </li>
+            <li>
+              <span class="ti-calendar"></span>
+              <span>{{ getFormattedDate(news['date']) }}</span>
+            </li>
           </ul>
           <div class="space-10"></div>
           <!--In-case-of-external-link-->
@@ -184,15 +190,23 @@
             <ul class="list-unstyled">
               <li *ngFor="let topnews of latestNews" [class.invisible]="(news['_id'] === topnews['_id'])">
                 <a class="tab" [routerLink]="'/notices/single/' + topnews['_id']">
-                  <small><span class="ti-user"></span>{{ ' By: ' + topnews['by'] }}</small>
-                  <small style="margin-left: 5px "><span class="ti-calendar"></span>{{ ' ' + getFormattedDate(topnews['date']) }}</small>
+                  <small>
+                    <span class="ti-user"></span>
+                    <span>{{ topnews['by'] }}</span>
+                  </small>
+                  <small style="margin-left: 5px">
+                    <span class="ti-calendar"></span>
+                    <span>{{ getFormattedDate(topnews['date']) }}</span>
+                  </small>
                   <h5>{{ topnews['head'] }}</h5>
                 </a>
               </li>
               <li>
-                <a routerLink="/notices/category/all">
-                  <h5 style="text-align: center;">View More</h5>
-                </a>
+                <h5 style="text-align: center;">
+                  <a routerLink="/notices/category/all">
+                    <u style="text-underline-position: under;">View More</u>
+                  </a>
+                </h5>
               </li>
             </ul>
           </div>

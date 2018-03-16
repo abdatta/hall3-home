@@ -55,6 +55,8 @@ export class MusicRoomComponent implements OnInit {
     }
   ];
 
+  images: string[] = [''].map(m => `images/facilities/music${m}.jpg`);
+
   constructor(private infoService: InfoService) { }
 
   ngOnInit() {

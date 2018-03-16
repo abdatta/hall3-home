@@ -8,11 +8,7 @@ import { InfoService } from '../../../services/info/info.service';
 })
 export class MessComponent implements OnInit {
 
-  images: string[] = [
-    'mess.jpg',
-    'mess2.jpg',
-    'mess3.jpg'
-  ];
+  images: string[] = ['', '2', '3'].map(m => `images/facilities/mess${m}.jpg`);
 
   constructor(private infoService: InfoService) { }
 

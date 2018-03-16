@@ -10,13 +10,14 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 import { Http, Response, RequestOptions } from '@angular/http';
+import { HttpClient } from '../http.client';
 
 import { News } from '../../models/news';
 
 @Injectable()
 export class NewsService {
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
   getNews = (): Observable<object[]> => {
     return this.http.get('/server/news')
@@ -49,7 +50,7 @@ export class NewsService {
     getCatNews = (cat: string | string[]): Observable<object[]> => {
         if(typeof cat !== 'string')
             cat = cat.join('&category=');
-        return this.http.get('/server/news/query?category=' + cat)
+        return this.http.get('/server/news/filter?category=' + cat)
             .map((res: Response) => res.json() as object[])
             .catch((error: any) => {
                 if (error.status) {
@@ -63,7 +64,7 @@ export class NewsService {
     };
 
     getUserNews = (name: string): Observable<object[]> => {
-        return this.http.get('/server/news/query?by=' + name)
+        return this.http.get('/server/news/filter?by=' + name)
             .map((res: Response) => res.json() as object[])
             .catch((error: any) => {
                 if (error.status) {

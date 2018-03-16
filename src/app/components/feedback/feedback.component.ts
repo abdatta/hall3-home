@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 import * as moment from 'moment';
 
 import { FeedbackService } from '../../services/feedback/feedback.service';
@@ -11,7 +13,7 @@ import { Query } from '../../models/query';
 })
 export class FeedbackComponent implements OnInit {
 
-  form = 'ask';
+  form = 'ath';
   error: string = null;
   sending = false;
   sent = false;
@@ -24,14 +26,17 @@ export class FeedbackComponent implements OnInit {
   page = 1;
   loading = true;
 
-  constructor(private feedbackService: FeedbackService) { }
+  constructor(private route: ActivatedRoute,
+              private feedbackService: FeedbackService) { }
 
   ngOnInit() {
+    if(this.route.snapshot.data['form'])
+      this.changeForm(this.route.snapshot.data['form']);
   }
 
   changeForm(nextForm: string) {
     this.form = nextForm;
-    if (nextForm === 'response') {
+    if (nextForm === 'responses') {
       this.setResponseTab(true);
       this.feedbackService.getResponses()
           .subscribe((q: Query[]) => {
@@ -39,7 +44,7 @@ export class FeedbackComponent implements OnInit {
               this.error = q['err'];
             } else {
               q = q.slice().reverse().map(r => {
-                r.date = moment(r.date).format('DD\xa0MMM YY');
+                r.date = moment(r.date).format('DD\xa0MMM \'YY');
                 return r;
               });
               this.responses.responded = q.filter(r => r.responded);
@@ -121,7 +126,7 @@ export class FeedbackComponent implements OnInit {
     return replacedText;
   }
 
-  lnfsend(what: string, when: string, where: string, des: string, link: string, contact: string, type: string, form: any) {
+  lnfsend(what: string, when: string, where: string, des: string, link: string, yname: string, phone: string, room: string, type: string, form: any) {
     this.sending = true;
     this.feedbackService.sendlnf({
       what: what,
@@ -129,7 +134,7 @@ export class FeedbackComponent implements OnInit {
       where: where,
       des: des,
       link: link,
-      contact: contact,
+      contact: yname + (phone == ''?'':', '+phone) + ', Room No. '+room,
       type: (type === 'found')
     }).subscribe((s: number) => {
         if (s !== 200) {

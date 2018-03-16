@@ -9,7 +9,8 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
-import { Http, Response, RequestOptions } from '@angular/http';
+import { Response, RequestOptions } from '@angular/http';
+import { HttpClient } from '../http.client';
 
 @Injectable()
 export class InfoService {
@@ -19,7 +20,7 @@ export class InfoService {
         people: null
     };
 
-  constructor( private http: Http ) {}
+  constructor( private http: HttpClient ) {}
 
   // Service message commands
   setTab(tab: string) {

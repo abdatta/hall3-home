@@ -26,7 +26,7 @@
               <h3>Notices</h3>
             </div>
             <hr>
-            <ul class="list-unstyled toggler" [style.height]="mobile?(toggle?(50*categories.length+'px'):'0'):'auto'">
+            <ul class="list-unstyled toggler" [style.height]="mobile?(toggle?((45*categories.length+25)+'px'):'0'):'auto'">
               <li class="tab" *ngFor="let category of categories" [class.activeTab]="cat === category">
                 <a [routerLink]="'/notices/category/' + category" (click)="toggle = mobile?!toggle:toggle">{{ titlize(category) }}<!--q>10</q--></a>
               </li>
@@ -113,7 +113,7 @@
         <div *ngIf="success < 3">
           <!--div *ngIf="email.touched && email.errors && email.errors.required" style="font-size: 11px; color: red">*Required</div-->
           <div *ngIf="email.touched && email.errors && email.errors.pattern" style="font-size: 11px; color: orange">*Invalid email</div>
-          <div class="space-20" *ngIf="!(email.touched && email.errors)"></div>
+          <div class="space-20" *ngIf="!(email.touched && email.errors && email.errors.pattern)"></div>
           <div style="display: flex">
             <input  type="email" style="flex-grow: 1;margin-right: 8px"
                     class="form-control"
@@ -122,20 +122,28 @@
                     placeholder="Email Address"
                     ngModel
                     #email="ngModel"
+                    required
                     pattern="^(([^<>()[\]\\.,;:\s@\&quot;]+(\.[^<>()[\]\\.,;:\s@\&quot;]+)*)|(\&quot;.+\&quot;))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$">
             <button class="bttn"
+                    [title]="(email.errors && (email.errors.required || email.errors.pattern))?
+                             'Enter a valid email first':''"
                     (click)="subscribe(email.value)"
-                    [disabled]="submitted || (email.errors && (email.errors.required || email.errors.pattern))">{{ (submitted && success < 3)?'Subscribing...':'Subscribe' }}</button>
+                    [disabled]="submitted || (email.errors && (email.errors.required || email.errors.pattern))">
+              {{ (submitted && success < 3)?'Subscribing...':'Subscribe' }}
+            </button>
           </div>
         </div>
 
-        <div class="space-30"></div>
-
+        <div class="space-20"></div>
+        <div style="text-align: center;">
+          <button *ngIf="cat === 'lnf'" class="bttn" routerLink="/feedback/lnf">Report a Lost / Found Item</button>
+          <div class="space-10"></div>
+        </div>
         <app-loader [show]="!loaded"></app-loader>
 
         <div style="display: flex; flex-wrap: wrap; margin: 0 -15px;" *ngIf="loaded">
             <app-news-tile *ngFor="let news of data"
-                            [news]="news" [maxbody]="150"
+                            [news]="news" [maxbody]="maxchars"
                             class="col-xs-12 col-sm-6 wow fadeInUp"
                             style="margin-bottom: 20px;"
                             data-wow-delay="0.2s">

@@ -8,7 +8,8 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
-import { Http, Response, RequestOptions } from '@angular/http';
+import { Response, RequestOptions } from '@angular/http';
+import { HttpClient } from '../http.client';
 
 import { Query } from '../../models/query';
 import { LnFData } from '../../models/lnfdata';
@@ -16,7 +17,7 @@ import { LnFData } from '../../models/lnfdata';
 @Injectable()
 export class FeedbackService {
 
-  constructor( private http: Http ) {}
+  constructor( private http: HttpClient ) {}
 
   askQuery = (query: Query): Observable<number> => {
     return this.http.post('/server/askthehec/ask', {
