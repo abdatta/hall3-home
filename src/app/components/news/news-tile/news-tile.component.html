@@ -38,7 +38,7 @@
     <!--Body-Area-->
     <p>
       <span [innerHTML]="preProcess(trim(news['body']))"></span>
-      <a *ngIf="news['body'].length > maxbody" [routerLink]="'/notices/single/' + news['_id']" style="color: #7b76c8; text-decoration: underline"> more</a>
+      <a *ngIf="news['body'].length > maxbody" [routerLink]="'/notices/single/' + news['_id']" style="color: #c72228; text-decoration: underline"> more</a>
     </p>
     <p *ngIf="edit">
       <b>Category:</b>

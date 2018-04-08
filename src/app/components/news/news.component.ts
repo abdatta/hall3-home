@@ -32,7 +32,7 @@ export class NewsComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    this.maxchars = (window.innerWidth < 1464)?150:345;
+    this.maxchars = (window.innerWidth < 1464)?150:300;
     this.route.params.subscribe((params: Params) => {
         this.loaded = false;
         this.submitted = false;
@@ -64,7 +64,7 @@ export class NewsComponent implements OnInit {
 
   @HostListener('window:resize', ['$event']) makeResponsive(event) {
     this.mobile = (event.srcElement.innerWidth < 992);
-    this.maxchars = (event.srcElement.innerWidth < 1464)?150:345;
+    this.maxchars = (event.srcElement.innerWidth < 1464)?150:300;
   }
 
   subscribe(id: string) {
