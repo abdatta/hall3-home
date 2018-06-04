@@ -11,7 +11,7 @@
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 10px;
-    border: 1px solid white;
+    border: 1px solid #fddfa3; /* color4 */
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
     -ms-transition: all 0.5s;
@@ -26,23 +26,23 @@
     -ms-transition: all 0.5s;
     -o-transition: all 0.5s;
     transition: all 0.5s;
-    color: #7b7b7b;
+    color: #5e0f14; /* color1 */
 }
 
 .tab:hover, .activeTab
 {
-    background-color: #7c77c9;
+    background-color: #c72228; /* color2 */
 }
 .tab:hover h5, .tab:hover small, .activeTab h5, .activeTab small
 {
-    color: white;
+    color: #fddfa3; /* color4 */
 }
 
 .tag {
-    background-color: darkgray;
+    background-color: #c72228; /* color2 */
     border-radius: 20px;
     padding: 5px 10px;
-    color: white;
+    color:  #fddfa3; /* color4 */
     -webkit-transition: all 0.2s;
     -moz-transition: all 0.2s;
     -ms-transition: all 0.2s;
@@ -51,6 +51,7 @@
 }
 
 .tag:hover{
-    background-color: gray;
+    background-color:  #5e0f14; /* color1 */
+    color: #fab01a; /* color3 */
     cursor: pointer;
 }

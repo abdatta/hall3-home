@@ -34,7 +34,7 @@ import { SingleNewsComponent } from './components/news/single-news/single-news.c
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { QuickLinksComponent } from './components/quick-links/quick-links.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { MapComponent } from './components/map/map.component';
 import { UnsubscribeComponent } from './components/news/unsubscribe/unsubscribe.component';
 import { ReportComponent } from './components/feedback/report/report.component';
@@ -102,9 +102,9 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [ LogInGuard ] },
   { path: 'signup', component: SignupComponent, canActivate: [ AdminGuard ] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [ UsersGuard ] },
+  { path: 'changepassword', component: ChangePasswordComponent, canActivate: [ UsersGuard ] },
   { path: 'response/:id', component: ResponseComponent  },
   { path: 'report/:id', component: ReportComponent  },
-  { path: 'quicklinks', component: QuickLinksComponent  },
   { path: 'map', component: MapComponent  },
   { path: '**' , component: NotFoundComponent }
 ];

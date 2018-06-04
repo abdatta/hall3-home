@@ -31,6 +31,10 @@ export class DashboardComponent implements OnInit {
       text: 'Update Sports Inventory',
       link: '/facility/sports/inventory',
       guard: 'sports'
+    },
+    {
+      text: 'Change Password',
+      link: '/changepassword'
     }
   ]
 

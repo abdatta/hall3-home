@@ -29,11 +29,11 @@
 }
 
 .view-more:hover {
-    background: #7C77C9;
+    background: #c72228; /* color2 */
 }
 
 .view-more:hover h2 {
-    color: white;
+    color:  #fddfa3; /* color4 */
 }
 
 .flexbox-container {

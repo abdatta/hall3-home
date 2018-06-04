@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { OwlModule } from 'angular-owl-carousel';
 import { Ng2Carousel3dModule } from 'ng2-carousel-3d';
-import { Autosize } from 'ng-autosize';
+import { NgxCarousel3dModule } from 'ngx-carousel-3d';
 
 /* importing services here */
 import { HttpClient } from './services/http.client';
@@ -68,10 +68,12 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MinutesRevealerComponent } from './components/minutes-revealer/minutes-revealer.component';
 import { NewsTileComponent } from './components/news/news-tile/news-tile.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { AthComponent } from './components/feedback/ath/ath.component';
+import { LnfComponent } from './components/feedback/lnf/lnf.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 @NgModule({
   declarations: [
-    Autosize,
     AppComponent,
     MainmenuComponent,
     AboutComponent,
@@ -121,7 +123,10 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     NotFoundComponent,
     MinutesRevealerComponent,
     NewsTileComponent,
-    CarouselComponent
+    CarouselComponent,
+    AthComponent,
+    LnfComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -129,7 +134,8 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     HttpModule,
     AppRoutingModule,
     OwlModule,
-    Ng2Carousel3dModule
+    Ng2Carousel3dModule,
+    NgxCarousel3dModule
   ],
   providers: [
     HttpClient,

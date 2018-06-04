@@ -7,7 +7,7 @@
         <h2 style="text-align: center">Login</h2>
         <div class="space-15"></div>
         <p style="color: red">{{ (submitted)? '' : error }}</p>
-        <form (ngSubmit)="onSubmit(username.value, password.value); loginform.reset();" #loginform>
+        <form (ngSubmit)="onSubmit(username.value, password.value); loginform.reset();" #loginform="ngForm">
           <input
                   type="text"
                   class="form-control"
@@ -15,7 +15,8 @@
                   placeholder="Username"
                   autofocus
                   required
-                  #username>
+                  ngModel
+                  #username="ngModel">
           <div class="space-15"></div>
           <input
                   type="password"
@@ -23,9 +24,12 @@
                   name="password"
                   placeholder="Password"
                   required
-                  #password>
+                  ngModel
+                  #password="ngModel">
           <div class="space-20"></div>
-          <button class="bttn" type="submit" [disabled]="submitted">{{ (submitted)?'Logging in...':'Login' }}</button>
+          <button class="bttn" type="submit"
+          [title]="loginform.valid?'':'Please enter both username and password'"
+          [disabled]="!loginform.valid || submitted">{{ (submitted)?'Logging in...':'Login' }}</button>
         </form>
       </div>
     </div>

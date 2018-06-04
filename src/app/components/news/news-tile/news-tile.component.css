@@ -9,10 +9,10 @@
 }
 
 .tag {
-    background-color: darkgray;
+    background-color: #c72228; /* color2 */
     border-radius: 20px;
     padding: 5px 10px;
-    color: white;
+    color: #fddfa3; /* color4 */
     white-space: nowrap;
     -webkit-transition: all 0.2s;
     -moz-transition: all 0.2s;
@@ -22,6 +22,7 @@
 }
 
 .tag:hover{
-    background-color: gray;
+    background-color: #5e0f14; /* color1 */
+    color: #fab01a; /* color3 */
     cursor: pointer;
 }

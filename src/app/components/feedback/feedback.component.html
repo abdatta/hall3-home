@@ -9,7 +9,10 @@
       <!--Single-counterup-->
       <div class="col-xs-4">
         <div class="counter_up">
-          <div id="ath" [class.active]="showForm('ath')" class="counter_icon" routerLink="/feedback/ath">
+          <div *ngIf="!embed" id="ath" [class.active]="showForm('ath')" class="counter_icon" routerLink="/feedback/ath">
+            <span class="ti-help-alt"></span>
+          </div>
+          <div *ngIf="embed" id="ath" [class.active]="showForm('ath')" class="counter_icon" (click)="changeForm('ath')">
             <span class="ti-help-alt"></span>
           </div>
           <div class="space-20"></div>
@@ -20,7 +23,10 @@
       <!--Single-counterup-->
       <div class="col-xs-4">
         <div class="counter_up">
-          <div id="responses" [class.active]="showForm('responses')" class="counter_icon" routerLink="/feedback/responses">
+          <div *ngIf="!embed" id="responses" [class.active]="showForm('responses')" class="counter_icon" routerLink="/feedback/responses">
+            <span class="ti-info-alt"></span>
+          </div>
+          <div *ngIf="embed" id="responses" [class.active]="showForm('responses')" class="counter_icon" (click)="changeForm('responses')">
             <span class="ti-info-alt"></span>
           </div>
           <div class="space-20"></div>
@@ -31,7 +37,10 @@
       <!--Single-counterup-->
       <div class="col-xs-4">
         <div class="counter_up">
-          <div id="lnf" [class.active]="showForm('lnf')" class="counter_icon" routerLink="/feedback/lnf">
+          <div *ngIf="!embed" id="lnf" [class.active]="showForm('lnf')" class="counter_icon" routerLink="/feedback/lnf">
+            <span class="ti-alert"></span>
+          </div>
+          <div *ngIf="embed" id="lnf" [class.active]="showForm('lnf')" class="counter_icon"(click)="changeForm('lnf')">
             <span class="ti-alert"></span>
           </div>
           <div class="space-20"></div>
@@ -45,111 +54,7 @@
   <p style="color: red">{{ error }}</p>
   <div class="container">
     <!--Contact-form-->
-    <form *ngIf="showForm('ath')"
-          #askform="ngForm"
-          (ngSubmit)="askTheHEC(name.value,hec.value,subject.value,message.value,email.value,askform) ">
-
-      <div class="row">
-        <!--blog-page-title-->
-        <div class="col-xs-12 col-md-6 col-md-offset-3 text-center">
-          <h3 class="">ASK THE HEC</h3>
-        </div>
-        <!--blog-page-title/-->
-      </div>
-      <div class="row">
-        <div class="col-xs-12 col-sm-4">
-          <div *ngIf="name.touched && name.errors && name.errors.required" style="font-size: 11px; color: red">*Required</div>
-          <div class="space-20" *ngIf="!(name.touched && name.errors)"></div>
-          <input type="text"
-                 class="form-control"
-                 name="name"
-                 placeholder="Your Name"
-                 required
-                 ngModel
-                 #name="ngModel"
-                 [disabled]="anonymous"
-                 >
-          <div class="space-5"></div>
-        </div>
-        <div class="col-xs-12 col-sm-4">
-          <div *ngIf="email.touched && email.errors && email.errors.required" style="font-size: 11px; color: red">*Required</div>
-          <div *ngIf="email.touched && email.errors && email.errors.pattern" style="font-size: 11px; color: orange">*Invalid email</div>
-          <div class="space-20" *ngIf="!(email.touched && email.errors)"></div>
-          <input  type="email"
-                  class="form-control"
-                  [class.invalid-email]="email.touched && email.errors && email.errors.pattern"
-                  name="email"
-                  placeholder="Email Address"
-                  ngModel
-                  #email="ngModel"
-                  required
-                  [disabled]="anonymous"
-                  pattern="^(([^<>()[\]\\.,;:\s@\&quot;]+(\.[^<>()[\]\\.,;:\s@\&quot;]+)*)|(\&quot;.+\&quot;))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$">
-          <div class="space-5"></div>
-        </div>
-        <div class="col-xs-12 col-sm-4">
-          <div *ngIf="hec.touched && hec.errors && hec.errors.required" style="font-size: 11px; color: red">*Required</div>
-          <div class="space-20" *ngIf="!(hec.touched && hec.errors)"></div>
-          <select class="form-control"
-                  name="hec"
-                  ngModel
-                  #hec="ngModel"
-                  required>
-            <option value="" disabled selected>Choose the HEC member to ask</option>
-            <!--option value="all" >All HEC Members</option-->
-            <option value="president">President</option>
-            <option value="finance">Finance Secretary</option>
-            <option value="maintenance">Maintenance Secretary</option>
-            <option value="mess">Mess Secretaries</option>
-            <option value="cultural">Cultural Secretary</option>
-            <option value="snt">Science and Tech. Secretary</option>
-            <option value="sports">Sports Secretary</option>
-            <option value="fms">Films and Media Secretary</option>
-            <option value="commonrooms">Common Rooms Secretary</option>
-            <option value="web">Web InCharge</option>
-          </select>
-          <div class="space-5"></div>
-        </div>
-        <div class="col-xs-12">
-          <div *ngIf="subject.touched && subject.errors && subject.errors.required" style="font-size: 11px; color: red">*Required</div>
-          <div class="space-20" *ngIf="!(subject.touched && subject.errors)"></div>
-          <input
-            type="text"
-            class="form-control"
-            name="subject"
-            placeholder="Subject"
-            ngModel
-            #subject="ngModel"
-            required>
-          <div class="space-5"></div>
-        </div>
-        <div class="col-xs-12">
-          <div *ngIf="message.touched && message.errors && message.errors.required" style="font-size: 11px; color: red">*Required</div>
-          <div class="space-20" *ngIf="!(message.touched && message.errors)"></div>
-          <textarea class="form-control"
-                    rows="6"
-                    name="message"
-                    placeholder="Message here..."
-                    ngModel
-                    #message="ngModel"
-                    required>
-          </textarea>
-          <div class="space-25"></div>
-        </div>
-        <div class="col-xs-12" style="display : flex">
-          <button type="submit" class="bttn"
-                  [title]="askform.valid?'':'Fill the required detail first'"
-                  [disabled]="!askform.valid || sending">
-            {{(sending)?'Sending...':'Send'}}
-          </button>
-          <label  class="control control--checkbox"
-                  style="margin-left: 25px; margin-top: 10px;">Go Anonymous
-            <input type="checkbox" value="" (change)="anonymous=!anonymous">
-            <div class="control__indicator"></div>
-          </label>
-        </div><!--p *ngIf="sent">✔ Sent</p-->
-      </div>
-    </form>
+    <app-ath *ngIf="showForm('ath')"></app-ath>
 
     <div *ngIf="showForm('responses')" #top>
       <div class="row">
@@ -178,8 +83,8 @@
               <tr>
                 <td></td>
                 <td></td>
-                <td><img src="../../../images/loading2.gif" style="width: 40px;"></td>
-                <td *ngIf="responded"><img src="../../../images/loading2.gif" style="width: 40px;"></td>
+                <td><h5>Loading<span>.</span><span>.</span><span>.</span></h5></td>
+                <td *ngIf="responded"><h5>Loading<span>.</span><span>.</span><span>.</span></h5></td>
               </tr>
             </tbody>
             <tbody *ngFor="let response of responsesOnPage(page)">
@@ -205,135 +110,7 @@
       </div>
     </div>
 
-    <form *ngIf="showForm('lnf')"
-          #lnfform="ngForm"
-          (ngSubmit)="lnfsend(what.value,when.value,where.value,des.value,link.value,yname.value,phone.value,room.value,LorF.value,lnfform)" >
-      <div class="row">
-        <!--blog-page-title-->
-        <div class="col-xs-12 col-md-6 col-md-offset-3 text-center lnf">
-          <h3 class="">LOST & FOUND</h3>
-          <p><a routerLink="/notices/category/lnf">Checkout previous lost/found items.</a></p>
-        </div>
-        <!--blog-page-title/-->
-      </div>
-      <div class="row">
-        <div class="col-xs-12 col-sm-4">
-          <div *ngIf="what.touched && what.errors && what.errors.required" style="font-size: 11px; color: red">*Required</div>
-          <div class="space-20" *ngIf="!(what.touched && what.errors)"></div>
-          <input type="text"
-                 class="form-control"
-                 name="what"
-                 placeholder="What?"
-                 required
-                 ngModel
-                 #what="ngModel"
-                 >
-        </div>
-        <div class="col-xs-12 col-sm-4">
-          <div *ngIf="when.touched && when.errors && when.errors.required" style="font-size: 11px; color: red">*Required</div>
-          <div class="space-20" *ngIf="!(when.touched && when.errors)"></div>
-          <input type="text"
-                 class="form-control"
-                 name="when"
-                 placeholder="When?"
-                 required
-                 ngModel
-                 #when="ngModel"
-                 >
-        </div>
-        <div class="col-xs-12 col-sm-4">
-          <div *ngIf="where.touched && where.errors && where.errors.required" style="font-size: 11px; color: red">*Required</div>
-          <div class="space-20" *ngIf="!(where.touched && where.errors)"></div>
-          <input type="text"
-                 class="form-control"
-                 name="where"
-                 placeholder="Where?"
-                 required
-                 ngModel
-                 #where="ngModel"
-                 >
-        </div>
-        <div class="col-xs-12 col-sm-6">
-          <div *ngIf="link.touched && link.errors && link.errors.pattern" style="font-size: 11px; color: orange">*Invalid link</div>
-          <div class="space-20" *ngIf="!(link.touched && link.errors)"></div>
-          <input type="text"
-                 class="form-control"
-                 [class.invalid-email]="link.touched && link.errors && link.errors.pattern"
-                 name="link"
-                 placeholder="Link to photographs (if any)"
-                 ngModel
-                 pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)" 
-                 #link="ngModel"
-                 >
-        </div>
-        <div class="col-xs-12 col-sm-6">
-          <div *ngIf="LorF.touched && LorF.errors && LorF.errors.required" style="font-size: 11px; color: red">*Required</div>
-          <div class="space-20" *ngIf="!(LorF.touched && LorF.errors)"></div>
-          <select class="form-control"
-                  name="LorF"
-                  ngModel
-                  #LorF="ngModel"
-                  required>
-            <option value="" disabled selected>Lost or Found?</option>
-            <option value="lost">Lost</option>
-            <option value="found">Found</option>
-          </select>
-        </div>
-        <div class="col-xs-12">
-          <div class="space-20"></div>
-          <textarea class="form-control"
-                    rows="3"
-                    name="des"
-                    placeholder="Description (optional)"
-                    ngModel
-                    #des="ngModel"
-                    >
-          </textarea>
-        </div>
-        <div class="col-xs-12 col-sm-4">
-          <div *ngIf="yname.touched && yname.errors && yname.errors.required" style="font-size: 11px; color: red">*Required</div>
-          <div class="space-20" *ngIf="!(yname.touched && yname.errors)"></div>
-          <input type="text"
-                 class="form-control"
-                 name="yname"
-                 placeholder="Your Name"
-                 required
-                 ngModel
-                 #yname="ngModel"
-                 >
-        </div>
-        <div class="col-xs-12 col-sm-4">
-          <div class="space-20"></div>
-          <input type="text"
-                 class="form-control"
-                 name="phone"
-                 placeholder="Phone"
-                 ngModel
-                 #phone="ngModel"
-                 >
-        </div>
-        <div class="col-xs-12 col-sm-4">
-          <div *ngIf="room.touched && room.errors && room.errors.required" style="font-size: 11px; color: red">*Required</div>
-          <div class="space-20" *ngIf="!(room.touched && room.errors)"></div>
-          <input type="text"
-                 class="form-control"
-                 name="room"
-                 placeholder="Room No."
-                 required
-                 ngModel
-                 #room="ngModel"
-                 >
-          <div class="space-20"></div>
-        </div>
-        <div class="col-xs-12">
-          <button type="submit" class="bttn"
-                  [title]="lnfform.valid?'':'Fill the required detail first'"
-                  [disabled]="!lnfform.valid || sending">
-            {{(sending)?'Sending...':'Send'}}
-          </button>
-        </div>
-      </div>
-    </form>
+    <app-lnf *ngIf="showForm('lnf')"></app-lnf>
     <!--Contact-form/-->
   </div>
   <div class="space-100"></div>

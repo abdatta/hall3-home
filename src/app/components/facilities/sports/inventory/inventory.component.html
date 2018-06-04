@@ -13,11 +13,6 @@
        [class.green]="item.available >= item.total"
        style="text-align: left;">
     <div class="">
-      <!--label  class="control control--checkbox"
-              style="">{{ item.available?'Available':'Not Available' }}
-        <input type="checkbox" [(ngModel)]="item.available">
-        <div class="control__indicator"></div>
-      </label-->
       <select class="form-control"
               (change)="change($event, i)"
               #status

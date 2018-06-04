@@ -40,12 +40,13 @@ export class UnsubscribeComponent implements OnInit {
   onchange(val: string) {
     if (val === 'all') {
       this.checks.announcements = this.checks[val];
+      this.checks.lnf = this.checks[val];
       this.checks.minutes = this.checks[val];
       this.checks.other_documents = this.checks[val];
     } else {
       if (!this.checks[val]) {
         this.checks.all = false;
-      } else if (this.checks.announcements && this.checks.minutes && this.checks.other_documents) {
+      } else if (this.checks.announcements && this.checks.lnf && this.checks.minutes && this.checks.other_documents) {
         this.checks.all = true;
       }
     }

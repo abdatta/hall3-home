@@ -17,7 +17,7 @@ h3 {
 
 .tab {
   padding-left: 10px;
-  border: 1px solid white;
+  border: 1px solid #fddfa3; /* color4 */
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   -ms-transition: all 0.5s;
@@ -33,11 +33,11 @@ h3 {
 
 .tab:hover, .activeTab
 {
-  background-color: #7c77c9;
+  background-color: #c72228; /* color2 */
 }
 .tab:hover a, .activeTab a
 {
-  color: white;
+  color: #fddfa3; /* color4 */
   font-weight: 600;
 }
 
@@ -70,7 +70,7 @@ h3 {
 }
 
 .line-menu {
-  background-color: #606060;
+  background-color: #5e0f14; /* color1 */
   border-radius: 5px;
   width: 100%;
   height: 3px;

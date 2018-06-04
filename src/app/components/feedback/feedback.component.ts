@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import * as moment from 'moment';
@@ -13,6 +13,7 @@ import { Query } from '../../models/query';
 })
 export class FeedbackComponent implements OnInit {
 
+  embed = false;
   form = 'ath';
   error: string = null;
   sending = false;
@@ -32,6 +33,8 @@ export class FeedbackComponent implements OnInit {
   ngOnInit() {
     if(this.route.snapshot.data['form'])
       this.changeForm(this.route.snapshot.data['form']);
+    else
+      this.embed = true;
   }
 
   changeForm(nextForm: string) {
@@ -57,26 +60,6 @@ export class FeedbackComponent implements OnInit {
 
   showForm(thisForm: string): boolean {
     return (this.form === thisForm);
-  }
-
-  askTheHEC(name: string, to: string, subject: string, message: string, email: string, form: any) {
-    this.sending = true;
-    this.feedbackService.askQuery({
-      'name': (this.anonymous)?'Anonymous':name,
-      'to': to,
-      'subject': subject,
-      'message': message,
-      'email': email
-    }).subscribe((s: number) => {
-        if (s !== 200) {
-          this.error = 'Error: ' + s;
-        } else {
-          this.sent = true;
-          this.anonymous = false;
-          form.reset();
-        }
-        this.sending = false;
-      });
   }
 
   setResponseTab(responded: boolean) {
@@ -126,24 +109,4 @@ export class FeedbackComponent implements OnInit {
     return replacedText;
   }
 
-  lnfsend(what: string, when: string, where: string, des: string, link: string, yname: string, phone: string, room: string, type: string, form: any) {
-    this.sending = true;
-    this.feedbackService.sendlnf({
-      what: what,
-      when: when,
-      where: where,
-      des: des,
-      link: link,
-      contact: yname + (phone == ''?'':', '+phone) + ', Room No. '+room,
-      type: (type === 'found')
-    }).subscribe((s: number) => {
-        if (s !== 200) {
-          this.error = 'Error: ' + s;
-        } else {
-          this.sent = true;
-          form.reset();
-        }
-        this.sending = false;
-      });
-  }
 }

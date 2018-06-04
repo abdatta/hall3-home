@@ -1,3 +1,36 @@
+h1 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 50px;
+    color: #fab01a;
+    text-align: center;
+    position: absolute;
+    top: 25vh;
+    left: calc(50% - 273px);
+    -webkit-text-stroke: 1px #5E0F14;
+   text-shadow:
+       3px 3px 0 #5E0F14,
+     -1px -1px 0 #5E0F14,  
+      1px -1px 0 #5E0F14,
+      -1px 1px 0 #5E0F14,
+       1px 1px 0 #5E0F14;
+}
+
+@media(max-width: 546px){
+    h1 {
+        left: 0;
+    }
+}
+
+.header-bg:after {
+    content: '';
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    top: 0;
+    left: 0;
+    background: rgba(253,223,163, 0.3);
+}
+
 .header-bg .home-parallax {
     animation: imageAnimation 48s linear infinite 0s;
 }

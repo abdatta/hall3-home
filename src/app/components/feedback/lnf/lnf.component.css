@@ -1,0 +1,7 @@
+.lnf p {
+  margin: 0;
+}
+
+.lnf a:focus, .lnf a:hover {
+  color: #C72219; /* color2 */
+}

@@ -6,8 +6,12 @@
   <div class="space-100"></div>
   <div class="container">
     <div *ngIf="error" style="text-align: center">
-      <h1>Not Found</h1>
-      <p>This query is probably already responded. Please see the responses tab to check the response.</p>
+      <div class="space-100"></div>
+      <h1>The Link has Expired</h1>
+      <div class="space-20"></div>
+      <p>This query might have been already responded.</p>
+      <div class="space-20"></div>
+      <button class="bttn" routerLink="/feedback/responses">See Responses</button>
       <div class="space-200"></div>
     </div>
     <div class="row" *ngIf="!error">
@@ -31,7 +35,7 @@
                   [(ngModel)]="response"
         ></textarea>
         <div class="space-20"></div>
-        <button class="bttn" (click)="respond()" [disabled]="sending">{{ (sending)? 'Sending...' : 'Send Response' }}</button>
+        <button class="bttn" (click)="respond()" [disabled]="!response.length || sending">{{ (sending)? 'Sending...' : 'Send Response' }}</button>
       </div>
     </div>
   </div>

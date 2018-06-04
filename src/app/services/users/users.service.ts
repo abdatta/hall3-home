@@ -88,6 +88,15 @@ export class UsersService {
         .catch(this.handleError);
   }
 
+  changePassword = (currpass: string, newpass: string): Observable<number> => {
+    return this.http.post('/server/accounts/changepassword', { password: { curr: currpass, new: newpass} })
+        .map((response: Response) => {
+          if(response.status === 200) this.logout();
+          return response.status;
+        })
+        .catch(this.handleError);
+  }
+
   requestLevel = (level: string): Observable<number> => {
     return this.http.post(`/server/accounts/request`, {
       level: level
