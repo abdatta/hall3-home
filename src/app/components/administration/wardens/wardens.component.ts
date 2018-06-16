@@ -24,7 +24,7 @@ export class WardensComponent implements OnInit {
           this.loaded = true;
         } else {
           this.title = d['title'];
-          this.members = d['members'];
+          this.members = d['info'];
           this.images = this.members.map(member => member['photo']);
         }
       });

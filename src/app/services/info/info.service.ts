@@ -31,7 +31,6 @@ export class InfoService {
       if (this.data['administration'] === null || !this.data['administration'].hasOwnProperty(id)) {
           return this.http.get('/server/data/administration/' + id)
               .map((res: Response) => res.json() as object)
-              // .do(data => this.data['administration'].addProperty(id, data))
               .catch((error: any) => {
                   if (error.status) {
                       return Observable.of({
@@ -46,13 +45,14 @@ export class InfoService {
       }
   };
 
-  getPeople = (id = ''): Observable<object> => {
+  getPeople = (id: string): Observable<object> => {
     return this.http.get('/server/data/people/' + id)
       .map((res: Response) => res.json() as object)
       .catch((error: any) => {
         if (error.status) {
           return Observable.of({
-            'err': error.status
+            'err': error.status,
+            'info': [{ name: 'Oops! Some Error Ocurred' }]
           });
         } else {
           return Observable.throw(error.json().error || error.message || error);
@@ -61,35 +61,36 @@ export class InfoService {
   };
 
   getBooks = (): Observable<object> => {
-      return this.http.get('/server/data/facilities/books')
+    return this.http.get('/server/data/facilities/books')
+      .map((res: Response) => res.json() as object)
+      .catch((error: any) => {
+          if (error.status) {
+            return Observable.of({
+                'err': error.status
+            });
+          } else {
+              return Observable.throw(error.json().error || error.message || error);
+          }
+      });
+  }
+
+  getFacilityData = (id: string): Observable<object> => {
+      return this.http.get('/server/data/facilities/' + id)
           .map((res: Response) => res.json() as object)
           .catch((error: any) => {
               if (error.status) {
-                  return Observable.of({
-                      'err': error.status
-                  });
+                return Observable.of({
+                  'err': error.status,
+                  'info': [{ name: 'Oops! Some Error Ocurred' }]
+                });
               } else {
-                  return Observable.throw(error.json().error || error.message || error);
+                return Observable.throw(error.json().error || error.message || error);
               }
           });
   }
 
-    getFacilityData = (name: string): Observable<object> => {
-        return this.http.get('/server/data/facilities/' + name)
-            .map((res: Response) => res.json() as object)
-            .catch((error: any) => {
-                if (error.status) {
-                    return Observable.of({
-                        'err': error.status
-                    });
-                } else {
-                    return Observable.throw(error.json().error || error.message || error);
-                }
-            });
-    }
-
     updateFacilityData = (name: string, data: object[]): Observable<number> => {
-        return this.http.post('/server/data/facilities/' + name + '/update', {
+        return this.http.post('/server/data/facilities/' + name, {
             'data': data
         })  .map(res => res.status)
             .catch((error: any) => {

@@ -8,7 +8,6 @@ import { InfoService } from '../../../services/info/info.service';
 })
 export class SGComponent implements OnInit {
   loaded = false;
-  title: string;
   sgs: object[];
 
   constructor(private infoService: InfoService) { }
@@ -17,13 +16,9 @@ export class SGComponent implements OnInit {
     this.infoService.setTab('sg');
     this.infoService.getPeople('sg')
       .subscribe((d: object) => {
-        if (d.hasOwnProperty('err')) {
-          this.title = d['err'];
-          this.sgs = [{}];
-        } else {
-          this.title = d['title'];
-          this.sgs = d['sgs'];
-        }
+        if (d.hasOwnProperty('err'))
+          console.log(d['err']);
+        this.sgs = d['info'];
         this.loaded = true;
       });
   }

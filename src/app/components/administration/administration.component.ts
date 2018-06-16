@@ -24,7 +24,7 @@ export class AdministrationComponent implements OnInit {
                 if (d.hasOwnProperty('err')) {
                     this.wardens = [{}];
                 } else {
-                    this.wardens = d['members'];
+                    this.wardens = d['info'];
                     this.wardensimages = this.wardens.map(warden => warden['photo']);
                 }
             });
@@ -33,7 +33,7 @@ export class AdministrationComponent implements OnInit {
                 if (d.hasOwnProperty('err')) {
                     this.hec = [{}];
                 } else {
-                    this.hec = d['members'];
+                    this.hec = d['info'];
                 }
                 this.hecloaded  = true;
             });

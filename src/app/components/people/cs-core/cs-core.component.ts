@@ -8,27 +8,20 @@ import { InfoService } from '../../../services/info/info.service';
 })
 export class CsCoreComponent implements OnInit {
   loaded = false;
-  title: string;
-  coordis: object[];
-  ops: object[];
-  acads: object[];
+  info: object[];
 
   constructor(private infoService: InfoService) { }
 
   ngOnInit() {
-    this.infoService.setTab('cs-core');
     this.infoService.getPeople('cs-core')
       .subscribe((d: object) => {
         if (d.hasOwnProperty('err')) {
-          this.title = d['err'];
-          this.coordis = [{}];
-          this.ops = [{}];
-          this.acads = [{}];
+          this.info = [{
+            'members': d['info']
+          }];
+          console.log(d['err']);
         } else {
-          this.title = d['title'];
-          this.coordis = d['coordi'];
-          this.ops = d['ops'];
-          this.acads = d['acads'];
+          this.info = d['info'];
         }
         this.loaded = true;
       });

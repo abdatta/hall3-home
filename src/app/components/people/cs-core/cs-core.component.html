@@ -2,19 +2,11 @@
   <h1>Counselling Service Core Team</h1>
   <div class="space-20"></div>
   <p></p>
-  <div class="space-10"></div>
-  <h4>Coordinators</h4>
-  <div class="space-10"></div>
-  <app-loader [show]="!loaded"></app-loader>
-  <app-tiles [class.invisible]="!loaded" [tiles]="coordis" justify="start"></app-tiles>
-  <div class="space-10"></div>
-  <h4>Team Operations</h4>
-  <div class="space-10"></div>
-  <app-loader [show]="!loaded"></app-loader>
-  <app-tiles [class.invisible]="!loaded" [tiles]="ops" justify="start"></app-tiles>
-  <div class="space-10"></div>
-  <h4>Team Academics</h4>
-  <div class="space-10"></div>
-  <app-loader [show]="!loaded"></app-loader>
-  <app-tiles [class.invisible]="!loaded" [tiles]="acads" justify="start"></app-tiles>
+  <div *ngFor="let team of info">
+    <div class="space-10"></div>
+    <h4>{{ team.position }}</h4>
+    <div class="space-10"></div>
+    <app-loader [show]="!loaded"></app-loader>
+    <app-tiles [class.invisible]="!loaded" [tiles]="team.members" justify="start"></app-tiles>
+  </div>
 </div>

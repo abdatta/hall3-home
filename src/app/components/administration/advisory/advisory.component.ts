@@ -22,7 +22,7 @@ export class AdvisoryComponent implements OnInit {
             this.members = [{}];
           } else {
             this.title = d['title'];
-            this.members = d['members'];
+            this.members = d['info'];
           }
           this.loaded = true;
         });

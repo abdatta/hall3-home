@@ -8,7 +8,6 @@ import { InfoService } from '../../../services/info/info.service';
 })
 export class AMComponent implements OnInit {
   loaded = false;
-  title: string;
   ams: object[];
 
   constructor(private infoService: InfoService) { }
@@ -17,13 +16,9 @@ export class AMComponent implements OnInit {
     this.infoService.setTab('am');
     this.infoService.getPeople('am')
       .subscribe((d: object) => {
-        if (d.hasOwnProperty('err')) {
-          this.title = d['err'];
-          this.ams = [{}];
-        } else {
-          this.title = d['title'];
-          this.ams = d['ams'];
-        }
+        if (d.hasOwnProperty('err'))
+          console.log(d['err']);
+        this.ams = d['info'];
         this.loaded = true;
       });
   }

@@ -17,7 +17,7 @@ export class ReadingRoomComponent implements OnInit {
 
   ngOnInit() {
     this.infoService.setTab('rr');
-    this.infoService.getBooks()
+    this.infoService.getFacilityData('books')
         .subscribe((d: any) => {
           if (d.hasOwnProperty('err')) {
             this.books = [{}];

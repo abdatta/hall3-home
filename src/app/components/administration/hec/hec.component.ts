@@ -23,7 +23,7 @@ export class HecComponent implements OnInit {
           this.loaded = true;
         } else {
           this.title = d['title'];
-          this.members = d['members'];
+          this.members = d['info'];
         }
         this.loaded = true;
       });
