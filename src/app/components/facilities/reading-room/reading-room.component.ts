@@ -17,12 +17,12 @@ export class ReadingRoomComponent implements OnInit {
 
   ngOnInit() {
     this.infoService.setTab('rr');
-    this.infoService.getFacilityData('books')
+    this.infoService.getFacilityInfo('books')
         .subscribe((d: any) => {
           if (d.hasOwnProperty('err')) {
             this.books = [{}];
           } else {
-            this.books = d;
+            this.books = d['info'];
           }
           this.loaded = true;
         });

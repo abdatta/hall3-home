@@ -1,0 +1,16 @@
+.flexbox-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 -15px;
+}
+
+.col-xs-6.col-sm-3 {
+    padding: 15px;
+}
+
+.team-image {
+	height: 100%;
+    display: flex;
+    align-items: center;
+}

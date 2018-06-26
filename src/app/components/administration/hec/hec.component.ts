@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { InfoheadComponent } from '../../infohead/infohead.component';
+import { TilesComponent } from '../../tiles/tiles.component';
 import  { InfoService } from '../../../services/info/info.service';
 
 @Component({
@@ -7,7 +9,11 @@ import  { InfoService } from '../../../services/info/info.service';
   styleUrls: ['./hec.component.css']
 })
 export class HecComponent implements OnInit {
+
+  @ViewChild(InfoheadComponent) head: InfoheadComponent;
+  @ViewChild(TilesComponent) tiles: TilesComponent;
   loaded = false;
+  editable = false;
   title: string;
   members: object[];
 
@@ -15,7 +21,7 @@ export class HecComponent implements OnInit {
 
   ngOnInit() {
     this.infoService.setTab('hec');
-    this.infoService.getAdministration('hec')
+    this.infoService.getAdministrationInfo('hec')
       .subscribe((d: object) => {
         if (d.hasOwnProperty('err')) {
           this.title = d['err'];
@@ -27,5 +33,13 @@ export class HecComponent implements OnInit {
         }
         this.loaded = true;
       });
+  }
+
+   save(diff: object[]) {
+    this.infoService.updateAdministrationInfo('hec', diff)
+      .subscribe((s: number) => {
+        this.head.saved(s === 200);
+        this.tiles.saved(s === 200);
+    });
   }
 }

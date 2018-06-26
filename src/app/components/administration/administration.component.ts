@@ -19,7 +19,7 @@ export class AdministrationComponent implements OnInit {
     constructor(private infoService: InfoService) { }
 
     ngOnInit() {
-        this.infoService.getAdministration('wardens')
+        this.infoService.getAdministrationInfo('wardens')
             .subscribe((d: object) => {
                 if (d.hasOwnProperty('err')) {
                     this.wardens = [{}];
@@ -28,7 +28,7 @@ export class AdministrationComponent implements OnInit {
                     this.wardensimages = this.wardens.map(warden => warden['photo']);
                 }
             });
-        this.infoService.getAdministration('hec')
+        this.infoService.getAdministrationInfo('hec')
             .subscribe((d: object) => {
                 if (d.hasOwnProperty('err')) {
                     this.hec = [{}];

@@ -10,7 +10,6 @@ import { ReadingRoomComponent } from './components/facilities/reading-room/readi
 import { TVRoomComponent } from './components/facilities/tvroom/tvroom.component';
 import { ComputerRoomComponent } from './components/facilities/computer-room/computer-room.component';
 import { SportsComponent } from './components/facilities/sports/sports.component';
-import { InventoryComponent } from './components/facilities/sports/inventory/inventory.component';
 import { MusicRoomComponent } from './components/facilities/music-room/music-room.component';
 import { CanteenComponent } from './components/facilities/canteen/canteen.component';
 import { HecComponent } from './components/administration/hec/hec.component';
@@ -56,7 +55,6 @@ const appRoutes: Routes = [
       { path: 'tv', component: TVRoomComponent },
       { path: 'computer', component: ComputerRoomComponent },
       { path: 'sports', component: SportsComponent },
-      { path: 'sports/inventory', component: InventoryComponent, canActivate: [ LevelGuard ], data: { level: 'sports' } },
       { path: 'music', component: MusicRoomComponent },
       { path: 'canteen', component: CanteenComponent }
     ]

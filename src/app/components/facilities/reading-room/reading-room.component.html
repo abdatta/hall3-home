@@ -3,17 +3,18 @@
   <div class="space-20"></div>
   <p>The Reading Room is perhaps the most used common room of the Hall. It is a small library where one can find quietness and peace to study or make a project. One can also go to the Reading Room to simply rejuvenate by reading a novel, a periodical or a newspaper in the A.C.!</p>
   <h4>List of Books</h4>
+  <div class="space-5"></div>
   <div style="height: 500px;overflow-y: scroll;overflow-x: hidden;">
     <app-loader [show]="!loaded" width="50%"></app-loader>
     <!--Single-team-->
-    <div *ngFor="let book of books; let i=index;" [class.row]="i%4 === 3">
-      <div class="col-xs-6 col-sm-3">
-        <div class="team-image relative ">
-          <div class="team-details"><strong>{{ book.name }}</strong>
-            <div class="space-2"></div>
+    <div [class.invisible]="!loaded"
+         class="flexbox-container">
+      <div *ngFor="let book of books" class="col-xs-6 col-sm-3">
+        <div class="team-image relative">
+          <div class="team-details">
+            <strong>{{ book.name }}</strong>
           </div>
         </div>
-        <div class="space-30"></div>
       </div>
     </div>
     <!--Single-team/-->

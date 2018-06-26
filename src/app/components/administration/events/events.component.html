@@ -3,10 +3,12 @@
   <div class="space-20"></div>
   <p>The Students’ Activity Committee is a team of student volunteers who are responsible for the overall conductance of the intra and inter-hostel co-curricular events. These volunteers work hard to plan and execute each and every small action required for the students’ co-curricular events. It is because of volunteers like these that the prodigious culture of Hall-3 has been passed over the years.</p>
   <div class="space-10"></div>
-  <h4>Members</h4>
+  <app-infohead (edit)="tiles.edit();"
+                (save)="tiles.save();"
+                (discard)="members=tiles.discard()">Members</app-infohead>
   <div class="space-10"></div>
   <app-loader [show]="!loaded"></app-loader>
-  <app-tiles [class.invisible]="!loaded" [tiles]="members"></app-tiles>
+  <app-tiles [class.invisible]="!loaded" [tiles]="members" (save)="save($event)"></app-tiles>
   <div class="space-30"></div>
   <app-minutes-revealer category="sac"></app-minutes-revealer>
 </div>

@@ -1,0 +1,16 @@
+<div style="display: flex;">
+	<h4><ng-content></ng-content></h4>
+	<h5 *ngIf="editable && !saving && !editing" class="edit"(click)="editing=true; edit.emit();">
+		<span class="ti-settings"></span>&nbsp;&nbsp;Edit
+	</h5>
+	<h5 *ngIf="editable && !saving && editing" class="edit" (click)="saving=true; error = false; save.emit();">
+		<span class="ti-save"></span>&nbsp;&nbsp;Save
+	</h5>
+	<h5 *ngIf="editable && !saving && editing" class="edit" (click)="editing=false; error=false; discard.emit();">
+		<span class="ti-na"></span>&nbsp;&nbsp;Discard
+	</h5>
+	<h5 *ngIf="editable && saving" class="load"><span class="ti-reload">
+		</span>&nbsp;&nbsp;Saving<span>.</span><span>.</span><span>.</span>
+	</h5>
+	<h5 *ngIf="editable && error" class="error">Saving Failed!</h5>
+</div>

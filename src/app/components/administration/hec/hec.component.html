@@ -5,10 +5,12 @@
   <div class="space-10"></div>
   <app-wardens></app-wardens>
   <div class="space-10"></div>
-  <h4>Student Members</h4>
+  <app-infohead (edit)="tiles.edit();"
+                (save)="tiles.save();"
+                (discard)="members=tiles.discard()">Student Members</app-infohead>
   <div class="space-20"></div>
   <app-loader [show]="!loaded"></app-loader>
-  <app-tiles [tiles]="members"></app-tiles>
+  <app-tiles [tiles]="members" (save)="save($event)"></app-tiles>
   <div class="space-30"></div>
   <div style="display: flex;justify-content: space-around;">
     <a href="https://drive.google.com/file/d/0B0R9GQGvvy84ZnNDWnB4QWZhNUU/view" target="_blank" class="bttn">Constitution</a>

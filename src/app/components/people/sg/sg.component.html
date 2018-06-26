@@ -3,8 +3,10 @@
   <div class="space-20"></div>
   <p>Juniors are always closest to and rely the most on their Student Guides. Being the first person they get to know in the campus, Student Guides are always the first person of contact in case of any joy, sadness, problem, query or success of the juniors.</p>
   <div class="space-10"></div>
-  <h4>List of Student Guides</h4>
+  <app-infohead (edit)="tiles.edit();"
+                (save)="tiles.save();"
+                (discard)="sgs = tiles.discard();">List of Student Guides</app-infohead>
   <div class="space-10"></div>
   <app-loader [show]="!loaded"></app-loader>
-  <app-tiles [class.invisible]="!loaded" [tiles]="sgs"></app-tiles>
+  <app-tiles [class.invisible]="!loaded" [tiles]="sgs" (save)="save($event)"></app-tiles>
 </div>

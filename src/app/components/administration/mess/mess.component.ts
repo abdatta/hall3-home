@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { InfoheadComponent } from '../../infohead/infohead.component';
+import { TilesComponent } from '../../tiles/tiles.component';
 import { InfoService } from '../../../services/info/info.service';
 
 @Component({
@@ -7,6 +9,9 @@ import { InfoService } from '../../../services/info/info.service';
   styleUrls: ['./mess.component.css']
 })
 export class MessComponent implements OnInit {
+
+  @ViewChild(InfoheadComponent) head: InfoheadComponent;
+  @ViewChild(TilesComponent) tiles: TilesComponent;
   loaded = false;
   title: string;
   members: object[];
@@ -15,7 +20,7 @@ export class MessComponent implements OnInit {
 
   ngOnInit() {
     this.infoService.setTab('mess');
-    this.infoService.getAdministration('mess')
+    this.infoService.getAdministrationInfo('mess')
       .subscribe((d: object) => {
         if (d.hasOwnProperty('err')) {
           this.title = d['err'];
@@ -26,5 +31,13 @@ export class MessComponent implements OnInit {
         }
         this.loaded = true;
       });
+  }
+
+  save(diff: object[]) {
+    this.infoService.updateAdministrationInfo('mess', diff)
+      .subscribe((s: number) => {
+        this.head.saved(s === 200);
+        this.tiles.saved(s === 200);
+    });
   }
 }

@@ -7,6 +7,8 @@
     "ng": "ng",
     "start": "ng serve",
     "test": "ng test",
+    "lint": "ng lint",
+    "build": "ng build",
     "pree2e": "webdriver-manager update --standalone false --gecko false",
     "e2e": "protractor"
   },
@@ -28,6 +30,7 @@
     "jquery": "^3.2.1",
     "moment": "^2.18.1",
     "ng2-carousel-3d": "^0.1.11",
+    "ngx-autosize-input": "^2.1.0",
     "ngx-carousel-3d": "^1.0.1",
     "rxjs": "^5.5.2",
     "ts-helpers": "^1.1.1",

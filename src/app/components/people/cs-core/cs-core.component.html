@@ -2,11 +2,13 @@
   <h1>Counselling Service Core Team</h1>
   <div class="space-20"></div>
   <p></p>
-  <div *ngFor="let team of info">
+  <div *ngFor="let team of info; let i = index">
     <div class="space-10"></div>
-    <h4>{{ team.position }}</h4>
+    <app-infohead (edit)="edit(i)"
+                  (save)="saver(i);"
+                  (discard)="discard(i)">{{ team.position }}</app-infohead>
     <div class="space-10"></div>
     <app-loader [show]="!loaded"></app-loader>
-    <app-tiles [class.invisible]="!loaded" [tiles]="team.members" justify="start"></app-tiles>
+    <app-tiles [class.invisible]="!loaded" [tiles]="team.members" (save)="save($event,i)" justify="start"></app-tiles>
   </div>
 </div>

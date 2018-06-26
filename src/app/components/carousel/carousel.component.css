@@ -22,12 +22,14 @@
 }
 
 .carousel-control.right {
+    color: #fddfa3; /* color4 */
     background-image: -webkit-linear-gradient(left, rgba(199, 34, 40, .0001) 0, rgba(199, 34, 40, .6) 100%);
     background-image: -webkit-gradient(linear, left top, right top, from(rgba(199, 34, 40, .0001)), to(rgba(123 ,118, 200, .6)));
     background-image: linear-gradient(to right, rgba(199, 34, 40, .0001) 0, rgba(199, 34, 40, .6) 100%);
 }
 
 .carousel-control.left {
+    color: #fddfa3; /* color4 */
     background-image: -webkit-linear-gradient(left, rgba(199, 34, 40, .6) 0, rgba(199, 34, 40, .0001) 100%);
     background-image: -webkit-gradient(linear, left top, right top, from(rgba(199, 34, 40, .6)), to(rgba(199, 34, 40, .0001)));
     background-image: linear-gradient(to right, rgba(199, 34, 40, .6) 0, rgba(199, 34, 40, .0001) 100%);

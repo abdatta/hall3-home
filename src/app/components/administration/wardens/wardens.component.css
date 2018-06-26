@@ -45,3 +45,15 @@ a:hover, a:active { text-decoration: none;color: white }
 		order: 3;
 	}
 }
+
+input {
+	background-color: #fddfa3;
+	padding: 0px 2px;
+    border: none;
+    outline: 1px solid #5e0f14;
+    outline-offset: 0px;
+}
+
+input:hover:not([disabled]), input:focus:not([disabled]) {
+	box-shadow: 0 0 5px 0 #5e0f14;
+}

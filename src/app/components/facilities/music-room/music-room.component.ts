@@ -7,53 +7,9 @@ import { InfoService } from '../../../services/info/info.service';
   styleUrls: ['./music-room.component.css']
 })
 export class MusicRoomComponent implements OnInit {
-  
-  instruments: object[] = [
-    {
-      'name':'Drum set',
-      'quantity':1
-    },
-    {
-      'name':'Conga',
-      'quantity':1
-    },
-    {
-      'name':'Tabla',
-      'quantity':1
-    },
-    {
-      'name':'Amplifier',
-      'quantity':3
-    },
-    {
-      'name':'Flute',
-      'quantity':1
-    },
-    {
-      'name':'Synthesizer',
-      'quantity':1
-    },
-    {
-      'name':'Harmonium',
-      'quantity':1
-    },
-    {
-      'name':'Guitar processor',
-      'quantity':1
-    },
-    {
-      'name':'Dhol',
-      'quantity':1
-    },
-    {
-      'name':'Dholak',
-      'quantity':1
-    },
-    {
-      'name':'Microphone',
-      'quantity':1
-    }
-  ];
+
+  loaded = false;
+  instruments: object[] = [];
 
   images: string[] = [''].map(m => `images/facilities/music${m}.jpg`);
 
@@ -61,6 +17,15 @@ export class MusicRoomComponent implements OnInit {
 
   ngOnInit() {
     this.infoService.setTab('music');
+    this.infoService.getFacilityInfo('music_instruments')
+        .subscribe((d: any) => {
+          if (d.hasOwnProperty('err')) {
+            this.instruments = [{}];
+          } else {
+            this.instruments = d['info'];
+          }
+          this.loaded = true;
+        });
   }
 
 }

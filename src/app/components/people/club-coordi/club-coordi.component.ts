@@ -11,7 +11,6 @@ export class ClubCoordiComponent implements OnInit {
   constructor(private infoService: InfoService) { }
 
   ngOnInit() {
-    this.infoService.setTab('coordi');
   }
 
 }

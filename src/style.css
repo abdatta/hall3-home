@@ -806,7 +806,7 @@ input:-webkit-autofill:focus {
 }
 
 .team-image {
-    background-color: #ffffff;
+    background-color: #fccf75;
     border-radius: 2px;
     box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.1);
     //overflow: hidden;
@@ -1052,7 +1052,7 @@ input:-webkit-autofill:focus {
 .counter_icon:hover , .counter_icon.active
 {
     background-color:  #c72228; /* color2 */
-    color: #fddfa3; /* color3 */
+    color: #fddfa3; /* color4 */
 }
 . {
     font-size: 18px;

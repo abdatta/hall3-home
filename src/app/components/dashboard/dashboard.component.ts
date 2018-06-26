@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
     },
     {
       text: 'Update Sports Inventory',
-      link: '/facility/sports/inventory',
+      link: '/facility/sports',
       guard: 'sports'
     },
     {

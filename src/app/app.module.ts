@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { OwlModule } from 'angular-owl-carousel';
 import { Ng2Carousel3dModule } from 'ng2-carousel-3d';
 import { NgxCarousel3dModule } from 'ngx-carousel-3d';
+import { AutoSizeInputModule } from 'ngx-autosize-input';
 
 /* importing services here */
 import { HttpClient } from './services/http.client';
@@ -62,7 +63,6 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { QuickLinksComponent } from './components/quick-links/quick-links.component';
 import { MapComponent } from './components/map/map.component';
 import { UnsubscribeComponent } from './components/news/unsubscribe/unsubscribe.component';
-import { InventoryComponent } from './components/facilities/sports/inventory/inventory.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MinutesRevealerComponent } from './components/minutes-revealer/minutes-revealer.component';
@@ -71,6 +71,7 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { AthComponent } from './components/feedback/ath/ath.component';
 import { LnfComponent } from './components/feedback/lnf/lnf.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { InfoheadComponent } from './components/infohead/infohead.component';
 
 @NgModule({
   declarations: [
@@ -116,7 +117,6 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
     MapComponent,
     EditNewsComponent,
     UnsubscribeComponent,
-    InventoryComponent,
     SingleNewsComponent,
     ReportComponent,
     LoaderComponent,
@@ -126,7 +126,8 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
     CarouselComponent,
     AthComponent,
     LnfComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    InfoheadComponent
   ],
   imports: [
     BrowserModule,
@@ -135,7 +136,8 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
     AppRoutingModule,
     OwlModule,
     Ng2Carousel3dModule,
-    NgxCarousel3dModule
+    NgxCarousel3dModule,
+    AutoSizeInputModule
   ],
   providers: [
     HttpClient,

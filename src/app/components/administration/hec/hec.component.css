@@ -3,3 +3,14 @@ a:visited { text-decoration: none;color: #fddfa3; /* color4 */ }
 a:hover { text-decoration: none;color: #fddfa3; /* color4 */ }
 a:focus { text-decoration: none;color: #fddfa3; /* color4 */ }
 a:hover, a:active { text-decoration: none;color: #fddfa3; /* color4 */ }
+
+.edit {
+	padding-left: 30px;
+    padding-top: 4px;
+}
+
+.edit:hover {
+	text-decoration: underline;
+	cursor: pointer;
+	color: #c72228; /* color2 */
+}
