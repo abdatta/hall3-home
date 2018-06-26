@@ -29,11 +29,13 @@ export class UnsubscribeComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe((params: Params) => {
-      if(!params['id'])
+      if (!params['id']) {
         this.router.navigateByUrl('/');
+      }
       this.id = params['id'];
-      if(params['cat'])
+      if (params['cat']) {
         this.checks[params['cat']] = true;
+      }
     });
   }
 
@@ -54,10 +56,11 @@ export class UnsubscribeComponent implements OnInit {
 
   unsubscribe() {
     this.submitted = true;
-    for(let cat in this.checks) {
-      if (cat === 'all')
+    for (const cat in this.checks) {
+      if (cat === 'all') {
         continue;
-      if(!this.checks[cat]) {
+      }
+      if (!this.checks[cat]) {
         this.success++;
         continue;
       }

@@ -64,11 +64,12 @@ export class DashboardComponent implements OnInit {
   }
 
   isAllowed(guard: string): boolean {
-    if(!guard)
+    if (!guard) {
       return true;
-    else
+    } else {
       return (this.user.levelsCurrent.indexOf(guard) !== -1) ||
              (this.user.levelsCurrent.indexOf('admin') !== -1);
+    }
   }
 
   logout() {

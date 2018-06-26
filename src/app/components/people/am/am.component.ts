@@ -20,8 +20,9 @@ export class AMComponent implements OnInit {
   ngOnInit() {
     this.infoService.getPeopleInfo('am')
       .subscribe((d: object) => {
-        if (d.hasOwnProperty('err'))
+        if (d.hasOwnProperty('err')) {
           console.log(d['err']);
+        }
         this.ams = d['info'];
         this.loaded = true;
       });

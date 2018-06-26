@@ -42,7 +42,7 @@ export class TopnewsComponent implements OnInit {
   constructor(private newsService: NewsService) { }
 
   ngOnInit() {
-    this.maxchars = (window.innerWidth < 1464)?120:200;
+    this.maxchars = (window.innerWidth < 1464) ? 120 : 200;
     this.newsService.getTopNews()
         .subscribe((d: object[]) => {
           if (d[0].hasOwnProperty('err')) {
@@ -55,8 +55,8 @@ export class TopnewsComponent implements OnInit {
   }
 
   @HostListener('window:resize', ['$event']) makeResponsive(event) {
-      this.maxchars = (event.srcElement.innerWidth < 1464)?120:200;
+      this.maxchars = (event.srcElement.innerWidth < 1464) ? 120 : 200;
 
   }
-  
+
 }

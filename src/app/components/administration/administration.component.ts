@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import  { InfoService } from '../../services/info/info.service';
-
+import { InfoService } from '../../services/info/info.service';
 
 @Component({
   selector: 'app-administration',
@@ -14,7 +13,7 @@ export class AdministrationComponent implements OnInit {
     wardensloaded = false;
     hecloaded = false;
     wardensimages: string[] = [];
-    fader = i => (2 + i)/10.0 ;
+    fader = i => (2 + i) / 10.0 ;
 
     constructor(private infoService: InfoService) { }
 

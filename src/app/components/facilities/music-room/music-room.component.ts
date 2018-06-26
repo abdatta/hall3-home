@@ -16,7 +16,6 @@ export class MusicRoomComponent implements OnInit {
   constructor(private infoService: InfoService) { }
 
   ngOnInit() {
-    this.infoService.setTab('music');
     this.infoService.getFacilityInfo('music_instruments')
         .subscribe((d: any) => {
           if (d.hasOwnProperty('err')) {

@@ -10,7 +10,7 @@ import { UsersService } from '../../services/users/users.service'
 })
 export class ChangePasswordComponent implements OnInit {
 
-	submitted = false;;
+  submitted = false; ;
   error = '';
   loggedout = false;
 
@@ -27,7 +27,7 @@ export class ChangePasswordComponent implements OnInit {
           if (s === 200) {
             this.loggedout = true;
           } else {
-            this.error = (s === 403)?'Incorrect Password':'Some Error Occurred';
+            this.error = (s === 403) ? 'Incorrect Password' : 'Some Error Occurred';
             this.submitted = false;
           }
         });

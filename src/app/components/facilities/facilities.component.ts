@@ -7,8 +7,8 @@ import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 })
 export class FacilitiesComponent implements OnInit {
 
-    @ViewChild('carousel') carousel:any;
-    slides : Array<Object> = [
+    @ViewChild('carousel') carousel: any;
+    slides: Array<Object> = [
         {
             src: 'images/facilities/mess.jpg',
             link: '/facility/mess',
@@ -50,7 +50,7 @@ export class FacilitiesComponent implements OnInit {
             cap: 'Reading Room'
         }
     ]
-    options : Object = {
+    options: Object = {
         clicking: true,
         sourceProp: 'src',
         visible: 5,
@@ -71,71 +71,53 @@ export class FacilitiesComponent implements OnInit {
   }
 
   @HostListener('window:resize', ['$event']) makeResponsive(event) {
-    if(this.updateOptions(event.srcElement.innerWidth))
+    if (this.updateOptions(event.srcElement.innerWidth)) {
         this.carousel.buildCarousel(this.slides, this.options);
+    }
   }
 
   updateOptions(width: number): boolean {
     let changed = false;
 
     let space: number;
-    if(width < 520)
-    {
-        space = 110*width/360;
+    if (width < 520) {
+        space = 110 * width / 360;
         this.options['visible'] = 3;
-    }
-    else if(width < 768)
-    {
+    } else if (width < 768) {
         space = 160;
         this.options['visible'] = 3;
-    }
-    else if(width < 992)
-    {
+    } else if (width < 992) {
         space = 250;
         this.options['visible'] = 3;
-    }
-    else if(width < 1200)
-    {
+    } else if (width < 1200) {
         space = 220;
         this.options['visible'] = 5;
-    }
-    else if(width < 1464)
-    {
+    } else if (width < 1464) {
         space = 290;
         this.options['visible'] = 5;
-    }
-    else if(width < 1776)
-    {
+    } else if (width < 1776) {
         space = 280;
         this.options['visible'] = 7;
-    }
-    else
-    {
+    } else {
         space = 320;
         this.options['visible'] = 7;
     }
 
-    if(space !== this.options['space'])
-    {
+    if (space !== this.options['space']) {
         this.options['space'] = space;
         changed = true;
     }
 
-    if(width < 600)
-    {
+    if (width < 600) {
         this.options['perspective'] = 40;
-        this.options['width'] = 3/4*width;
-        this.options['height'] = 1/2*width + 50;
+        this.options['width'] = 3 / 4 * width;
+        this.options['height'] = 1 / 2 * width + 50;
         changed = true;
-    }
-    else if(width > 1775)
-    {
+    } else if (width > 1775) {
         this.options['width'] = 600;
         this.options['height'] = 450;
         changed = true;
-    }
-    else if(this.options['width'] !== 450)
-    {
+    } else if (this.options['width'] !== 450) {
         this.options['perspective'] = 20;
         this.options['width'] = 450;
         this.options['height'] = 350;

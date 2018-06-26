@@ -33,11 +33,11 @@ export class AddNewsComponent implements OnInit {
           this.user = user;
         });
     this.route.queryParams.subscribe((params: Params) => {
-      if(params['head']) this.data['head'] = params['head'];
-      if(params['to']) this.data['to'] = params['to'];
-      if(params['cat']) this.data['cat'] = params['cat'];
-      if(params['link']) this.data['link'] = params['link'];
-      if(params['body']) this.data['body'] = params['body'];
+      if (params['head']) { this.data['head'] = params['head']; }
+      if (params['to']) { this.data['to'] = params['to']; }
+      if (params['cat']) { this.data['cat'] = params['cat']; }
+      if (params['link']) { this.data['link'] = params['link']; }
+      if (params['body']) { this.data['body'] = params['body']; }
     });
   }
 

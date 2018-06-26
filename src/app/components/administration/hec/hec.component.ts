@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { InfoheadComponent } from '../../infohead/infohead.component';
 import { TilesComponent } from '../../tiles/tiles.component';
-import  { InfoService } from '../../../services/info/info.service';
+import { InfoService } from '../../../services/info/info.service';
 
 @Component({
   selector: 'app-hec',
@@ -20,7 +20,6 @@ export class HecComponent implements OnInit {
   constructor(private infoService: InfoService) { }
 
   ngOnInit() {
-    this.infoService.setTab('hec');
     this.infoService.getAdministrationInfo('hec')
       .subscribe((d: object) => {
         if (d.hasOwnProperty('err')) {

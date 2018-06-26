@@ -31,10 +31,11 @@ export class FeedbackComponent implements OnInit {
               private feedbackService: FeedbackService) { }
 
   ngOnInit() {
-    if(this.route.snapshot.data['form'])
+    if (this.route.snapshot.data['form']) {
       this.changeForm(this.route.snapshot.data['form']);
-    else
+    } else {
       this.embed = true;
+    }
   }
 
   changeForm(nextForm: string) {
@@ -63,46 +64,48 @@ export class FeedbackComponent implements OnInit {
   }
 
   setResponseTab(responded: boolean) {
-    if(this.responded !== responded) {
+    if (this.responded !== responded) {
       this.responded = responded;
       this.page = 1;
     }
   }
 
   pagesList(): number[] {
-    return Array(this.getNoOfPages()).fill(0).map((v,i) => i+1);
+    return Array(this.getNoOfPages()).fill(0).map((v, i) => i + 1);
   }
 
   getNoOfPages(): number {
-    return Math.ceil(this.responses[this.responded?'responded':'notresponded'].length/8);    
+    return Math.ceil(this.responses[this.responded ? 'responded' : 'notresponded'].length / 8);
   }
 
   nextPage(el: any) {
-    if(this.page < this.getNoOfPages())
+    if (this.page < this.getNoOfPages()) {
       this.page++;
+    }
     el.scrollIntoView();
   }
 
   prevPage(el: any) {
-    if(this.page > 1)
+    if (this.page > 1) {
       this.page--;
+    }
     el.scrollIntoView();
   }
 
   responsesOnPage(p: number) {
-      return this.responses[this.responded?'responded':'notresponded'].slice(8*(p-1), 8*p);
+      return this.responses[this.responded ? 'responded' : 'notresponded'].slice(8 * (p - 1), 8 * p);
   }
 
   preProcess(plainText: string): string {
-    //URLs starting with http://, https://, or ftp://
+    // URLs starting with http://, https://, or ftp://
     const  replacePattern1 = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
     let replacedText = plainText.replace(replacePattern1, '<a href="$1" class="autolink" target="_blank">$1</a>');
 
-    //URLs starting with "www." (without // before it, or it'd re-link the ones done above).
+    // URLs starting with "www." (without // before it, or it'd re-link the ones done above).
     const replacePattern2 = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
     replacedText = replacedText.replace(replacePattern2, '$1<a href="http://$2" class="autolink" target="_blank">$2</a>');
 
-    //Change email addresses to mailto:: links.
+    // Change email addresses to mailto:: links.
     const replacePattern3 = /(([a-zA-Z0-9\-\_\.])+@[a-zA-Z\_]+?(\.[a-zA-Z]{2,6})+)/gim;
     replacedText = replacedText.replace(replacePattern3, '<a href="mailto:$1" class="autolink">$1</a>');
 

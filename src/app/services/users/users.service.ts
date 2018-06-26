@@ -96,7 +96,7 @@ export class UsersService {
     return this.http.post('/server/accounts/changepassword', { password: { curr: currpass, new: newpass} })
       .pipe(
         map((response: Response) => {
-          if(response.status === 200) this.logout();
+          if (response.status === 200) { this.logout(); }
           return response.status;
         }),
         catchError(this.handleError)
@@ -157,9 +157,9 @@ export class UsersService {
 
   checkLevel = (level: string): Promise<boolean> => {
     return this.currentUser.then((user: User) => {
-      //console.log('Request for ' + level);
-      //console.log(user);
-      return user != null && (user.levelsCurrent.indexOf(level) !== -1 || user.levelsCurrent.indexOf('admin') !==-1);
+      // console.log('Request for ' + level);
+      // console.log(user);
+      return user != null && (user.levelsCurrent.indexOf(level) !== -1 || user.levelsCurrent.indexOf('admin') !== -1);
     });
   }
 

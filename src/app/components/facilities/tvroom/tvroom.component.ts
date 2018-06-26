@@ -13,7 +13,6 @@ export class TVRoomComponent implements OnInit {
   constructor(private infoService: InfoService) { }
 
   ngOnInit() {
-    this.infoService.setTab('tv');
   }
 
 }

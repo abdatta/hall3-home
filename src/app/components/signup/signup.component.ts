@@ -26,7 +26,7 @@ export class SignupComponent implements OnInit {
           if (s === 200) {
             this.router.navigateByUrl('/dashboard');
           } else {
-            this.error ='Incorrect Username or Password';
+            this.error = 'Incorrect Username or Password';
             this.submitted = false;
           }
         });

@@ -42,28 +42,29 @@ export class MainmenuComponent implements OnInit {
   }
 
   toggleDrop(i: number): void {
-    if(this.mobile) {
-      if(this.hasDropDown(i))
-      {
-        if(this.dropped2['index'] === i)
+    if (this.mobile) {
+      if (this.hasDropDown(i)) {
+        if (this.dropped2['index'] === i) {
           this.dropped2['dropped'] = !this.dropped2['dropped'];
-        else
+        } else {
           this.dropped2 = {
             index: i,
             dropped: true
           }
+        }
       } else {
         this.dropped2['dropped'] = false;
         this.dropped = !this.dropped;
       }
 
-      if(!this.initialised)
+      if (!this.initialised) {
         this.initialised = true;
+      }
     }
   }
 
   show(title: string) {
-    if(title === 'Profile') {
+    if (title === 'Profile') {
       this.usersService.check()
           .then((result: boolean) => {
              return result;

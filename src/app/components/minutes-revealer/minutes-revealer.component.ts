@@ -19,28 +19,27 @@ export class MinutesRevealerComponent implements OnInit {
   constructor(private service: NewsService) { }
 
   ngOnInit() {
-    this.maxchars = (window.innerWidth < 1464)?150:345;
+    this.maxchars = (window.innerWidth < 1464) ? 150 : 345;
   }
 
   @HostListener('window:resize', ['$event']) resize(event) {
     this.width = (event.srcElement.innerWidth < 768) ? 1 : 2;
-    this.maxchars = (event.srcElement.innerWidth < 1464)?150:345;
+    this.maxchars = (event.srcElement.innerWidth < 1464) ? 150 : 345;
   }
 
   revealer() {
     this.reveal = !this.reveal;
-    if(this.reveal) {
+    if (this.reveal) {
       this.service
           .getCatNews((this.category + ' minutes').trim().split(' '))
           .subscribe((d: object[]) => {
               if (d[0].hasOwnProperty('err')) {
               } else {
-                this.data = d;              
+                this.data = d;
               }
               this.loaded = true;
-            }); 
-      }
-      else {
+            });
+      } else {
       }
   }
 

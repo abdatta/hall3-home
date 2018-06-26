@@ -52,7 +52,7 @@ export class WardensComponent implements OnInit {
 
   save() {
     this.saving = true;
-    let diff = this.members.map((warden,i) => {
+    const diff = this.members.map((warden, i) => {
       return {
         'type': 'E',
         'index': i,
@@ -64,7 +64,7 @@ export class WardensComponent implements OnInit {
       .subscribe((s: number) => {
         this.saving = false;
         this.head.saved(s === 200);
-        if(s == 200) this.editable = false;
+        if (s === 200) { this.editable = false; }
         this.edited = [false, false, false];
     });
   }

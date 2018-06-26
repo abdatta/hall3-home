@@ -42,7 +42,7 @@ export class MainService {
       'dash': '/dashboard',
       'map': '/map',
       'rules': '/server/files/rules.pdf',
-      //'messfeedback': 'https://goo.gl/CAu4xv'
+      // 'messfeedback': 'https://goo.gl/CAu4xv'
   };
   private mainmenu: Object[] = [
     {

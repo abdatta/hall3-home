@@ -19,7 +19,6 @@ export class AdvisoryComponent implements OnInit {
   constructor(private infoService: InfoService) { }
 
   ngOnInit() {
-    this.infoService.setTab('advisory');
     this.infoService.getAdministrationInfo('advisory')
         .subscribe((d: object) => {
           if (d.hasOwnProperty('err')) {

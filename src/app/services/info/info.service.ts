@@ -18,11 +18,6 @@ export class InfoService {
 
   constructor( private http: HttpClient ) {}
 
-  // Service message commands
-  setTab(tab: string) {
-    // TODO: Remove all call to setTab() from all components
-  }
-
   getAdministrationInfo = (id: string): Observable<object> => this.getInfo('administration', id);
   updateAdministrationInfo = (id: string, diff: object[]): Observable<number> => this.updateInfo('administration', id, diff);
 

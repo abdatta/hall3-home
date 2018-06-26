@@ -53,8 +53,9 @@ export class NewsService {
     };
 
     getCatNews = (cat: string | string[]): Observable<object[]> => {
-        if(typeof cat !== 'string')
+        if (typeof cat !== 'string') {
             cat = cat.join('&category=');
+        }
         return this.http.get('/server/news/filter?category=' + encodeURIComponent(cat))
             .pipe(
                 map((res: Response) => res.json() as object[]),

@@ -19,7 +19,6 @@ export class MaintenanceComponent implements OnInit {
   constructor(private infoService: InfoService) { }
 
   ngOnInit() {
-    this.infoService.setTab('maint');
     this.infoService.getAdministrationInfo('maintenance')
       .subscribe((d: object) => {
         if (d.hasOwnProperty('err')) {

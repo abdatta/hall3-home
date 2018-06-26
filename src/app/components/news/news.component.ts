@@ -19,7 +19,7 @@ export class NewsComponent implements OnInit {
       'minutes',
       'other_documents'
   ];
-  cat: string = 'all';
+  cat = 'all';
   loaded = false;
   submitted = false;
   success = 0;
@@ -32,7 +32,7 @@ export class NewsComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    this.maxchars = (window.innerWidth < 1464)?150:300;
+    this.maxchars = (window.innerWidth < 1464) ? 150 : 300;
     this.route.params.subscribe((params: Params) => {
         this.loaded = false;
         this.submitted = false;
@@ -46,10 +46,11 @@ export class NewsComponent implements OnInit {
        this.cat = params['cat'];
 
         let service;
-        if(params['cat'] === 'all')
+        if (params['cat'] === 'all') {
             service = this.newsService.getNews();
-        else
+        } else {
             service = this.newsService.getCatNews(params['cat']);
+        }
 
         service.subscribe((d: object[]) => {
             if (d[0].hasOwnProperty('err')) {
@@ -64,14 +65,15 @@ export class NewsComponent implements OnInit {
 
   @HostListener('window:resize', ['$event']) makeResponsive(event) {
     this.mobile = (event.srcElement.innerWidth < 992);
-    this.maxchars = (event.srcElement.innerWidth < 1464)?150:300;
+    this.maxchars = (event.srcElement.innerWidth < 1464) ? 150 : 300;
   }
 
   subscribe(id: string) {
       this.submitted = true;
-      for(let cat of this.categories) {
-          if (cat === 'all')
+      for (const cat of this.categories) {
+          if (cat === 'all') {
               continue;
+          }
           if (cat !== this.cat && this.cat !== 'all') {
               this.success++;
               continue;
@@ -87,11 +89,12 @@ export class NewsComponent implements OnInit {
   }
 
   titlize(str: string) {
-    if(str === 'lnf')
+    if (str === 'lnf') {
       return 'Lost & Found';
-    else
-      return str.replace(new RegExp('_', "g"),' ')
-              .replace(/(\w)(\w*)/g, (_, i, r) => i.toUpperCase() + (r != null ? r : ""));
+    } else {
+      return str.replace(new RegExp('_', 'g'), ' ')
+              .replace(/(\w)(\w*)/g, (_, i, r) => i.toUpperCase() + (r != null ? r : ''));
+    }
   }
 
 }

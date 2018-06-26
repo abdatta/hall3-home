@@ -19,7 +19,6 @@ export class MessComponent implements OnInit {
   constructor(private infoService: InfoService) { }
 
   ngOnInit() {
-    this.infoService.setTab('mess');
     this.infoService.getAdministrationInfo('mess')
       .subscribe((d: object) => {
         if (d.hasOwnProperty('err')) {

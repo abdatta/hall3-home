@@ -59,7 +59,6 @@ import { LoginComponent } from './components/login/login.component';
 import { TilesComponent } from './components/tiles/tiles.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { QuickLinksComponent } from './components/quick-links/quick-links.component';
 import { MapComponent } from './components/map/map.component';
 import { UnsubscribeComponent } from './components/news/unsubscribe/unsubscribe.component';
 import { LoaderComponent } from './components/loader/loader.component';
@@ -112,7 +111,6 @@ import { InfoheadComponent } from './components/infohead/infohead.component';
     TilesComponent,
     SignupComponent,
     DashboardComponent,
-    QuickLinksComponent,
     MapComponent,
     EditNewsComponent,
     UnsubscribeComponent,

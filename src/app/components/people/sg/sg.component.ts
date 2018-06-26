@@ -20,8 +20,9 @@ export class SGComponent implements OnInit {
   ngOnInit() {
     this.infoService.getPeopleInfo('sg')
       .subscribe((d: object) => {
-        if (d.hasOwnProperty('err'))
+        if (d.hasOwnProperty('err')) {
           console.log(d['err']);
+        }
         this.sgs = d['info'];
         this.loaded = true;
       });

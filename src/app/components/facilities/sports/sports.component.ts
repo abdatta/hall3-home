@@ -24,7 +24,6 @@ export class SportsComponent implements OnInit {
   constructor(private infoService: InfoService) { }
 
   ngOnInit() {
-    this.infoService.setTab('sports');
     this.infoService.getFacilityInfo('sports_inventory')
         .subscribe((d: any) => {
           if (d.hasOwnProperty('err')) {
@@ -37,35 +36,35 @@ export class SportsComponent implements OnInit {
   }
 
   prev(i: number) {
-    this.inventory.splice(i-1, 2, this.inventory[i], this.inventory[i-1]);
+    this.inventory.splice(i - 1, 2, this.inventory[i], this.inventory[i - 1]);
     this.sureDel = -1;
     this.updateHistory({
       'type': 'M',
       'from': i,
-      'to': i-1
+      'to': i - 1
     });
   }
 
   next(i: number) {
-    this.inventory.splice(i, 2, this.inventory[i+1], this.inventory[i]);
+    this.inventory.splice(i, 2, this.inventory[i + 1], this.inventory[i]);
     this.sureDel = -1;
     this.updateHistory({
       'type': 'M',
       'from': i,
-      'to': i+1
+      'to': i + 1
     });
   }
 
   change(val: any, i: number, source: string) {
     let from: object;
-    if(!this.inventory[i]['edited']) {
+    if (!this.inventory[i]['edited']) {
       from = JSON.parse(JSON.stringify(this.inventory[i]));
       delete from['edited'];
     }
 
     this.inventory[i][source] = val;
 
-    if(!this.inventory[i]['edited']) {
+    if (!this.inventory[i]['edited']) {
       this.inventory[i]['edited'] = true;
       this.updateHistory({
         'type': 'E',
@@ -77,8 +76,8 @@ export class SportsComponent implements OnInit {
   }
 
   add() {
-    let newitem = {
-      name:'',
+    const newitem = {
+      name: '',
       available: 1,
       total: 1
     };
@@ -92,20 +91,19 @@ export class SportsComponent implements OnInit {
   }
 
   del(i: number) {
-    if(this.sureDel === i) {
+    if (this.sureDel === i) {
       this.inventory.splice(i, 1);
       this.sureDel = -1;
       this.updateHistory({
         'type': 'D',
         'index': i
       });
-    }
-    else
-    {
+    } else {
       this.sureDel = i;
       setTimeout(() => {
-        if(this.sureDel === i)
+        if (this.sureDel === i) {
           this.sureDel = -1;
+        }
       }, 3000);
     }
   }
@@ -124,7 +122,7 @@ export class SportsComponent implements OnInit {
       .subscribe((s: number) => {
         this.saving = false;
         this.head.saved(s === 200);
-        if(s == 200) this.editable = false;
+        if (s === 200) { this.editable = false; }
     });
   }
 
@@ -134,20 +132,22 @@ export class SportsComponent implements OnInit {
   }
 
   updateHistory(change: object) {
-    if(this.history.length === 0)
+    if (this.history.length === 0) {
       this.history.push(change);
-    else {
-      let last = this.history[this.history.length-1];
+    } else {
+      const last = this.history[this.history.length - 1];
       switch (change['type']) {
         case 'M':
-          if(last['type'] === 'M' && last['to'] === change['from'])
+          if (last['type'] === 'M' && last['to'] === change['from']) {
             last['to'] = change['to'];
-          else if(last['type'] === 'M' && last['to'] === change['to'])
+          } else if (last['type'] === 'M' && last['to'] === change['to']) {
             last['to'] = change['from'];
-          else
+               } else {
             this.history.push(change);
-          if(last['type'] === 'M' && last['from'] === last['to'])
+               }
+          if (last['type'] === 'M' && last['from'] === last['to']) {
             this.history.pop();
+          }
           break;
 
         case 'E':
@@ -159,16 +159,17 @@ export class SportsComponent implements OnInit {
           break;
 
         case 'D':
-          if(change['index'] === this.inventory.length && last['type'] === 'A')
+          if (change['index'] === this.inventory.length && last['type'] === 'A') {
             this.history.pop();
-          else
+          } else {
             this.history.push(change);
+          }
           break;
         default:
           // code...
           break;
       }
     }
-    //console.log(JSON.stringify(this.history, null,2));
+    // console.log(JSON.stringify(this.history, null,2));
   }
 }

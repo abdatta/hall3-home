@@ -10,14 +10,15 @@ export class HttpClient {
   private localIP: string;
 
   constructor(private http: Http) {}
-  
+
   addLocalIP(headers: Headers) {
-    if(window['localIP'])
+    if (window['localIP']) {
       headers.append('localip', window['localIP']);
+    }
   }
 
   get(url) {
-    let headers = new Headers();
+    const headers = new Headers();
     this.addLocalIP(headers);
     return this.http.get(url, {
       headers: headers
@@ -25,7 +26,7 @@ export class HttpClient {
   }
 
   post(url, data) {
-    let headers = new Headers();
+    const headers = new Headers();
     this.addLocalIP(headers);
     return this.http.post(url, data, {
       headers: headers

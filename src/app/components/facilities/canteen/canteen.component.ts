@@ -13,7 +13,6 @@ export class CanteenComponent implements OnInit {
   constructor(private infoService: InfoService) { }
 
   ngOnInit() {
-    this.infoService.setTab('canteen');
   }
 
 }

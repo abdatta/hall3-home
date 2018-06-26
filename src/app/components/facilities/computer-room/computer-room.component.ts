@@ -13,7 +13,6 @@ export class ComputerRoomComponent implements OnInit {
   constructor(private infoService: InfoService) { }
 
   ngOnInit() {
-    this.infoService.setTab('comp');
   }
 
 }

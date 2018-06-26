@@ -8,11 +8,11 @@ import { FeedbackService } from '../../../services/feedback/feedback.service';
 })
 export class AthComponent implements OnInit {
 
-	sent = false;
-	sending = false;
-	anonymous = false;
+  sent = false;
+  sending = false;
+  anonymous = false;
 
-	error = false;
+  error = false;
 
   constructor(private feedbackService: FeedbackService) { }
 
@@ -22,7 +22,7 @@ export class AthComponent implements OnInit {
   askTheHEC(name: string, to: string, subject: string, message: string, email: string, form: any) {
     this.sending = true;
     this.feedbackService.askQuery({
-      'name': (this.anonymous)?'Anonymous':name,
+      'name': (this.anonymous) ? 'Anonymous' : name,
       'to': to,
       'subject': subject,
       'message': message,

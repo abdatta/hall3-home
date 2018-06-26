@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CarouselComponent implements OnInit {
 
-	@Input() images = [];
+  @Input() images = [];
 
   constructor() { }
 

@@ -19,7 +19,6 @@ export class EventsComponent implements OnInit {
   constructor(private infoService: InfoService) { }
 
   ngOnInit() {
-    this.infoService.setTab('events');
     this.infoService.getAdministrationInfo('activity')
       .subscribe((d: object) => {
         if (d.hasOwnProperty('err')) {
