@@ -45,7 +45,7 @@ export class TopnewsComponent implements OnInit {
     this.maxchars = (window.innerWidth < 1464)?120:200;
     this.newsService.getTopNews()
         .subscribe((d: object[]) => {
-          if (d.hasOwnProperty('err')) {
+          if (d[0].hasOwnProperty('err')) {
             this.data = [{}];
           } else {
             this.data = d;

@@ -31,7 +31,7 @@ export class SingleNewsComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.loaded = false;
 
-      this.newsService.getOneNews(params['id']).subscribe((d: object[]) => {
+      this.newsService.getOneNews(params['id']).subscribe((d: object) => {
         if (d.hasOwnProperty('err')) {
           this.news = {};
         } else {
@@ -43,7 +43,7 @@ export class SingleNewsComponent implements OnInit {
 
     this.newsService.getTopNews()
         .subscribe((d: object[]) => {
-          if (d.hasOwnProperty('err')) {
+          if (d[0].hasOwnProperty('err')) {
             this.latestNews = [{}];
           } else {
             this.latestNews = d;

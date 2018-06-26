@@ -52,7 +52,7 @@ export class NewsComponent implements OnInit {
             service = this.newsService.getCatNews(params['cat']);
 
         service.subscribe((d: object[]) => {
-            if (d.hasOwnProperty('err')) {
+            if (d[0].hasOwnProperty('err')) {
               this.data = [{}];
             } else {
               this.data = d;

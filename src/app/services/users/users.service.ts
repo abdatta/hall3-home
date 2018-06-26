@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
+import { Subject, Observable, of, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
+/*import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/throw';
 
-import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/catchError';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/toPromise';*/
 
 import { Response } from '@angular/http';
 import { HttpClient } from '../http.client';
@@ -38,10 +39,10 @@ export class UsersService {
 
   init = (): void => {
     this.currentUser = this.http.get('/server/accounts/me')
-        .map((response: Response) => response.json() as User)
-        .catch((err: any, caught) => {
-          return Observable.of(null);
-        }).toPromise();
+      .pipe(
+        map((response: Response) => response.json() as User),
+        catchError((err: any, caught) => of(null))
+      ).toPromise();
     this.logStat();
   }
 
@@ -50,7 +51,7 @@ export class UsersService {
       this.currentUser = Promise.resolve(null);
     }
     if (error.status) {
-      return Observable.of(error.status);
+      return of(error.status);
     }
     return Observable.throw(error.message || error);
   }
@@ -59,82 +60,85 @@ export class UsersService {
 
   getUsers = (): Observable<Array<User>> => {
     return this.http.get('/server/accounts/users')
-        .map((res: Response) => res.json() as Array<User>)
-        .catch((error: any) => {
+      .pipe(
+        map((res: Response) => res.json() as Array<User>),
+        catchError((error: any) => {
           if (error.status === 404) {
-            return Observable.of([]);
+            return of([]);
           } else {
             return Observable.throw(error.json().error || error.message || error);
           }
-        });
+        })
+      );
   }
 
   signIn = (user: string, pass: string): Observable<number> => {
     return this.http.post('/server/accounts/signin', { username: user, password: pass})
-        .map((response: Response) => {
+      .pipe(
+        map((response: Response) => {
           this.currentUser = Promise.resolve(response.json() as User);
           this.logStat();
           return response.status;
-        })
-        .catch(this.handleError);
+        }),
+        catchError(this.handleError)
+      );
   }
 
   signUp = (name: string, user: string, pass: string): Observable<number> => {
-    return this.http.post('/server/accounts/signup', { name: name, username: user, password: pass})
-        .map(response => {
-          //this.currentUser = Promise.resolve(response.json() as User);
-          return response.status;
-        })
-        .catch(this.handleError);
+    return this.http.post('/server/accounts/signup', { name: name, username: user, password: pass })
+      .pipe(
+        map((response: Response) => response.status),
+        catchError(this.handleError)
+      );
   }
 
   changePassword = (currpass: string, newpass: string): Observable<number> => {
     return this.http.post('/server/accounts/changepassword', { password: { curr: currpass, new: newpass} })
-        .map((response: Response) => {
+      .pipe(
+        map((response: Response) => {
           if(response.status === 200) this.logout();
           return response.status;
-        })
-        .catch(this.handleError);
+        }),
+        catchError(this.handleError)
+      );
   }
 
   requestLevel = (level: string): Observable<number> => {
-    return this.http.post(`/server/accounts/request`, {
-      level: level
-    })
-        .map(response => {
+    return this.http.post(`/server/accounts/request`, { level: level })
+      .pipe(
+        map(response => {
           this.currentUser.then((user: User) => {
             user.levelsRequested.push(level);
             return user;
           });
           return response.status;
-        })
-        .catch(this.handleError);
+        }),
+        catchError(this.handleError)
+      );
   }
 
   approve = (id: string, level: string): Observable<number> => {
-    return this.http.post(`/server/accounts/approve`, {
-      id: id,
-      level: level
-    })
-        .map(response => response.status)
-        .catch(this.handleError);
+    return this.http.post(`/server/accounts/approve`, { id: id, level: level })
+      .pipe(
+        map(response => response.status),
+        catchError(this.handleError)
+      );
   }
 
   deny = (id: string, level: string): Observable<number> => {
-    return this.http.post(`/server/accounts/deny`, {
-      id: id,
-      level: level
-    })
-        .map(res => res.status)
-        .catch(this.handleError);
+    return this.http.post(`/server/accounts/deny`, { id: id, level: level })
+      .pipe(
+        map(res => res.status),
+        catchError(this.handleError)
+      );
   }
 
   deleteUser = (id: string): Observable<number> => {
-    return this.http.post(`/server/accounts/delete`, {
-      id: id
-    })
-        .map(res => res.status)
-        .catch(this.handleError);
+    return this.http.post(`/server/accounts/delete`, { id: id })
+      .pipe(
+        map(res => res.status),
+        catchError(this.handleError)
+       );
   }
 
   logout = (): void => {

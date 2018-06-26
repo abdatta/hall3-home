@@ -130,7 +130,7 @@ export class TilesComponent implements OnInit {
   save() {
     this.saving = true;
     this._tiles.map(tile => delete tile['edited']);
-    this.saver.emit(this.history);console.log(JSON.stringify(this.history,null,2));
+    this.saver.emit(this.history);
   }
   saved(success: boolean) {
     this.saving = false;

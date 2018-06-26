@@ -33,7 +33,7 @@ export class MinutesRevealerComponent implements OnInit {
       this.service
           .getCatNews((this.category + ' minutes').trim().split(' '))
           .subscribe((d: object[]) => {
-              if (d.hasOwnProperty('err')) {
+              if (d[0].hasOwnProperty('err')) {
               } else {
                 this.data = d;              
               }

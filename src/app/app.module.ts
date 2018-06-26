@@ -6,7 +6,6 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { OwlModule } from 'angular-owl-carousel';
 import { Ng2Carousel3dModule } from 'ng2-carousel-3d';
-import { NgxCarousel3dModule } from 'ngx-carousel-3d';
 import { AutoSizeInputModule } from 'ngx-autosize-input';
 
 /* importing services here */
@@ -136,7 +135,6 @@ import { InfoheadComponent } from './components/infohead/infohead.component';
     AppRoutingModule,
     OwlModule,
     Ng2Carousel3dModule,
-    NgxCarousel3dModule,
     AutoSizeInputModule
   ],
   providers: [

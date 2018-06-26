@@ -43,7 +43,7 @@ export class FeedbackComponent implements OnInit {
       this.setResponseTab(true);
       this.feedbackService.getResponses()
           .subscribe((q: Query[]) => {
-            if (q.hasOwnProperty('err')) {
+            if (q[0].hasOwnProperty('err')) {
               this.error = q['err'];
             } else {
               q = q.slice().reverse().map(r => {

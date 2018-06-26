@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable, of, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
-import 'rxjs/add/observable/of';
+/*import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/throw';
 
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/toPromise';*/
 
 import { Response, RequestOptions } from '@angular/http';
 import { HttpClient } from '../http.client';
@@ -33,30 +34,33 @@ export class InfoService {
 
   private getInfo(category: string, id: string): Observable<object> {
     return this.http.get(`/server/info/${category}/${id}`)
-      .map((res: Response) => res.json() as object)
-      .catch((error: any) => {
-        if (error.status) {
-          return Observable.of({
-            'err': error.status,
-            'info': [{ name: 'Oops! Some Error Ocurred' }]
-          });
-        } else {
-          return Observable.throw(error.json().error || error.message || error);
-        }
-      });
+      .pipe(
+        map((res: Response) => res.json() as object),
+        catchError((error: any) => {
+          if (error.status) {
+            return of({
+              'err': error.status,
+              'info': [{ name: 'Oops! Some Error Ocurred' }]
+            });
+          } else {
+            return Observable.throw(error.json().error || error.message || error);
+          }
+        })
+      );
   }
 
   private updateInfo(category: string, id: string, diff: object[]): Observable<number> {
-    return this.http.post(`/server/info/${category}/${id}`, {
-      'diff': diff
-    }).map(res => res.status)
-      .catch((error: any) => {
-          if (error.status) {
-              return Observable.of(error.status);
-          } else {
-              return Observable.throw(error.message || error);
-          }
-      });
+    return this.http.post(`/server/info/${category}/${id}`, { diff: diff })
+      .pipe(
+        map(res => res.status),
+        catchError((error: any) => {
+            if (error.status) {
+                return of(error.status);
+            } else {
+                return Observable.throw(error.message || error);
+            }
+        })
+      );
   }
 
 }

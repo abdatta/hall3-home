@@ -54,7 +54,7 @@ export class DashboardComponent implements OnInit {
   getNews(name: string) {
     this.newsService.getUserNews(name)
         .subscribe((d: object[]) => {
-          if (d.hasOwnProperty('err')) {
+          if (d[0].hasOwnProperty('err')) {
             this.data = [{}];
           } else {
             this.data = d;
