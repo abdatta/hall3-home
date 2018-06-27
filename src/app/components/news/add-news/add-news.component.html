@@ -9,7 +9,7 @@
     <div class="row" *ngIf="!false">
       <div class="col-xs-12 col-sm-8 col-sm-offset-2 padding30">
         <div class="space-30"></div>
-        <h5>Posting As: &emsp;<span>{{ user.name }}</span></h5>
+        <h5>Posting As: &emsp;<span *ngIf="user">{{ user.name }}</span></h5>
         <div *ngIf="head.touched && head.errors && head.errors.required" style="font-size: 11px; color: red">*Required</div>
         <div class="space-20" *ngIf="!(head.touched && head.errors)"></div>
         <input

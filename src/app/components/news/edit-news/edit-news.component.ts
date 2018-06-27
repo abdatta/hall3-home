@@ -31,7 +31,7 @@ export class EditNewsComponent implements OnInit {
             this.user = user;
             this.newsService.getOneNews(params['id'])
                 .subscribe((d: object) => {
-                  if (d[0].hasOwnProperty('err')) {
+                  if (d.hasOwnProperty('err')) {
                     this.data = {};
                   } else {
                     this.data = d;

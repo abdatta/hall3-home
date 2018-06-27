@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
-import { NewsService } from '../../services/news/news.service';
+import { NewsService } from '../../../services/news/news.service';
 import * as moment from 'moment';
 
 @Component({
