@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   submitted = false;
   error = '';
-  next = '/dashboard';
+  next = '/user/dashboard';
 
   constructor(private loginService: UsersService,
               private route: ActivatedRoute,

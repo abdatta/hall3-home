@@ -39,7 +39,7 @@ export class MainService {
       'lnfform': '/feedback/lnf',
       'messportal': 'http://mess.hall3iitk.com',
       'login': '/login',
-      'dash': '/dashboard',
+      'dash': '/user/dashboard',
       'map': '/map',
       'rules': '/server/files/rules.pdf',
       // 'messfeedback': 'https://goo.gl/CAu4xv'
@@ -219,7 +219,7 @@ export class MainService {
                       'link' : this.getLink('map')
                   },
                   {
-                      'title1' : 'HEC Login',
+                      'title1' : 'Login',
                       'link1' : this.getLink('login'),
                       'title2' : 'Dashboard',
                       'link2' : this.getLink('dash'),

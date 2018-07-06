@@ -32,7 +32,7 @@ export class LogInGuard implements CanActivate {
     return this.usersService.check()
       .then((result: boolean) => {
         if (result) {
-          this.router.navigateByUrl('/dashboard');
+          this.router.navigateByUrl('/user/dashboard');
         }
         return !result;
       });
@@ -67,8 +67,8 @@ export class LevelGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot,
               state: RouterStateSnapshot): Promise<boolean> {
-                const level = route.data['level'] as string;
-                return this.usersService.checkLevel(level)
+                const levels = route.data['levels'] as string[];
+                return this.usersService.checkLevel(levels)
                   .then((result: boolean) => {
                     if (!result) {
                       this.router.navigateByUrl('/login');

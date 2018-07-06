@@ -155,14 +155,13 @@ export class UsersService {
     });
   }
 
-  checkLevel = (level: string): Promise<boolean> => {
-    return this.currentUser.then((user: User) => {
-      // console.log('Request for ' + level);
-      // console.log(user);
-      return user != null && (user.levelsCurrent.indexOf(level) !== -1 || user.levelsCurrent.indexOf('admin') !== -1);
-    });
+  checkLevel = (levels: string[] = []): Promise<boolean> => {
+    levels = levels.slice(); levels.push('admin');
+    return this.currentUser.then((user: User) =>
+      user != null && levels.some(level => user.levelsCurrent.indexOf(level) !== -1)
+    );
   }
 
-  checkAdmin = (): Promise<boolean> => this.checkLevel('admin');
+  checkAdmin = (): Promise<boolean> => this.checkLevel();
 
 }

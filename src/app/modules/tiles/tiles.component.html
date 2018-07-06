@@ -1,0 +1,100 @@
+<div class="flexbox-container"
+     [style.justify-content]="justify">
+  <div *ngFor="let tile of _tiles; let i = index;"
+       class="col-xs-6 col-sm-3"
+       [class.wow]="fadeIn(i)"
+       [class.fadeIn]="fadeIn(i)"
+       [attr.data-wow-delay]="fadeIn(i)+'s'">
+    <div class="team-image relative"
+         [class.edit]="editable">
+      <div *ngIf="tile.hasOwnProperty('photo')"
+           class="relative">
+        <img *ngIf="photos.indexOf(tile['photo']) !== -1"
+             [src]="'../../../images/loading.gif'" alt="Loading...">
+        <img [class.invisible]="photos.indexOf(tile['photo']) !== -1"
+             [src]="'/server/' + tile['photo']" [alt]="tile['name']"
+             (load)="load(photos.indexOf(tile['photo']))">
+      </div>
+      <div *ngIf="!editable"
+           class="team-details">
+        <strong>{{ tile['name'] }}</strong>
+        <div class="space-2"></div>
+        <span *ngIf="tile.hasOwnProperty('post')">{{ tile['post'] }}<br></span>
+        <span *ngFor="let more of tile['more']">
+          {{ more }}
+          <br>
+        </span>
+        <span *ngIf="tile.hasOwnProperty('email')">{{ tile['email'] }}<br></span>
+      </div>
+
+      <div class="team-details"
+           [class.invisible]="!editable">
+        <strong>
+          <input  AutoSizeInput
+                  [extraWidth]="10"
+                  type="text"
+                  [disabled]="saving"
+                  [ngModel]="tile['name']"
+                  (ngModelChange)="change($event,i,'name')">
+        </strong>
+        <div class="space-2"></div>
+        <span *ngIf="tile.hasOwnProperty('post') && tile['post'] !== 'President'">
+          <input  AutoSizeInput
+                  type="text"
+                  [disabled]="saving"
+                  [minWidth]="6"
+                  [ngModel]="tile['post']"
+                  (ngModelChange)="change($event,i,'post')">
+          <br>
+        </span>
+        <span *ngIf="tile.hasOwnProperty('post') && tile['post'] === 'President'">{{ tile['post'] }}<br></span>
+        <span *ngFor="let moredata of tile['more']; let j=index; trackBy:trackByFn">
+          <input  AutoSizeInput
+                  type="text"
+                  [disabled]="saving"
+                  [minWidth]="6"
+                  [ngModel]="tile['more'][j]"
+                  (ngModelChange)="change($event,i,'more',j)">
+          <br>
+        </span>
+        <span *ngIf="tile.hasOwnProperty('email')">
+          <input  AutoSizeInput
+                  type="text"
+                  [disabled]="saving"
+                  [minWidth]="6"
+                  [ngModel]="tile['email'].substring(0, tile['email'].lastIndexOf('@'))"
+                  (ngModelChange)="change($event,i,'email')">@iitk.ac.in
+          <br>
+        </span>
+      </div>
+      <div *ngIf="editable && i>0"
+           (click)="saving?null:prev(i)"
+           [class.disabled]="saving"
+           class="prev ti-angle-double-left"
+           [title]="saving?'':'Move Left'">
+      </div>
+      <div *ngIf="editable && i<_tiles.length-1"
+           (click)="saving?null:next(i)"
+           [class.disabled]="saving"
+           class="next ti-angle-double-right"
+           [title]="saving?'':'Move Right'">
+      </div>
+      <div *ngIf="editable && !(tile.hasOwnProperty('post') && tile['post'] === 'President')"
+           (click)="saving?null:del(i)"
+           [class.disabled]="saving"
+           class="del"
+           [title]="saving?'':'Delete'"
+           [class.ti-trash]="sureDel !== i"
+           [class.sureDel]="sureDel === i">
+      </div>
+    </div>
+  </div>
+  <div *ngIf="editable"
+       class="col-xs-6 col-sm-3"
+       [style.min-height]="_tiles[0].hasOwnProperty('photo')?'152px':'92px'" >
+    <span class="add"
+          (click)="saving?null:add()"
+          [class.disabled]="saving"
+          [title]="saving?'':'Add'">+</span>
+  </div>
+</div>
