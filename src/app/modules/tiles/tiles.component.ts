@@ -1,4 +1,5 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { NgxCropperOption } from 'ngx-cropper';
 
 @Component({
   selector: 'app-tiles',
@@ -16,6 +17,20 @@ export class TilesComponent implements OnInit {
   photos: string[] = [];
   backup: object[];
   history: object[];
+  ngxCropperConfig: NgxCropperOption = {
+    url: '/server/info/upload', // image server url
+    maxsize: 512000, // image max size, default 500k = 512000bit
+    title: 'Crop Image', // edit modal title, this is default
+    uploadBtnName: '<span class="ti-upload"></span>&nbsp;UPLOAD', // default Upload Image
+    uploadBtnClass: 'upload', // default bootstrap styles, btn btn-primary
+    cancelBtnName: 'Cancel', // default Cancel
+    cancelBtnClass: 'bttn', // default bootstrap styles, btn btn-default
+    applyBtnName: 'Apply', // default Apply
+    applyBtnClass: 'bttn', // default bootstrap styles, btn btn-primary
+    fdName: 'image', // default 'file', this is  Content-Disposition: form-data; name="file"; filename="fire.jpg"
+    aspectRatio: 1 / 1, // default 1 / 1, for example: 16 / 9, 4 / 3 ...
+    viewMode: 1 // default 0, value can be 0, 1, 2, 3
+  };
 
   @Input() fadeIn: (number) => number = i => null;
   @Input() set tiles(data: object[]) {
@@ -30,6 +45,13 @@ export class TilesComponent implements OnInit {
   constructor() { }
 
   ngOnInit() { }
+
+  onUpload(data: any, i: number) {
+    data = JSON.parse(data);
+    if (data['code'] === 2000) {
+      this.change(data['data']['url'], i, 'photo');
+    }
+  }
 
   moreKeys(obj: object) {
     const keys = Object.keys(obj);
@@ -88,7 +110,7 @@ export class TilesComponent implements OnInit {
       more: new Array(this.backup[0] ? this.backup[0]['more'].length : 1)
     };
     if (this.backup[0] && this.backup[0].hasOwnProperty('photo')) {
-      newtile['photo'] = '/files/default.jpg';
+      newtile['photo'] = null;
     }
     if (this.backup[0] && this.backup[0].hasOwnProperty('post')) {
       newtile['post'] = '';

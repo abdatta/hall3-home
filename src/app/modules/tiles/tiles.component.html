@@ -5,15 +5,18 @@
        [class.wow]="fadeIn(i)"
        [class.fadeIn]="fadeIn(i)"
        [attr.data-wow-delay]="fadeIn(i)+'s'">
-    <div class="team-image relative"
+    <div class="team-image" relative
          [class.edit]="editable">
       <div *ngIf="tile.hasOwnProperty('photo')"
            class="relative">
         <img *ngIf="photos.indexOf(tile['photo']) !== -1"
              [src]="'../../../images/loading.gif'" alt="Loading...">
         <img [class.invisible]="photos.indexOf(tile['photo']) !== -1"
-             [src]="'/server/' + tile['photo']" [alt]="tile['name']"
+             [src]="tile['photo']?'/server/' + tile['photo']:'/images/default.jpg'" [alt]="tile['name']"
              (load)="load(photos.indexOf(tile['photo']))">
+        <ngx-cropper *ngIf="tile.hasOwnProperty('photo') && editable" 
+                     [config]="ngxCropperConfig"
+                     (returnData)="onUpload($event, i)"></ngx-cropper>
       </div>
       <div *ngIf="!editable"
            class="team-details">
@@ -66,26 +69,26 @@
                   (ngModelChange)="change($event,i,'email')">@iitk.ac.in
           <br>
         </span>
-      </div>
-      <div *ngIf="editable && i>0"
-           (click)="saving?null:prev(i)"
-           [class.disabled]="saving"
-           class="prev ti-angle-double-left"
-           [title]="saving?'':'Move Left'">
-      </div>
-      <div *ngIf="editable && i<_tiles.length-1"
-           (click)="saving?null:next(i)"
-           [class.disabled]="saving"
-           class="next ti-angle-double-right"
-           [title]="saving?'':'Move Right'">
-      </div>
-      <div *ngIf="editable && !(tile.hasOwnProperty('post') && tile['post'] === 'President')"
-           (click)="saving?null:del(i)"
-           [class.disabled]="saving"
-           class="del"
-           [title]="saving?'':'Delete'"
-           [class.ti-trash]="sureDel !== i"
-           [class.sureDel]="sureDel === i">
+        <div *ngIf="editable && i>0"
+             (click)="saving?null:prev(i)"
+             [class.disabled]="saving"
+             class="prev ti-angle-double-left"
+             [title]="saving?'':'Move Left'">
+        </div>
+        <div *ngIf="editable && i<_tiles.length-1"
+             (click)="saving?null:next(i)"
+             [class.disabled]="saving"
+             class="next ti-angle-double-right"
+             [title]="saving?'':'Move Right'">
+        </div>
+        <div *ngIf="editable && !(tile.hasOwnProperty('post') && tile['post'] === 'President')"
+             (click)="saving?null:del(i)"
+             [class.disabled]="saving"
+             class="del"
+             [title]="saving?'':'Delete'"
+             [class.ti-trash]="sureDel !== i"
+             [class.sureDel]="sureDel === i">
+        </div>
       </div>
     </div>
   </div>

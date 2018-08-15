@@ -43,3 +43,7 @@ test-results.xml
 # webstorm files
 .idea
 .idea/*
+
+# vscode files
+.vscode
+.vscode/*

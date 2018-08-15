@@ -1,8 +1,8 @@
 var imagemin = require("imagemin"),    // The imagemin module.
   webp = require("imagemin-webp"),   // imagemin's WebP plugin.
-  outputFolder = "../hall3-server/server/files/people"//"./src/images/webp",            // Output folder
-  PNGImages = "../hall3-server/server/files/people/*.png"//"./src/images/**/*.png",         // PNG images
-  JPEGImages = "../hall3-server/server/files/people/*.jpg"//"./src/images/**/*.jpg";        // JPEG images
+  outputFolder = "../../Pictures/Mobile_SS/WebP"//"./src/images/webp",            // Output folder
+  PNGImages = "../../Pictures/Mobile_SS/*.png"//"./src/images/**/*.png",         // PNG images
+  JPEGImages = "../../Pictures/Mobile_SS/*.jpg"//"./src/images/**/*.jpg";        // JPEG images
 
 imagemin([PNGImages], outputFolder, {
   plugins: [webp({
@@ -12,6 +12,6 @@ imagemin([PNGImages], outputFolder, {
 
 imagemin([JPEGImages], outputFolder, {
   plugins: [webp({
-    quality: 65 // Quality setting from 0 to 100
+    quality: 70 // Quality setting from 0 to 100
   })]
 });

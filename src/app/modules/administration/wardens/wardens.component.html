@@ -13,9 +13,12 @@
 
         <div class="team-image relative">
           <div class="relative">
-            <img [src]="'/server/' + member['photo']"
+            <img [src]="member['photo']?'/server/' + member['photo']:'/images/default.jpg'"
                  [alt]="member['name'] + '\'s photo'"
                  (load)="load()">
+            <ngx-cropper *ngIf="editable" 
+                         [config]="ngxCropperConfig(i)"
+                         (returnData)="onUpload($event, i)"></ngx-cropper>
           </div>
 
           <div *ngIf="!editable" class="team-details">

@@ -812,8 +812,8 @@ input:-webkit-autofill:focus {
     //overflow: hidden;
     -webkit-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
+    //-webkit-transform: translate(0, 0);
+    //transform: translate(0, 0);
 }
 
 .team-details {

@@ -46,6 +46,54 @@ a:hover, a:active { text-decoration: none;color: white }
 	}
 }
 
+:host >>> .upload {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    padding: calc(10% - 8px) 0;
+    background: rgba(199, 34, 40, 0.5);
+    font-family: 'Open Sans', sans-serif;
+}
+
+:host >>> .upload:hover {
+    background: rgba(199, 34, 40, 0.9);
+}
+
+:host >>> .crop-box {
+    background-color: #fddfa3;
+    width: 90%;
+    max-width: 800px;
+}
+
+:host >>> figure {
+    height: auto;
+    max-height: 450px;
+}
+
+:host >>> .crop-box .crop-box-header {
+    border-bottom: 1px solid #fccf75;
+}
+
+:host >>> .crop-box .crop-box-footer {
+    border-top: 1px solid #fccf75;
+    display: flex;
+    justify-content: space-around;
+}
+
+:host >>> .crop-box .crop-box-close span::before {
+    content: "×";
+    font-size: 25px;
+    color: #5e0f14;
+}
+
+:host >>> .crop-box .crop-box-close span:hover::before{
+    color: #c72228;
+}
+
+
 input {
 	background-color: #fddfa3;
 	padding: 0px 2px;

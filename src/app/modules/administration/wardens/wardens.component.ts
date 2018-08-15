@@ -40,6 +40,37 @@ export class WardensComponent implements OnInit {
       });
   }
 
+  ngxCropperConfig(i: number) {
+    return {
+      url: '/server/info/upload', // image server url
+      maxsize: 512000, // image max size, default 500k = 512000bit
+      title: 'Crop Image', // edit modal title, this is default
+      uploadBtnName: '<span class="ti-upload"></span>&nbsp;UPLOAD', // default Upload Image
+      uploadBtnClass: 'upload', // default bootstrap styles, btn btn-primary
+      cancelBtnName: 'Cancel', // default Cancel
+      cancelBtnClass: 'bttn', // default bootstrap styles, btn btn-default
+      applyBtnName: 'Apply', // default Apply
+      applyBtnClass: 'bttn', // default bootstrap styles, btn btn-primary
+      fdName: 'image', // default 'file', this is  Content-Disposition: form-data; name="file"; filename="fire.jpg"
+      _aspectRatio: i === 0 ? (47 / 60) : (1 / 1), // default 1 / 1, for example: 16 / 9, 4 / 3 ...
+      get aspectRatio() {
+        return this._aspectRatio;
+      },
+      set aspectRatio(value) {
+        this._aspectRatio = value;
+      },
+      viewMode: 1 // default 0, value can be 0, 1, 2, 3
+    };
+  }
+
+  onUpload(data: any, i: number) {
+    data = JSON.parse(data);
+    if (data['code'] === 2000) {
+      this.members[i]['photo'] = data['data']['url'];
+      this.edited[i] = true;
+    }
+  }
+
   load() {
     this.images.pop();
     if (this.images.length === 0) {
