@@ -14,6 +14,9 @@
         <img [class.invisible]="photos.indexOf(tile['photo']) !== -1"
              [src]="tile['photo']?'/server/' + tile['photo']:'/images/default.jpg'" [alt]="tile['name']"
              (load)="load(photos.indexOf(tile['photo']))">
+        <button class="deletePic" *ngIf="tile.hasOwnProperty('photo') && tile['photo'] && editable" (click)="change('', i, 'photo')">
+          <span class="ti-image"></span>REMOVE
+        </button>
         <ngx-cropper *ngIf="tile.hasOwnProperty('photo') && editable" 
                      [config]="ngxCropperConfig"
                      (returnData)="onUpload($event, i)"></ngx-cropper>

@@ -16,6 +16,9 @@
             <img [src]="member['photo']?'/server/' + member['photo']:'/images/default.jpg'"
                  [alt]="member['name'] + '\'s photo'"
                  (load)="load()">
+            <button class="deletePic" *ngIf="member['photo'] && editable" (click)="onPhotoDelete(i)">
+              <span class="ti-image"></span>REMOVE
+            </button>
             <ngx-cropper *ngIf="editable" 
                          [config]="ngxCropperConfig(i)"
                          (returnData)="onUpload($event, i)"></ngx-cropper>

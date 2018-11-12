@@ -71,6 +71,11 @@ export class WardensComponent implements OnInit {
     }
   }
 
+  onPhotoDelete(i: number) {
+    this.members[i]['photo'] = '';
+    this.edited[i] = true;
+  }
+
   load() {
     this.images.pop();
     if (this.images.length === 0) {
@@ -96,7 +101,7 @@ export class WardensComponent implements OnInit {
         'index': i,
         'from':  this.backup[i],
         'to':    warden
-      }
+      };
     }).filter((e, i) => this.edited[i]);
     this.infoService.updateAdministrationInfo('wardens', diff)
       .subscribe((s: number) => {
