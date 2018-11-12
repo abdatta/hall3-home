@@ -31,7 +31,7 @@
     "jquery": "^3.2.1",
     "moment": "^2.18.1",
     "ng2-carousel-3d": "^0.2.1",
-    "ngx-autosize-input": "^2.1.0",
+    "ngx-autosize-input": "^2.2.0",
     "ngx-cropper": "^1.2.3",
     "rxjs": "^6.2.1",
     "rxjs-compat": "^6.2.1",

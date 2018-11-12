@@ -56,13 +56,9 @@
                 #to="ngModel"
                 required>
           <option value="" disabled selected>Choose target audience</option>
-          <option value="y15 y16 y17">All</option>
+          <option value="y16 y17">All</option>
           <option value="y17">Y17 only</option>
           <option value="y16">Y16 only</option>
-          <option value="y15">Y15 only</option>
-          <option value="y17 y16">Y17 and Y16</option>
-          <option value="y16 y15">Y16 and Y15</option>
-          <option value="y15 y17">Y15 and Y17</option>
         </select>
         <div *ngIf="body.touched && body.errors && body.errors.required" style="font-size: 11px; color: red">*Required</div>
         <div class="space-20" *ngIf="!(body.touched && body.errors)"></div>

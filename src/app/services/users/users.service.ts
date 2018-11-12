@@ -58,8 +58,8 @@ export class UsersService {
 
   getUser = (): Promise<User> => this.currentUser;
 
-  getUsers = (): Observable<Array<User>> => {
-    return this.http.get('/server/accounts/users')
+  getUsers = (level: string): Observable<Array<User>> => {
+    return this.http.get('/server/accounts/users/' + level)
       .pipe(
         map((res: Response) => res.json() as Array<User>),
         catchError((error: any) => {
@@ -140,6 +140,15 @@ export class UsersService {
         catchError(this.handleError)
        );
   }
+
+  transferRequest = (transfers: object): Observable<number> => {
+    return this.http.post('/server/accounts/transfer', transfers)
+      .pipe(
+        map((response: Response) => response.status),
+        catchError(this.handleError)
+      );
+  }
+
 
   logout = (): void => {
     this.currentUser = Promise.resolve(null);

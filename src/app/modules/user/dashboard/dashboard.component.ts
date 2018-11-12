@@ -39,6 +39,11 @@ export class DashboardComponent implements OnInit {
       guard: 'cs'
     },
     {
+      text: 'Transfer HEC Accounts',
+      link: '/user/transfer',
+      guard: 'president'
+    },
+    {
       text: 'Change Password',
       link: '/user/changepassword'
     }

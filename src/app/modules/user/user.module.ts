@@ -12,6 +12,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { AddNewsComponent } from './add-news/add-news.component';
 import { EditNewsComponent } from './edit-news/edit-news.component';
+import { TransferComponent } from './transfer/transfer.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { EditNewsComponent } from './edit-news/edit-news.component';
     DashboardComponent,
     ChangePasswordComponent,
     AddNewsComponent,
-    EditNewsComponent
+    EditNewsComponent,
+    TransferComponent
   ],
   imports: [
     CommonModule,

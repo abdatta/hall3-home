@@ -4913,9 +4913,9 @@ ng2-carousel-3d@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/ng2-carousel-3d/-/ng2-carousel-3d-0.2.1.tgz#bd6629d25da42ab00d80ca58167297b69f9d296a"
 
-ngx-autosize-input@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/ngx-autosize-input/-/ngx-autosize-input-2.1.0.tgz#0252d7e29c36ff1dfab8dc4a9b211f5a96415710"
+ngx-autosize-input@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/ngx-autosize-input/-/ngx-autosize-input-2.2.0.tgz#f2bc6db4740d89b9c5354198c3d226f9ffc82d99"
 
 ngx-cropper@^1.2.3:
   version "1.2.3"

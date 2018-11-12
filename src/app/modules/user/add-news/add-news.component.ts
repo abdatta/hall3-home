@@ -20,7 +20,7 @@ export class AddNewsComponent implements OnInit {
       'body': '',
       'cat': '',
       'link': ''
-    }
+    };
 
   constructor(private newsService: NewsService,
               private loginService: UsersService,

@@ -22,13 +22,17 @@
     "label-position": true,
     "max-line-length": [
       true,
-      140
+      200
     ],
     "member-access": false,
     "member-ordering": [
       true,
-      "static-before-instance",
-      "variables-before-functions"
+      {
+        "order": [
+          "static-before-instance",
+          "variables-before-functions"
+        ]
+      }
     ],
     "no-arg": true,
     "no-bitwise": true,
@@ -70,7 +74,7 @@
     ],
     "radix": true,
     "semicolon": [
-      "always"
+      true
     ],
     "triple-equals": [
       true,
