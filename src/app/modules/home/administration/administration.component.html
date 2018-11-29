@@ -11,13 +11,13 @@
   <div class="flexbox-container" [class.invisible]="!wardensloaded">
     <!--Single-team-->
     <div *ngFor="let warden of wardens; let i=index;"
-         class="col-xs-6 col-sm-3 wow fadeIn"
-         [attr.data-wow-delay]="((i === 0) ? 0.2 : 0.4) + 's'">
+        class="col-xs-6 col-sm-3 wow fadeIn"
+        [attr.data-wow-delay]="((i === 0) ? 0.2 : 0.4) + 's'">
         <div class="team-image relative">
             <div class="relative">
-                <img [src]="'/server/' + warden['photo']"
-                     [alt]="warden['name'] + '\'s photo'"
-                     (load)="load()">
+                <img [src]="warden['photo']?'/server/' + warden['photo']:'/images/default.jpg'"
+                    [alt]="warden['name'] + '\'s photo'"
+                    (load)="load()">
             </div>
             <div class="team-details">
               <strong>{{ warden['name'] }}</strong><!-- style="background-color: #B4F4F4"-->
