@@ -13,11 +13,14 @@ export class AppComponent implements OnInit, AfterViewInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    this.router.events.subscribe((evt) => {
-      if (!(evt instanceof NavigationEnd)) {
-        return;
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        // For Google Analytics
+        (window as any).ga('set', 'page', event.urlAfterRedirects);
+        (window as any).ga('send', 'pageview');
+        // For scrolling to top on each route
+        window.scrollTo(0, 0);
       }
-      window.scrollTo(0, 0);
     });
   }
 
