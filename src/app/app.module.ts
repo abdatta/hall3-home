@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { LoaderModule } from './modules/loader/loader.module';
+import { NgxAnalyticsModule } from 'ngx-analytics';
+import { NgxAnalyticsGoogleAnalytics } from 'ngx-analytics/ga';
 
 /* importing services here */
 import { HttpClient } from './services/http.client';
@@ -37,7 +39,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    LoaderModule
+    LoaderModule,
+    NgxAnalyticsModule.forRoot([NgxAnalyticsGoogleAnalytics])
   ],
   providers: [
     HttpClient,

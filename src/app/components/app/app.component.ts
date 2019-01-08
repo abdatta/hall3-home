@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router, NavigationStart, NavigationCancel, NavigationEnd } from '@angular/router';
+import { NgxAnalyticsGoogleAnalytics } from 'ngx-analytics/ga';
 
 @Component({
   selector: 'app-root',
@@ -10,14 +11,12 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   loading: boolean;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, // Keep googleAnalytics variable !important
+              private googleAnalytics: NgxAnalyticsGoogleAnalytics) { }
 
   ngOnInit() {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        // For Google Analytics
-        (window as any).ga('set', 'page', event.urlAfterRedirects);
-        (window as any).ga('send', 'pageview');
         // For scrolling to top on each route
         window.scrollTo(0, 0);
       }
