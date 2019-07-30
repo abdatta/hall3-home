@@ -9,7 +9,7 @@ const jquery = (<any>jqueryProxy).default || jqueryProxy;
 
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import 'rxjs/add/observable/timer';
+import { timer } from 'rxjs';
 import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
@@ -377,7 +377,7 @@ export class NgxCarousel3dComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   private subscribe() {
-    this.$timer = Observable.timer(this.carousel3d.autoRotationSpeed, this.carousel3d.autoRotationSpeed).subscribe(() => {
+    this.$timer = timer(this.carousel3d.autoRotationSpeed, this.carousel3d.autoRotationSpeed).subscribe(() => {
         if (!this.carousel3d.autoRotationLocked) {
             if (this.options['dir'] === 'ltr') {
                 this.goNext();
