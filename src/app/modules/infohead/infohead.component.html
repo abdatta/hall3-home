@@ -1,7 +1,10 @@
 <div style="display: flex;">
 	<h4><ng-content></ng-content></h4>
-	<h5 *ngIf="editable && !saving && !editing" class="edit"(click)="editing=true; edit.emit();">
+	<h5 *ngIf="editable && !saving && !editing" class="edit" (click)="editing=true; edit.emit();">
 		<span class="ti-settings"></span>&nbsp;&nbsp;Edit
+	</h5>
+	<h5 *ngIf="editable && show_delete && !saving && !editing" class="edit" (click)="check_delete()">
+		<span class="ti-trash"></span>&nbsp;&nbsp;{{ confirm_delete? 'Sure? ('+time_left_to_delete+')' : 'Delete' }}
 	</h5>
 	<h5 *ngIf="editable && !saving && editing" class="edit" (click)="saving=true; error = false; save.emit();">
 		<span class="ti-save"></span>&nbsp;&nbsp;Save
@@ -12,5 +15,5 @@
 	<h5 *ngIf="editable && saving" class="load"><span class="ti-reload">
 		</span>&nbsp;&nbsp;Saving<span>.</span><span>.</span><span>.</span>
 	</h5>
-	<h5 *ngIf="editable && error" class="error">Saving Failed!</h5>
+	<h5 *ngIf="editable && error" class="error">{{ error_msg }}</h5>
 </div>

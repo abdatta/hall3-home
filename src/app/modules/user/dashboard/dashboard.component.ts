@@ -24,6 +24,11 @@ export class DashboardComponent implements OnInit {
       guard: 'hec'
     },
     {
+      text: 'Edit Mail Groups',
+      link: '/user/mail_groups',
+      guard: 'hec'
+    },
+    {
       text: 'Sign Up a New User',
       link: '/user/signup',
       guard: 'admin'
@@ -47,7 +52,7 @@ export class DashboardComponent implements OnInit {
       text: 'Change Password',
       link: '/user/changepassword'
     }
-  ]
+  ];
 
   constructor(private loginService: UsersService,
               private newsService: NewsService,

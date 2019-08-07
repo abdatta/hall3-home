@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { UserRouterModule } from './user.router';
 import { LoaderModule } from '../loader/loader.module';
 import { NewsTileModule } from '../news-tile/news-tile.module';
+import { InfoheadModule } from '../infohead/infohead.module';
+import { AutoSizeInputModule } from 'ngx-autosize-input';
 
 /* importing components here */
 import { SignupComponent } from './signup/signup.component';
@@ -13,6 +15,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { AddNewsComponent } from './add-news/add-news.component';
 import { EditNewsComponent } from './edit-news/edit-news.component';
 import { TransferComponent } from './transfer/transfer.component';
+import { MailGroupsComponent } from './mail-groups/mail-groups.component';
+import { MailGroupEditorComponent } from './mail-group-editor/mail-group-editor.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +25,18 @@ import { TransferComponent } from './transfer/transfer.component';
     ChangePasswordComponent,
     AddNewsComponent,
     EditNewsComponent,
-    TransferComponent
+    TransferComponent,
+    MailGroupsComponent,
+    MailGroupEditorComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     UserRouterModule,
     LoaderModule,
-    NewsTileModule
+    NewsTileModule,
+    InfoheadModule,
+    AutoSizeInputModule
   ]
 })
 export class UserModule {}

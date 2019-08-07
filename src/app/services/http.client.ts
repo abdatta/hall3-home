@@ -32,4 +32,12 @@ export class HttpClient {
       headers: headers
     });
   }
+
+  delete(url) {
+    const headers = new Headers();
+    this.addLocalIP(headers);
+    return this.http.delete(url, {
+      headers: headers
+    });
+  }
 }

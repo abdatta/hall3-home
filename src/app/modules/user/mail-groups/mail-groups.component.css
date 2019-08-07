@@ -1,0 +1,15 @@
+.new-maillist {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: column;
+    align-items: center;
+}
+
+.new-maillist > * {
+    margin: 5px;
+}
+
+.new-maillist > *:nth-child(1) {
+    width: 100%;
+    max-width: 600px;
+}
