@@ -165,8 +165,8 @@ export class NewsService {
             );
     }
 
-    getMailLists(): Observable<object[]> {
-        return this.http.get('/server/news/mail_lists')
+    getMailLists(onlyListNames?: boolean): Observable<object[]> {
+        return this.http.get('/server/news/mail_lists' + (onlyListNames ? '?select=list_name' : ''))
             .pipe(
                 map((res: Response) => res.json() as {list_name: string, emails: string[]}[]),
                 catchError((error: any) => {

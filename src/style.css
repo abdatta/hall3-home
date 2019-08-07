@@ -1499,3 +1499,49 @@ a.autolink:focus, a.autolink:hover {
 .owl-dot.active > span {
     background: #c72228 !important; /* color2 */
 }
+
+.dropdown-list {
+    box-shadow: 0 0 5px 0 #fab01a !important;
+    border: 1px solid #fab01a !important;
+    background-color: #fddfa3 !important;
+}
+
+.selected-item {
+    border: 1px solid #c72228 !important;
+    background: #c72228 !important;
+}
+
+.dropdown-btn {
+    border: 1px solid #fab01a !important;
+    border-radius: 0 !important;
+    padding: 14px 20px !important;
+}
+
+.dropdown-btn:focus {
+    box-shadow: 0 0 5px 0 #fab01a;
+    border: 1px solid #fab01a;
+    background-color: #fddfa3;
+    outline: none;
+}
+
+.dropdown-down, .dropdown-up {
+    border: none !important;
+}
+
+.dropdown-down:after {
+    content: '⯆';
+}
+
+.dropdown-up:after {
+    content: '⯅';
+}
+
+.multiselect-item-checkbox input[type=checkbox] + div:before {
+    color: #c72228 !important;
+    border: 2px solid #c72228 !important;
+    transition: all .4s ease;
+}
+
+.multiselect-item-checkbox input[type=checkbox]:checked + div:before {
+    background: #c72228 !important;
+}

@@ -15,12 +15,24 @@ export class AddNewsComponent implements OnInit {
   user: User;
   submitted = false;
   data = {
-      'to': '',
-      'head': '',
-      'body': '',
-      'cat': '',
-      'link': ''
-    };
+    'to': '',
+    'head': '',
+    'body': '',
+    'cat': '',
+    'link': ''
+  };
+
+  targetAudienceList = [];
+  selectedtargetAudience = [];
+  dropdownSettings = {
+    singleSelection: false,
+    idField: 'id',
+    textField: 'text',
+    selectAllText: 'All',
+    unSelectAllText: 'All',
+    // itemsShowLimit: 3,
+    // allowSearchFilter: true
+  };
 
   constructor(private newsService: NewsService,
               private loginService: UsersService,
@@ -28,6 +40,15 @@ export class AddNewsComponent implements OnInit {
               private router: Router) {}
 
   ngOnInit() {
+    this.newsService.getMailLists(true)
+      .subscribe(mail_lists => {
+        if (mail_lists.length > 0 && mail_lists[0].hasOwnProperty('err')) {
+          this.targetAudienceList = [];
+        } else {
+          this.targetAudienceList = mail_lists.map(list => ({ id: list['list_name'], text: list['list_name'] }));
+          // this.loaded = true;
+        }
+      });
     this.loginService.getUser()
         .then((user: User) => {
           this.user = user;

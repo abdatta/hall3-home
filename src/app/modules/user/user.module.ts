@@ -6,7 +6,8 @@ import { UserRouterModule } from './user.router';
 import { LoaderModule } from '../loader/loader.module';
 import { NewsTileModule } from '../news-tile/news-tile.module';
 import { InfoheadModule } from '../infohead/infohead.module';
-import { AutoSizeInputModule } from 'ngx-autosize-input';
+import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 /* importing components here */
 import { SignupComponent } from './signup/signup.component';
@@ -36,7 +37,8 @@ import { MailGroupEditorComponent } from './mail-group-editor/mail-group-editor.
     LoaderModule,
     NewsTileModule,
     InfoheadModule,
-    AutoSizeInputModule
+    TextareaAutosizeModule,
+    NgMultiSelectDropDownModule
   ]
 })
 export class UserModule {}
