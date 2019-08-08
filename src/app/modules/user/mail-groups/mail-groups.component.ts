@@ -32,6 +32,10 @@ export class MailGroupsComponent implements OnInit {
         });
   }
 
+  removeBlankSpaces(text: string) {
+    return text.replace(/\s/g, '');
+  }
+
   new_group() {
     if (!this.new_mail_list_name) {
       this.error = 'Required';
@@ -43,7 +47,7 @@ export class MailGroupsComponent implements OnInit {
     }
     this.error = '';
     this.mail_lists.push({
-      list_name: this.new_mail_list_name,
+      list_name: this.removeBlankSpaces(this.new_mail_list_name),
       emails: [],
       new: true
     });

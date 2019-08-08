@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 
 import { NewsService } from '../../../services/news/news.service';
 import { UsersService } from '../../../services/users/users.service';
 import { User } from '../../../models/user';
+import { MultiSelectComponent } from 'ng-multiselect-dropdown';
 
 @Component({
   selector: 'app-add-news',
   templateUrl: './add-news.component.html',
   styleUrls: ['./add-news.component.css']
 })
-export class AddNewsComponent implements OnInit {
+export class AddNewsComponent implements OnInit, AfterViewInit {
 
   user: User;
   submitted = false;
@@ -33,6 +34,10 @@ export class AddNewsComponent implements OnInit {
     // itemsShowLimit: 3,
     // allowSearchFilter: true
   };
+  selectTouched: boolean;
+  focusOnToComp: boolean;
+  @ViewChild('to', {read: ElementRef}) toElement: ElementRef;
+  @ViewChild('to', {read: MultiSelectComponent}) toComponent: MultiSelectComponent;
 
   constructor(private newsService: NewsService,
               private loginService: UsersService,
@@ -62,11 +67,42 @@ export class AddNewsComponent implements OnInit {
     });
   }
 
-  addNews(head: string, link: string, cat: string, to: string, body: string) {
+  ngAfterViewInit() {
+    this.toElement.nativeElement.firstChild.firstChild.firstChild.onfocus = (e) => this.focusOnToComp = true;
+    this.toElement.nativeElement.firstChild.firstChild.firstChild.onblur = (e) => this.focusOnToComp = false;
+  }
+
+  passFocus(event) {
+    if (event.srcElement !== this.toElement.nativeElement ||
+        event.relatedTarget === this.toElement.nativeElement.firstChild.firstChild.firstChild) {
+      console.log('Not passing focus.');
+      return;
+    }
+    event.srcElement.firstChild.firstChild.firstChild.focus();
+  }
+
+  loseFocus() {
+    this.toComponent.closeDropdown();
+    this.toElement.nativeElement.focus();
+  }
+
+  keyupToggle(event) {
+    if (this.focusOnToComp) {
+      this.toComponent.toggleDropdown(event);
+    }
+  }
+
+  onItemSelect(items) {
+    // console.log(items);
+    // console.log('Selected Before: ', this.selectedtargetAudience);
+    // setTimeout(() => console.log('Selected After: ', this.selectedtargetAudience), 500);
+  }
+
+  addNews(head: string, link: string, cat: string, body: string) {
     this.submitted = true;
     this.newsService.addNews({
       'by': this.user.name,
-      'to': to,
+      'to': this.selectedtargetAudience.join(' '),
       'head': head,
       'body': body,
       'category': cat.split(' '),

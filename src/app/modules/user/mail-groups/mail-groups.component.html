@@ -10,9 +10,11 @@
       <div class="new-maillist">
         <div>
           <div *ngIf="error" style="font-size: 11px; color: red">*{{ error }}</div>
-          <input class="form-control" [(ngModel)]="new_mail_list_name"
+          <input class="form-control" [ngModel]="new_mail_list_name"
                  (keyup.enter)="new_group()"
-                 placeholder="Enter mail group name...">
+                 (ngModelChange)="new_mail_list_name=removeBlankSpaces($event)"
+                 (keydown.space)="$event.preventDefault()"
+                 placeholder="Enter new mail group name...">
         </div>
         <button class="bttn"
                 (click)="new_group()"
