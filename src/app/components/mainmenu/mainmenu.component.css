@@ -48,6 +48,7 @@ ul li a {
         border: none;
         width: 100%;
         position: relative;
+        top: 0;
         max-height: 0px;
     }
 
@@ -120,7 +121,7 @@ ul li a {
 }
 
 .open .line-menu.start {
-  transform: rotate(-90deg) translateX(1px);
+  transform: rotate(-90deg) translateX(2px);
 }
 
 .line-menu.end {
@@ -130,5 +131,5 @@ ul li a {
 }
 
 .open .line-menu.end {
-  transform: rotate(-90deg) translateX(-3px);
+  transform: rotate(-90deg) translateX(-2px);
 }

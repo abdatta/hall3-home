@@ -84,10 +84,14 @@ export class UsersService {
       );
   }
 
-  signUp = (name: string, user: string, pass: string): Observable<number> => {
-    return this.http.post('/server/accounts/signup', { name: name, username: user, password: pass })
+  signUp = (name: string, user: string, email: string, pass: string): Observable<number> => {
+    return this.http.post('/server/accounts/signup', { name: name, username: user, email: email, password: pass })
       .pipe(
-        map((response: Response) => response.status),
+        map((response: Response) => {
+          this.currentUser = Promise.resolve(response.json() as User);
+          this.logStat();
+          return response.status;
+        }),
         catchError(this.handleError)
       );
   }
