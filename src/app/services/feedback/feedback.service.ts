@@ -1,16 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-/*import { Observable } from 'rxjs/Observable';
 
-import 'rxjs/add/observable/of';
-import 'rxjs/add/observable/throw';
-
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/toPromise';*/
-
-import { Response, RequestOptions } from '@angular/http';
+import { Response, Headers } from '@angular/http';
 import { HttpClient } from '../http.client';
 
 import { Query } from '../../models/query';
@@ -21,14 +13,14 @@ export class FeedbackService {
 
   constructor( private http: HttpClient ) {}
 
-  askQuery = (query: Query): Observable<number> => {
+  askQuery = (query: Query, reCaptchaToken: string): Observable<number> => {
     return this.http.post('/server/askthehec/ask', {
       name: query.name,
       to: query.to,
       subject: query.subject,
       message: query.message,
       email: query.email
-    }).pipe(
+    }, { headers: new Headers({ grecaptcha: reCaptchaToken })}).pipe(
         map(res => res.status),
         catchError((error: any) => {
           if (error.status) {
@@ -38,7 +30,7 @@ export class FeedbackService {
           }
         })
       );
-  };
+  }
   getQuery = (id: string): Observable<object> => {
     return this.http.get('/server/askthehec/asked/' + id)
       .pipe(
@@ -53,7 +45,7 @@ export class FeedbackService {
           }
         })
       );
-  };
+  }
   respondQuery = (response: string, id: string): Observable<number> => {
     return this.http.post('/server/askthehec/respond/' + id, {'response' : response })
       .pipe(
@@ -66,7 +58,7 @@ export class FeedbackService {
           }
         })
       );
-  };
+  }
   getResponses = (): Observable<object[]> => {
     return this.http.get('/server/askthehec/responses')
         .pipe(
@@ -81,7 +73,7 @@ export class FeedbackService {
               }
           })
         );
-    };
+    }
     reportQuery = (id: string): Observable<number> => {
         return this.http.get('/server/askthehec/report/' + id)
             .pipe(
@@ -94,7 +86,7 @@ export class FeedbackService {
                   }
               })
             );
-    };
+    }
 
     sendlnf = (data: LnFData): Observable<number> => {
       return this.http.post('/server/askthehec/lnf', data )

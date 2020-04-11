@@ -1,3 +1,6 @@
+/* importing environment here */
+import { environment } from '../environments/environment';
+
 /* importing modules here */
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -7,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoaderModule } from './modules/loader/loader.module';
 import { NgxAnalyticsModule } from 'ngx-analytics';
 import { NgxAnalyticsGoogleAnalytics } from 'ngx-analytics/ga';
+import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from 'ng-recaptcha';
 
 /* importing services here */
 import { HttpClient } from './services/http.client';
@@ -40,6 +44,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     HttpModule,
     AppRoutingModule,
     LoaderModule,
+    RecaptchaV3Module,
     NgxAnalyticsModule.forRoot([NgxAnalyticsGoogleAnalytics])
   ],
   providers: [
@@ -52,7 +57,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     LevelGuard,
     UsersGuard,
     LogInGuard,
-    AdminGuard
+    AdminGuard,
+    { provide: RECAPTCHA_V3_SITE_KEY, useValue: environment.reCaptchaKey }
   ],
   bootstrap: [AppComponent]
 })

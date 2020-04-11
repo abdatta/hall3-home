@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Http, Headers, RequestOptionsArgs } from '@angular/http';
 
 /*import 'rxjs/add/operator/delayWhen';
 import 'rxjs/add/observable/fromPromise';*/
@@ -17,27 +17,21 @@ export class HttpClient {
     }
   }
 
-  get(url) {
-    const headers = new Headers();
-    this.addLocalIP(headers);
-    return this.http.get(url, {
-      headers: headers
-    });
+  get(url: any, options: RequestOptionsArgs = {}) {
+    options.headers = options.headers || new Headers();
+    this.addLocalIP(options.headers);
+    return this.http.get(url, options);
   }
 
-  post(url, data) {
-    const headers = new Headers();
-    this.addLocalIP(headers);
-    return this.http.post(url, data, {
-      headers: headers
-    });
+  post(url: string, body: any, options: RequestOptionsArgs = {}) {
+    options.headers = options.headers || new Headers();
+    this.addLocalIP(options.headers);
+    return this.http.post(url, body, options);
   }
 
-  delete(url) {
-    const headers = new Headers();
-    this.addLocalIP(headers);
-    return this.http.delete(url, {
-      headers: headers
-    });
+  delete(url: string, options: RequestOptionsArgs = {}) {
+    options.headers = options.headers || new Headers();
+    this.addLocalIP(options.headers);
+    return this.http.delete(url, options);
   }
 }
