@@ -54,6 +54,7 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "hall3-home:build",
+            "proxyConfig": "proxy.json",
             "port": 5000
           },
           "configurations": {
