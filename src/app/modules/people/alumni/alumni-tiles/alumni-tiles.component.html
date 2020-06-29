@@ -1,6 +1,6 @@
 <div class="flexbox-container"
      [style.justify-content]="justify">
-  <div *ngFor="let tile of _tiles; let i = index;"
+  <div  *ngFor="let tile of _tiles; let i = index;"
        class="col-xs-6 col-sm-3"
        [class.wow]="fadeIn(i)"
        [class.fadeIn]="fadeIn(i)"
@@ -27,59 +27,7 @@
         <div class="space-2"></div>
         <span *ngIf="tile.hasOwnProperty('batch')">{{ tile['batch'] }}<br></span>
         <p><span *ngIf="tile.hasOwnProperty('content')" [innerHTML]="trim(tile['content'])"><br></span>
-          <a *ngIf="tile['content'].length > maxbody" style="color: #c72228; text-decoration: underline"> more</a></p>
+          <a *ngIf="tile['content'].length > maxbody" [routerLink]="'/people/single/232'" style="color: #c72228; text-decoration: underline"> more</a>
+        </p>
       </div>
      
-      <div class="team-details"
-           [class.invisible]="!editable">
-        <strong>
-          <input  AutoSizeInput
-                  type="text"
-                  [disabled]="saving"
-                  [ngModel]="tile['name']"
-                  (ngModelChange)="change($event,i,'name')">
-        </strong>
-        <div class="space-2"></div>
-        <span *ngIf="tile.hasOwnProperty('batch') && tile['batch'] !== 'President'">
-          <input  AutoSizeInput
-                  type="text"
-                  [disabled]="saving"
-                  [minWidth]="6"
-                  [ngModel]="tile['batch']"
-                  (ngModelChange)="change($event,i,'batch')">
-          <br>
-        </span>
-        <span *ngIf="tile.hasOwnProperty('batch') && tile['batch'] === 'President'">{{ tile['batch'] }}<br></span>
-        
-        <div *ngIf="editable && i>0"
-             (click)="saving?null:prev(i)"
-             [class.disabled]="saving"
-             class="prev ti-angle-double-left"
-             [title]="saving?'':'Move Left'">
-        </div>
-        <div *ngIf="editable && i<_tiles.length-1"
-             (click)="saving?null:next(i)"
-             [class.disabled]="saving"
-             class="next ti-angle-double-right"
-             [title]="saving?'':'Move Right'">
-        </div>
-        <div *ngIf="editable && !(tile.hasOwnProperty('batch') && tile['batch'] === 'President')"
-             (click)="saving?null:del(i)"
-             [class.disabled]="saving"
-             class="del"
-             [title]="saving?'':'Delete'"
-             [class.ti-trash]="sureDel !== i"
-             [class.sureDel]="sureDel === i">
-        </div>
-      </div>
-    </div>
-  </div>
-  <div *ngIf="editable"
-       class="col-xs-6 col-sm-3"
-       [style.min-height]="_tiles[0].hasOwnProperty('image')?'152px':'92px'" >
-    <span class="add"
-          (click)="saving?null:add()"
-          [class.disabled]="saving"
-          [title]="saving?'':'Add'">+</span>
-  </div>
-</div>
