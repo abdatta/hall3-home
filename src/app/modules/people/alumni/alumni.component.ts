@@ -9,10 +9,10 @@ import {NewsTileComponent} from '../../news-tile/news-tile.component';
 })
 export class AlumniComponent implements OnInit {
 
-  alumni: object;
   loaded = false;
   editors: string[] = [];
-  ams: object[];
+  alumni: object[];
+  maxchars = 150;
 
   constructor(private infoService: InfoService) { }
 
@@ -22,7 +22,7 @@ export class AlumniComponent implements OnInit {
         if ( d.hasOwnProperty('err')) {
           console.log(d['err']);
         }
-        this.ams = d['info'];
+        this.alumni = d['info'];
         this.editors = d['editors'];
         this.loaded = true;
       });
