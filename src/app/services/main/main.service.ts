@@ -25,6 +25,7 @@ export class MainService {
       'cs-core': '/people/cscoreteam',
       'sg' : '/people/studentguides',
       'am' : '/people/academicmentors',
+      'alumni': '/people/alumni-memoirs',
       'clubsecy' : '/people/clubsecretaries',
       'clubcoordi' : '/people/clubcoordinators',
     'notices' : null,
@@ -141,7 +142,12 @@ export class MainService {
           {
             'title' : 'Academic Mentors',
             'link' : this.getLink('am')
-          }/*,
+          },
+          {
+            'title' : 'Alumni Memoirs',
+            'link' : this.getLink('alumni')
+          },
+          /*,
           {
             'title' : 'Club Secretaries',
             'link' : this.getLink('clubsecy')
@@ -316,6 +322,11 @@ export class MainService {
             'name' : 'Academic Mentors',
             'id' : 'am',
             'link' : this.getLink('am')
+          },
+          {
+            'name' : 'Alumni Memoirs',
+            'id' : 'alumni',
+            'link' : this.getLink('alumni')
           }/*,
           {
             'name' : 'Club Secretaries',

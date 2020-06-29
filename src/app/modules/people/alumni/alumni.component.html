@@ -1,0 +1,12 @@
+<div class="blog-details">
+  <h1>Alumni Memoirs</h1>
+  <div class="space-20"></div>
+  <p>Meet our Alumns</p>
+  <div class="space-10"></div>
+  <app-infohead (edit)="tiles.edit()"
+                (save)="tiles.save();" [editors]="editors"
+                (discard)="ams = tiles.discard()">Meet our ALumns</app-infohead>
+  <div class="space-10"></div>
+  <app-loader [show]="!loaded"></app-loader>
+  <app-tiles [class.invisible]="!loaded" [tiles]="ams" (save)="save($event)"></app-tiles>
+</div>

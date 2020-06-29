@@ -6,17 +6,20 @@ import { PeopleRouterModule } from './people.router';
 import { InfoheadModule } from '../infohead/infohead.module';
 import { LoaderModule } from '../loader/loader.module';
 import { TilesModule } from '../tiles/tiles.module';
+import { NewsTileModule } from '../news-tile/news-tile.module';
 
 /* importing components here */
 import { CsCoreComponent } from './cs-core/cs-core.component';
 import { SGComponent } from './sg/sg.component';
 import { AMComponent } from './am/am.component';
+import { AlumniComponent } from './alumni/alumni.component';
 
 @NgModule({
   declarations: [
     CsCoreComponent,
     SGComponent,
-    AMComponent
+    AMComponent,
+    AlumniComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +27,8 @@ import { AMComponent } from './am/am.component';
     PeopleRouterModule,
     InfoheadModule,
     LoaderModule,
-    TilesModule
+    TilesModule,
+    NewsTileModule
   ]
 })
 export class PeopleModule {}
