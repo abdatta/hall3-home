@@ -1,24 +1,34 @@
 .flexbox-container {
     display: flex;
-	flex-wrap: wrap;
+    flex-direction: row;
+    flex-wrap: wrap;
 	margin: 0 -15px;
 }
 
-.flexbox-container img {
+/* .flexbox-container img {
 	width: 100%;
+} */
+
+.col-xs-6.col-sm-3 {
+	padding: 5px;
+	padding: 20px;
+	padding-bottom: 0;
+	overflow: hidden;
+    word-break: break-word;
+	height: 50%;
+}
+
+.single-blog {
+	padding: 20px; 
+	padding-bottom: 0;
+	/* overflow: hidden; */
+    word-break: break-word;
+	height: 50%;
 }
 
 .col-xs-6.col-sm-3 {
     padding: 15px;
-    width: 33%;
-    
 }
-@media only screen and (max-width: 768px) {
-    /* For mobile phones: */
-    .col-xs-6.col-sm-3 {
-      width: 90%;
-    }
-  }
 
 .deletePic {
     position: absolute;
@@ -107,7 +117,7 @@ input:hover:not([disabled]), input:focus:not([disabled]) {
     position: absolute;
     width: 21px;
     height: 21px;
-    top: calc(50% - 8px);
+    top: calc(50% - 30px);
     left: -10px;
     background-color: #c72228;
     color: #fccf75;
@@ -131,7 +141,7 @@ input:hover:not([disabled]), input:focus:not([disabled]) {
     position: absolute;
     width: 21px;
     height: 21px;
-    top: calc(50% - 8px);
+    top: calc(50% - 30px);
     right: -10px;
     background-color: #c72228;
     color: #fccf75;
@@ -156,7 +166,7 @@ input:hover:not([disabled]), input:focus:not([disabled]) {
     width: 26px;
     height: 26px;
     left: calc(50% - 13px);
-    bottom: -15px;
+    bottom: -10px;
     background-color: #c72228;
     color: #fccf75;
     box-shadow: 0 0 10px 0px #5e0f14;

@@ -58,4 +58,20 @@ export class InfoService {
       );
   }
 
+  getOneAlumnus = (id: string): Observable<object> => {
+    return this.http.get('/server/info/people/alumni?id=' + id)
+      .pipe(
+          map((res: Response) => res.json() as object),
+          catchError((error: any) => {
+              if (error.status) {
+                  return of({
+                      'err': error.status
+                  });
+              } else {
+                  return Observable.throw(error.json().error || error.message || error);
+              }
+          })
+      );
+  }
+
 }

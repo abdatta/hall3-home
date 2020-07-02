@@ -6,20 +6,27 @@ import { PeopleRouterModule } from './people.router';
 import { InfoheadModule } from '../infohead/infohead.module';
 import { LoaderModule } from '../loader/loader.module';
 import { TilesModule } from '../tiles/tiles.module';
-import { NewsTileModule } from '../news-tile/news-tile.module';
+import { NgxCropperModule } from '../ngx-cropper/ngx-cropper.module';
+import { AutoSizeInputModule } from 'ngx-autosize-input';
+import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
+
 
 /* importing components here */
 import { CsCoreComponent } from './cs-core/cs-core.component';
 import { SGComponent } from './sg/sg.component';
 import { AMComponent } from './am/am.component';
 import { AlumniComponent } from './alumni/alumni.component';
+import { AlumniTilesComponent } from './alumni/alumni-tiles/alumni-tiles.component';
+import { SinglePageComponent } from './alumni/single-page/single-page.component';
 
 @NgModule({
   declarations: [
     CsCoreComponent,
     SGComponent,
     AMComponent,
-    AlumniComponent
+    AlumniComponent,
+    AlumniTilesComponent,
+    SinglePageComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +35,9 @@ import { AlumniComponent } from './alumni/alumni.component';
     InfoheadModule,
     LoaderModule,
     TilesModule,
-    NewsTileModule
+    NgxCropperModule,
+    AutoSizeInputModule,
+    TextareaAutosizeModule
   ]
 })
 export class PeopleModule {}

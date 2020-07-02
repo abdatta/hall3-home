@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { InfoService } from '../../../services/info/info.service';
-import {NewsTileComponent} from '../../news-tile/news-tile.component';
+import { InfoheadComponent } from '../../infohead/infohead.component';
+import { AlumniTilesComponent } from "./alumni-tiles/alumni-tiles.component";
 
 @Component({
   selector: 'app-alumni',
@@ -9,10 +10,12 @@ import {NewsTileComponent} from '../../news-tile/news-tile.component';
 })
 export class AlumniComponent implements OnInit {
 
+  @ViewChild(InfoheadComponent) head: InfoheadComponent;
+  @ViewChild(AlumniTilesComponent) tiles: AlumniTilesComponent;
   loaded = false;
   editors: string[] = [];
   alumni: object[];
-  maxchars = 150;
+  maxchars = 700;
 
   constructor(private infoService: InfoService) { }
 
@@ -27,6 +30,15 @@ export class AlumniComponent implements OnInit {
         this.loaded = true;
       });
   }
+
+  save(diff: object[]) {
+    this.infoService.updatePeopleInfo('alumni', diff)
+      .subscribe((s: number) => {
+        this.head.saved(s === 200);
+        this.tiles.saved(s === 200);
+    });
   }
+
+}
 
 

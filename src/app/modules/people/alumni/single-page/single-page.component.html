@@ -1,3 +1,28 @@
-<p>
-  single-page works!
-</p>
+<div class="col-xs-12 col-sm-12">
+  <div *ngIf="!loaded" class="space-70"></div>
+  <app-loader [show]="!loaded"></app-loader>
+  <div class="blog-details" *ngIf="loaded">
+    <!-- <div class="space-15"></div> -->
+    <ul class="list-unstyled list-inline meta">
+      <li>
+        <span class="ti-calendar"></span>&nbsp;<span>{{ getFormattedDate(alumnus['date']) }}</span>
+      </li>
+    </ul>
+    <h2>
+      {{ alumnus['name'] }} | {{ alumnus['batch'] }}
+    </h2>
+    <div class="space-20"></div>
+    <img class="center-block" [src]="alumnus['image']?'/server/' + alumnus['image']:'/photos/default.jpg'">
+    <div class="space-20"></div>
+    <p style="white-space: pre-wrap" [innerHTML]="alumnus['content']"></p>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <ul class="list-inline list-unstyled">
+          <li class="tag" [routerLink]="'/people/alumni-memoirs'">
+            Go back
+          </li>
+        </ul>
+      </div>
+    </div>
+    </div>
+</div>

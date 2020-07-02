@@ -19,7 +19,7 @@ export class AlumniTilesComponent implements OnInit {
   backup: object[];
   history: object[];
   ngxCropperConfig: NgxCropperOption = {
-    url: '/server/info/upload', // image server url
+    url: 'server/info/upload', // image server url
     maxsize: 512000, // image max size, default 500k = 512000bit
     title: 'Crop Image', // edit modal title, this is default
     uploadBtnName: '<span class="ti-upload"></span>&nbsp;UPLOAD', // default Upload Image
@@ -46,32 +46,6 @@ export class AlumniTilesComponent implements OnInit {
   constructor() { }
 
   ngOnInit() { }
-
-  preProcess(plainText: string): string {
-    // URLs starting with http://, https://, or ftp://
-    const  replacePattern1 = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
-    let replacedText = plainText.replace(replacePattern1, '<a href="$1" class="autolink" target="_blank">$1</a>');
-
-    // URLs starting with "www." (without // before it, or it'd re-link the ones done above).
-    const replacePattern2 = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
-    replacedText = replacedText.replace(replacePattern2, '$1<a href="http://$2" class="autolink" target="_blank">$2</a>');
-
-    // Change email addresses to mailto:: links.
-    const replacePattern3 = /(([a-zA-Z0-9\-\_\.])+@[a-zA-Z\_]+?(\.[a-zA-Z]{2,6})+)/gim;
-    replacedText = replacedText.replace(replacePattern3, '<a href="mailto:$1" class="autolink">$1</a>');
-
-    return replacedText;
-  }
-
-  trim(s: string) {
-    if (s.length <= this.maxbody) {
-        return s;
-    } else {
-        const t = s.slice(0, this.maxbody + 1);
-        console.log(t);
-        return t.slice(0, t.lastIndexOf(' ')) + '...';
-    }
-  }
 
   onUpload(data: any, i: number) {
     data = JSON.parse(data);
@@ -107,6 +81,67 @@ export class AlumniTilesComponent implements OnInit {
     });
   }
 
+
+  preProcess(plainText: string): string {
+    // URLs starting with http://, https://, or ftp://
+    const  replacePattern1 = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
+    let replacedText = plainText.replace(replacePattern1, '<a href="$1" class="autolink" target="_blank">$1</a>');
+
+    // URLs starting with "www." (without // before it, or it'd re-link the ones done above).
+    const replacePattern2 = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
+    replacedText = replacedText.replace(replacePattern2, '$1<a href="http://$2" class="autolink" target="_blank">$2</a>');
+
+    // Change email addresses to mailto:: links.
+    const replacePattern3 = /(([a-zA-Z0-9\-\_\.])+@[a-zA-Z\_]+?(\.[a-zA-Z]{2,6})+)/gim;
+    replacedText = replacedText.replace(replacePattern3, '<a href="mailto:$1" class="autolink">$1</a>');
+
+    return replacedText;
+  }
+
+  trim(s: string) {
+    if (s.length <= this.maxbody) {
+        return s;
+    } else {
+        const t = s.slice(0, this.maxbody + 1);
+        return t.slice(0, t.lastIndexOf(' ')) + '...';
+    }
+  }
+
+  load(i: number) {
+    if (i !== -1) {
+      this.images.splice(i, 1);
+    }
+  }
+
+  edit() {
+    this.editable = true;
+    this.backup = JSON.parse(JSON.stringify(this._tiles));
+    this.history = [];
+    console.log(this.editable);
+  }
+
+  save() {
+    this.saving = true;
+    this._tiles.map(tile => delete tile['edited']);
+    this.saver.emit(this.history);
+  }
+  saved(success: boolean) {
+    this.saving = false;
+    this.editable = !success;
+  }
+  
+  discard(): Object[] {
+    this.editable = false;
+    this.sureDel = -1;
+    this._tiles = this.backup;
+    this.history = [];
+    return this._tiles;
+  }
+
+  trackByFn(index: any, item: any) {
+    return index;
+   }
+
   change(val: any, i: number, source: string, j?: number) {
     let from: object;
     if (!this._tiles[i]['edited']) {
@@ -114,6 +149,11 @@ export class AlumniTilesComponent implements OnInit {
       delete from['edited'];
     }
 
+    if (source === 'more') {
+      this._tiles[i]['more'][j] = val.trim();
+    } else {
+      this._tiles[i][source] = val.trim() + (source === 'email' ? '@iitk.ac.in' : '');
+    }
 
     if (!this._tiles[i]['edited']) {
       this._tiles[i]['edited'] = true;
@@ -129,16 +169,21 @@ export class AlumniTilesComponent implements OnInit {
   add() {
     const newtile = {
       name: '',
-      more: new Array(this.backup[0] ? this.backup[0]['more'].length : 1)
+      image: null,
+      batch:'',
+      content:''
     };
     if (this.backup[0] && this.backup[0].hasOwnProperty('image')) {
       newtile['image'] = null;
     }
+    if (this.backup[0] && this.backup[0].hasOwnProperty('name')) {
+      newtile['name'] = '';
+    }
     if (this.backup[0] && this.backup[0].hasOwnProperty('batch')) {
       newtile['batch'] = '';
     }
-    if (this.backup[0] && this.backup[0].hasOwnProperty('email')) {
-      newtile['email'] = '@iitk.ac.in';
+    if (this.backup[0] && this.backup[0].hasOwnProperty('content')) {
+      newtile['content'] = '';
     }
     this._tiles.push(newtile);
 
@@ -165,40 +210,6 @@ export class AlumniTilesComponent implements OnInit {
         }
       }, 3000);
     }
-  }
-
-  load(i: number) {
-    if (i !== -1) {
-      this.images.splice(i, 1);
-    }
-  }
-
-  edit() {
-    this.editable = true;
-    this.backup = JSON.parse(JSON.stringify(this._tiles));
-    this.history = [];
-  }
-
-  save() {
-    this.saving = true;
-    this._tiles.map(tile => delete tile['edited']);
-    this.saver.emit(this.history);
-  }
-  saved(success: boolean) {
-    this.saving = false;
-    this.editable = !success;
-  }
-
-  discard(): Object[] {
-    this.editable = false;
-    this.sureDel = -1;
-    this._tiles = this.backup;
-    this.history = [];
-    return this._tiles;
-  }
-
-  trackByFn(index: any, item: any) {
-   return index;
   }
 
   updateHistory(change: object) {
