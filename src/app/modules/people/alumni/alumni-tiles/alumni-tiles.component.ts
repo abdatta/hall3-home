@@ -98,12 +98,12 @@ export class AlumniTilesComponent implements OnInit {
     return replacedText;
   }
 
-  trim(s: string) {
-    if (s.length <= this.maxbody) {
-        return s;
+  trim(s: object) {
+    if (s['content'].length <= this.maxbody) {
+        return s['content'];
     } else {
-        const t = s.slice(0, this.maxbody + 1);
-        return t.slice(0, t.lastIndexOf(' ')) + '...';
+        const t = s['content'].slice(0, this.maxbody + 1);
+        return t.slice(0, t.lastIndexOf(' ')) + '...' + '<u>[see more](/people/single/' + s['id'] + ')<u>';
     }
   }
 
@@ -149,12 +149,8 @@ export class AlumniTilesComponent implements OnInit {
       delete from['edited'];
     }
 
-    if (source === 'more') {
-      this._tiles[i]['more'][j] = val.trim();
-    } else {
-      this._tiles[i][source] = val.trim() + (source === 'email' ? '@iitk.ac.in' : '');
-    }
-
+    this._tiles[i][source] = val.trim();
+    
     if (!this._tiles[i]['edited']) {
       this._tiles[i]['edited'] = true;
       this.updateHistory({
@@ -166,8 +162,19 @@ export class AlumniTilesComponent implements OnInit {
     }
   }
 
+  objectidgenerator () {
+    var timestamp = (new Date().getTime() / 1000 | 0).toString(16);
+    return timestamp + 'xxxxxxxxxxxxxxxx'.replace(/[x]/g, function() {
+        return (Math.random() * 16 | 0).toString(16);
+    }).toLowerCase();
+  };
+
   add() {
+  
+  
+  
     const newtile = {
+      id: '',
       name: '',
       image: null,
       batch:'',
@@ -184,6 +191,9 @@ export class AlumniTilesComponent implements OnInit {
     }
     if (this.backup[0] && this.backup[0].hasOwnProperty('content')) {
       newtile['content'] = '';
+    }
+    if (this.backup[0] && this.backup[0].hasOwnProperty('id')) {
+      newtile['id'] = this.objectidgenerator();
     }
     this._tiles.push(newtile);
 

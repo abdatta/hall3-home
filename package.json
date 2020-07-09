@@ -37,6 +37,7 @@
     "ngx-analytics": "^4.6.3-patch1",
     "ngx-autosize-input": "^2.2.0",
     "ngx-cropper": "^1.2.3",
+    "ngx-markdown": "^6.2.1",
     "ngx-textarea-autosize": "^2.0.3",
     "node-sass": "^4.14.1",
     "rxjs": "^6.2.1",

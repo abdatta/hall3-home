@@ -15,7 +15,6 @@ export class SinglePageComponent implements OnInit {
 
   alumnus: object;
   loaded = false;
-  // loaded2 = false;
 
   constructor(private infoService: InfoService,
     private route: ActivatedRoute,
@@ -24,28 +23,15 @@ export class SinglePageComponent implements OnInit {
     ngOnInit() {
       this.route.params.subscribe((params: Params) => {
         this.loaded = false;
-        console.log(this.loaded);
         this.infoService.getOneAlumnus(params['id']).subscribe((d: object) => {
           if (d.hasOwnProperty('err')) {
             this.alumnus = {};
           } else {
             this.alumnus = d['info'][0];
             this.loaded = true;
-            console.log(this.alumnus);
-            console.log(this.loaded);
           }
         });
       });
-  
-      // this.infoService.getTopNews()
-      //     .subscribe((d: object[]) => {
-      //       if (d.length > 0 && d[0].hasOwnProperty('err')) {
-      //         this.latestNews = [{}];
-      //       } else {
-      //         this.latestNews = d;
-      //         this.loaded2 = true;
-      //       }
-      //     });
     }
   
     preProcess(plainText: string): string {

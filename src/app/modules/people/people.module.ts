@@ -9,7 +9,7 @@ import { TilesModule } from '../tiles/tiles.module';
 import { NgxCropperModule } from '../ngx-cropper/ngx-cropper.module';
 import { AutoSizeInputModule } from 'ngx-autosize-input';
 import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
-
+import { MarkdownModule } from "ngx-markdown";
 
 /* importing components here */
 import { CsCoreComponent } from './cs-core/cs-core.component';
@@ -37,7 +37,8 @@ import { SinglePageComponent } from './alumni/single-page/single-page.component'
     TilesModule,
     NgxCropperModule,
     AutoSizeInputModule,
-    TextareaAutosizeModule
+    TextareaAutosizeModule,
+    MarkdownModule.forRoot()
   ]
 })
 export class PeopleModule {}

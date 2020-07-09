@@ -27,6 +27,9 @@ export class InfoService {
   getFacilityInfo = (id: string): Observable<object> => this.getInfo('facilities', id);
   updateFacilityInfo = (id: string, diff: object[]): Observable<number> => this.updateInfo('facilities', id, diff);
 
+  getOneAlumnus = (id: string): Observable<object> => this.getSegregatedData('id', id);
+  getBatchWise = (id: string): Observable<object> => this.getSegregatedData('batch', id);
+  
   private getInfo(category: string, id: string): Observable<object> {
     return this.http.get(`/server/info/${category}/${id}`)
       .pipe(
@@ -58,8 +61,8 @@ export class InfoService {
       );
   }
 
-  getOneAlumnus = (id: string): Observable<object> => {
-    return this.http.get('/server/info/people/alumni?id=' + id)
+  private getSegregatedData = (category: string, id: string): Observable<object> => {
+    return this.http.get(`/server/info/people/alumni?${category}=${id}`)
       .pipe(
           map((res: Response) => res.json() as object),
           catchError((error: any) => {
@@ -73,5 +76,4 @@ export class InfoService {
           })
       );
   }
-
 }

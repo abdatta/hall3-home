@@ -13,14 +13,14 @@
                          [src]="tile['image']?'/server/' + tile['image']:'/photos/default.jpg'" [alt]="tile['name']"
                          (load)="load(images.indexOf(tile['image']))">
                
-                    <button class="deletePic" *ngIf="tile.hasOwnProperty('image') && tile['image'] && editable" (click)="change('', i, 'photo')">
+                    <button class="deletePic" *ngIf="tile.hasOwnProperty('image') && tile['image'] && editable" (click)="change('', i, 'image')">
                          <span class="ti-photo"></span>REMOVE
                     </button>
                     <ngx-cropper *ngIf="tile.hasOwnProperty('image') && editable" 
                                    [config]="ngxCropperConfig"
                                    (returnData)="onUpload($event, i)"></ngx-cropper>
                </div>
-               <p [class.invisible] = "editable" style="text-align: center;"><strong>{{ tile['name'] }}</strong><br>
+               <p [class.invisible] = "editable" style="text-align: center; font-weight: bolder;"><strong>{{ tile['name'] }}</strong><br>
                     <span *ngIf="tile.hasOwnProperty('batch')">{{ tile['batch'] }}<br></span>
                </p>
                <p [class.invisible] = "!editable" style="text-align: center;"> 
@@ -40,10 +40,13 @@
                     </span>
                </p>
           </div>
-          <div class="col-sm-9">
+          <div class="col-sm-9" >
                <div class="space-2"></div>       
-               <p [class.invisible]="editable"><span *ngIf="tile.hasOwnProperty('content')" [innerHTML]="trim(tile['content'])"><br></span>
-                    <a *ngIf="tile['content'].length > maxbody" [routerLink]="'/people/single/'+tile['id']" style="color: #c72228; text-decoration: underline"> more</a></p>
+               <p  [class.invisible]="editable">
+                    <!-- <span *ngIf="tile.hasOwnProperty('content')" [innerHTML]="tile['content']"></span> -->
+                    <span><markdown ngPreserveWhitespaces [data]="trim(tile)"></markdown></span>
+                    <!-- <a *ngIf="tile['content'].length > maxbody" [routerLink]="'/people/single/'+tile['id']" style="color: #c72228; text-decoration: underline"> continue reading.</a> -->
+               </p>
                <p [class.invisible]="!editable">
                     <span>
                          <textarea  autosize
@@ -85,5 +88,5 @@
           (click)="saving?null:add()"
           [class.disabled]="saving"
           [title]="saving?'':'Add'">+</span>
-  </div>
+  </div>  
 </div>
