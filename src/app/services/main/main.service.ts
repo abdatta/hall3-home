@@ -25,7 +25,7 @@ export class MainService {
       'cs-core': '/people/cscoreteam',
       'sg' : '/people/studentguides',
       'am' : '/people/academicmentors',
-      'alumni': '/people/alumni-memoirs',
+      'alumni': '/people/alumni-memoirs/all',
       'clubsecy' : '/people/clubsecretaries',
       'clubcoordi' : '/people/clubcoordinators',
     'notices' : null,

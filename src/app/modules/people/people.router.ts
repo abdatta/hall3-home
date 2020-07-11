@@ -13,8 +13,9 @@ const peopleRoutes: Routes = [
   { path: 'cscoreteam', component: CsCoreComponent },
   { path: 'studentguides', component: SGComponent },
   { path: 'academicmentors', component: AMComponent },
-  { path: 'alumni-memoirs', component: AlumniComponent},
-  { path: 'single/:id', component: SinglePageComponent}
+  { path: 'alumni-memoirs', redirectTo: 'alumni-memoirs/all', pathMatch: 'full' },
+  { path: 'alumni-memoirs/:id', component: AlumniComponent},
+  { path: 'single/:id', component: SinglePageComponent},
 ]
 
 @NgModule({

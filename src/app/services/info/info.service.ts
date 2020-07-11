@@ -28,7 +28,7 @@ export class InfoService {
   updateFacilityInfo = (id: string, diff: object[]): Observable<number> => this.updateInfo('facilities', id, diff);
 
   getOneAlumnus = (id: string): Observable<object> => this.getSegregatedData('id', id);
-  getBatchWise = (id: string): Observable<object> => this.getSegregatedData('batch', id);
+  // getBatchWise = (id: string): Observable<object> => this.getSegregatedData('batch', id);
   
   private getInfo(category: string, id: string): Observable<object> {
     return this.http.get(`/server/info/${category}/${id}`)

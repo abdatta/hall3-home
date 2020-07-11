@@ -14,11 +14,14 @@
     <div class="space-20"></div>
     <img class="image" [src]="alumnus['image']?'/server/' + alumnus['image']:'/photos/default.jpg'">
     <div class="space-20"></div>
-    <p style="white-space: pre-wrap" [innerHTML]="alumnus['content']"></p>
+    <!-- <p style="white-space: pre-wrap" [innerHTML]="alumnus['content']"></p> -->
+    <p style="white-space: pre-wrap">
+        <markdown ngPreserveWhitespaces [data]="alumnus['content']"></markdown>
+    </p>
     <div class="row">
       <div class="col-xs-12 col-sm-12" >
         <ul class="list-inline list-unstyled" style="text-align: center;">
-          <li class="tag" style="display: inline-block;" [routerLink]="'/people/alumni-memoirs'">
+          <li class="tag" style="display: inline-block;" [routerLink]="'/people/alumni-memoirs/all'">
             Go back
           </li>
         </ul>
