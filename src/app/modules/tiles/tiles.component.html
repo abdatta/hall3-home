@@ -10,9 +10,9 @@
       <div *ngIf="tile.hasOwnProperty('photo')"
            class="relative">
         <img *ngIf="photos.indexOf(tile['photo']) !== -1"
-             [src]="'../../../photos/loading.gif'" alt="Loading...">
+             [src]="'../../../images/loading.gif'" alt="Loading...">
         <img [class.invisible]="photos.indexOf(tile['photo']) !== -1"
-             [src]="tile['photo']?'/server/' + tile['photo']:'/photos/default.jpg'" [alt]="tile['name']"
+             [src]="tile['photo']?'/server/' + tile['photo']:'/images/default.jpg'" [alt]="tile['name']"
              (load)="load(photos.indexOf(tile['photo']))">
         <button class="deletePic" *ngIf="tile.hasOwnProperty('photo') && tile['photo'] && editable" (click)="change('', i, 'photo')">
           <span class="ti-image"></span>REMOVE
