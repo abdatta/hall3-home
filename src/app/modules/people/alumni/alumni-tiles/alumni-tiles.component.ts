@@ -54,13 +54,6 @@ export class AlumniTilesComponent implements OnInit {
     }
   }
 
-  moreKeys(obj: object) {
-    const keys = Object.keys(obj);
-    if (keys.indexOf('name') !== -1) { keys.splice(keys.indexOf('name'), 1); }
-    if (keys.indexOf('image') !== -1) { keys.splice(keys.indexOf('image'), 1); }
-    return keys;
-  }
-
   prev(i: number) {
     this._tiles.splice(i - 1, 2, this._tiles[i], this._tiles[i - 1]);
     this.sureDel = -1;
@@ -103,7 +96,7 @@ export class AlumniTilesComponent implements OnInit {
         return s['content'];
     } else {
         const t = s['content'].slice(0, this.maxbody + 1);
-        return t.slice(0, t.lastIndexOf(' ')) + '...' + '<u>[see more](/people/single/' + s['id'] + ')<u>';
+        return t.slice(0, t.lastIndexOf(' ')) + '...' + '<u>[see more](/people/alumni-memoirs/' + s['id'] + ')<u>';
     }
   }
 

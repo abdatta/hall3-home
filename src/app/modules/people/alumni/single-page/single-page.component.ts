@@ -28,7 +28,7 @@ export class SinglePageComponent implements OnInit {
             this.alumnus = {};
           } else {
             this.alumnus = d['info'][0];
-            this.loaded = true;
+            if(this.alumnus) this.loaded = true;
           }
         });
       });

@@ -1,7 +1,7 @@
 <div class="blog-details">
   <h1>Alumni Memoirs</h1>
   <div class="space-20"></div>
-  <p>The memories made while lmdskmdsj ncsxj snjndj lmljsnd lndlsnljndfsjndljndjldnjdsnjksn dscsklmd djndkd dsnkkd jsijij</p>
+  <p>Meet our alumni remembering and cherishing the beautiful moments they spent here. </p>
   <div class="space-10"></div>
   <div>
     <app-infohead style="width: 70%; float: left;" (edit)="tiles.edit()"
@@ -15,7 +15,7 @@
         <span class="caret"></span></button>
       <ul class="dropdown-menu">
         <li *ngFor="let batch of batches" [class]="bat==batch?'active':'inactive'">
-          <a [routerLink]="'/people/alumni-memoirs/'+batch" (click)="bat=batch">{{batch}}</a>
+          <a style="cursor: pointer;" (click)="bat=batch; ngOnInit()">{{batch}}</a>
         </li>
       </ul>
     </div>
