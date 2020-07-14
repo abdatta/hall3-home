@@ -41,11 +41,11 @@ export class AlumniComponent implements OnInit {
           this.loaded = true;
         });
      
-    this.maxchars = (window.innerWidth < 768) ? 300 : (window.innerWidth < 1200)? 500 : (window.innerWidth < 1464) ? 700 : 1000 ;
+    this.maxchars = (window.innerWidth < 768) ? 400 : (window.innerWidth < 1200)? 380 : (window.innerWidth < 1464) ? 540 : (window.innerWidth < 1776) ? 900 : 1350;
   }
 
   @HostListener('window:resize', ['$event']) makeResponsive(event) {
-    this.maxchars = (event.srcElement.innerWidth < 768) ? 300 : (event.srcElement.innerWidth < 1200)? 500 : (event.srcElement.innerWidth < 1464) ? 700: 1000;
+    this.maxchars = (event.srcElement.innerWidth < 768) ? 400 : (event.srcElement.innerWidth < 1200)? 380 : (event.srcElement.innerWidth < 1464) ? 540: (event.srcElement.innerWidth < 1776) ? 900 : 1350;
   }
 
   save(diff: object[]) {

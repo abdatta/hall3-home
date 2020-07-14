@@ -48,6 +48,7 @@ export class TilesComponent implements OnInit {
 
   onUpload(data: any, i: number) {
     data = JSON.parse(data);
+    console.log(data);
     if (data['code'] === 2000) {
       this.change(data['data']['url'], i, 'photo');
     }

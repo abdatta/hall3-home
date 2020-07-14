@@ -15,7 +15,7 @@ export class AlumniTilesComponent implements OnInit {
   saving = false;
   sureDel = -1;
   _tiles: object[];
-  images: string[] = [];
+  photos: string[] = [];
   backup: object[];
   history: object[];
   ngxCropperConfig: NgxCropperOption = {
@@ -37,7 +37,7 @@ export class AlumniTilesComponent implements OnInit {
   @Input() set tiles(data: object[]) {
     if (data) {
      this._tiles = data;
-     this.images = this._tiles.map(tile => tile['image']);
+     this.photos = this._tiles.map(tile => tile['photo']);
      this._tiles.map(tile => tile['edited'] = false);
      this.history = [];
     }
@@ -49,8 +49,9 @@ export class AlumniTilesComponent implements OnInit {
 
   onUpload(data: any, i: number) {
     data = JSON.parse(data);
+    console.log(data);
     if (data['code'] === 2000) {
-      this.change(data['data']['url'], i, 'image');
+      this.change(data['data']['url'], i, 'photo');
     }
   }
 
@@ -102,7 +103,7 @@ export class AlumniTilesComponent implements OnInit {
 
   load(i: number) {
     if (i !== -1) {
-      this.images.splice(i, 1);
+      this.photos.splice(i, 1);
     }
   }
 
@@ -169,12 +170,12 @@ export class AlumniTilesComponent implements OnInit {
     const newtile = {
       id: '',
       name: '',
-      image: null,
+      photo: null,
       batch:'',
       content:''
     };
-    if (this.backup[0] && this.backup[0].hasOwnProperty('image')) {
-      newtile['image'] = null;
+    if (this.backup[0] && this.backup[0].hasOwnProperty('photo')) {
+      newtile['photo'] = null;
     }
     if (this.backup[0] && this.backup[0].hasOwnProperty('name')) {
       newtile['name'] = '';

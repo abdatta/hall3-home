@@ -19,8 +19,8 @@
 }
 
 .single-blog {
-	padding: 20px; 
-	padding-bottom: 0;
+	padding: 10px; 
+	padding-bottom: 5px;
 	/* overflow: hidden; */
     word-break: break-word;
 	height: 50%;
