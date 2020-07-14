@@ -1,8 +1,10 @@
 .tag {
-    background-color: #c72228; /* color2 */
+    background-color: #c72228;
+    /* color2 */
     border-radius: 20px;
     padding: 5px 10px;
-    color:  #fddfa3; /* color4 */
+    color: #fddfa3;
+    /* color4 */
     -webkit-transition: all 0.2s;
     -moz-transition: all 0.2s;
     -ms-transition: all 0.2s;
@@ -10,18 +12,17 @@
     transition: all 0.2s;
 }
 
-.tag:hover{
-    background-color:  #5e0f14; /* color1 */
-    color: #fab01a; /* color3 */
+.tag:hover {
+    background-color: #5e0f14;
+    /* color1 */
+    color: #fab01a;
+    /* color3 */
     cursor: pointer;
 }
 
-
-
-@media screen and (min-width: 768px) {
-    .image{
-        padding-left: 25%;
-        padding-right: 25%;
-    }
-  }
-
+.image {
+    width: 250px;
+    height: 250px;
+    float: right;
+    margin: 10px;
+}
