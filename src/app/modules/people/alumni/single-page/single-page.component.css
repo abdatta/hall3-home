@@ -16,9 +16,22 @@
     cursor: pointer;
 }
 
-.image {
-    width: 250px;
-    height: 250px;
-    float: right;
-    margin: 10px;
-}
+@media screen and (min-width: 600px) {
+    .image {
+        width: 250px;
+        height: 250px;
+        float: right;
+        margin: 10px;
+    } 
+} 
+@media screen and (max-width: 600px) {
+    .image {
+        width: 280px;
+        height: 280px;
+    } 
+    .image-container{
+        text-align: center;
+        display: block;
+    }
+} 
+

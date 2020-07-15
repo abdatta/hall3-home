@@ -7,50 +7,53 @@
        [attr.data-wow-delay]="fadeIn(i)+'s'">
      <div class="row" relative [class.edit]="editable">
           <div class="col-sm-3 col-lg-3">
-               <div *ngIf="tile.hasOwnProperty('photo')"
-               class="relative">
-                    <img *ngIf="photos.indexOf(tile['photo']) !== -1"
-                         [src]="'../../../images/loading.gif'" alt="Loading...">
-                    <img [class.invisible]="photos.indexOf(tile['photo']) !== -1"
-                         [src]="tile['photo']?'/server/' + tile['photo']:'/images/default.jpg'" [alt]="tile['name']"
-                         (load)="load(photos.indexOf(tile['photo']))">
-               
-                    <button class="deletePic" *ngIf="tile.hasOwnProperty('photo') && tile['photo'] && editable" (click)="change('', i, 'photo')">
-                         <span class="ti-image"></span>REMOVE
-                    </button>
-                    <ngx-cropper *ngIf="tile.hasOwnProperty('photo') && editable" 
-                                   [config]="ngxCropperConfig"
-                                   (returnData)="onUpload($event, i)"></ngx-cropper>
+              <div class="image-container">
+                    <div class="relative image-div">
+                         <img *ngIf="photos.indexOf(tile['photo']) !== -1"
+                              [src]="'../../../images/loading.gif'" alt="Loading...">
+                         <img [class.invisible]="photos.indexOf(tile['photo']) !== -1"
+                              [src]="tile['photo']?'/server/' + tile['photo']:'/images/default.jpg'" [alt]="tile['name']"
+                              (load)="load(photos.indexOf(tile['photo']))">
+                    
+                         <button class="deletePic" *ngIf="tile.hasOwnProperty('photo') && tile['photo'] && editable" (click)="change('', i, 'photo')">
+                              <span class="ti-image"></span>REMOVE
+                         </button>
+                         <ngx-cropper *ngIf="tile.hasOwnProperty('photo') && editable" 
+                                        [config]="ngxCropperConfig"
+                                        (returnData)="onUpload($event, i)"></ngx-cropper>
+                    </div>
                </div>
           </div>
           <div class="col-sm-9 col-lg-9" >
                <div class="space-2"></div>   
-               <ul class="list-unstyled list-inline" style="font-weight: bolder;"> 
+               <ul class="list-unstyled list-inline alumn-detail" style="font-weight: bolder;"> 
                     <li >
                       <span class="ti-user" style="font-weight: bolder;"></span>&nbsp;
                       <span [class.invisible]="editable">{{ tile['name'] }}</span>
-                      <span [class.invisible]="!editable"> <input  AutoSizeInput
-                         type="text"
-                         [disabled]="saving"
-                         [ngModel]="tile['name']"
-                         (ngModelChange)="change($event,i,'name')"></span>
+                      <span [class.invisible]="!editable"> 
+                         <input  AutoSizeInput
+                              placeholder="Name"
+                              type="text"
+                              [disabled]="saving"
+                              [ngModel]="tile['name']"
+                              (ngModelChange)="change($event,i,'name')"></span>
                     </li>
                     <li>
                       <span class="ti-calendar" style="font-weight: bolder;"></span>&nbsp;
                       <span [class.invisible]="editable">{{ tile['batch'] }}</span>
                       <span [class.invisible]="!editable">
                          <input  AutoSizeInput
-                         type="text"
-                         [disabled]="saving"
-                         [ngModel]="tile['batch']"
-                         (ngModelChange)="change($event,i,'batch')">
+                              placeholder="Batch"
+                              type="text"
+                              [disabled]="saving"
+                              [ngModel]="tile['batch']"
+                              (ngModelChange)="change($event,i,'batch')">
                       </span>
                     </li>
                </ul>    
-               <p  [class.invisible]="editable">
-                    <!-- <span *ngIf="tile.hasOwnProperty('content')" [innerHTML]="tile['content']"></span> -->
-                    <span><markdown ngPreserveWhitespaces [data]="trim(tile)"></markdown></span>
-                    <!-- <a *ngIf="tile['content'].length > maxbody" [routerLink]="'/people/alumni-memoirs/'+tile['id']" style="color: #c72228; text-decoration: underline"> see more.</a> -->
+               <p [class.invisible]="editable" align="justify"> 
+                    <span *ngIf="tile.hasOwnProperty('content')" [innerHTML]="trim(tile['content'])"></span>
+                    <a *ngIf="tile['content'].length > maxbody" [routerLink]="'/people/alumni-memoirs/'+tile['id']" style="color: #c72228; text-decoration: underline"> see more.</a>
                </p>
                <p [class.invisible]="!editable">
                     <span>

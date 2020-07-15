@@ -5,6 +5,20 @@
 	margin: 0 -15px;
 }
 
+@media screen and (max-width: 768px) {
+    .alumn-detail {
+       text-align: center;
+       font-size: 150%;
+    }
+    .image-container{
+        text-align: center;
+        
+    }
+    .image-div{
+        width: 300px;
+        display: inline-block;
+    }
+} 
 /* .flexbox-container img {
 	width: 100%;
 } */

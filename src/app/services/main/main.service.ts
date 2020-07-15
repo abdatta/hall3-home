@@ -132,6 +132,10 @@ export class MainService {
       'dropdown' :
         [
           {
+            'title' : 'Alumni Memoirs',
+            'link' : this.getLink('alumni')
+          },
+          {
             'title' : 'Counselling Service Core Team',
             'link' : this.getLink('cs-core')
           },
@@ -142,10 +146,6 @@ export class MainService {
           {
             'title' : 'Academic Mentors',
             'link' : this.getLink('am')
-          },
-          {
-            'title' : 'Alumni Memoirs',
-            'link' : this.getLink('alumni')
           },
           /*,
           {
@@ -309,6 +309,11 @@ export class MainService {
     'people':
         [
           {
+            'name' : 'Alumni Memoirs',
+            'id' : 'alumni',
+            'link' : this.getLink('alumni')
+          },
+          {
             'name' : 'Counselling Service Core Team',
             'id' : 'cs-core',
             'link' : this.getLink('cs-core')
@@ -322,11 +327,6 @@ export class MainService {
             'name' : 'Academic Mentors',
             'id' : 'am',
             'link' : this.getLink('am')
-          },
-          {
-            'name' : 'Alumni Memoirs',
-            'id' : 'alumni',
-            'link' : this.getLink('alumni')
           }/*,
           {
             'name' : 'Club Secretaries',

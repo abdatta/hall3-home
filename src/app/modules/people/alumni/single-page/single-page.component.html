@@ -9,8 +9,12 @@
     </ul>
     <h2>{{ alumnus['name'] }} | {{ alumnus['batch'] }}</h2>
     <div class="space-3"></div>
-    <img class="image" [src]="alumnus['photo']?'/server/' + alumnus['photo']:'/photos/default.jpg'">
-    <p class="content">{{ alumnus["content"] }}</p>
+    <div class="image-container">
+      <img class="image" [src]="alumnus['photo']?'/server/' + alumnus['photo']:'/images/default.jpg'">
+    </div>
+    <p class="content" align="justify">
+      <span><markdown ngPreserveWhitespaces [data]="alumnus['content']"></markdown></span>
+    </p>
     <div class="col-xs-12 col-sm-12" *ngIf="loaded">
       <ul class="list-inline list-unstyled" style="text-align: center;">
         <li class="tag" style="display: inline-block;" [routerLink]="'/people/alumni-memoirs'">
@@ -18,6 +22,5 @@
         </li>
       </ul>
     </div>
-
   </div>
 </div>

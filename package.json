@@ -40,6 +40,7 @@
     "ngx-markdown": "^6.2.1",
     "ngx-textarea-autosize": "^2.0.3",
     "node-sass": "^4.14.1",
+    "remove-markdown": "^0.3.0",
     "rxjs": "^6.2.1",
     "rxjs-compat": "^6.2.1",
     "sinon": "^6.1.3",

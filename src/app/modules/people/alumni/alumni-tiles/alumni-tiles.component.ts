@@ -1,5 +1,6 @@
 import { Component, OnInit,EventEmitter, Input, Output } from '@angular/core';
 import { NgxCropperOption } from 'ngx-cropper';
+import * as removeMd from 'remove-markdown';
 
 @Component({
   selector: 'app-alumni-tiles',
@@ -49,7 +50,6 @@ export class AlumniTilesComponent implements OnInit {
 
   onUpload(data: any, i: number) {
     data = JSON.parse(data);
-    console.log(data);
     if (data['code'] === 2000) {
       this.change(data['data']['url'], i, 'photo');
     }
@@ -75,29 +75,12 @@ export class AlumniTilesComponent implements OnInit {
     });
   }
 
-
-  preProcess(plainText: string): string {
-    // URLs starting with http://, https://, or ftp://
-    const  replacePattern1 = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
-    let replacedText = plainText.replace(replacePattern1, '<a href="$1" class="autolink" target="_blank">$1</a>');
-
-    // URLs starting with "www." (without // before it, or it'd re-link the ones done above).
-    const replacePattern2 = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
-    replacedText = replacedText.replace(replacePattern2, '$1<a href="http://$2" class="autolink" target="_blank">$2</a>');
-
-    // Change email addresses to mailto:: links.
-    const replacePattern3 = /(([a-zA-Z0-9\-\_\.])+@[a-zA-Z\_]+?(\.[a-zA-Z]{2,6})+)/gim;
-    replacedText = replacedText.replace(replacePattern3, '<a href="mailto:$1" class="autolink">$1</a>');
-
-    return replacedText;
-  }
-
-  trim(s: object) {
-    if (s['content'].length <= this.maxbody) {
-        return s['content'];
+  trim(s: string) {
+    if (s.length <= this.maxbody) {
+        return removeMd(s);
     } else {
-        const t = s['content'].slice(0, this.maxbody + 1);
-        return t.slice(0, t.lastIndexOf(' ')) + '...' + '<u>[see more](/people/alumni-memoirs/' + s['id'] + ')<u>';
+        const t = s.slice(0, this.maxbody + 1);
+        return removeMd(t.slice(0, t.lastIndexOf(' ')) + '...');
     }
   }
 
@@ -111,7 +94,6 @@ export class AlumniTilesComponent implements OnInit {
     this.editable = true;
     this.backup = JSON.parse(JSON.stringify(this._tiles));
     this.history = [];
-    console.log(this.editable);
   }
 
   save() {
@@ -164,9 +146,6 @@ export class AlumniTilesComponent implements OnInit {
   };
 
   add() {
-  
-  
-  
     const newtile = {
       id: '',
       name: '',
@@ -186,9 +165,7 @@ export class AlumniTilesComponent implements OnInit {
     if (this.backup[0] && this.backup[0].hasOwnProperty('content')) {
       newtile['content'] = '';
     }
-    if (this.backup[0] && this.backup[0].hasOwnProperty('id')) {
-      newtile['id'] = this.objectidgenerator();
-    }
+    newtile['id'] = this.objectidgenerator();
     this._tiles.push(newtile);
 
     newtile['edited'] = true;
