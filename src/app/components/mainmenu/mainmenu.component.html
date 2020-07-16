@@ -4,13 +4,14 @@
       <div class="navbar-header">
         <!--data-toggle="collapse" data-target="#mainmenu_collapse"-->
         <button type="button" class="navbar-toggle" (click)="toggleDrop(0)">
-          <div class="wrapper-menu"  [class.open]="dropped">
+          <div class="wrapper-menu" aria-label="Menu" [class.open]="dropped">
             <div class="line-menu half start"></div>
             <div class="line-menu"></div>
             <div class="line-menu half end"></div>
           </div>
         </button>
-        <a class="navbar-brand" routerLink="/" (click)="dropped?toggleDrop(0):null">
+        <a class="navbar-brand" style="display: flex;" routerLink="/" (click)="dropped?toggleDrop(0):null">
+          <img src="/images/mauryans_logo.png" alt="Logo" style="height: 36px;">
           <h1 class="navbar-title">Hall 3</h1>
         </a>
       </div>
@@ -34,13 +35,13 @@
             </a>
 
             <!-- Sub Menu -->
-            <ul *ngIf="hasDropDown(i)" class="dropdown-menu" style="background-color: #9691E3;text-align: center;" >
+            <ul *ngIf="hasDropDown(i)" class="dropdown-menu" style="background-color: #c72228;text-align: center;" >
               <li *ngFor="let dropdownitem of item['dropdown']">
                 <!-- For Static Internal Links -->
                 <a *ngIf="!dropdownitem.hasOwnProperty('newtab') && !dropdownitem.hasOwnProperty('guard')" [routerLink]="dropdownitem.link()" (click)="toggleDrop(0)">{{ dropdownitem['title'] }}</a>
 
                 <!-- For Dynamic Internal Links -->
-                <a *ngIf="!dropdownitem.hasOwnProperty('newtab') && dropdownitem.hasOwnProperty('guard')" [routerLink]="dropdownitem['link'+(logstat?2:1)]()" (click)="toggleDrop(0)">{{ dropdownitem['title'+(logstat?2:1)] }}</a>
+                <a *ngIf="!dropdownitem.hasOwnProperty('newtab') && dropdownitem.hasOwnProperty('guard')" [routerLink]="dropdownitem['link'+(logstat?2:1)]()" (click)="toggleDrop(0)"><span class="ti-user"></span>&ensp;{{ dropdownitem['title'+(logstat?2:1)] }}</a>
 
                 <!-- For Static External Links -->
                 <a *ngIf="dropdownitem.hasOwnProperty('newtab')" [href]="dropdownitem.link()" (click)="toggleDrop(0)" target="_blank">{{ dropdownitem['title'] }}</a>

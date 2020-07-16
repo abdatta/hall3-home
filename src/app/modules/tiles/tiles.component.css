@@ -1,0 +1,203 @@
+.flexbox-container {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 -15px;
+}
+
+.flexbox-container img {
+	width: 100%;
+}
+
+.col-xs-6.col-sm-3 {
+    padding: 15px;
+}
+
+.deletePic {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    color: white;
+    background: rgba(199, 34, 40, 0.5);
+    transition: 0.3s;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 3px 6px;
+    font-size: 12px;
+}
+
+.deletePic:hover {
+    background: rgba(199, 34, 40, 0.9);
+}
+
+.deletePic > span {
+    margin-right: 5px;
+}
+
+:host >>> .upload {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    padding: calc(10% - 8px) 0;
+    background: rgba(199, 34, 40, 0.5);
+    font-family: 'Open Sans', sans-serif;
+}
+
+:host >>> .upload:hover {
+    background: rgba(199, 34, 40, 0.9);
+}
+
+:host >>> .crop-box {
+    background-color: #fddfa3;
+    width: 90%;
+    max-width: 800px;
+}
+
+:host >>> figure {
+    height: auto;
+    max-height: 450px;
+}
+
+:host >>> .crop-box .crop-box-header {
+    border-bottom: 1px solid #fccf75;
+}
+
+:host >>> .crop-box .crop-box-footer {
+    border-top: 1px solid #fccf75;
+    display: flex;
+    justify-content: space-around;
+}
+
+:host >>> .crop-box .crop-box-close span::before {
+    content: "×";
+    font-size: 25px;
+    color: #5e0f14;
+}
+
+:host >>> .crop-box .crop-box-close span:hover::before{
+    color: #c72228;
+}
+
+input {
+	background-color: #fddfa3;
+	padding: 0px 2px;
+    border: none;
+    outline: 1px solid #5e0f14;
+    outline-offset: 0px;
+    max-width: 100%;
+}
+
+input:hover:not([disabled]), input:focus:not([disabled]) {
+	box-shadow: 0 0 5px 0 #5e0f14;
+}
+
+.prev {
+    position: absolute;
+    width: 21px;
+    height: 21px;
+    top: calc(50% - 8px);
+    left: -10px;
+    background-color: #c72228;
+    color: #fccf75;
+    box-shadow: 0 0 10px 0px #5e0f14;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.prev:hover:not(.disabled) {
+	box-shadow: 0 0 10px 2px #5e0f14;
+	cursor: pointer;
+}
+
+.ti-angle-double-left:before {
+	position: absolute;
+    top: 4px;
+    left: 3px;
+}
+
+.next {
+    position: absolute;
+    width: 21px;
+    height: 21px;
+    top: calc(50% - 8px);
+    right: -10px;
+    background-color: #c72228;
+    color: #fccf75;
+    box-shadow: 0 0 10px 0px #5e0f14;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.next:hover:not(.disabled) {
+	box-shadow: 0 0 10px 2px #5e0f14;
+	cursor: pointer;
+}
+
+.ti-angle-double-right:before {
+	position: absolute;
+    top: 4px;
+    right: 3px;
+}
+
+.del {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    left: calc(50% - 13px);
+    bottom: -15px;
+    background-color: #c72228;
+    color: #fccf75;
+    box-shadow: 0 0 10px 0px #5e0f14;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.del:hover:not(.disabled) {
+    box-shadow: 0 0 10px 2px #5e0f14;
+    cursor: pointer;
+}
+
+.del.sureDel {
+    width: 98px;
+    border-radius: 10px;
+    left: calc(50% - 49px);
+}
+
+.sureDel:before {
+    content: 'Sure Delete?';
+    font-size: 14px;
+    position: absolute;
+    left: 8px;
+}
+
+.ti-trash:before {
+    position: absolute;
+    top: 4px;
+    left: 3px;
+    font-size: 18px;
+}
+
+.add {
+    position: absolute;
+    width: 52px;
+    height: 52px;
+    font-size: 60px;
+    line-height: 50px;
+    text-align: center;
+    top: calc(50% - 26px);
+    left: calc(50% - 26px);
+    background-color: #c72228;
+    color: #fccf75;
+    box-shadow: 0 0 10px 0px #5e0f14;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.add:hover:not(.disabled) {
+    box-shadow: 0 0 10px 2px #5e0f14;
+    cursor: pointer;
+}

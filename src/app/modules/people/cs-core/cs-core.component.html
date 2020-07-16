@@ -1,0 +1,14 @@
+<div class="blog-details">
+  <h1>Counselling Service Core Team</h1>
+  <div class="space-20"></div>
+  <p></p>
+  <div *ngFor="let team of info; let i = index">
+    <div class="space-10"></div>
+    <app-infohead (edit)="edit(i)"
+                  (save)="saver(i);" [editors]="editors"
+                  (discard)="discard(i)">{{ team.position }}</app-infohead>
+    <div class="space-10"></div>
+    <app-loader [show]="!loaded"></app-loader>
+    <app-tiles [class.invisible]="!loaded" [tiles]="team.members" (save)="save($event,i)" justify="start"></app-tiles>
+  </div>
+</div>

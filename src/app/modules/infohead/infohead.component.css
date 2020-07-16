@@ -1,0 +1,91 @@
+.edit {
+	margin-left: 30px;
+    padding-top: 3px;
+}
+
+.edit:hover {
+	text-decoration: underline;
+	cursor: pointer;
+	color: #c72228; /* color2 */
+}
+
+.error {
+	margin-left: 30px;
+    padding-top: 3px;
+    color: #c72228; /* color2 */
+}
+
+.load {
+	margin-left: 30px;
+    padding-top: 3px;
+}
+
+.load span {
+	padding-left: 2px;
+}
+
+.load span:nth-child(1) {
+	padding: 0;
+	display: inline-block;
+	animation: rotation 2.2s infinite linear;
+}
+
+.load span:nth-child(2) {
+	animation: loading-dot-1 2.2s linear infinite;
+}
+
+.load span:nth-child(3) {
+	animation: loading-dot-2 2.2s linear infinite;
+}
+
+.load span:nth-child(4) {
+	animation: loading-dot-3 2.2s linear infinite;
+}
+
+@keyframes rotation {
+		0% {
+				transform: rotate(0deg);
+		}
+		100% {
+				transform: rotate(359deg);
+		}
+}
+
+@keyframes loading-dot-1 {
+	0% {
+		opacity: 0;
+	}
+	25% {
+		opacity: 1;
+	}
+	75% {
+		opacity: 1;
+	}
+}
+
+@keyframes loading-dot-2 {
+	0% {
+		opacity: 0;
+	}
+	25% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	75% {
+		opacity: 1;
+	}
+}
+
+@keyframes loading-dot-3 {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 0;
+	}
+	75% {
+		opacity: 1;
+	}
+}

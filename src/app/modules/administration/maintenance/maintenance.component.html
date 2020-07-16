@@ -1,0 +1,14 @@
+<div class="blog-details">
+  <h1>Maintenance Committee</h1>
+  <div class="space-20"></div>
+  <p>The Maintenance Committee is a team of student volunteers who are accountable for the overall maintenance of the hall. In case you find a certain issue with the maintenance of your room or a common room or with any other part of the Hall, in case the workers deny to clean your room without a valid reason or if you have a suggestion for the Hall maintenance or beautification, feel free to contact any member of this committee. Also, don’t forget to praise the committee when you find the Hall beautiful and well-maintained!</p>
+  <div class="space-10"></div>
+  <app-infohead (edit)="tiles.edit();"
+                (save)="tiles.save();" [editors]="editors"
+                (discard)="members=tiles.discard()">Members</app-infohead>
+  <div class="space-10"></div>
+  <app-loader [show]="!loaded"></app-loader>
+  <app-tiles [class.invisible]="!loaded" [tiles]="members" (save)="save($event)"></app-tiles>
+  <div class="space-30"></div>
+  <app-minutes-revealer category="maintenance"></app-minutes-revealer>
+</div>

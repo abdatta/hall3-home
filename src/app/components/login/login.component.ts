@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 
-import { UsersService } from '../../services/users/users.service'
-import { User } from "../../models/user";
+import { UsersService } from '../../services/users/users.service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   submitted = false;
   error = '';
-  next = '/dashboard';
+  next = '/user/dashboard';
 
   constructor(private loginService: UsersService,
               private route: ActivatedRoute,
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe((params: Params) => {
      const url = this.router.url;
-      if(params['next']){
+      if (params['next']) {
         this.next = params['next'];
       }
     });
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
       if (s === 200) {
         this.router.navigateByUrl(this.next);
       } else {
-        this.error ='Incorrect Username or Password';
+        this.error = 'Incorrect Username or Password';
         this.submitted = false;
       }
     });

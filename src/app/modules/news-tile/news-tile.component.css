@@ -1,0 +1,28 @@
+.single-blog {
+	margin-left: 5px;
+	margin-right: 5px;
+	padding: 20px;
+	padding-bottom: 0;
+	overflow: hidden;
+    word-break: break-word;
+	height: 100%;
+}
+
+.tag {
+    background-color: #c72228; /* color2 */
+    border-radius: 20px;
+    padding: 5px 10px;
+    color: #fddfa3; /* color4 */
+    white-space: nowrap;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+.tag:hover{
+    background-color: #5e0f14; /* color1 */
+    color: #fab01a; /* color3 */
+    cursor: pointer;
+}

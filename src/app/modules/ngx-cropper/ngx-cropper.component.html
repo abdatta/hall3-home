@@ -1,0 +1,29 @@
+<section class="inline-block">
+  <a class="btn btn-primary" href="javascript: void(0)"
+  [ngClass]="viewConfig.uploadBtnClass" [innerHTML]="viewConfig.uploadBtnName"
+  (click)="inputImage.click()"></a>
+  <input #inputImage type="file" class="hide" hidden>
+</section>
+<section class="crop-container" *ngIf="isShow === true">
+  <div class="crop-box">
+    <div class="crop-box-header">
+      <h3>{{viewConfig.title}}</h3>
+      <button type="button" class="crop-box-close" (click)="onCancel()">
+        <span></span>
+      </button>
+    </div>
+    <div class="crop-box-body">
+      <figure>
+        <img #cropBoxImage class="full-width">
+      </figure>
+    </div>
+    <!--to be removed-->
+    <div *ngIf="error.length > 0" style="color: red; text-align: center; font-weight: 600;">{{ error }}</div>
+    <div class="crop-box-footer">
+      <button class="btn btn-default"
+      [ngClass]="viewConfig.cancelBtnClass"  (click)="onCancel()">{{viewConfig.cancelBtnName}}</button>
+      <button class="btn btn-primary" [disabled]="applying"
+      [ngClass]="viewConfig.applyBtnClass"  (click)="onApply()">{{viewConfig.applyBtnName}}</button>
+    </div>
+  </div>
+</section>
