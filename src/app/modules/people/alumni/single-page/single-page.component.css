@@ -16,6 +16,10 @@
     cursor: pointer;
 }
 
+markdown ::ng-deep blockquote{
+    border-left: #fab01a solid 3px !important;
+}
+
 @media screen and (min-width: 600px) {
     .image {
         width: 250px;
