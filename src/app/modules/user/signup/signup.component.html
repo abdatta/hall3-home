@@ -1,0 +1,72 @@
+<section class="fix">
+  <div class="space-100"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 padding30">
+        <div class="space-60"></div>
+        <h2 style="text-align: center">Sign Up</h2>
+        <div class="space-15"></div>
+        <p style="color: red">{{ (submitted)? '' : error }}</p>
+        <form (ngSubmit)="onSubmit(post.value, username.value, email.value, password.value); signupform.reset();" #signupform="ngForm">
+          <input
+                  type="text"
+                  class="form-control"
+                  name="post"
+                  placeholder="Post"
+                  autofocus
+                  required
+                  ngModel
+                  #post="ngModel">
+          <div class="space-15"></div>
+          <input
+                  type="text"
+                  class="form-control"
+                  name="username"
+                  placeholder="Username"
+                  autofocus
+                  required
+                  ngModel
+                  #username="ngModel">
+          <div class="space-15"></div>
+          <div *ngIf="email.touched && email.errors && email.errors.pattern" style="font-size: 11px; color: red">*Invalid email</div>
+          <input  type="email"
+                  class="form-control"
+                  [class.invalid-email]="email.touched && email.errors && email.errors.pattern"
+                  name="email"
+                  placeholder="Email Address"
+                  ngModel
+                  #email="ngModel"
+                  required
+                  pattern="^(([^<>()[\]\\.,;:\s@\&quot;]+(\.[^<>()[\]\\.,;:\s@\&quot;]+)*)|(\&quot;.+\&quot;))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$">
+          <div class="space-15"></div>
+          <input
+                  type="password"
+                  class="form-control"
+                  name="password"
+                  placeholder="Password"
+                  required
+                  ngModel
+                  #password="ngModel">
+          <div class="space-15"></div>
+          <div *ngIf="password2.touched && password.value !== password2.value" style="font-size: 11px; color: red">*Passwords do not match</div>
+          <input
+                  type="password"
+                  class="form-control"
+                  name="password2"
+                  placeholder="Retype Password"
+                  required
+                  ngModel
+                  #password2="ngModel">
+          <div class="space-20"></div>
+          <div style="display: flex; justify-content: space-between;">
+            <button class="bttn" type="submit" 
+            [title]="signupform.valid?'':'Please fill the form first'"
+            [disabled]="!signupform.valid || submitted || password.value !== password2.value">{{ (submitted)?'Signing up...':'Sign Up' }}</button>
+            <button class="bttn" routerLink="/user/dashboard">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="space-100"></div>
+</section>

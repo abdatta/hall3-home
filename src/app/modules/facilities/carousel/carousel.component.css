@@ -1,0 +1,36 @@
+.sm-padding {
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .md-padding{
+        padding: 0;
+    }
+}
+
+.carousel {
+    border: 3px solid rgba(199,34,40,0.8);
+    border-radius: 3px;
+}
+
+.carousel-control {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row-reverse;
+    width: 12%;
+}
+
+.carousel-control.right {
+    color: #fddfa3; /* color4 */
+    background-image: -webkit-linear-gradient(left, rgba(199, 34, 40, .0001) 0, rgba(199, 34, 40, .6) 100%);
+    background-image: -webkit-gradient(linear, left top, right top, from(rgba(199, 34, 40, .0001)), to(rgba(123 ,118, 200, .6)));
+    background-image: linear-gradient(to right, rgba(199, 34, 40, .0001) 0, rgba(199, 34, 40, .6) 100%);
+}
+
+.carousel-control.left {
+    color: #fddfa3; /* color4 */
+    background-image: -webkit-linear-gradient(left, rgba(199, 34, 40, .6) 0, rgba(199, 34, 40, .0001) 100%);
+    background-image: -webkit-gradient(linear, left top, right top, from(rgba(199, 34, 40, .6)), to(rgba(199, 34, 40, .0001)));
+    background-image: linear-gradient(to right, rgba(199, 34, 40, .6) 0, rgba(199, 34, 40, .0001) 100%);
+}

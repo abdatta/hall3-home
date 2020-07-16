@@ -1,0 +1,130 @@
+a { text-decoration: none;color: white }
+a:visited { text-decoration: none;color: white }
+a:hover { text-decoration: none;color: white }
+a:focus { text-decoration: none;color: white }
+a:hover, a:active { text-decoration: none;color: white }
+
+.flexbox-container {
+	display: flex;
+	flex-wrap: wrap-reverse;
+	align-items: flex-start;
+	justify-content: center;
+	margin: 0 -15px;
+}
+
+.flexbox-container img {
+	width: 100%;
+}
+
+.flexbox-container div:nth-child(1) {
+	order: 3;
+}
+.flexbox-container div:nth-child(2) {
+	order: 2;
+}
+.flexbox-container div:nth-child(3) {
+	order: 1;
+}
+
+@media (min-width: 768px) {
+	.col-sm-3 {
+	    width: 28%;
+	}
+
+	.flexbox-container {
+		justify-content: space-between;
+	}
+
+	.flexbox-container div:nth-child(1) {
+		order: 2;
+	}
+	.flexbox-container div:nth-child(2) {
+		order: 1;
+	}
+	.flexbox-container div:nth-child(3) {
+		order: 3;
+	}
+}
+
+.deletePic {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    color: white;
+    background: rgba(199, 34, 40, 0.5);
+    transition: 0.3s;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 3px 6px;
+    font-size: 12px;
+}
+
+.deletePic:hover {
+    background: rgba(199, 34, 40, 0.9);
+}
+
+.deletePic > span {
+    margin-right: 5px;
+}
+
+:host >>> .upload {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    padding: calc(10% - 8px) 0;
+    background: rgba(199, 34, 40, 0.5);
+    font-family: 'Open Sans', sans-serif;
+}
+
+:host >>> .upload:hover {
+    background: rgba(199, 34, 40, 0.9);
+}
+
+:host >>> .crop-box {
+    background-color: #fddfa3;
+    width: 90%;
+    max-width: 800px;
+}
+
+:host >>> figure {
+    height: auto;
+    max-height: 450px;
+}
+
+:host >>> .crop-box .crop-box-header {
+    border-bottom: 1px solid #fccf75;
+}
+
+:host >>> .crop-box .crop-box-footer {
+    border-top: 1px solid #fccf75;
+    display: flex;
+    justify-content: space-around;
+}
+
+:host >>> .crop-box .crop-box-close span::before {
+    content: "×";
+    font-size: 25px;
+    color: #5e0f14;
+}
+
+:host >>> .crop-box .crop-box-close span:hover::before{
+    color: #c72228;
+}
+
+
+input {
+	background-color: #fddfa3;
+	padding: 0px 2px;
+    border: none;
+    outline: 1px solid #5e0f14;
+    outline-offset: 0px;
+}
+
+input:hover:not([disabled]), input:focus:not([disabled]) {
+	box-shadow: 0 0 5px 0 #5e0f14;
+}

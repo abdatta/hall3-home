@@ -1,0 +1,24 @@
+<app-infohead (edit)="edit()"
+        (save)="addEmails();save()" [editors]="['hec']"
+        (discard)="discard()" [editing]="editing"
+        (delete)="delete.emit(true)" [show_delete]="true">
+        Mail Group: {{ title }}</app-infohead>
+<p>
+  <span *ngIf="emails.length === 0">No emails in this mail group.</span>
+  <span *ngFor="let email of emails; let i=index" class="highlight">{{email}}
+    <span class="email-close" *ngIf="editing" (click)="remove(i)">✖</span>
+  </span>
+</p>
+<textarea rows="1"
+        [class.editing]="!editing"
+        class="form-control"
+        placeholder="Enter emails to add..."
+        [(ngModel)]="new_emails"
+        (keyup.enter)="addEmails();"></textarea>
+<div class="space-20" *ngIf="editing"></div>
+<div class="separator"></div>
+<div class="space-20"></div>
+<!-- <div style="display: flex; justify-content: center;">
+  <button class="bttn">Save</button>
+  <button class="bttn" routerLink="/user/dashboard">Back</button>
+</div> -->

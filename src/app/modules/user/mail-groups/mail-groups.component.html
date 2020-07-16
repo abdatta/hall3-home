@@ -1,0 +1,30 @@
+<section class="fix">
+    <div class="space-100"></div>
+    <div class="container">
+      <h3 style="text-align: center">Mail Groups</h3>
+      <app-mail-group-editor *ngFor="let mail_list of mail_lists; let i=index"
+                            [title]="mail_list.list_name"
+                            [emails]="mail_list.emails"
+                            [editing]="mail_list.new"
+                            (delete)="delete(i, $event)"></app-mail-group-editor>
+      <div class="new-maillist">
+        <div>
+          <div *ngIf="error" style="font-size: 11px; color: red">*{{ error }}</div>
+          <input class="form-control" [ngModel]="new_mail_list_name"
+                 (keyup.enter)="new_group()"
+                 (ngModelChange)="new_mail_list_name=removeBlankSpaces($event)"
+                 (keydown.space)="$event.preventDefault()"
+                 placeholder="Enter new mail group name...">
+        </div>
+        <button class="bttn"
+                (click)="new_group()"
+                [disabled]="!new_mail_list_name"
+                [title]="new_mail_list_name?'':'Enter a name for the new mail group first!'">
+                Create New Mail Group
+        </button>
+        <div class="space-40"></div>
+        <button class="bttn" routerLink="/user/dashboard">Back</button>
+      </div>
+    </div>
+    <div class="space-100"></div>
+</section>

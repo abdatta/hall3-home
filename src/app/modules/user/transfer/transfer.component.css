@@ -1,0 +1,53 @@
+.flexbox-container {
+	display: flex;
+	align-items: center;
+}
+
+a {
+    cursor: pointer;
+}
+
+.flexbox {
+    -webkit-flex: 1;  /* Safari 6.1+ */
+    -ms-flex: 1;  /* IE 10 */    
+    flex: 1;
+    border: 2px;
+    text-align: center;
+    position: relative;
+}
+
+p.flexbox {
+    font-weight: 600;
+}
+
+h4 {
+    margin-bottom: 20px;
+}
+
+.bttn {
+    margin: 2.6px 0;
+}
+
+.cooltext {
+    margin-right: 8px;
+    border-radius: 4px;
+    padding-right: 40px;
+}
+
+.ti-close {
+    position: absolute;
+    right: 9px;
+    top: 18px;
+}
+
+.ti-close:before {
+    background-color: #fccf75;
+    border-radius: 50%;
+    padding: 8px;
+}
+
+.ti-close:hover:before {
+    cursor: pointer;
+    background-color: #e7b44d;
+}
+

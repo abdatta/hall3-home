@@ -1,0 +1,43 @@
+<section class="fix">
+    <div class="space-100"></div>
+    <div class="container">
+      <h2 class="flexbox">HEC Accounts Transfer</h2><br> 
+      <div class="row">
+        <div class="flexbox-container">
+          <h4 class="flexbox">User</h4>
+          <h4 class="flexbox">Current Email ID</h4>
+          <h4 class="flexbox">New Email ID</h4>       
+        </div>
+        <div *ngFor="let hec of hecs" class="flexbox-container">
+            <p class="flexbox">{{ hec.name }}</p>
+            <p class="flexbox">{{ hec.email }}</p>
+            <p class="flexbox" *ngIf="!newhecs.hasOwnProperty(hec.username)">
+              <button class="bttn" (click)="add(hec.username)">Click to Change</button>
+            </p>
+            <p class="flexbox" *ngIf="newhecs.hasOwnProperty(hec.username)">
+              <input type="email"
+              class="cooltext form-control"
+              [class.invalid-email]="email.touched && email.errors && email.errors.pattern"
+              name="email"
+              placeholder="Email Address of new HEC..."
+              #email="ngModel"
+              required
+              [disabled]="anonymous"
+              pattern="^(([^<>()[\]\\.,;:\s@\&quot;]+(\.[^<>()[\]\\.,;:\s@\&quot;]+)*)|(\&quot;.+\&quot;))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$"
+              [(ngModel)]="newhecs[hec.username]">
+              <span class="ti-close" (click)="remove(hec.username)"></span>
+            </p> 
+          </div>
+      </div>
+      <div class="space-30"></div>
+      <div *ngIf="!error" class="space-20"></div>
+      <div *ngIf="error" class="flexbox" style="color:red"><h4>ERROR: {{error}}</h4></div>
+      <div class="flexbox"><button class="bttn" [disabled]="submitting" (click)="submit()">{{ submitting?'Submitting...':'Submit Changes' }}</button></div><br> 
+      <div class="flexbox" style="color:red">
+        <small style="font-weight: 600;"><b>Note:</b> On submitting changes, every current HEC will get an email to confirm their account transfer.<br>
+        Kindly contact them to verify that email, so that the transfer is complete.</small>
+      </div>     
+    </div>
+    <div class="space-50"></div>
+  </section>
+  

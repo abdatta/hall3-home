@@ -1,0 +1,10 @@
+{
+    "/server": {
+      "target": "https://hall3iitk.com/server",
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/server": ""
+      },
+      "secure": false
+    }
+}

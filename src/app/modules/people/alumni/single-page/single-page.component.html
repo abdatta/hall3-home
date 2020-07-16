@@ -1,0 +1,26 @@
+<div class="col-xs-12 col-sm-12">
+  <div *ngIf="!loaded" class="space-70"></div>
+  <app-loader [show]="!loaded"></app-loader>
+  <div class="blog-details" *ngIf="loaded">
+    <ul class="list-unstyled list-inline meta">
+      <li>
+        <span class="ti-calendar"></span>&nbsp;<span>{{ getFormattedDate(alumnus['date']) }}</span>
+      </li>
+    </ul>
+    <h2>{{ alumnus['name'] }} | {{ alumnus['batch'] }}</h2>
+    <div class="space-3"></div>
+    <div class="image-container">
+      <img class="image" [src]="alumnus['photo']?'/server/' + alumnus['photo']:'/images/default.jpg'">
+    </div>
+    <p class="content" align="justify">
+      <span><markdown ngPreserveWhitespaces [data]="alumnus['content']"></markdown></span>
+    </p>
+    <div class="col-xs-12 col-sm-12" *ngIf="loaded">
+      <ul class="list-inline list-unstyled" style="text-align: center;">
+        <li class="tag" style="display: inline-block;" [routerLink]="'/people/alumni-memoirs'">
+          Go back
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

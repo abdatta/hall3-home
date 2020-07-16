@@ -1,0 +1,118 @@
+<div class="space-50"></div>
+<!--Counter-area-->
+<section class="gray-bg relative text-white">
+  <div class="header-bg header-bg-color">
+    <div class="header-bg-image header-bg-image4"></div>
+  </div>
+  <div class="container">
+    <div class="row text-center">
+      <!--Single-counterup-->
+      <div class="col-xs-4">
+        <div class="counter_up">
+          <div *ngIf="!embed" id="ath" [class.active]="showForm('ath')" class="counter_icon" routerLink="/feedback/ath">
+            <span class="ti-help-alt"></span>
+          </div>
+          <div *ngIf="embed" id="ath" [class.active]="showForm('ath')" class="counter_icon" (click)="changeForm('ath')">
+            <span class="ti-help-alt"></span>
+          </div>
+          <div class="space-20"></div>
+          <h4 class="whennotxs">ASK THE HEC</h4>
+        </div>
+      </div>
+      <!--Single-counterup/-->
+      <!--Single-counterup-->
+      <div class="col-xs-4">
+        <div class="counter_up">
+          <div *ngIf="!embed" id="responses" [class.active]="showForm('responses')" class="counter_icon" routerLink="/feedback/responses">
+            <span class="ti-info-alt"></span>
+          </div>
+          <div *ngIf="embed" id="responses" [class.active]="showForm('responses')" class="counter_icon" (click)="changeForm('responses')">
+            <span class="ti-info-alt"></span>
+          </div>
+          <div class="space-20"></div>
+          <h4 class="whennotxs">RESPONSES</h4>
+        </div>
+      </div>
+      <!--Single-counterup/-->
+      <!--Single-counterup-->
+      <div class="col-xs-4">
+        <div class="counter_up">
+          <div *ngIf="!embed" id="lnf" [class.active]="showForm('lnf')" class="counter_icon" routerLink="/feedback/lnf">
+            <span class="ti-alert"></span>
+          </div>
+          <div *ngIf="embed" id="lnf" [class.active]="showForm('lnf')" class="counter_icon"(click)="changeForm('lnf')">
+            <span class="ti-alert"></span>
+          </div>
+          <div class="space-20"></div>
+          <h4 class="whennotxs">LOST & FOUND</h4>
+        </div>
+      </div>
+      <!--Single-counterup/-->
+    </div>
+  </div>
+  <div class="space-30"></div>
+  <p style="color: red">{{ error }}</p>
+  <div class="container">
+    <!--Contact-form-->
+    <app-ath *ngIf="showForm('ath')"></app-ath>
+
+    <div *ngIf="showForm('responses')" #top>
+      <div class="row">
+        <!--blog-page-title-->
+        <div class="col-xs-12 col-md-6 col-md-offset-3 text-center">
+          <h3 class="">RESPONSES</h3>
+        </div>
+        <!--blog-page-title/-->
+      </div>
+      <div class="space-20"></div>
+      <div class="row" style="padding: 0 10px;">
+        <div class="col-xs-6 tabs" [attr.active]="responded" (click)="setResponseTab(true)">RESPONDED</div>
+        <div class="col-xs-6 tabs" [attr.active]="!responded" (click)="setResponseTab(false)">NOT RESPONDED</div>
+        <div class="col-xs-12" style="padding: 0; overflow-x: auto">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 10%;">Date</th>
+                <th style="width: 10%;">To</th>
+                <th style="width: 40%;">Query</th>
+                <th *ngIf="responded" style="width: 40%;">Response</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="loading">
+              <div class="space-2" ></div>
+              <tr>
+                <td></td>
+                <td></td>
+                <td><h5>Loading<span>.</span><span>.</span><span>.</span></h5></td>
+                <td *ngIf="responded"><h5>Loading<span>.</span><span>.</span><span>.</span></h5></td>
+              </tr>
+            </tbody>
+            <tbody *ngFor="let response of responsesOnPage(page)">
+              <div class="space-2"></div>
+              <tr>
+                <td>{{ response.date }}</td>
+                <td>{{ response.to }}</td>
+                <td class="resp" [innerHTML]="preProcess(response.message)"></td>
+                <td *ngIf="responded" class="resp" [innerHTML]="preProcess(response.response)"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="space-10"></div>
+        <div *ngIf="getNoOfPages() > 1" class="col-xs-12" 
+              style="padding: 0; display: flex; justify-content: space-between;">
+          <button class="bttn" [disabled]="page <= 1" (click)="prevPage(top)">Prev</button>
+          <select class="paginator" (change)="top.scrollIntoView()" [(ngModel)]="page">
+            <option *ngFor="let page of pagesList()" [value]="page">{{ 'Page ' + page }}</option>
+          </select>
+          <button class="bttn" [disabled]="page >= getNoOfPages()" (click)="nextPage(top)">Next</button>
+        </div>
+      </div>
+    </div>
+
+    <app-lnf *ngIf="showForm('lnf')"></app-lnf>
+    <!--Contact-form/-->
+  </div>
+  <div class="space-100"></div>
+
+</section>

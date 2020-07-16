@@ -25,6 +25,7 @@ export class MainService {
       'cs-core': '/people/cscoreteam',
       'sg' : '/people/studentguides',
       'am' : '/people/academicmentors',
+      'alumni': '/people/alumni-memoirs',
       'clubsecy' : '/people/clubsecretaries',
       'clubcoordi' : '/people/clubcoordinators',
     'notices' : null,
@@ -39,10 +40,10 @@ export class MainService {
       'lnfform': '/feedback/lnf',
       'messportal': 'http://mess.hall3iitk.com',
       'login': '/login',
-      'dash': '/dashboard',
+      'dash': '/user/dashboard',
       'map': '/map',
       'rules': '/server/files/rules.pdf',
-      //'messfeedback': 'https://goo.gl/CAu4xv'
+      // 'messfeedback': 'https://goo.gl/CAu4xv'
   };
   private mainmenu: Object[] = [
     {
@@ -131,6 +132,10 @@ export class MainService {
       'dropdown' :
         [
           {
+            'title' : 'Alumni Memoirs',
+            'link' : this.getLink('alumni')
+          },
+          {
             'title' : 'Counselling Service Core Team',
             'link' : this.getLink('cs-core')
           },
@@ -141,7 +146,8 @@ export class MainService {
           {
             'title' : 'Academic Mentors',
             'link' : this.getLink('am')
-          }/*,
+          },
+          /*,
           {
             'title' : 'Club Secretaries',
             'link' : this.getLink('clubsecy')
@@ -219,7 +225,7 @@ export class MainService {
                       'link' : this.getLink('map')
                   },
                   {
-                      'title1' : 'HEC Login',
+                      'title1' : 'Login',
                       'link1' : this.getLink('login'),
                       'title2' : 'Dashboard',
                       'link2' : this.getLink('dash'),
@@ -302,6 +308,11 @@ export class MainService {
         ],
     'people':
         [
+          {
+            'name' : 'Alumni Memoirs',
+            'id' : 'alumni',
+            'link' : this.getLink('alumni')
+          },
           {
             'name' : 'Counselling Service Core Team',
             'id' : 'cs-core',

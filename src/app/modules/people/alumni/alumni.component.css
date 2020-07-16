@@ -1,0 +1,15 @@
+.active>a {
+    background-color: #5e0f14 !important;
+}
+.dropdown-menu{
+    background-color: #fddfa3 !important;
+    min-width: 110px !important;
+    text-align: center !important;
+}
+.dropdown-toggle{
+    background-color: #fddfa3;
+    padding: 0px 20px !important;
+    font-size: 15px !important;
+    vertical-align: text-bottom !important;
+    border: 1px solid #5e0f14 !important;
+}

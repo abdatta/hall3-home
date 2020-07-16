@@ -1,0 +1,43 @@
+<div *ngIf="!loaded" class="space-80"></div>
+<app-loader [show]="!loaded" width="25%"></app-loader>
+<div *ngIf="!loaded" class="space-50"></div>
+
+<section id="service" class="fix" [class.invisible]="!loaded">
+  <div class="space-100"></div>
+  <div class="container">
+    <div *ngIf="error" style="text-align: center">
+      <div class="space-100"></div>
+      <h1>The Link has Expired</h1>
+      <div class="space-20"></div>
+      <p>This query might have been already responded.</p>
+      <div class="space-20"></div>
+      <button class="bttn" routerLink="/feedback/responses">See Responses</button>
+      <div class="space-200"></div>
+    </div>
+    <div class="row" *ngIf="!error">
+      <div class="col-xs-12 col-sm-5 padding30">
+        <h3>Details</h3>
+        <div class="space-30"></div>
+        <p>Name: {{ queryInfo.name }}</p>
+        <p>To: {{ queryInfo.to }}</p>
+        <p>Subject: {{ queryInfo.subject }}</p>
+        <hr>
+        <p style="white-space:pre-wrap">{{ queryInfo.message }}</p>
+      </div>
+      <div class="col-xs-12 col-sm-7 padding30">
+        <div class="space-60"></div>
+        <textarea class="form-control"
+                  required
+                  autofocus
+                  autosize
+                  placeholder="Response here..."
+                  rows="7"
+                  [(ngModel)]="response"
+        ></textarea>
+        <div class="space-20"></div>
+        <button class="bttn" (click)="respond()" [disabled]="!response.length || sending">{{ (sending)? 'Sending...' : 'Send Response' }}</button>
+      </div>
+    </div>
+  </div>
+  <div class="space-100"></div>
+</section>

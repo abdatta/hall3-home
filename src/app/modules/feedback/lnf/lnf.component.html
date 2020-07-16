@@ -1,0 +1,128 @@
+<form #lnfform="ngForm"
+	  (ngSubmit)="lnfsend(what.value, when.value, where.value, des.value, link.value, yname.value, phone.value, room.value, LorF.value, lnfform)">
+      <div class="row">
+        <!--blog-page-title-->
+        <div class="col-xs-12 col-md-6 col-md-offset-3 text-center lnf">
+          <h3 class="">LOST & FOUND</h3>
+          <p><a routerLink="/notices/category/lnf">Checkout previous lost/found items.</a></p>
+        </div>
+        <!--blog-page-title/-->
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-4">
+          <div *ngIf="what.touched && what.errors && what.errors.required" style="font-size: 11px; color: red">*Required</div>
+          <div class="space-20" *ngIf="!(what.touched && what.errors)"></div>
+          <input type="text"
+                 class="form-control"
+                 name="what"
+                 placeholder="What?"
+                 required
+                 ngModel
+                 #what="ngModel"
+                 >
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <div *ngIf="when.touched && when.errors && when.errors.required" style="font-size: 11px; color: red">*Required</div>
+          <div class="space-20" *ngIf="!(when.touched && when.errors)"></div>
+          <input type="text"
+                 class="form-control"
+                 name="when"
+                 placeholder="When?"
+                 required
+                 ngModel
+                 #when="ngModel"
+                 >
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <div *ngIf="where.touched && where.errors && where.errors.required" style="font-size: 11px; color: red">*Required</div>
+          <div class="space-20" *ngIf="!(where.touched && where.errors)"></div>
+          <input type="text"
+                 class="form-control"
+                 name="where"
+                 placeholder="Where?"
+                 required
+                 ngModel
+                 #where="ngModel"
+                 >
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <div *ngIf="link.touched && link.errors && link.errors.pattern" style="font-size: 11px; color: orange">*Invalid link</div>
+          <div class="space-20" *ngIf="!(link.touched && link.errors)"></div>
+          <input type="text"
+                 class="form-control"
+                 [class.invalid-email]="link.touched && link.errors && link.errors.pattern"
+                 name="link"
+                 placeholder="Link to photographs (if any)"
+                 ngModel
+                 pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)" 
+                 #link="ngModel"
+                 >
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <div *ngIf="LorF.touched && LorF.errors && LorF.errors.required" style="font-size: 11px; color: red">*Required</div>
+          <div class="space-20" *ngIf="!(LorF.touched && LorF.errors)"></div>
+          <select class="form-control"
+                  name="LorF"
+                  ngModel
+                  #LorF="ngModel"
+                  required>
+            <option value="" disabled selected>Lost or Found?</option>
+            <option value="lost">Lost</option>
+            <option value="found">Found</option>
+          </select>
+        </div>
+        <div class="col-xs-12">
+          <div class="space-20"></div>
+          <textarea class="form-control"
+                    rows="3"
+                    name="des"
+                    placeholder="Description (optional)"
+                    ngModel
+                    #des="ngModel"
+                    >
+          </textarea>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <div *ngIf="yname.touched && yname.errors && yname.errors.required" style="font-size: 11px; color: red">*Required</div>
+          <div class="space-20" *ngIf="!(yname.touched && yname.errors)"></div>
+          <input type="text"
+                 class="form-control"
+                 name="yname"
+                 placeholder="Your Name"
+                 required
+                 ngModel
+                 #yname="ngModel"
+                 >
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <div class="space-20"></div>
+          <input type="text"
+                 class="form-control"
+                 name="phone"
+                 placeholder="Phone"
+                 ngModel
+                 #phone="ngModel"
+                 >
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <div *ngIf="room.touched && room.errors && room.errors.required" style="font-size: 11px; color: red">*Required</div>
+          <div class="space-20" *ngIf="!(room.touched && room.errors)"></div>
+          <input type="text"
+                 class="form-control"
+                 name="room"
+                 placeholder="Room No."
+                 required
+                 ngModel
+                 #room="ngModel"
+                 >
+          <div class="space-20"></div>
+        </div>
+        <div class="col-xs-12">
+          <button type="submit" class="bttn"
+                  [title]="lnfform.valid?'':'Fill the required detail first'"
+                  [disabled]="!lnfform.valid || sending">
+            {{(sending)?'Sending...':'Send'}}
+          </button>
+        </div>
+      </div>
+    </form>
