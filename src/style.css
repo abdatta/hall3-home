@@ -991,8 +991,8 @@ input:-webkit-autofill:focus {
     background-color: #fddfa3; /* color4 */
     -webkit-transition: 0.3s;
     transition: 0.3s;
-    -webkit-transform: translateY(0px);
-    transform: translateY(0px);
+    /* -webkit-transform: translateY(0px); */
+    /* transform: translateY(0px); */
     box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
     //height: 170px;
 }

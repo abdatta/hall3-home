@@ -1,0 +1,100 @@
+<div class="flexbox-container"
+     [style.justify-content]="justify">
+  <div *ngFor="let tile of _tiles; let i = index;"
+       class="col-xs-12 col-sm-12 single-blog panel"
+       [class.wow]="fadeIn(i)"
+       [class.fadeIn]="fadeIn(i)"
+       [attr.data-wow-delay]="fadeIn(i)+'s'">
+     <div class="row" relative [class.edit]="editable">
+          <div class="col-sm-3 col-lg-3">
+              <div class="image-container">
+                    <div class="relative image-div">
+                         <img *ngIf="photos.indexOf(tile['photo']) !== -1"
+                              [src]="'../../../images/loading.gif'" alt="Loading...">
+                         <img [class.invisible]="photos.indexOf(tile['photo']) !== -1"
+                              [src]="tile['photo']?'/server/' + tile['photo']:'/images/default.jpg'" [alt]="tile['name']"
+                              (load)="load(photos.indexOf(tile['photo']))">
+                    
+                         <button class="deletePic" *ngIf="tile.hasOwnProperty('photo') && tile['photo'] && editable" (click)="change('', i, 'photo')">
+                              <span class="ti-image"></span>REMOVE
+                         </button>
+                         <ngx-cropper *ngIf="tile.hasOwnProperty('photo') && editable" 
+                                        [config]="ngxCropperConfig"
+                                        (returnData)="onUpload($event, i)"></ngx-cropper>
+                    </div>
+               </div>
+          </div>
+          <div class="col-sm-9 col-lg-9" >
+               <div class="space-2"></div>   
+               <ul class="list-unstyled list-inline alumn-detail" style="font-weight: bolder;"> 
+                    <li >
+                      <span class="ti-user" style="font-weight: bolder;"></span>&nbsp;
+                      <span [class.invisible]="editable">{{ tile['name'] }}</span>
+                      <span [class.invisible]="!editable"> 
+                         <input  AutoSizeInput
+                              placeholder="Name"
+                              type="text"
+                              [disabled]="saving"
+                              [ngModel]="tile['name']"
+                              (ngModelChange)="change($event,i,'name')"></span>
+                    </li>
+                    <li>
+                      <span class="ti-calendar" style="font-weight: bolder;"></span>&nbsp;
+                      <span [class.invisible]="editable">{{ tile['batch'] }}</span>
+                      <span [class.invisible]="!editable">
+                         <input  AutoSizeInput
+                              placeholder="Batch"
+                              type="text"
+                              [disabled]="saving"
+                              [ngModel]="tile['batch']"
+                              (ngModelChange)="change($event,i,'batch')">
+                      </span>
+                    </li>
+               </ul>    
+               <p [class.invisible]="editable" align="justify"> 
+                    <span *ngIf="tile.hasOwnProperty('content')" [innerHTML]="trim(tile['content'])"></span>
+                    <a *ngIf="tile['content'].length > maxbody" [routerLink]="'/people/alumni-memoirs/'+tile['id']" style="color: #c72228; text-decoration: underline"> see more.</a>
+               </p>
+               <p [class.invisible]="!editable">
+                    <span>
+                         <textarea  autosize
+                              class="form-control"
+                              type="text"
+                              [disabled]="saving"
+                              [ngModel]="tile['content']"
+                              (ngModelChange)="change($event,i,'content')"></textarea>
+                    </span>
+               </p>
+          </div>     
+     </div>
+     <div *ngIf="editable && i>0"
+          (click)="saving?null:prev(i)"
+          [class.disabled]="saving"
+          class="prev ti-angle-double-left"
+          [title]="saving?'':'Move Left'">
+     </div>
+     <div *ngIf="editable && i<_tiles.length-1"
+          (click)="saving?null:next(i)"
+          [class.disabled]="saving"
+          class="next ti-angle-double-right"
+          [title]="saving?'':'Move Right'">
+     </div>
+     <div *ngIf="editable"
+             (click)="saving?null:del(i)"
+             [class.disabled]="saving"
+             class="del"
+             [title]="saving?'':'Delete'"
+             [class.ti-trash]="sureDel !== i"
+             [class.sureDel]="sureDel === i">
+        </div>
+  </div>
+  <div class="space-20"></div>
+  <div *ngIf="editable"
+       class="col-xs-6 col-sm-3"
+       [style.min-height]="_tiles[0].hasOwnProperty('photo')?'152px':'92px'" >
+     <span class="add"
+          (click)="saving?null:add()"
+          [class.disabled]="saving"
+          [title]="saving?'':'Add'">+</span>
+  </div>  
+</div>

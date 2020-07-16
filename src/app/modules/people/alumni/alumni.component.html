@@ -1,0 +1,30 @@
+<div class="blog-details">
+  <h1>Alumni Memoirs</h1>
+  <div class="space-20"></div>
+  <p>Meet our alumni remembering and cherishing the beautiful moments they spent here. </p>
+  <div class="space-10"></div>
+  <div>
+    <app-infohead style="width: 70%; float: left;" (edit)="tiles.edit()"
+                  (save)="tiles.save();" [editors]="editors"
+                  (discard)="alumni = tiles.discard()">
+                  Meet our Alumns
+                </app-infohead>
+    <div  style="width:30%; float: right;">
+    <div class="dropdown">
+      <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Batch: {{bat}}
+        <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li *ngFor="let batch of batches" [class]="bat==batch?'active':'inactive'">
+          <a style="cursor: pointer;" (click)="bat=batch; ngOnInit()">{{batch}}</a>
+        </li>
+      </ul>
+    </div>
+    </div>
+  </div>
+
+              
+              
+  <div class="space-10"></div>
+  <app-loader [show]="!loaded"></app-loader>
+  <app-alumni-tiles [class.invisible]="!loaded" [tiles]="alumni" [maxbody]="maxchars" (save)="save($event)"></app-alumni-tiles>
+</div>

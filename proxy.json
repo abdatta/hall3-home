@@ -1,6 +1,7 @@
 {
     "/server": {
-      "target": "http://localhost:1111",
+      "target": "https://hall3iitk.com/server",
+      "changeOrigin": true,
       "pathRewrite": {
         "^/server": ""
       },

@@ -1,14 +1,16 @@
-import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Component, OnInit,EventEmitter, Input, Output } from '@angular/core';
 import { NgxCropperOption } from 'ngx-cropper';
+import * as removeMd from 'remove-markdown';
 
 @Component({
-  selector: 'app-tiles',
-  templateUrl: './tiles.component.html',
-  styleUrls: ['./tiles.component.css']
+  selector: 'app-alumni-tiles',
+  templateUrl: './alumni-tiles.component.html',
+  styleUrls: ['./alumni-tiles.component.css']
 })
-export class TilesComponent implements OnInit {
+export class AlumniTilesComponent implements OnInit {
 
   @Input() justify = 'center';
+  @Input() maxbody = 120;
   @Output('save') saver = new EventEmitter<object[]>();
   editable = false;
   saving = false;
@@ -18,7 +20,7 @@ export class TilesComponent implements OnInit {
   backup: object[];
   history: object[];
   ngxCropperConfig: NgxCropperOption = {
-    url: '/server/info/upload', // image server url
+    url: 'server/info/upload', // image server url
     maxsize: 512000, // image max size, default 500k = 512000bit
     title: 'Crop Image', // edit modal title, this is default
     uploadBtnName: '<span class="ti-upload"></span>&nbsp;UPLOAD', // default Upload Image
@@ -48,17 +50,9 @@ export class TilesComponent implements OnInit {
 
   onUpload(data: any, i: number) {
     data = JSON.parse(data);
-    console.log(data);
     if (data['code'] === 2000) {
       this.change(data['data']['url'], i, 'photo');
     }
-  }
-
-  moreKeys(obj: object) {
-    const keys = Object.keys(obj);
-    if (keys.indexOf('name') !== -1) { keys.splice(keys.indexOf('name'), 1); }
-    if (keys.indexOf('photo') !== -1) { keys.splice(keys.indexOf('photo'), 1); }
-    return keys;
   }
 
   prev(i: number) {
@@ -81,6 +75,49 @@ export class TilesComponent implements OnInit {
     });
   }
 
+  trim(s: string) {
+    if (s.length <= this.maxbody) {
+        return removeMd(s);
+    } else {
+        const t = s.slice(0, this.maxbody + 1);
+        return removeMd(t.slice(0, t.lastIndexOf(' ')) + '...');
+    }
+  }
+
+  load(i: number) {
+    if (i !== -1) {
+      this.photos.splice(i, 1);
+    }
+  }
+
+  edit() {
+    this.editable = true;
+    this.backup = JSON.parse(JSON.stringify(this._tiles));
+    this.history = [];
+  }
+
+  save() {
+    this.saving = true;
+    this._tiles.map(tile => delete tile['edited']);
+    this.saver.emit(this.history);
+  }
+  saved(success: boolean) {
+    this.saving = false;
+    this.editable = !success;
+  }
+  
+  discard(): Object[] {
+    this.editable = false;
+    this.sureDel = -1;
+    this._tiles = this.backup;
+    this.history = [];
+    return this._tiles;
+  }
+
+  trackByFn(index: any, item: any) {
+    return index;
+   }
+
   change(val: any, i: number, source: string, j?: number) {
     let from: object;
     if (!this._tiles[i]['edited']) {
@@ -88,12 +125,8 @@ export class TilesComponent implements OnInit {
       delete from['edited'];
     }
 
-    if (source === 'more') {
-      this._tiles[i]['more'][j] = val.trim();
-    } else {
-      this._tiles[i][source] = val.trim() + (source === 'email' ? '@iitk.ac.in' : '');
-    }
-
+    this._tiles[i][source] = val.trim();
+    
     if (!this._tiles[i]['edited']) {
       this._tiles[i]['edited'] = true;
       this.updateHistory({
@@ -105,20 +138,34 @@ export class TilesComponent implements OnInit {
     }
   }
 
+  objectidgenerator () {
+    var timestamp = (new Date().getTime() / 1000 | 0).toString(16);
+    return timestamp + 'xxxxxxxxxxxxxxxx'.replace(/[x]/g, function() {
+        return (Math.random() * 16 | 0).toString(16);
+    }).toLowerCase();
+  };
+
   add() {
     const newtile = {
+      id: '',
       name: '',
-      more: new Array(this.backup[0] ? this.backup[0]['more'].length : 1)
+      photo: null,
+      batch:'',
+      content:''
     };
     if (this.backup[0] && this.backup[0].hasOwnProperty('photo')) {
       newtile['photo'] = null;
     }
-    if (this.backup[0] && this.backup[0].hasOwnProperty('post')) {
-      newtile['post'] = '';
+    if (this.backup[0] && this.backup[0].hasOwnProperty('name')) {
+      newtile['name'] = '';
     }
-    if (this.backup[0] && this.backup[0].hasOwnProperty('email')) {
-      newtile['email'] = '@iitk.ac.in';
+    if (this.backup[0] && this.backup[0].hasOwnProperty('batch')) {
+      newtile['batch'] = '';
     }
+    if (this.backup[0] && this.backup[0].hasOwnProperty('content')) {
+      newtile['content'] = '';
+    }
+    newtile['id'] = this.objectidgenerator();
     this._tiles.push(newtile);
 
     newtile['edited'] = true;
@@ -144,40 +191,6 @@ export class TilesComponent implements OnInit {
         }
       }, 3000);
     }
-  }
-
-  load(i: number) {
-    if (i !== -1) {
-      this.photos.splice(i, 1);
-    }
-  }
-
-  edit() {
-    this.editable = true;
-    this.backup = JSON.parse(JSON.stringify(this._tiles));
-    this.history = [];
-  }
-
-  save() {
-    this.saving = true;
-    this._tiles.map(tile => delete tile['edited']);
-    this.saver.emit(this.history);
-  }
-  saved(success: boolean) {
-    this.saving = false;
-    this.editable = !success;
-  }
-
-  discard(): Object[] {
-    this.editable = false;
-    this.sureDel = -1;
-    this._tiles = this.backup;
-    this.history = [];
-    return this._tiles;
-  }
-
-  trackByFn(index: any, item: any) {
-   return index;
   }
 
   updateHistory(change: object) {

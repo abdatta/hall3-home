@@ -27,6 +27,8 @@ export class InfoService {
   getFacilityInfo = (id: string): Observable<object> => this.getInfo('facilities', id);
   updateFacilityInfo = (id: string, diff: object[]): Observable<number> => this.updateInfo('facilities', id, diff);
 
+  getOneAlumnus = (value: string): Observable<object> => this.getFilteredData('alumni','id', value);
+  
   private getInfo(category: string, id: string): Observable<object> {
     return this.http.get(`/server/info/${category}/${id}`)
       .pipe(
@@ -58,4 +60,19 @@ export class InfoService {
       );
   }
 
+  private getFilteredData = (category: string, field: string, value: string): Observable<object> => {
+    return this.http.get(`/server/info/people/${category}?${field}=${value}`)
+      .pipe(
+          map((res: Response) => res.json() as object),
+          catchError((error: any) => {
+              if (error.status) {
+                  return of({
+                      'err': error.status
+                  });
+              } else {
+                  return Observable.throw(error.json().error || error.message || error);
+              }
+          })
+      );
+  }
 }
