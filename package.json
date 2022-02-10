@@ -39,7 +39,7 @@
     "ngx-cropper": "^1.2.3",
     "ngx-markdown": "^6.2.1",
     "ngx-textarea-autosize": "^2.0.3",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "remove-markdown": "^0.3.0",
     "rxjs": "^6.2.1",
     "rxjs-compat": "^6.2.1",
