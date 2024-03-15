@@ -6,7 +6,7 @@ import { PeopleRouterModule } from './people.router';
 import { InfoheadModule } from '../infohead/infohead.module';
 import { LoaderModule } from '../loader/loader.module';
 import { TilesModule } from '../tiles/tiles.module';
-import { NgxCropperModule } from '../ngx-cropper/ngx-cropper.module';
+import { NgxCropperModule } from '../../../../ngx-cropper/ngx-cropper.module';
 import { AutoSizeInputModule } from 'ngx-autosize-input';
 import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
 import { MarkdownModule } from "ngx-markdown";

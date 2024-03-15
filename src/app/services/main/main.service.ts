@@ -5,6 +5,7 @@ export class MainService {
   private links: Object = {
     'home' : '',
     'about' : '/about',
+    // 'gallery' : '/gallery',
     'facilities' : null,
       'guest' : '/facility/guest',
       'mess' : '/facility/mess',
@@ -16,6 +17,8 @@ export class MainService {
       'canteen' : '/facility/canteen',
     'adminis' : null,
       'hec' : '/administration/hec',
+      'ex_hec' : '/administration/ex_hec',
+      'hall_office' : '/administration/hall_office',
       'messc' : '/administration/mess',
       'maintc' : '/administration/maintenance',
       'eventsc' : '/administration/activity',
@@ -56,6 +59,11 @@ export class MainService {
       'class' : '',
       'link' : this.getLink('about')
     },
+    // {
+    //   'title' : 'Gallery',
+    //   'class' : '',
+    //   'link' : this.getLink('gallery')
+    // },
     {
       'title' : 'Facilities',
       'class' : 'dropdown',
@@ -107,6 +115,11 @@ export class MainService {
             'title' : 'Hall Executive Committee',
             'link' : this.getLink('hec')
           },
+          // {
+          //   'title' : 'Ex Hall Executive Committee',
+          //   'link' : this.getLink('ex_hec')
+          // },
+          
           {
             'title' : 'Mess Committee',
             'link' : this.getLink('messc')
@@ -122,6 +135,10 @@ export class MainService {
           {
               'title' : 'Advisory Committee',
               'link' : this.getLink('advisoryc')
+          },
+          {
+            'title' : 'Hall Office',
+            'link' : this.getLink('hall_office')
           }
         ]
     },
@@ -285,6 +302,12 @@ export class MainService {
             'id' : 'hec',
             'link' : this.getLink('hec')
           },
+          // {
+          //   'name' : 'Ex Hall Executive Committee',
+          //   'id' : 'ex_hec',
+          //   'link' : this.getLink('ex_hec')
+          // },
+          
           {
             'name' : 'Mess Committee',
             'id' : 'mess',
@@ -304,6 +327,11 @@ export class MainService {
               'name' : 'Advisory Committee',
               'id' : 'advisory',
               'link' : this.getLink('advisoryc')
+          },
+          {
+            'name' : 'Hall Office',
+            'id' : 'hall_office',
+            'link' : this.getLink('hall_office')
           }
         ],
     'people':

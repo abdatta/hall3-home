@@ -12,6 +12,7 @@ import { TilesModule } from '../tiles/tiles.module';
 /* importing components here */
 import { HomeComponent } from './home.component';
 import { AboutComponent } from './about/about.component';
+import { GalleryComponent } from './gallery/gallery.component';
 import { FacilitiesComponent } from './facilities/facilities.component';
 import { AdministrationComponent } from './administration/administration.component';
 import { TopnewsComponent } from './topnews/topnews.component';
@@ -21,6 +22,7 @@ import { MapComponent } from './map/map.component';
   declarations: [
     HomeComponent,
     AboutComponent,
+    GalleryComponent,
     FacilitiesComponent,
     AdministrationComponent,
     TopnewsComponent,
