@@ -7,7 +7,7 @@ import { MessComponent } from './mess/mess.component';
 import { MaintenanceComponent } from './maintenance/maintenance.component';
 import { EventsComponent } from './events/events.component';
 import { AdvisoryComponent } from './advisory/advisory.component';
-import { HallOfficeComponent } from './hall_office/hall_office.component';
+import { HallOfficeComponent } from './hall-office/hall-office.component';
 
 const administrationRoutes: Routes = [
   { path: '', redirectTo: 'hec', pathMatch: 'full'},
@@ -16,7 +16,7 @@ const administrationRoutes: Routes = [
   { path: 'maintenance', component: MaintenanceComponent },
   { path: 'activity', component: EventsComponent },
   { path: 'advisory', component: AdvisoryComponent },
-  { path: 'hall_office', component: HallOfficeComponent }
+  { path: 'hall-office', component: HallOfficeComponent }
 ]
 
 @NgModule({
