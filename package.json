@@ -12,6 +12,10 @@
     "pree2e": "webdriver-manager update --standalone false --gecko false",
     "e2e": "protractor"
   },
+  "engines": {
+    "node": "10.24.1",
+    "npm": "6.14.12"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "6.0.6",
@@ -39,6 +43,7 @@
     "ngx-cropper": "^1.2.3",
     "ngx-markdown": "^6.2.1",
     "ngx-textarea-autosize": "^2.0.3",
+    "node-sass": "^4.14.1",
     "remove-markdown": "^0.3.0",
     "rxjs": "^6.2.1",
     "rxjs-compat": "^6.2.1",
@@ -65,7 +70,6 @@
     "karma-jasmine": "^1.0.2",
     "karma-remap-istanbul": "^0.6.0",
     "protractor": "~5.3.2",
-    "sass": "^1.72.0",
     "ts-node": "^7.0.0",
     "tslint": "^5.10.0",
     "typescript": ">=2.7.0 <2.8.0"
