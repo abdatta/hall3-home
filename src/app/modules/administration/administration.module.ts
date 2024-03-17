@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AutoSizeInputModule } from 'ngx-autosize-input';
-import { NgxCropperModule } from '../../../../ngx-cropper/ngx-cropper.module';
+import { NgxCropperModule } from '../ngx-cropper/ngx-cropper.module';
 import { AdministrationRouterModule } from './administration.router';
 import { InfoheadModule } from '../infohead/infohead.module';
 import { LoaderModule } from '../loader/loader.module';
