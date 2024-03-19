@@ -14,6 +14,7 @@ import { MinutesRevealerModule } from '../minutes-revealer/minutes-revealer.modu
 /* importing components here */
 import { WardensComponent } from './wardens/wardens.component';
 import { HecComponent } from './hec/hec.component';
+import { HallOfficeComponent } from './hall-office/hall-office.component';
 import { MessComponent } from './mess/mess.component';
 import { MaintenanceComponent } from './maintenance/maintenance.component';
 import { EventsComponent } from './events/events.component';
@@ -23,6 +24,7 @@ import { AdvisoryComponent } from './advisory/advisory.component';
   declarations: [
     WardensComponent,
     HecComponent,
+    HallOfficeComponent,
     MessComponent,
     MaintenanceComponent,
     EventsComponent,

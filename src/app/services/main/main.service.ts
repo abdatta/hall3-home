@@ -16,6 +16,7 @@ export class MainService {
       'canteen' : '/facility/canteen',
     'adminis' : null,
       'hec' : '/administration/hec',
+      'hall-office' : '/administration/hall-office',
       'messc' : '/administration/mess',
       'maintc' : '/administration/maintenance',
       'eventsc' : '/administration/activity',
@@ -122,6 +123,10 @@ export class MainService {
           {
               'title' : 'Advisory Committee',
               'link' : this.getLink('advisoryc')
+          },
+          {
+            'title' : 'Hall Office',
+            'link' : this.getLink('hall-office')
           }
         ]
     },
@@ -304,6 +309,11 @@ export class MainService {
               'name' : 'Advisory Committee',
               'id' : 'advisory',
               'link' : this.getLink('advisoryc')
+          },
+          {
+            'name' : 'Hall Office',
+            'id' : 'hall-office',
+            'link' : this.getLink('hall-office')
           }
         ],
     'people':
