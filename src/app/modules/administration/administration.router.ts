@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 /* importing components here */
 import { HecComponent } from './hec/hec.component';
+import { Ex_HecComponent } from './ex_hec/ex_hec.component';
 import { MessComponent } from './mess/mess.component';
 import { MaintenanceComponent } from './maintenance/maintenance.component';
 import { EventsComponent } from './events/events.component';
@@ -16,7 +17,8 @@ const administrationRoutes: Routes = [
   { path: 'maintenance', component: MaintenanceComponent },
   { path: 'activity', component: EventsComponent },
   { path: 'advisory', component: AdvisoryComponent },
-  { path: 'hall-office', component: HallOfficeComponent }
+  { path: 'hall-office', component: HallOfficeComponent },
+  { path: 'ex-hec', component: Ex_HecComponent },
 ]
 
 @NgModule({
